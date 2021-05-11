@@ -18,3 +18,13 @@ The configuration of the plugins is opinionated and it includes for configured p
 - NPM release
 - GitHub release
 - Update the package version in the source code
+
+If you want to force a version bump not following semantic release run:
+
+```shell
+git tag {packageName}@{newVersion} # Force a new higher base version
+git push --tags
+git commit -m "fix({project}): force version bump" # Force the semantic release process
+```
+
+And then do a release.

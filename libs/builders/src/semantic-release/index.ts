@@ -62,7 +62,7 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
   try {
     const result: Result = await semanticRelease(
       {
-        tagFormat: packageName ? `${packageName}@\${version}` : `v\${version}`,
+        tagFormat:`${packageName}@\${version}`,
         branches: ['master', 'main', 'next', { name: 'beta', prerelease: true }, { name: 'alpha', prerelease: true }],
         extends: undefined,
         dryRun: options.dryRun,
