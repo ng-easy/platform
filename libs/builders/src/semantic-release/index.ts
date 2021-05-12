@@ -7,7 +7,13 @@ import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { emptyDir } from 'fs-extra';
 import semanticRelease, { Result } from 'semantic-release';
 
-import { createLoggerStream, getAnalyzeCommitsOptions, getGenerateNotesOptions, calculateProjectDependencies } from './lib';
+import {
+  createLoggerStream,
+  getAnalyzeCommitsOptions,
+  getGenerateNotesOptions,
+  calculateProjectDependencies,
+  getGithubOptions,
+} from './lib';
 import { PluginConfig } from './plugins/plugin-config';
 import { SemanticReleaseSchema } from './schema';
 
@@ -72,7 +78,7 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
           ['@semantic-release/changelog', { changelogFile: pluginConfig.changelog }],
           [buildPlugin, pluginConfig],
           ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }],
-          ['@semantic-release/github', { addReleases: 'bottom', assets: [{ path: `${outputPath}-tar/*.*` }] }],
+          ['@semantic-release/github', getGithubOptions(outputPath, packageName)],
           [updatePackageVersionPlugin, pluginConfig],
           [updateDependenciesPlugin, pluginConfig],
         ],
