@@ -30,7 +30,7 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin": "^8.0.0",
     "jimp": "^0.16.1",
-    "semantic-release": "^17.4.2",
+    "semantic-release": "^17.4.3",
     "stream-buffers": "^3.0.2",
     "sharp": "^0.28.2",
     "svgo": "^2.3.0",
@@ -43,7 +43,7 @@
     "@angular-devkit/core": "^11.2.13",
     "@nrwl/workspace": "12.2.0",
     "prettier": "^2.3.0",
-    "rxjs": "~6.6.3"
+    "rxjs": "~6.6.7"
   },
   "builders": "builders.json",
   "publishConfig": {
