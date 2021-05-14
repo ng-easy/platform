@@ -2,8 +2,8 @@ import path from 'path';
 
 import { BuilderContext } from '@angular-devkit/architect';
 import fs from 'fs-extra';
-import imagemin from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
+import imagemin from 'imagemin';
 import jimp from 'jimp';
 import sharp from 'sharp';
 import { optimize } from 'svgo';
