@@ -61,13 +61,14 @@
                   "maximumError": "10kb"
                 }
               ]
-            }
-          }
+            },
+            "development": {}
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "core-web-vitals:browser",
             "sourceMap": {
               "scripts": true,
               "styles": true,
@@ -77,8 +78,12 @@
           "configurations": {
             "production": {
               "browserTarget": "core-web-vitals:browser:production"
+            },
+            "development": {
+              "browserTarget": "core-web-vitals:browser:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -122,23 +127,28 @@
               ],
               "sourceMap": false,
               "optimization": true
-            }
-          }
+            },
+            "development": {}
+          },
+          "defaultConfiguration": "production"
         },
         "build": {
           "builder": "@angular-devkit/build-angular:app-shell",
           "outputs": ["dist/apps/core-web-vitals"],
           "options": {
-            "browserTarget": "core-web-vitals:browser",
-            "serverTarget": "core-web-vitals:server",
             "route": "shell"
           },
           "configurations": {
             "production": {
               "browserTarget": "core-web-vitals:browser:production",
               "serverTarget": "core-web-vitals:server:production"
+            },
+            "development": {
+              "serverTarget": "core-web-vitals:server:development",
+              "browserTarget": "core-web-vitals:browser:development"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "favicons": {
           "builder": "./dist/libs/builders:favicons",
