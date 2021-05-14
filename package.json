@@ -22,6 +22,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
+    "postinstall": "ngcc --properties es2015 browser module main",
     "release": "nx run-many --target=release --all",
     "ng": "nx",
     "nx": "nx",
