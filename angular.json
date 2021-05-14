@@ -15,10 +15,15 @@
             "main": "apps/core-web-vitals/src/main.ts",
             "polyfills": "apps/core-web-vitals/src/polyfills.ts",
             "tsConfig": "apps/core-web-vitals/tsconfig.app.json",
-            "aot": true,
             "assets": ["apps/core-web-vitals/src/favicon.ico", "apps/core-web-vitals/src/assets"],
             "styles": ["apps/core-web-vitals/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -102,7 +107,9 @@
           "options": {
             "outputPath": "dist/apps/core-web-vitals/server",
             "main": "apps/core-web-vitals/src/main.server.ts",
-            "tsConfig": "apps/core-web-vitals/tsconfig.server.json"
+            "tsConfig": "apps/core-web-vitals/tsconfig.server.json",
+            "sourceMap": true,
+            "optimization": false
           },
           "configurations": {
             "production": {
