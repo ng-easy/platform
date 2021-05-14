@@ -1,9 +1,15 @@
 {
   "npmScope": "ng-easy",
-  "affected": { "defaultBase": "master" },
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": { "scripts": "*", "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "scripts": "*",
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tsconfig.base-node.json": "*",
     ".eslintrc.json": "*",
@@ -21,10 +27,23 @@
     }
   },
   "projects": {
-    "core-web-vitals": { "tags": [], "implicitDependencies": ["core-web-vitals"] },
-    "core-web-vitals-e2e": { "tags": [] },
-    "builders": { "tags": [] },
-    "eslint-config": { "tags": [], "implicitDependencies": ["builders"] }
+    "core-web-vitals": {
+      "tags": [],
+      "implicitDependencies": ["core-web-vitals"]
+    },
+    "core-web-vitals-e2e": {
+      "tags": []
+    },
+    "builders": {
+      "tags": []
+    },
+    "eslint-config": {
+      "tags": [],
+      "implicitDependencies": ["builders"]
+    }
   },
-  "workspaceLayout": { "appsDir": "apps", "libsDir": "libs" }
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  }
 }
