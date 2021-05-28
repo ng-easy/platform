@@ -26,14 +26,14 @@ jobs:
 
       - name: Cache node_modules # This includes Ivy builds of angular libraries
         id: cache-node-modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache NPM # Get a cache of packages for clean installs
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ~/.npm
           key: |

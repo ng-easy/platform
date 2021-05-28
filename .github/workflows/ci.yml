@@ -27,14 +27,14 @@ jobs:
 
       - name: Cache node_modules # This includes Ivy builds of angular libraries
         id: cache-node-modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache NPM # Get a cache of packages for clean installs
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ~/.npm
           key: |
@@ -68,14 +68,14 @@ jobs:
 
       - name: Cache node_modules # This includes Ivy builds of angular libraries
         id: cache-node-modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache Nx build
         id: cache-nx-build
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules/.cache/nx
           key: nx-build-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
@@ -119,14 +119,14 @@ jobs:
 
       - name: Cache node_modules # This includes Ivy builds of angular libraries
         id: cache-node-modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache Nx lint
         id: cache-nx-lint
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules/.cache/nx
           key: nx-lint-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
@@ -162,21 +162,21 @@ jobs:
 
       - name: Cache node_modules # This includes Ivy builds of angular libraries
         id: cache-node-modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache cypress
         id: cache-cypress
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ~/.cache/Cypress
           key: cypress-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache Nx e2e
         id: cache-nx-e2e
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules/.cache/nx
           key: nx-e2e-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
