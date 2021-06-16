@@ -89,7 +89,7 @@ jobs:
           npm run favicons
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: build-artifacts
           path: dist
@@ -189,7 +189,7 @@ jobs:
         run: npx cypress install
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v2.0.9
+        uses: actions/download-artifact@v2.0.10
         with:
           name: build-artifacts
           path: dist
@@ -198,7 +198,7 @@ jobs:
         run: npm run ci:affected:e2e
 
       - name: e2e test upload diffs
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         if: failure()
         with:
           name: visual-testing-diffs
@@ -217,7 +217,7 @@ jobs:
           fetch-depth: 20 # https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/troubleshooting.md
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v2.0.9
+        uses: actions/download-artifact@v2.0.10
         with:
           name: build-artifacts
           path: dist
