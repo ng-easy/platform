@@ -27,14 +27,14 @@
     }
   },
   "projects": {
+    "builders": {
+      "tags": []
+    },
     "core-web-vitals": {
       "tags": [],
       "implicitDependencies": ["core-web-vitals"]
     },
     "core-web-vitals-e2e": {
-      "tags": []
-    },
-    "builders": {
       "tags": []
     },
     "eslint-config": {
