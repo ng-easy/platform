@@ -91,7 +91,7 @@
     "sharp": "^0.28.3",
     "stream-buffers": "^3.0.2",
     "svgo": "^2.3.0",
-    "tailwindcss": "^2.2.0",
+    "tailwindcss": "^2.2.2",
     "tinycolor2": "^1.4.2",
     "to-ico": "^1.1.5",
     "xml2js": "^0.4.23",
