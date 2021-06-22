@@ -139,7 +139,7 @@
     "http-server": "^0.12.3",
     "husky": "^6.0.0",
     "husky-check-email": "0.0.7",
-    "jest": "27.0.4",
+    "jest": "27.0.5",
     "jest-preset-angular": "9.0.4",
     "lint-staged": "^11.0.0",
     "ts-jest": "27.0.3",
