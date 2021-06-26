@@ -48,16 +48,8 @@ jobs:
 
       - name: NPM
         uses: ng-easy/npm-setup@v1
-
-      - name: Cache Nx build
-        id: cache-nx-build
-        uses: actions/cache@v2.1.6
         with:
-          path: node_modules/.cache/nx
-          key: nx-build-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-          restore-keys: |
-            nx-build-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-            nx-build-${{ hashFiles('**/package-lock.json') }}-
+          nx-key: build
 
       - name: Build
         run: |
@@ -95,16 +87,8 @@ jobs:
 
       - name: NPM
         uses: ng-easy/npm-setup@v1
-
-      - name: Cache Nx lint
-        id: cache-nx-lint
-        uses: actions/cache@v2.1.6
         with:
-          path: node_modules/.cache/nx
-          key: nx-lint-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-          restore-keys: |
-            nx-lint-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-            nx-lint-${{ hashFiles('**/package-lock.json') }}-
+          nx-key: lint
 
       - name: Lint
         run: npm run ci:affected:lint
@@ -134,27 +118,8 @@ jobs:
 
       - name: NPM
         uses: ng-easy/npm-setup@v1
-
-      - name: Cache cypress
-        id: cache-cypress
-        uses: actions/cache@v2.1.6
         with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Cache Nx e2e
-        id: cache-nx-e2e
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules/.cache/nx
-          key: nx-e2e-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-          restore-keys: |
-            nx-e2e-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-            nx-e2e-${{ hashFiles('**/package-lock.json') }}-
-
-      - name: Install cypress
-        if: steps.cache-cypress.outputs.cache-hit != 'true'
-        run: npx cypress install
+          NX_KEY: e2e
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2.0.10

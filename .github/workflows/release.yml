@@ -26,9 +26,11 @@ jobs:
 
       - name: NPM
         uses: ng-easy/npm-setup@v1
+        with:
+          nx-key: build
 
       - name: Build release scripts
-        run: npx nx build builders --skip-nx-cache
+        run: npx nx build builders
 
       - name: Release
         run: npm run release
