@@ -45,5 +45,13 @@
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
