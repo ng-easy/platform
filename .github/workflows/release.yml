@@ -25,7 +25,7 @@ jobs:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1
+        uses: ng-easy/npm-setup@v1.7.2
         with:
           nx-key: build
 
