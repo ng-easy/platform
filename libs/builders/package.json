@@ -43,7 +43,7 @@
   "peerDependencies": {
     "@angular-devkit/build-angular": "12.1.0",
     "@angular-devkit/core": "^12.1.0",
-    "@nrwl/workspace": "12.5.0",
+    "@nrwl/workspace": "12.5.1",
     "prettier": "^2.3.2",
     "rxjs": "~6.6.7"
   },
