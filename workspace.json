@@ -1,10 +1,10 @@
 {
   "version": 2,
   "projects": {
-    "builders": "libs\\builders",
-    "core-web-vitals": "apps\\core-web-vitals",
-    "core-web-vitals-e2e": "apps\\core-web-vitals-e2e",
-    "eslint-config": "libs\\eslint-config"
+    "builders": "libs/builders",
+    "core-web-vitals": "apps/core-web-vitals",
+    "core-web-vitals-e2e": "apps/core-web-vitals-e2e",
+    "eslint-config": "libs/eslint-config"
   },
   "cli": {
     "defaultCollection": "@nrwl/node"

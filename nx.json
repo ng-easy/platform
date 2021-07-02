@@ -15,6 +15,7 @@
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
+  "projects": {},
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
