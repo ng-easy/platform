@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "projects": {
+    "builders": "libs\\builders",
+    "core-web-vitals": "apps\\core-web-vitals",
+    "core-web-vitals-e2e": "apps\\core-web-vitals-e2e",
+    "eslint-config": "libs\\eslint-config"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/node"
+  },
+  "generators": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    },
+    "@nrwl/node:library": {
+      "buildable": true,
+      "publishable": true
+    },
+    "@schematics/angular:component": {
+      "flat": true,
+      "skipTests": true,
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "changeDetection": "OnPush",
+      "prefix": "nge",
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "nge"
+    },
+    "@schematics/angular:service": {
+      "flat": true
+    }
+  },
+  "defaultProject": "core-web-vitals"
+}

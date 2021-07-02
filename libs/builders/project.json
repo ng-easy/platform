@@ -1,0 +1,58 @@
+{
+  "root": "libs/builders",
+  "sourceRoot": "libs/builders/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/builders/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/builders"],
+      "options": {
+        "jestConfig": "libs/builders/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/builders",
+        "tsConfig": "libs/builders/tsconfig.lib.json",
+        "packageJson": "libs/builders/package.json",
+        "main": "libs/builders/src/index.ts",
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "peerDependencies",
+        "assets": [
+          "libs/builders/README.md",
+          "libs/builders/builders.json",
+          {
+            "input": "libs/builders/src",
+            "output": "/src",
+            "glob": "**/*.json"
+          }
+        ]
+      }
+    },
+    "command": {
+      "executor": "./dist/libs/builders:command",
+      "options": {
+        "command": "cmd",
+        "args": ["/c", "dir"]
+      }
+    },
+    "release": {
+      "executor": "./dist/libs/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

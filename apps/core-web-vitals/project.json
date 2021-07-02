@@ -1,0 +1,168 @@
+{
+  "projectType": "application",
+  "root": "apps/core-web-vitals",
+  "sourceRoot": "apps/core-web-vitals/src",
+  "prefix": "ng-easy",
+  "targets": {
+    "browser": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/core-web-vitals/browser",
+        "index": "apps/core-web-vitals/src/index.html",
+        "main": "apps/core-web-vitals/src/main.ts",
+        "polyfills": "apps/core-web-vitals/src/polyfills.ts",
+        "tsConfig": "apps/core-web-vitals/tsconfig.app.json",
+        "assets": ["apps/core-web-vitals/src/favicon.ico", "apps/core-web-vitals/src/assets"],
+        "styles": ["apps/core-web-vitals/src/styles.scss"],
+        "scripts": [],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/core-web-vitals/src/environments/environment.ts",
+              "with": "apps/core-web-vitals/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": {
+            "scripts": true,
+            "fonts": {
+              "inline": true
+            },
+            "styles": {
+              "minify": true,
+              "inlineCritical": true
+            }
+          },
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "development": {}
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "sourceMap": {
+          "scripts": true,
+          "styles": true,
+          "vendor": true
+        }
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "core-web-vitals:browser:production"
+        },
+        "development": {
+          "browserTarget": "core-web-vitals:browser:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "core-web-vitals:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/core-web-vitals/src/**/*.ts", "apps/core-web-vitals/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/core-web-vitals"],
+      "options": {
+        "jestConfig": "apps/core-web-vitals/jest.config.js",
+        "passWithNoTests": true,
+        "aot": true
+      }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "outputs": ["dist/apps/core-web-vitals/server"],
+      "options": {
+        "outputPath": "dist/apps/core-web-vitals/server",
+        "main": "apps/core-web-vitals/src/main.server.ts",
+        "tsConfig": "apps/core-web-vitals/tsconfig.server.json",
+        "sourceMap": true,
+        "optimization": false
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/core-web-vitals/src/environments/environment.ts",
+              "with": "apps/core-web-vitals/src/environments/environment.prod.ts"
+            }
+          ],
+          "sourceMap": false,
+          "optimization": true
+        },
+        "development": {}
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@angular-devkit/build-angular:app-shell",
+      "outputs": ["dist/apps/core-web-vitals"],
+      "options": {
+        "route": "shell"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "core-web-vitals:browser:production",
+          "serverTarget": "core-web-vitals:server:production"
+        },
+        "development": {
+          "serverTarget": "core-web-vitals:server:development",
+          "browserTarget": "core-web-vitals:browser:development"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "favicons": {
+      "executor": "./dist/libs/builders:favicons",
+      "outputs": ["dist/apps/core-web-vitals/browser"],
+      "options": {
+        "browserTarget": "core-web-vitals:browser",
+        "favicon": "apps/core-web-vitals/src/favicon.svg",
+        "background": "#303030"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "core-web-vitals:browser:production",
+          "background": "#1353ab"
+        }
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["core-web-vitals"]
+}

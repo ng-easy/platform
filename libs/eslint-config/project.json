@@ -1,0 +1,29 @@
+{
+  "root": "libs/eslint-config",
+  "sourceRoot": "libs/eslint-config/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/eslint-config/**/*.js"]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/eslint-config",
+        "tsConfig": "libs/eslint-config/tsconfig.lib.json",
+        "packageJson": "libs/eslint-config/package.json",
+        "main": "libs/eslint-config/index.js",
+        "assets": ["libs/eslint-config/README.md"]
+      }
+    },
+    "release": {
+      "executor": "./dist/libs/builders:semantic-release"
+    }
+  },
+  "tags": [],
+  "implicitDependencies": []
+}

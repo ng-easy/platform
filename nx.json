@@ -26,22 +26,6 @@
       }
     }
   },
-  "projects": {
-    "builders": {
-      "tags": []
-    },
-    "core-web-vitals": {
-      "tags": [],
-      "implicitDependencies": ["core-web-vitals"]
-    },
-    "core-web-vitals-e2e": {
-      "tags": []
-    },
-    "eslint-config": {
-      "tags": [],
-      "implicitDependencies": []
-    }
-  },
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
