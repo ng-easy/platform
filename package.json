@@ -70,7 +70,7 @@
     "@typescript-eslint/parser": "^4.28.1",
     "bootstrap": "^5.0.2",
     "cheerio": "^1.0.0-rc.10",
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-deprecation": "^1.2.1",
