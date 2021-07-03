@@ -62,5 +62,5 @@
     "package.json"
   ],
 
-  "conventionalCommits.scopes": ["core-web-vitals", "core-web-vitals-e2e", "builders", "eslint-config", "*"]
+  "conventionalCommits.scopes": ["core-web-vitals", "core-web-vitals-e2e", "builders", "eslint-config", "*", "prettier-config"]
 }

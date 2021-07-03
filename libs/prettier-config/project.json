@@ -1,0 +1,29 @@
+{
+  "root": "libs/prettier-config",
+  "sourceRoot": "libs/prettier-config/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/prettier-config/**/*.js"]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/prettier-config",
+        "tsConfig": "libs/prettier-config/tsconfig.lib.json",
+        "packageJson": "libs/prettier-config/package.json",
+        "main": "libs/prettier-config/index.js",
+        "assets": ["libs/prettier-config/README.md"]
+      }
+    },
+    "release": {
+      "executor": "./dist/libs/builders:semantic-release"
+    }
+  },
+  "tags": [],
+  "implicitDependencies": []
+}
