@@ -19,8 +19,13 @@
     </mat-nav-list>
     <div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
       <mat-nav-list>
-        <a mat-list-item *ngFor="let guideLink of guideLinks" [routerLink]="['/guides', guideLink.url]"
-          routerLinkActive="active-link" (click)="exampleSidenav.close()">
+        <a
+          mat-list-item
+          *ngFor="let guideLink of guideLinks"
+          [routerLink]="['/guides', guideLink.url]"
+          routerLinkActive="active-link"
+          (click)="exampleSidenav.close()"
+        >
           <p matLine>{{ guideLink.name }}</p>
         </a>
       </mat-nav-list>
@@ -28,16 +33,21 @@
     <mat-nav-list>
       <a mat-list-item (click)="toggleComponents()">
         <p matLine>Components</p>
-        <mat-icon [class.isToggled]="hideComponents" class="toggle-component-icon"
-          [class.isUnToggled]="!hideComponents">keyboard_arrow_down</mat-icon>
+        <mat-icon [class.isToggled]="hideComponents" class="toggle-component-icon" [class.isUnToggled]="!hideComponents"
+          >keyboard_arrow_down</mat-icon
+        >
       </a>
     </mat-nav-list>
     <div *ngIf="hideComponents" class="component-examples-sect" @enterAnimation>
       <mat-nav-list *ngFor="let exampleLink of exampleLinks">
         <h3 matSubheader>{{ exampleLink.category }}</h3>
-        <a mat-list-item *ngFor="let example of exampleLink.examples"
-          [routerLink]="['/components', exampleLink.url, example.url]" routerLinkActive="active-link"
-          (click)="exampleSidenav.close()">
+        <a
+          mat-list-item
+          *ngFor="let example of exampleLink.examples"
+          [routerLink]="['/components', exampleLink.url, example.url]"
+          routerLinkActive="active-link"
+          (click)="exampleSidenav.close()"
+        >
           <p matLine>{{ example.name }}</p>
         </a>
       </mat-nav-list>
