@@ -119,7 +119,7 @@
     "@schemastore/package": "0.0.6",
     "@schemastore/web-manifest": "0.0.5",
     "@types/cheerio": "^0.22.30",
-    "@types/cypress-image-snapshot": "^3.1.5",
+    "@types/cypress-image-snapshot": "^3.1.6",
     "@types/fs-extra": "^9.0.12",
     "@types/imagemin": "^7.0.1",
     "@types/jest": "^26.0.24",
