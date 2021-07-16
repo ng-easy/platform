@@ -27,6 +27,14 @@
         "jestConfig": "libs/image-optimizer/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "release": {
+      "executor": "./dist/libs/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
     }
   },
   "tags": []
