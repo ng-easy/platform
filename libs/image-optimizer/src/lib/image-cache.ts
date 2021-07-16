@@ -15,6 +15,7 @@ export class FilesystemImageCache implements ImageCache {
 
   async persist(imageUri: string, file: Buffer, options: ImageOptimizerOptions): Promise<void> {
     const imageFile: string = path.join(this.cacheFolder, getImageCacheFile(imageUri, options));
+    await fs.ensureDir(this.cacheFolder);
     await fs.writeFile(imageFile, file);
   }
 
