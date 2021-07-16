@@ -3,9 +3,10 @@ import path from 'path';
 import fs from 'fs-extra';
 import prettyBytes from 'pretty-bytes';
 
+import { FilesystemImageCache, ImageCache } from './image-cache';
 import { getImageOptimizer, ImageOptimizer, ImageOptimizerOptions } from './image-optimizer';
 
-const imageAssetPath = path.join(__dirname, '..', 'assets', 'code.jpg');
+const imageUri = path.join(__dirname, '..', 'assets', 'code.jpg');
 
 interface ImageOptimizationTest {
   options: ImageOptimizerOptions;
@@ -16,8 +17,8 @@ interface ImageOptimizationTest {
 
 describe('@ng-easy/image-optimizer', () => {
   it('should return optimized images', async () => {
-    const originalImage: Buffer = await fs.readFile(imageAssetPath);
-    const imageOptimizer: ImageOptimizer = getImageOptimizer(imageAssetPath, originalImage);
+    const originalImage: Buffer = await fs.readFile(imageUri);
+    const imageOptimizer: ImageOptimizer = getImageOptimizer(imageUri, originalImage);
     console.log(`Original size: ${prettyBytes(originalImage.byteLength)}`);
 
     const imageOptimizationTests: ImageOptimizationTest[] = [
@@ -28,7 +29,7 @@ describe('@ng-easy/image-optimizer', () => {
     ];
 
     for (const imageOptimizationTest of imageOptimizationTests) {
-      const optimizedImage = await imageOptimizer.optimize(originalImage, imageOptimizationTest.options);
+      const optimizedImage = await imageOptimizer.optimize(imageUri, originalImage, imageOptimizationTest.options);
       imageOptimizationTest.actualOptimizationRatio = optimizedImage.byteLength / originalImage.length;
       imageOptimizationTest.optimizedSize = optimizedImage.byteLength;
     }
@@ -45,5 +46,23 @@ describe('@ng-easy/image-optimizer', () => {
     imageOptimizationTests.forEach(({ actualOptimizationRatio, expectedOptimizationRatio }) => {
       expect(actualOptimizationRatio).toBeLessThan(expectedOptimizationRatio);
     });
+  }, 10000);
+
+  it('should use file cache', async () => {
+    const originalImage: Buffer = await fs.readFile(imageUri);
+    const imageOptimizer: ImageOptimizer = getImageOptimizer(imageUri, originalImage);
+    const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'));
+
+    const imageOptimizationTests: ImageOptimizationTest[] = [
+      { options: { format: 'jpg', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+    ];
+
+    for (const imageOptimizationTest of imageOptimizationTests) {
+      const optimizedImage = await imageOptimizer.optimize(imageUri, originalImage, imageOptimizationTest.options, imageCache);
+      imageOptimizationTest.actualOptimizationRatio = optimizedImage.byteLength / originalImage.length;
+      imageOptimizationTest.optimizedSize = optimizedImage.byteLength;
+
+      expect(await imageCache.retrieve(imageUri, imageOptimizationTest.options)).not.toBeNull();
+    }
   }, 10000);
 });

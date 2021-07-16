@@ -1,5 +1,7 @@
 import sharp, { Sharp } from 'sharp';
 
+import { ImageCache } from './image-cache';
+
 export interface ImageOptimizerOptions {
   format: 'png' | 'jpg' | 'webp' | 'avif' | 'heif';
   width: number;
@@ -7,19 +9,24 @@ export interface ImageOptimizerOptions {
 }
 
 export interface ImageOptimizer {
-  test: (path: string, buffer: Buffer) => boolean;
-  optimize: (buffer: Buffer, options: ImageOptimizerOptions) => Promise<Buffer>;
+  test: (imageUri: string, buffer: Buffer) => boolean;
+  optimize: (imageUri: string, buffer: Buffer, options: ImageOptimizerOptions, cache?: ImageCache) => Promise<Buffer>;
 }
 
 class JpgOptimizer implements ImageOptimizer {
   private readonly inputFileExtensions = ['jpg', 'webp', 'avif', 'heif'];
   private readonly inputFileExtensionRegex: RegExp[] = this.inputFileExtensions.map((extension) => getFileExtensionRegex(extension));
 
-  test(path: string): boolean {
-    return this.inputFileExtensionRegex.some((extensionRegex) => extensionRegex.test(path));
+  test(imageUri: string): boolean {
+    return this.inputFileExtensionRegex.some((extensionRegex) => extensionRegex.test(imageUri));
   }
 
-  async optimize(buffer: Buffer, options: ImageOptimizerOptions): Promise<Buffer> {
+  async optimize(imageUri: string, buffer: Buffer, options: ImageOptimizerOptions, cache?: ImageCache): Promise<Buffer> {
+    const cachedImage: Buffer | null = (await cache?.retrieve(imageUri, options)) ?? null;
+    if (cachedImage != null) {
+      return cachedImage;
+    }
+
     let sharpImage: Sharp = sharp(buffer).resize({ width: options.width });
 
     switch (options.format) {
@@ -39,17 +46,19 @@ class JpgOptimizer implements ImageOptimizer {
         throw new Error(`Output format ${options.format} not supported`);
     }
 
-    return await sharpImage.toBuffer();
+    const optimizedImage: Buffer = await sharpImage.toBuffer();
+    cache?.persist(imageUri, optimizedImage, options);
+    return optimizedImage;
   }
 }
 
 const ImageOptimizers: ImageOptimizer[] = [new JpgOptimizer()];
 
-export function getImageOptimizer(path: string, buffer: Buffer): ImageOptimizer {
-  const ImageOptimizer: ImageOptimizer | undefined = ImageOptimizers.find((importer) => importer.test(path, buffer));
+export function getImageOptimizer(imageUri: string, buffer: Buffer): ImageOptimizer {
+  const ImageOptimizer: ImageOptimizer | undefined = ImageOptimizers.find((importer) => importer.test(imageUri, buffer));
 
   if (ImageOptimizer == null) {
-    throw new Error(`File ${path} doesn't contain a supported image format`);
+    throw new Error(`File ${imageUri} doesn't contain a supported image format`);
   }
 
   return ImageOptimizer;
