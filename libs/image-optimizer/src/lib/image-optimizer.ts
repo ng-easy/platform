@@ -47,7 +47,8 @@ class JpgOptimizer implements ImageOptimizer {
     }
 
     const optimizedImage: Buffer = await sharpImage.toBuffer();
-    cache?.persist(imageUri, optimizedImage, options);
+    await cache?.persist(imageUri, optimizedImage, options);
+
     return optimizedImage;
   }
 }
