@@ -1,0 +1,33 @@
+{
+  "root": "libs/image-optimizer",
+  "sourceRoot": "libs/image-optimizer/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/image-optimizer",
+        "tsConfig": "libs/image-optimizer/tsconfig.lib.json",
+        "packageJson": "libs/image-optimizer/package.json",
+        "main": "libs/image-optimizer/src/index.ts",
+        "assets": ["libs/image-optimizer/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/image-optimizer/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/image-optimizer"],
+      "options": {
+        "jestConfig": "libs/image-optimizer/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
