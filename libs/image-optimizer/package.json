@@ -1,8 +1,31 @@
 {
   "name": "@ng-easy/image-optimizer",
   "version": "1.0.0",
-  "dependencies": {
+  "description": "Node library that implements image optimizations for web images",
+  "keywords": [
+    "image",
+    "optimization",
+    "core-web-vitals"
+  ],
+  "author": "samuelfernandez",
+  "homepage": "https://github.com/ng-easy/platform/tree/master/libs/image-optimizer",
+  "bugs": {
+    "url": "https://github.com/ng-easy/platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-easy/platform.git"
+  },
+  "engines": {
+    "node": "^14.0.0",
+    "npm": "^7.0.0"
+  },
+  "license": "MIT",
+  "peerDependencies": {
     "fs-extra": "^10.0.0",
     "sharp": "^0.28.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
