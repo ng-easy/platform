@@ -48,13 +48,31 @@ describe('@ng-easy/image-optimizer', () => {
     });
   }, 10000);
 
-  it('should use file cache', async () => {
+  it('should use file cache with hash strategy', async () => {
     const originalImage: Buffer = await fs.readFile(imageUri);
     const imageOptimizer: ImageOptimizer = getImageOptimizer(imageUri, originalImage);
-    const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'));
+    const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'), 'hash');
 
     const imageOptimizationTests: ImageOptimizationTest[] = [
-      { options: { format: 'jpg', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+      { options: { format: 'webp', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+    ];
+
+    for (const imageOptimizationTest of imageOptimizationTests) {
+      const optimizedImage = await imageOptimizer.optimize(imageUri, originalImage, imageOptimizationTest.options, imageCache);
+      imageOptimizationTest.actualOptimizationRatio = optimizedImage.byteLength / originalImage.length;
+      imageOptimizationTest.optimizedSize = optimizedImage.byteLength;
+
+      expect(await imageCache.retrieve(imageUri, imageOptimizationTest.options)).not.toBeNull();
+    }
+  }, 10000);
+
+  it('should use file cache with composite strategy', async () => {
+    const originalImage: Buffer = await fs.readFile(imageUri);
+    const imageOptimizer: ImageOptimizer = getImageOptimizer(imageUri, originalImage);
+    const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'), 'composite');
+
+    const imageOptimizationTests: ImageOptimizationTest[] = [
+      { options: { format: 'webp', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
     ];
 
     for (const imageOptimizationTest of imageOptimizationTests) {
