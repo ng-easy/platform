@@ -8,16 +8,21 @@ import {
   FilesystemImageCache,
   getImageOptimizer,
   ImageCache,
-  ImageFormat,
   ImageOptimizer,
-  ImageOptimizerOptions,
+  getValidatedImageOptimizerConfig,
+  ImageOptimizerConfig,
+  defaultImageOptimizerConfig,
+  getImageSizes,
+  ImageFormat,
 } from '@ng-easy/image-optimizer';
 
-type PartialJsonObject<T> = { [P in keyof T]: T[P] | null };
-
-interface Options extends JsonObject, PartialJsonObject<ImageOptimizerOptions> {
+interface Options extends JsonObject {
   assets: string[];
   outputPath: string;
+  deviceSizes: number[];
+  imageSizes: number[];
+  quality: number | null;
+  formats: ImageFormat[];
 }
 
 export default createBuilder(imageOptimizerBuilder);
@@ -28,7 +33,14 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
   context.logger.info(`To folder: ${getRelativePath(options.outputPath)}`);
 
   const fileSystemCache: ImageCache = new FilesystemImageCache(options.outputPath, 'composite');
-  const optimizationOptions: ImageOptimizerOptions = { format: ImageFormat.Webp, width: 1080, quality: 70 };
+  const optimizationConfig: ImageOptimizerConfig = getValidatedImageOptimizerConfig({
+    deviceSizes: options.deviceSizes.length === 0 ? defaultImageOptimizerConfig.deviceSizes : options.deviceSizes,
+    imageSizes: options.imageSizes.length === 0 ? defaultImageOptimizerConfig.imageSizes : options.imageSizes,
+    quality: options.quality ?? defaultImageOptimizerConfig.quality,
+    formats: options.formats.length === 0 ? defaultImageOptimizerConfig.formats : options.formats,
+  });
+  const quality: number = optimizationConfig.quality;
+  const imageSizes: number[] = getImageSizes(optimizationConfig);
 
   for (const assetPath of options.assets) {
     if (!(await fs.pathExists(assetPath))) {
@@ -42,7 +54,13 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
 
       const file = await fs.readFile(filePath);
       const imageOptimizer: ImageOptimizer = getImageOptimizer(filePath, file);
-      await imageOptimizer.optimize(filePath, file, optimizationOptions, fileSystemCache);
+      const formats: ImageFormat[] = intersect(imageOptimizer.supportedFormats, optimizationConfig.formats);
+
+      for (const width of imageSizes) {
+        for (const format of formats) {
+          await imageOptimizer.optimize(filePath, file, { format, width, quality }, fileSystemCache);
+        }
+      }
     }
   }
 
@@ -51,4 +69,9 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
 
 function getRelativePath(absolutePath: string): string {
   return absolutePath.replace(process.cwd(), '').replace(/^[/\\]+/, '');
+}
+
+function intersect<T>(a: T[], b: T[]): T[] {
+  const setB = new Set(b);
+  return [...new Set(a)].filter((x) => setB.has(x));
 }

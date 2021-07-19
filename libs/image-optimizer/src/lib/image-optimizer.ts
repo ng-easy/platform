@@ -17,14 +17,14 @@ export interface ImageOptimizerOptions {
 }
 
 export interface ImageOptimizer {
-  readonly supportedFileExtensions: ImageFormat[];
+  readonly supportedFormats: ImageFormat[];
   test: (imageUri: string, buffer: Buffer) => boolean;
   optimize: (imageUri: string, buffer: Buffer, options: ImageOptimizerOptions, cache?: ImageCache) => Promise<Buffer>;
 }
 
 class JpgOptimizer implements ImageOptimizer {
-  readonly supportedFileExtensions = [ImageFormat.Jpeg, ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif];
-  private readonly fileExtensionRegex: RegExp[] = this.supportedFileExtensions
+  readonly supportedFormats = [ImageFormat.Jpeg, ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif];
+  private readonly fileExtensionRegex: RegExp[] = this.supportedFormats
     .map((extension) => getFileExtensionRegex(extension))
     .concat([/\.jpg/i]);
 

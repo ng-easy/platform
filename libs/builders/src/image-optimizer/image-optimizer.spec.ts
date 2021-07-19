@@ -4,6 +4,7 @@ import { Architect, BuilderRun, BuilderOutput } from '@angular-devkit/architect'
 import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { logging, schema } from '@angular-devkit/core';
 import { Logger } from '@angular-devkit/core/src/logger';
+import fs from 'fs-extra';
 
 // eslint-disable-next-line import/no-named-as-default
 import imageOptimizerBuilder from './index';
@@ -29,11 +30,11 @@ describe('@ng-easy/builders:image-optimizer', () => {
     logger.subscribe((ev) => logs.push(ev.message));
 
     const assetsPath: string = path.join(__dirname, 'assets');
-    const outputPath: string = path.join(process.cwd(), 'tmp');
+    const outputPath: string = path.join(process.cwd(), 'tmp/libs/builders/image-optimizer');
 
     const run: BuilderRun = await architect.scheduleBuilder(
       '@ng-easy/builders:image-optimizer',
-      { assets: [assetsPath], outputPath },
+      { assets: [assetsPath], outputPath, deviceSizes: [1080], imageSizes: [600] },
       { logger }
     );
 
@@ -42,7 +43,9 @@ describe('@ng-easy/builders:image-optimizer', () => {
     await run.stop();
 
     expect(output.success).toBe(true);
-    expect(logs).toContain(`To folder: tmp`);
     expect(logs).toContain(path.normalize(`libs/builders/src/image-optimizer/assets/code.jpg`));
-  });
+
+    const outputFiles = await await fs.readdir(outputPath);
+    expect(outputFiles.length).toBe(4); // 2 sizes * 2 formats = 4 files
+  }, 20000);
 });
