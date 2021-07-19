@@ -26,6 +26,7 @@ describe('@ng-easy/builders:image-optimizer', () => {
     const logger: Logger = new logging.Logger('');
     const logs: string[] = [];
     logger.subscribe((ev) => logs.push(ev.message));
+
     const assetsPath: string = path.join(__dirname, 'assets');
     const outputPath: string = path.join(process.cwd(), 'tmp');
 
@@ -41,6 +42,6 @@ describe('@ng-easy/builders:image-optimizer', () => {
 
     expect(output.success).toBe(true);
     expect(logs).toContain(`To folder: tmp`);
-    expect(logs).toContain(`libs\\builders\\src\\image-optimizer\\assets\\code.jpg`);
+    expect(logs).toContain(path.normalize(`libs/builders/src/image-optimizer/assets/code.jpg`));
   });
 });
