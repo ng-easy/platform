@@ -4,6 +4,29 @@
 
 Builders for Angular projects.
 
+## image-optimizer
+
+This builder is a wrapper of [`@ng-easy/image-optimizer`](https://github.com/ng-easy/platform/tree/main/libs/image-optimizer) designed to generate build time optimized images from an assets folder.
+
+A suggested configuration would be to place original images in a separate folder and make the output path the standard assets folder of the project and include them in the repo. This way it will integrate nicely with Angular build process without need for build orchestration.
+
+### Configuration of the builder
+
+In your `angular.json` you can use the builder with:
+
+```json
+"release": {
+  "builder": "@ng-easy/builders:image-optimizer",
+  "options": {
+    "assets": ["src/assets/original-images"],
+    "outputPath": "src/assets/optimized-images"
+  }
+}
+```
+
+- `assets`: folders containing source images
+- `outputPath`: where optimized images will be saved
+
 ## semantic-release
 
 This builder is a wrapper of [**semantic-release**](https://github.com/semantic-release/semantic-release) to automate the release process of Angular projects. It uses internally:
@@ -27,7 +50,7 @@ In your `angular.json` you can use the builder with:
 
 ```json
 "release": {
-  "builder": ".@ng-easy/builders:semantic-release",
+  "builder": "@ng-easy/builders:semantic-release",
   "configurations": {
     "local": {
       "force": true
@@ -36,7 +59,7 @@ In your `angular.json` you can use the builder with:
 }
 ```
 
-Additionaly, you can use the following options:
+Additionally, you can use the following options:
 
 - `dryRun`: defaults to `false`, runs the release process without releasing
 - `force`: defaults to `false`, forces the release in a non CI environment, can be used to make a release locally

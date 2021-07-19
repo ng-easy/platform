@@ -10,6 +10,11 @@
       "schema": "./src/favicons/schema.json",
       "description": "Generates the favicons for the web page."
     },
+    "image-optimizer": {
+      "implementation": "./src/image-optimizer",
+      "schema": "./src/image-optimizer/schema.json",
+      "description": "Optimizes images as static assets."
+    },
     "semantic-release": {
       "implementation": "./src/semantic-release",
       "schema": "./src/semantic-release/schema.json",

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "assets": {
+      "description": "Assets folder containing images",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputPath": {
+      "description": "Output folder for optimized images",
+      "type": "string"
+    }
+  },
+  "required": ["assets"],
+  "additionalProperties": false
+}
