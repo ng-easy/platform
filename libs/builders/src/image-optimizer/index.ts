@@ -4,7 +4,7 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 import fs from 'fs-extra';
 
-import { FilesystemImageCache } from '@ng-easy/image-optimizer';
+import { FilesystemImageCache, getImageOptimizer, ImageCache, ImageOptimizer, ImageOptimizerOptions } from '@ng-easy/image-optimizer';
 
 interface Options extends JsonObject {
   assets: string[];
