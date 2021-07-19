@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.2...@ng-easy/eslint-config@3.1.3) (2021-07-19)
+
+
+### Bug Fixes
+
+* **eslint-config:** :bug: add missing dependency and ignore undersolved import lint rule ([#98](https://github.com/ng-easy/platform/issues/98)) ([ee333b5](https://github.com/ng-easy/platform/commit/ee333b5b8773d06881cb6fc4d0ede8b83a6acbff))
+
 ## [3.1.2](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.1...@ng-easy/eslint-config@3.1.2) (2021-07-16)
 
 

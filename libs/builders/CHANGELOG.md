@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.0.3...@ng-easy/builders@3.1.0) (2021-07-19)
+
+
+### Features
+
+* **builders:** :sparkles: add image optimizer basic builder ([#99](https://github.com/ng-easy/platform/issues/99)) ([ec8077f](https://github.com/ng-easy/platform/commit/ec8077f96f92fb9dcef427a2f7a40a56ceb821d4))
+
 ## [3.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.0.2...@ng-easy/builders@3.0.3) (2021-07-16)
 
 

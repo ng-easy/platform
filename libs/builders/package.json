@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/builders",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "Builders for Angular projects",
   "keywords": [
     "angular",
