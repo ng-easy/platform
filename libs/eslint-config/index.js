@@ -8,7 +8,13 @@ module.exports = {
     },
     {
       files: ['*.ts', '*.tsx'],
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:import/errors', 'plugin:import/warnings'],
+      extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/errors',
+        'plugin:import/warnings',
+        'plugin:import/typescript',
+      ],
       rules: {
         '@typescript-eslint/explicit-member-accessibility': ['warn', { accessibility: 'no-public' }],
         '@typescript-eslint/no-explicit-any': ['off'],
@@ -26,10 +32,12 @@ module.exports = {
         ],
         'unused-imports/no-unused-imports': 'error',
         '@angular-eslint/prefer-on-push-component-change-detection': 'warn',
+        'import/no-unresolved': ['off'],
       },
       settings: {
         'import/resolver': {
           node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+          typescript: {},
         },
       },
     },
