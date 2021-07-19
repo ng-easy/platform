@@ -2,23 +2,34 @@ import sharp, { Sharp } from 'sharp';
 
 import { ImageCache } from './image-cache';
 
+export enum ImageFormat {
+  Png = 'png',
+  Jpeg = 'jpeg',
+  Webp = 'webp',
+  Avif = 'avif',
+  Heif = 'heif',
+}
+
 export interface ImageOptimizerOptions {
-  format: 'png' | 'jpg' | 'webp' | 'avif' | 'heif';
+  format: ImageFormat;
   width: number;
   quality: number;
 }
 
 export interface ImageOptimizer {
+  readonly supportedFileExtensions: ImageFormat[];
   test: (imageUri: string, buffer: Buffer) => boolean;
   optimize: (imageUri: string, buffer: Buffer, options: ImageOptimizerOptions, cache?: ImageCache) => Promise<Buffer>;
 }
 
 class JpgOptimizer implements ImageOptimizer {
-  private readonly inputFileExtensions = ['jpg', 'webp', 'avif', 'heif'];
-  private readonly inputFileExtensionRegex: RegExp[] = this.inputFileExtensions.map((extension) => getFileExtensionRegex(extension));
+  readonly supportedFileExtensions = [ImageFormat.Jpeg, ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif];
+  private readonly fileExtensionRegex: RegExp[] = this.supportedFileExtensions
+    .map((extension) => getFileExtensionRegex(extension))
+    .concat([/\.jpg/i]);
 
   test(imageUri: string): boolean {
-    return this.inputFileExtensionRegex.some((extensionRegex) => extensionRegex.test(imageUri));
+    return this.fileExtensionRegex.some((extensionRegex) => extensionRegex.test(imageUri));
   }
 
   async optimize(imageUri: string, buffer: Buffer, options: ImageOptimizerOptions, cache?: ImageCache): Promise<Buffer> {
@@ -27,25 +38,7 @@ class JpgOptimizer implements ImageOptimizer {
       return cachedImage;
     }
 
-    let sharpImage: Sharp = sharp(buffer).resize({ width: options.width });
-
-    switch (options.format) {
-      case 'jpg':
-        sharpImage = sharpImage.jpeg({ quality: options.quality });
-        break;
-      case 'webp':
-        sharpImage = sharpImage.webp({ quality: options.quality });
-        break;
-      case 'avif':
-        sharpImage = sharpImage.avif({ quality: options.quality });
-        break;
-      case 'heif':
-        sharpImage = sharpImage.heif({ quality: options.quality });
-        break;
-      default:
-        throw new Error(`Output format ${options.format} not supported`);
-    }
-
+    const sharpImage: Sharp = sharp(buffer).resize({ width: options.width })[options.format]({ quality: options.quality });
     const optimizedImage: Buffer = await sharpImage.toBuffer();
     await cache?.persist(imageUri, optimizedImage, options);
 

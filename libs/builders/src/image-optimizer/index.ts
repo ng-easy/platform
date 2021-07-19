@@ -4,9 +4,18 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 import fs from 'fs-extra';
 
-import { FilesystemImageCache, getImageOptimizer, ImageCache, ImageOptimizer, ImageOptimizerOptions } from '@ng-easy/image-optimizer';
+import {
+  FilesystemImageCache,
+  getImageOptimizer,
+  ImageCache,
+  ImageFormat,
+  ImageOptimizer,
+  ImageOptimizerOptions,
+} from '@ng-easy/image-optimizer';
 
-interface Options extends JsonObject {
+type PartialJsonObject<T> = { [P in keyof T]: T[P] | null };
+
+interface Options extends JsonObject, PartialJsonObject<ImageOptimizerOptions> {
   assets: string[];
   outputPath: string;
 }
@@ -19,7 +28,7 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
   context.logger.info(`To folder: ${getRelativePath(options.outputPath)}`);
 
   const fileSystemCache: ImageCache = new FilesystemImageCache(options.outputPath, 'composite');
-  const optimizationOptions: ImageOptimizerOptions = { format: 'webp', width: 1080, quality: 70 };
+  const optimizationOptions: ImageOptimizerOptions = { format: ImageFormat.Webp, width: 1080, quality: 70 };
 
   for (const assetPath of options.assets) {
     if (!(await fs.pathExists(assetPath))) {

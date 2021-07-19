@@ -5,6 +5,7 @@ import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { logging, schema } from '@angular-devkit/core';
 import { Logger } from '@angular-devkit/core/src/logger';
 
+// eslint-disable-next-line import/no-named-as-default
 import imageOptimizerBuilder from './index';
 
 describe('@ng-easy/builders:image-optimizer', () => {

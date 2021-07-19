@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 import prettyBytes from 'pretty-bytes';
 
 import { FilesystemImageCache, ImageCache } from './image-cache';
-import { getImageOptimizer, ImageOptimizer, ImageOptimizerOptions } from './image-optimizer';
+import { getImageOptimizer, ImageFormat, ImageOptimizer, ImageOptimizerOptions } from './image-optimizer';
 
 const imageUri = path.join(__dirname, '..', 'assets', 'code.jpg');
 
@@ -22,10 +22,10 @@ describe('@ng-easy/image-optimizer', () => {
     console.log(`Original size: ${prettyBytes(originalImage.byteLength)}`);
 
     const imageOptimizationTests: ImageOptimizationTest[] = [
-      { options: { format: 'webp', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
-      { options: { format: 'avif', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
-      { options: { format: 'heif', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
-      { options: { format: 'jpg', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+      { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
+      { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
+      { options: { format: ImageFormat.Heif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
+      { options: { format: ImageFormat.Jpeg, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
     ];
 
     for (const imageOptimizationTest of imageOptimizationTests) {
@@ -54,7 +54,7 @@ describe('@ng-easy/image-optimizer', () => {
     const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'), 'hash');
 
     const imageOptimizationTests: ImageOptimizationTest[] = [
-      { options: { format: 'webp', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+      { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
     ];
 
     for (const imageOptimizationTest of imageOptimizationTests) {
@@ -72,7 +72,7 @@ describe('@ng-easy/image-optimizer', () => {
     const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'), 'composite');
 
     const imageOptimizationTests: ImageOptimizationTest[] = [
-      { options: { format: 'webp', width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+      { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
     ];
 
     for (const imageOptimizationTest of imageOptimizationTests) {

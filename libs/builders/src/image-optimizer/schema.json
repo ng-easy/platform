@@ -12,8 +12,38 @@
     "outputPath": {
       "description": "Output folder for optimized images",
       "type": "string"
+    },
+    "deviceSizes": {
+      "description": "Expected device widths from the users of your website used in responsive of fill layouts",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "number",
+        "minimum": 16,
+        "maximum": 4000
+      }
+    },
+    "imageSizes": {
+      "description": "Image sizes when using fixed or intrinsic layouts, should be smaller and different from device sizes",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "number",
+        "minimum": 16,
+        "maximum": 4000
+      }
+    },
+    "quality": {
+      "description": "Quality of optimized images",
+      "type": "string",
+      "minimum": 10,
+      "maximum": 100
     }
   },
-  "required": ["assets"],
+  "required": ["assets", "outputPath"],
   "additionalProperties": false
 }
