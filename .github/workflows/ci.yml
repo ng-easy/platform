@@ -166,7 +166,7 @@ jobs:
         if: failure()
         with:
           name: visual-testing-diffs
-          path: dist/cypress/apps/core-web-vitals-e2e/snapshot-diffs
+          path: dist/cypress/apps/core-web-vitals-app-e2e/snapshot-diffs
           if-no-files-found: ignore
 
   lighthouse:

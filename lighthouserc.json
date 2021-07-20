@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist/apps/core-web-vitals/browser"
+      "staticDistDir": "./dist/apps/core-web-vitals-app/browser"
     },
     "upload": {
       "target": "temporary-public-storage"

@@ -2,8 +2,8 @@
   "version": 2,
   "projects": {
     "builders": "libs/builders",
-    "core-web-vitals": "apps/core-web-vitals",
-    "core-web-vitals-e2e": "apps/core-web-vitals-e2e",
+    "core-web-vitals-app": "apps/core-web-vitals-app",
+    "core-web-vitals-app-e2e": "apps/core-web-vitals-app-e2e",
     "eslint-config": "libs/eslint-config",
     "image-optimizer": "libs/image-optimizer",
     "prettier-config": "libs/prettier-config"
@@ -53,5 +53,5 @@
       "flat": true
     }
   },
-  "defaultProject": "core-web-vitals"
+  "defaultProject": "core-web-vitals-app"
 }

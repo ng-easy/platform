@@ -1,19 +1,19 @@
 {
   "projectType": "application",
-  "root": "apps/core-web-vitals",
-  "sourceRoot": "apps/core-web-vitals/src",
+  "root": "apps/core-web-vitals-app",
+  "sourceRoot": "apps/core-web-vitals-app/src",
   "prefix": "ng-easy",
   "targets": {
     "browser": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "outputPath": "dist/apps/core-web-vitals/browser",
-        "index": "apps/core-web-vitals/src/index.html",
-        "main": "apps/core-web-vitals/src/main.ts",
-        "polyfills": "apps/core-web-vitals/src/polyfills.ts",
-        "tsConfig": "apps/core-web-vitals/tsconfig.app.json",
-        "assets": ["apps/core-web-vitals/src/favicon.ico", "apps/core-web-vitals/src/assets"],
-        "styles": ["apps/core-web-vitals/src/styles.scss"],
+        "outputPath": "dist/apps/core-web-vitals-app/browser",
+        "index": "apps/core-web-vitals-app/src/index.html",
+        "main": "apps/core-web-vitals-app/src/main.ts",
+        "polyfills": "apps/core-web-vitals-app/src/polyfills.ts",
+        "tsConfig": "apps/core-web-vitals-app/tsconfig.app.json",
+        "assets": ["apps/core-web-vitals-app/src/favicon.ico", "apps/core-web-vitals-app/src/assets"],
+        "styles": ["apps/core-web-vitals-app/src/styles.scss"],
         "scripts": [],
         "vendorChunk": true,
         "extractLicenses": false,
@@ -26,8 +26,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/core-web-vitals/src/environments/environment.ts",
-              "with": "apps/core-web-vitals/src/environments/environment.prod.ts"
+              "replace": "apps/core-web-vitals-app/src/environments/environment.ts",
+              "with": "apps/core-web-vitals-app/src/environments/environment.prod.ts"
             }
           ],
           "optimization": {
@@ -74,10 +74,10 @@
       },
       "configurations": {
         "production": {
-          "browserTarget": "core-web-vitals:browser:production"
+          "browserTarget": "core-web-vitals-app:browser:production"
         },
         "development": {
-          "browserTarget": "core-web-vitals:browser:development"
+          "browserTarget": "core-web-vitals-app:browser:development"
         }
       },
       "defaultConfiguration": "development"
@@ -85,31 +85,31 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "core-web-vitals:build"
+        "browserTarget": "core-web-vitals-app:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/core-web-vitals/src/**/*.ts", "apps/core-web-vitals/src/**/*.html"]
+        "lintFilePatterns": ["apps/core-web-vitals-app/src/**/*.ts", "apps/core-web-vitals-app/src/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/core-web-vitals"],
+      "outputs": ["coverage/apps/core-web-vitals-app"],
       "options": {
-        "jestConfig": "apps/core-web-vitals/jest.config.js",
+        "jestConfig": "apps/core-web-vitals-app/jest.config.js",
         "passWithNoTests": true,
         "aot": true
       }
     },
     "server": {
       "executor": "@angular-devkit/build-angular:server",
-      "outputs": ["dist/apps/core-web-vitals/server"],
+      "outputs": ["dist/apps/core-web-vitals-app/server"],
       "options": {
-        "outputPath": "dist/apps/core-web-vitals/server",
-        "main": "apps/core-web-vitals/src/main.server.ts",
-        "tsConfig": "apps/core-web-vitals/tsconfig.server.json",
+        "outputPath": "dist/apps/core-web-vitals-app/server",
+        "main": "apps/core-web-vitals-app/src/main.server.ts",
+        "tsConfig": "apps/core-web-vitals-app/tsconfig.server.json",
         "sourceMap": true,
         "optimization": false
       },
@@ -118,8 +118,8 @@
           "outputHashing": "media",
           "fileReplacements": [
             {
-              "replace": "apps/core-web-vitals/src/environments/environment.ts",
-              "with": "apps/core-web-vitals/src/environments/environment.prod.ts"
+              "replace": "apps/core-web-vitals-app/src/environments/environment.ts",
+              "with": "apps/core-web-vitals-app/src/environments/environment.prod.ts"
             }
           ],
           "sourceMap": false,
@@ -131,38 +131,38 @@
     },
     "build": {
       "executor": "@angular-devkit/build-angular:app-shell",
-      "outputs": ["dist/apps/core-web-vitals"],
+      "outputs": ["dist/apps/core-web-vitals-app"],
       "options": {
         "route": "shell"
       },
       "configurations": {
         "production": {
-          "browserTarget": "core-web-vitals:browser:production",
-          "serverTarget": "core-web-vitals:server:production"
+          "browserTarget": "core-web-vitals-app:browser:production",
+          "serverTarget": "core-web-vitals-app:server:production"
         },
         "development": {
-          "serverTarget": "core-web-vitals:server:development",
-          "browserTarget": "core-web-vitals:browser:development"
+          "serverTarget": "core-web-vitals-app:server:development",
+          "browserTarget": "core-web-vitals-app:browser:development"
         }
       },
       "defaultConfiguration": "production"
     },
     "favicons": {
       "executor": "./dist/libs/builders:favicons",
-      "outputs": ["dist/apps/core-web-vitals/browser"],
+      "outputs": ["dist/apps/core-web-vitals-app/browser"],
       "options": {
-        "browserTarget": "core-web-vitals:browser",
-        "favicon": "apps/core-web-vitals/src/favicon.svg",
+        "browserTarget": "core-web-vitals-app:browser",
+        "favicon": "apps/core-web-vitals-app/src/favicon.svg",
         "background": "#303030"
       },
       "configurations": {
         "production": {
-          "browserTarget": "core-web-vitals:browser:production",
+          "browserTarget": "core-web-vitals-app:browser:production",
           "background": "#1353ab"
         }
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["core-web-vitals"]
+  "implicitDependencies": ["builders"]
 }

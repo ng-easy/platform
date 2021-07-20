@@ -7,7 +7,7 @@
       "files": ["*.ts", "*.tsx"],
       "extends": ["../../libs/eslint-config/index.js"],
       "parserOptions": {
-        "project": ["apps/core-web-vitals-e2e/tsconfig.*?.json"]
+        "project": ["apps/core-web-vitals-app-e2e/tsconfig.*?.json"]
       }
     },
     {

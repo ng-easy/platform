@@ -10,7 +10,7 @@
         "../../libs/eslint-config/index.js"
       ],
       "parserOptions": {
-        "project": ["apps/core-web-vitals/tsconfig.*?.json"]
+        "project": ["apps/core-web-vitals-app/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "nge", "style": "camelCase" }],

@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'core-web-vitals',
+  displayName: 'core-web-vitals-app',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../coverage/apps/core-web-vitals',
+  coverageDirectory: '../../coverage/apps/core-web-vitals-app',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
