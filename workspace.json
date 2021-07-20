@@ -5,6 +5,7 @@
     "core-web-vitals-app": "apps/core-web-vitals-app",
     "core-web-vitals-app-e2e": "apps/core-web-vitals-app-e2e",
     "eslint-config": "libs/eslint-config",
+    "image": "libs/image",
     "image-optimizer": "libs/image-optimizer",
     "prettier-config": "libs/prettier-config"
   },
@@ -24,10 +25,12 @@
       }
     },
     "@nrwl/angular:application": {
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
+      "linter": "eslint",
       "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {

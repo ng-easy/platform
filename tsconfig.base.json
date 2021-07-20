@@ -17,6 +17,7 @@
     "paths": {
       "@ng-easy/builders": ["libs/builders/src/index.ts"],
       "@ng-easy/eslint-config": ["libs/eslint-config"],
+      "@ng-easy/image": ["libs/image/src/index.ts"],
       "@ng-easy/image-optimizer": ["libs/image-optimizer/src/index.ts"],
       "@ng-easy/semantic-release-angular": ["libs/semantic-release-angular/src/index.ts"]
     },

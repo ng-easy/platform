@@ -65,10 +65,11 @@
   "conventionalCommits.scopes": [
     "*",
     "builders",
-    "eslint-config",
     "core-web-vitals-e2e",
     "core-web-vitals",
-    "prettier-config",
-    "image-optimizer"
+    "eslint-config",
+    "image-optimizer",
+    "image",
+    "prettier-config"
   ]
 }

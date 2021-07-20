@@ -1,0 +1,39 @@
+{
+  "projectType": "library",
+  "root": "libs/image",
+  "sourceRoot": "libs/image/src",
+  "prefix": "ng-easy",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/image"],
+      "options": {
+        "project": "libs/image/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/image/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/image/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/image"],
+      "options": {
+        "jestConfig": "libs/image/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/image/src/**/*.ts", "libs/image/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
