@@ -187,7 +187,7 @@ jobs:
           path: dist
 
       - name: Lighthouse audit
-        uses: treosh/lighthouse-ci-action@7.0.0
+        uses: treosh/lighthouse-ci-action@8.0.0
         with:
           configPath: ./lighthouserc.json
           runs: 3
