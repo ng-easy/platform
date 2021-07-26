@@ -12,9 +12,6 @@ jobs:
     name: NPM
     runs-on: ubuntu-latest
     env:
-      NX_BRANCH: ${{ github.event.number }}
-      NX_BASE: ${{ github.event_name == 'pull_request' && 'remotes/origin/main' || github.event.before }}
-      NX_RUN_GROUP: ${{ github.run_id }}
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
@@ -33,9 +30,6 @@ jobs:
     needs: [npm]
     runs-on: ubuntu-latest
     env:
-      NX_BRANCH: ${{ github.event.number }}
-      NX_BASE: ${{ github.event_name == 'pull_request' && 'remotes/origin/main' || github.event.before }}
-      NX_RUN_GROUP: ${{ github.run_id }}
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
@@ -52,9 +46,12 @@ jobs:
           nx-key: build
 
       - name: Build
-        run: |
-          npm run build
-          npm run favicons
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: build,favicons
+          affected: 'true'
+          parallel: 'true'
+          nxCloud: 'true'
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2.2.4
@@ -67,9 +64,6 @@ jobs:
     needs: [npm]
     runs-on: ubuntu-latest
     env:
-      NX_BRANCH: ${{ github.event.number }}
-      NX_BASE: ${{ github.event_name == 'pull_request' && 'remotes/origin/main' || github.event.before }}
-      NX_RUN_GROUP: ${{ github.run_id }}
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
@@ -90,17 +84,22 @@ jobs:
         with:
           nx-key: lint
 
-      - name: Lint
-        run: npm run ci:affected:lint
+      - name: Lint workspace
+        run: npm run lint:workspace
+
+      - name: Lint projects
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: lint
+          affected: 'true'
+          parallel: 'true'
+          nxCloud: 'true'
 
   test:
     name: Test
     needs: [npm]
     runs-on: ubuntu-latest
     env:
-      NX_BRANCH: ${{ github.event.number }}
-      NX_BASE: ${{ github.event_name == 'pull_request' && 'remotes/origin/main' || github.event.before }}
-      NX_RUN_GROUP: ${{ github.run_id }}
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
@@ -122,16 +121,19 @@ jobs:
           nx-key: test
 
       - name: Test
-        run: npm run ci:affected:test
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: test
+          affected: 'true'
+          parallel: 'true'
+          maxParallel: '3'
+          nxCloud: 'true'
 
   e2e:
     name: e2e tests
     needs: [npm, build]
     runs-on: ubuntu-latest
     env:
-      NX_BRANCH: ${{ github.event.number }}
-      NX_BASE: ${{ github.event_name == 'pull_request' && 'remotes/origin/main' || github.event.before }}
-      NX_RUN_GROUP: ${{ github.run_id }}
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
@@ -159,7 +161,12 @@ jobs:
           path: dist
 
       - name: e2e tests
-        run: npm run ci:affected:e2e
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: e2e
+          affected: 'true'
+          parallel: 'true'
+          nxCloud: 'true'
 
       - name: e2e test upload diffs
         uses: actions/upload-artifact@v2.2.4
@@ -188,6 +195,7 @@ jobs:
 
       - name: Lighthouse audit
         uses: treosh/lighthouse-ci-action@8.0.0
+        if: hashFiles('dist/apps/core-web-vitals-app/browser/**/*') != ''
         with:
           configPath: ./lighthouserc.json
           runs: 3

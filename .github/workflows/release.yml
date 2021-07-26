@@ -6,8 +6,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     env:
-      NX_BRANCH: ${{ github.event.number }}
-      NX_RUN_GROUP: ${{ github.run_id }}
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
@@ -30,10 +28,17 @@ jobs:
           nx-key: build
 
       - name: Build release scripts
-        run: npx nx build builders
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: build
+          projects: builders
+          nxCloud: 'true'
 
       - name: Release
-        run: npm run release
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: release
+          nxCloud: 'true'
         env:
           CI: true
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
