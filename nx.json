@@ -23,7 +23,8 @@
         "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
-        "scan": true
+        "scan": true,
+        "accessToken": "ZDJlYjRhOTMtZGI1OS00YzIyLWE4NjctZGIwZWRlYzcwOWEzfHJlYWQ="
       }
     }
   },

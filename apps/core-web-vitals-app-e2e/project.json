@@ -8,12 +8,7 @@
       "options": {
         "cypressConfig": "apps/core-web-vitals-app-e2e/cypress.json",
         "tsConfig": "apps/core-web-vitals-app-e2e/tsconfig.e2e.json",
-        "devServerTarget": "core-web-vitals:serve"
-      },
-      "configurations": {
-        "production": {
-          "devServerTarget": "core-web-vitals-app:serve:production"
-        }
+        "devServerTarget": "core-web-vitals-app:serve:production"
       }
     },
     "lint": {
