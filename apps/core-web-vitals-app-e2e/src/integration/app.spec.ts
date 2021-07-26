@@ -4,17 +4,18 @@
 import { getGreeting } from '../support/app.po';
 
 interface Viewport {
-  preset: Cypress.ViewportPreset;
-  orientation?: Cypress.ViewportOrientation;
+  name: string;
+  width: number;
+  height: number;
 }
 
-const sizes: Viewport[] = [
-  { preset: 'iphone-6' },
-  { preset: 'iphone-6', orientation: 'landscape' },
-  { preset: 'ipad-2' },
-  { preset: 'ipad-2', orientation: 'landscape' },
-  { preset: 'macbook-15' },
-];
+const iPadPortrait: Viewport = { name: 'iPad 2 portrait', width: 720, height: 1024 };
+const iPadLandscape: Viewport = { name: 'iPad 2 landscape', width: 1024, height: 720 };
+const iPhone4Portrait: Viewport = { name: 'iPhone 4 portrait', width: 640, height: 960 };
+const iPhone4Landscape: Viewport = { name: 'iPhone 4 landscape', width: 960, height: 640 };
+const iMac: Viewport = { name: 'iMac', width: 2560, height: 1440 };
+
+const sizes: Viewport[] = [iPadLandscape, iPadPortrait, iPhone4Landscape, iPhone4Portrait, iMac];
 
 describe('core-web-vitals', () => {
   beforeEach(() => cy.visit('/'));
@@ -24,11 +25,9 @@ describe('core-web-vitals', () => {
     getGreeting().contains('Welcome to core-web-vitals!');
   });
 
-  sizes.forEach(({ preset, orientation }) => {
-    const device: string = `${preset} ${orientation || ''}`.trim();
-
-    it(`should not have visual regressions for ${device}`, () => {
-      cy.viewport(preset, orientation);
+  sizes.forEach(({ name, width, height }) => {
+    it(`should not have visual regressions for ${name} (${width}x${height}px)`, () => {
+      cy.viewport(width, height);
       cy.matchImageSnapshot();
     });
   });
