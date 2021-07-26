@@ -158,12 +158,16 @@ jobs:
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2.0.10
+        id: download-artifact
+        continue-on-error: true
         with:
           name: build-artifacts
           path: dist
 
       - name: e2e tests
         uses: mansagroup/nrwl-nx-action@v2
+        id: e2e
+        if: steps.download-artifact.outcome == 'success'
         with:
           targets: e2e
           affected: 'true'
@@ -172,7 +176,7 @@ jobs:
 
       - name: e2e test upload diffs
         uses: actions/upload-artifact@v2.2.4
-        if: failure()
+        if: steps.e2e.outcome == 'failure'
         with:
           name: visual-testing-diffs
           path: dist/cypress/apps/core-web-vitals-app-e2e/snapshot-diffs
@@ -191,13 +195,15 @@ jobs:
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2.0.10
+        id: download-artifact
+        continue-on-error: true
         with:
           name: build-artifacts
           path: dist
 
       - name: Lighthouse audit
         uses: treosh/lighthouse-ci-action@8.0.0
-        if: hashFiles('dist/apps/core-web-vitals-app/browser/**/*') != ''
+        if: steps.download-artifact.outcome == 'success' && hashFiles('dist/apps/core-web-vitals-app/browser/**/*') != ''
         with:
           configPath: ./lighthouserc.json
           runs: 3
