@@ -30,7 +30,7 @@ jobs:
     needs: [npm]
     runs-on: ubuntu-latest
     outputs:
-      has-build-artifacts: ${{ hashFiles('dist/**/*') != '' }}
+      has-build-artifacts: ${{ steps.check-uploaded-artifacts.outputs.has-build-artifacts }}
     env:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
@@ -59,10 +59,14 @@ jobs:
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2.2.4
-        if: hashFiles('dist/**/*') != ''
         with:
           name: build-artifacts
           path: dist
+          if-no-files-found: ignore
+
+      - name: Check uploaded artifacts
+        id: check-uploaded-artifacts
+        run: echo "::set-output name=has-build-artifacts::${{ hashFiles('dist/**') != '' }}"
 
   lint:
     name: Lint
