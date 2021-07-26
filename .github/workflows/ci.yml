@@ -29,6 +29,8 @@ jobs:
     name: Build
     needs: [npm]
     runs-on: ubuntu-latest
+    outputs:
+      has-build-artifacts: ${{ hashFiles('dist/**/*') != '' }}
     env:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
@@ -57,6 +59,7 @@ jobs:
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2.2.4
+        if: hashFiles('dist/**/*') != ''
         with:
           name: build-artifacts
           path: dist
@@ -135,6 +138,7 @@ jobs:
     name: e2e tests
     needs: [npm, build]
     runs-on: ubuntu-latest
+    if: ${{ needs.build.outputs.has-build-artifacts }}
     env:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
@@ -158,16 +162,12 @@ jobs:
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2.0.10
-        id: download-artifact
-        continue-on-error: true
         with:
           name: build-artifacts
           path: dist
 
       - name: e2e tests
         uses: mansagroup/nrwl-nx-action@v2
-        id: e2e
-        if: steps.download-artifact.outcome == 'success'
         with:
           targets: e2e
           affected: 'true'
@@ -176,7 +176,7 @@ jobs:
 
       - name: e2e test upload diffs
         uses: actions/upload-artifact@v2.2.4
-        if: steps.e2e.outcome == 'failure'
+        if: failure()
         with:
           name: visual-testing-diffs
           path: dist/cypress/apps/core-web-vitals-app-e2e/snapshot-diffs
@@ -186,6 +186,7 @@ jobs:
     name: Lighthouse audit
     needs: [build]
     runs-on: ubuntu-latest
+    if: ${{ needs.build.outputs.has-build-artifacts }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2.3.4
@@ -195,15 +196,13 @@ jobs:
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2.0.10
-        id: download-artifact
-        continue-on-error: true
         with:
           name: build-artifacts
           path: dist
 
       - name: Lighthouse audit
         uses: treosh/lighthouse-ci-action@8.0.0
-        if: steps.download-artifact.outcome == 'success' && hashFiles('dist/apps/core-web-vitals-app/browser/**/*') != ''
+        if: hashFiles('dist/apps/core-web-vitals-app/browser/**/*') != ''
         with:
           configPath: ./lighthouserc.json
           runs: 3
