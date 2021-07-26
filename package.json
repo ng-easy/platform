@@ -142,7 +142,7 @@
     "jest": "27.0.6",
     "jest-preset-angular": "9.0.5",
     "lint-staged": "^11.1.1",
-    "mini-css-extract-plugin": "^1.6.0",
+    "mini-css-extract-plugin": "^2.1.0",
     "ng-packagr": "12.1.2",
     "pretty-bytes": "^5.6.0",
     "source-map-loader": "^2.0.1",
