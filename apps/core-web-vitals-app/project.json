@@ -65,13 +65,6 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
-      "options": {
-        "sourceMap": {
-          "scripts": true,
-          "styles": true,
-          "vendor": true
-        }
-      },
       "configurations": {
         "production": {
           "browserTarget": "core-web-vitals-app:browser:production"

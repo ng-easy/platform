@@ -154,7 +154,7 @@ jobs:
       - name: NPM
         uses: ng-easy/npm-setup@v1.7.2
         with:
-          NX_KEY: e2e
+          nx-key: e2e
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2.0.10
