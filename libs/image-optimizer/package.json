@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "description": "Node library that implements image optimizations for the web",
   "keywords": [
+    "node",
     "image",
     "optimization",
     "core-web-vitals"

@@ -1,8 +1,8 @@
 name: Release
 on:
-  workflow_dispatch:
+  workflow_dispatch: # manual release
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *' # scheduled nightly release
 
 jobs:
   npm:

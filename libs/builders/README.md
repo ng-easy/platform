@@ -1,21 +1,21 @@
 # @ng-easy/builders
 
-[![npm latest version](https://img.shields.io/npm/v/@ng-easy/builders/latest.svg)](https://www.npmjs.com/package/@ng-easy/builders) [![README](https://img.shields.io/badge/README--green.svg)](/libs/builders/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/libs/builders/CHANGELOG.md)
+[![CI](https://github.com/ng-easy/platform/actions/workflows/ci.yml/badge.svg)](https://github.com/ng-easy/platform/actions/workflows/ci.yml) [![npm latest version](https://img.shields.io/npm/v/@ng-easy/builders/latest.svg)](https://www.npmjs.com/package/@ng-easy/builders) [![README](https://img.shields.io/badge/README--green.svg)](/libs/builders/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/libs/builders/CHANGELOG.md) ![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)
 
-Builders for Angular projects.
+Builders for [Nx](https://nx.dev/) and [Angular](https://angular.io/) projects.
 
 ## image-optimizer
 
 This builder is a wrapper of [`@ng-easy/image-optimizer`](https://github.com/ng-easy/platform/tree/main/libs/image-optimizer) designed to generate build time optimized images from an assets folder.
 
-A suggested configuration would be to place original images in a separate folder and make the output path the standard assets folder of the project and include them in the repo. This way it will integrate nicely with Angular build process without need for build orchestration.
+A suggested configuration would be to place original images in a separate folder and make the output path the standard assets folder of the project and include them in the repo. This way it will integrate nicely with [Nx](https://nx.dev/)/[Angular](https://angular.io/) build process without need for build orchestration.
 
 ### Configuration of the builder
 
-In your `angular.json` you can use the builder with:
+In your `angular.json`/`workspace.json` you can use the builder with:
 
 ```json
-"release": {
+"optimize-images": {
   "builder": "@ng-easy/builders:image-optimizer",
   "options": {
     "assets": ["src/assets/original-images"],
@@ -50,7 +50,7 @@ The configuration of the plugins is opinionated and it includes for configured p
 
 ### Configuration of the builder
 
-In your `angular.json` you can use the builder with:
+In your `angular.json`/`workspace.json` you can use the builder with:
 
 ```json
 "release": {
@@ -94,7 +94,10 @@ Here you can find an example of a [workflow](https://github.com/ng-easy/platform
 
 ```yml
 name: Release
-on: workflow_dispatch # Manual trigger so that you can batch changes
+on:
+  workflow_dispatch: # manual release
+  schedule:
+    - cron: '0 0 * * *' # scheduled nightly release
 
 jobs:
   npm:
@@ -114,6 +117,17 @@ jobs:
 
       - name: Release
         run: npm run release # nx run-many --target=release --all / ng run project:release
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # Personal access token with repo permissions
+
+      # Alternative using GitHub action
+      - name: Release
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: release
+          nxCloud: 'true'
         env:
           CI: true
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

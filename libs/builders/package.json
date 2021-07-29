@@ -1,11 +1,12 @@
 {
   "name": "@ng-easy/builders",
   "version": "3.2.0",
-  "description": "Builders for Angular projects",
+  "description": "Builders for Nx and Angular projects",
   "keywords": [
     "angular",
     "builders",
     "nx",
+    "executors",
     "semantic-release",
     "semrel"
   ],
