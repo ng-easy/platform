@@ -8,7 +8,8 @@
       "executor": "@nrwl/angular:package",
       "outputs": ["dist/libs/image"],
       "options": {
-        "project": "libs/image/ng-package.json"
+        "project": "libs/image/ng-package.json",
+        "tsConfig": "libs/image/tsconfig.lib.prod.json"
       },
       "configurations": {
         "production": {
