@@ -1,0 +1,28 @@
+{
+  "root": "apps/image-e2e",
+  "sourceRoot": "apps/image-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/image-e2e/cypress.json",
+        "tsConfig": "apps/image-e2e/tsconfig.e2e.json",
+        "devServerTarget": "image:storybook"
+      },
+      "configurations": {
+        "ci": {
+          "devServerTarget": "image:storybook:ci"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/image-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["image"]
+}
