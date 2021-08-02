@@ -3,8 +3,11 @@
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["../../libs/eslint-config/index.js"],
+      "parserOptions": {
+        "project": ["apps/image-e2e/tsconfig.*?.json"]
+      }
     },
     {
       "files": ["src/plugins/index.js"],
