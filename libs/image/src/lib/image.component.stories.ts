@@ -13,7 +13,7 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['sizeRatio', 'wrapperWidth', 'wrapperHeight', 'sizerPaddingTop'],
+      exclude: ['sizeRatio', 'wrapperWidth', 'wrapperHeight', 'sizerPaddingTop', 'sizerSvg'],
     },
   },
   args: {
@@ -26,11 +26,13 @@ export default {
     src: {},
     width: {},
     height: {},
-    layout: { control: { type: 'select', defaultValue: 'intrinsic' } },
-    placeholder: { control: { type: 'select', defaultValue: 'empty' } },
+    layout: { control: { type: 'select' }, table: { defaultValue: { summary: 'intrinsic' } } },
+    placeholder: { control: { type: 'select' }, table: { defaultValue: { summary: 'empty' } } },
     blurDataURL: {},
-    unoptimized: { control: { defaultValue: false } },
-    priority: { control: { defaultValue: false } },
+    unoptimized: { table: { defaultValue: { summary: false } } },
+    priority: { table: { defaultValue: { summary: false } } },
+    objectFit: { control: { type: 'select' }, table: { defaultValue: { summary: 'cover' } } },
+    objectPosition: { table: { defaultValue: { summary: '50% 50%' } } },
   },
 } as Meta<ImageComponent>;
 

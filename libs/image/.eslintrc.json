@@ -14,7 +14,6 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "nge",
             "style": "camelCase"
           }
         ],
@@ -22,7 +21,6 @@
           "error",
           {
             "type": "element",
-            "prefix": "nge",
             "style": "kebab-case"
           }
         ]

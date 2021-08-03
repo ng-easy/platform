@@ -13,7 +13,10 @@ export class ImageModule {
   static forRoot(): ModuleWithProviders<ImageModule> {
     return {
       ngModule: ImageModule,
-      providers: [{ provide: ImageLoader, useClass: DefaultImageLoader }],
+      providers: [
+        { provide: ImageLoader, useClass: DefaultImageLoader },
+        { provide: Window, useValue: window },
+      ],
     };
   }
 }
