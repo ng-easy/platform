@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { DefaultImageLoader, ImageLoader } from './image-loader';
 import { ImageComponent } from './image.component';
 
 @NgModule({
@@ -8,4 +9,11 @@ import { ImageComponent } from './image.component';
   imports: [CommonModule],
   exports: [ImageComponent],
 })
-export class ImageModule {}
+export class ImageModule {
+  static forRoot(): ModuleWithProviders<ImageModule> {
+    return {
+      ngModule: ImageModule,
+      providers: [{ provide: ImageLoader, useClass: DefaultImageLoader }],
+    };
+  }
+}
