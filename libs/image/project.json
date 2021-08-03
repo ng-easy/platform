@@ -65,6 +65,33 @@
           "quiet": true
         }
       }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "tsConfig": "libs/image/tsconfig.lib.prod.json",
+        "outputPath": "dist/compodoc/image"
+      },
+      "configurations": {
+        "json": {
+          "exportFormat": "json"
+        }
+      }
+    },
+    "storybook-watch": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npx nx run image:compodoc:json --watch", "npx nx run image:storybook"],
+        "parallel": true
+      }
+    },
+    "storybook-build": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npx nx run image:compodoc:json", "npx nx run image:build-storybook"],
+        "parallel": false
+      }
     }
   },
   "tags": []

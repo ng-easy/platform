@@ -20,7 +20,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons"],
+        "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons", "compodoc"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "scan": true,

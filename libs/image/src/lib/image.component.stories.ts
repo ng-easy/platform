@@ -11,10 +11,26 @@ export default {
       imports: [ImageModule.forRoot()],
     }),
   ],
+  parameters: {
+    controls: {
+      exclude: ['sizeRatio', 'wrapperWidth', 'wrapperHeight', 'sizerPaddingTop'],
+    },
+  },
   args: {
-    src: 'https://assets.imgix.net/unsplash/bear.jpg?fit=min&h=500&w=900&usm=10&fm=pjpg&q=80',
+    src: 'https://assets.imgix.net/unsplash/bear.jpg?fit=min&h=500&w=900&fm=pjpg',
+    alt: 'Bear',
     width: 900,
     height: 500,
+  },
+  argTypes: {
+    src: {},
+    width: {},
+    height: {},
+    layout: { control: { type: 'select', defaultValue: 'intrinsic' } },
+    placeholder: { control: { type: 'select', defaultValue: 'empty' } },
+    blurDataURL: {},
+    unoptimized: { control: { defaultValue: false } },
+    priority: { control: { defaultValue: false } },
   },
 } as Meta<ImageComponent>;
 

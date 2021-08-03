@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges, isDevMode } from '@angular/core';
 
 import { ImageLayout } from './image-layout';
 import { ImageLoader } from './image-loader';
@@ -11,7 +11,7 @@ import { ImagePlaceholder } from './image-placeholder';
       <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
         <img class="sizer__content" alt="" role="presentation" />
       </div>
-      <img class="img" [src]="src" decoding="async" />
+      <img class="img" [src]="src" [alt]="alt" decoding="async" />
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -89,18 +89,69 @@ import { ImagePlaceholder } from './image-placeholder';
 })
 export class ImageComponent implements OnChanges {
   /**
-   * Source for the image, will be passed to the image loader
+   * Required, must be a path string. This can be either an absolute external URL, or an internal path depending on the loader.
    */
   @Input() src = '';
+
+  /**
+   * The `alt` attribute provides alternative information for an image if a user for some reason cannot view it
+   * (because of slow connection, an error in the src attribute, or if the user uses a screen reader).
+   */
   @Input() alt = '';
+
+  /**
+   * The width of the image, in pixels. Must be an integer without a unit.
+   * Required, except for those with `layout="fill"`.
+   */
   @Input() width?: number;
+
+  /**
+   * The height of the image, in pixels. Must be an integer without a unit.
+   * Required, except for those with `layout="fill"`.
+   */
   @Input() height?: number;
-  @Input() layout: ImageLayout = 'responsive';
+
+  /**
+   * The layout behavior of the image as the viewport changes size. Defaults to `intrinsic`.
+   *
+   * * When `fixed,` the image dimensions will not change as the viewport changes (no responsiveness) similar to the native img element.
+   * * When `intrinsic`, the image will scale the dimensions down for smaller viewports but maintain the original dimensions for larger viewports.
+   * * When `responsive`, the image will scale the dimensions down for smaller viewports and scale up for larger viewports.
+   * * When `fill`, the image will stretch both width and height to the dimensions of the parent element, provided the parent element is relative. This is usually paired with the objectFit property.
+   */
+  @Input() layout: ImageLayout = 'intrinsic';
+
+  /**
+   * When true, the image will be considered high priority and preload.
+   * Should only be used when the image is visible above the fold. Defaults to false.
+   * Is used only in server-side rendering.
+   */
   @Input() priority = false;
+
+  /**
+   * A placeholder to use while the image is loading in base, possible values are blur or empty. Defaults to `empty`.
+   *
+   * When `blur`, the `blurDataURL` property will be used as the placeholder.
+   * If using server-side rendering then `blurDataURL` will automatically be populated.
+   *
+   * When `empty`, there will be no placeholder while the image is loading, only empty space.
+   */
   @Input() placeholder: ImagePlaceholder = 'empty';
+
+  /**
+   * A Data URL to be used as a placeholder image before the `src` image successfully loads. Only takes effect when combined with `placeholder="blur"`.
+   * Must be a base64-encoded image. It will be enlarged and blurred, so a very small image (10px or less) is recommended. Including larger images as placeholders may harm your application performance.
+   */
   @Input() blurDataURL?: string;
+
+  /**
+   * When true, the source image will be served as-is instead of changing quality, size, or format. Defaults to `false`.
+   */
   @Input() unoptimized = false;
 
+  /**
+   * Output emits once the image is completely loaded and the placeholder has been removed.
+   */
   @Output() loadingComplete = new EventEmitter<void>();
 
   get showSizer() {
@@ -117,6 +168,9 @@ export class ImageComponent implements OnChanges {
   constructor(private imageLoader: ImageLoader) {}
 
   ngOnChanges(): void {
+    // TODO: width and height should be required only when not layout=fill, otherwise complain if provided
+    // TODO: generate blur placeholder in SSR
+    // TODO: check image size in SSR
     if (this.width == null || this.height == null || this.width <= 0) {
       throw new Error(`Image with src "${this.src}" must use "width" and "height" properties or "layout='fill'" property.`);
     }
@@ -127,5 +181,23 @@ export class ImageComponent implements OnChanges {
     this.wrapperHeight = this.layout === 'fixed' ? `${this.height}px` : 'auto';
 
     this.sizerPaddingTop = this.layout === 'responsive' ? `${this.sizeRatio * 100}%` : 'auto';
+
+    if (isDevMode() && this.alt.trim().length === 0) {
+      console.warn(`Image with src "${this.src}" must use an "alt" property.`);
+    }
   }
+
+  // TODO: use loader, pass settings
+  // TODO: check if loader works https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L426
+  // TODO: use sizes with responsive
+  // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
+  // TODO: warn if placeholder provided but original size is smaller than 40x40
+  // TODO: if placeholder blur, make sure data is provided https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L400
+  // TODO: support intersection observer
+  // TODO: svg sizer
+  // TODO: implement priority adding preload to head in SSR
+  // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651
+  // TODO: unit tests
+  // TODO: visual diff tests
+  // TODO: Export storybook to GitHub pages
 }
