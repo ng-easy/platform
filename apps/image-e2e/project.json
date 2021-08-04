@@ -10,11 +10,6 @@
         "tsConfig": "apps/image-e2e/tsconfig.e2e.json",
         "devServerTarget": "image:storybook",
         "headless": true
-      },
-      "configurations": {
-        "ci": {
-          "devServerTarget": "image:storybook:ci"
-        }
       }
     },
     "lint": {

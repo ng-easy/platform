@@ -1,6 +1,6 @@
 describe('image', () => {
-  beforeEach(() => cy.visit('/iframe.html?id=imagecomponent--primary'));
+  beforeEach(() => cy.visit('/iframe.html?id=imagecomponent--default'));
   it('should render the component', () => {
-    cy.get('nge-image').should('exist');
+    cy.get('image[src]').should('exist');
   });
 });
