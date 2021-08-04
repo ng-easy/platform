@@ -3,7 +3,6 @@ import docJson from '../../../dist/compodoc/image/documentation.json';
 
 export const parameters = {
   controls: { expanded: true },
-  layout: 'centered',
 };
 
 setCompodocJson(docJson);

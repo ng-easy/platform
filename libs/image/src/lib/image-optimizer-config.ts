@@ -24,8 +24,8 @@ export const defaultImageOptimizerConfig: ImageOptimizerConfig = {
   formats: [ImageFormat.Jpeg, ImageFormat.Webp],
 };
 
-export function getImageSizes({ deviceSizes, imageSizes }: ImageOptimizerConfig): number[] {
-  return [...new Set([...deviceSizes, ...imageSizes])].sort((a, b) => a - b);
+export function dedupAndSortImageSizes(imageSizes: number[]): number[] {
+  return [...new Set([...imageSizes])].sort((a, b) => a - b);
 }
 
 export const IMAGE_OPTIMIZER_CONFIG = new InjectionToken<ImageOptimizerConfig>('@ng-easy/image:image-optimizer-config');

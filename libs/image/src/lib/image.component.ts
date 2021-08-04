@@ -1,4 +1,15 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges, isDevMode } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  isDevMode,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import { ImageLayout } from './image-layout';
@@ -12,7 +23,18 @@ import { ImagePlaceholder } from './image-placeholder';
       <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
         <img *ngIf="sizerSvg as sizerSrc" [src]="sizerSvg" class="sizer__content" aria-hidden="true" alt="" role="presentation" />
       </div>
-      <img class="img" [src]="src" [alt]="alt" decoding="async" [style.objectFit]="objectFit" [style.objectPosition]="objectPosition" />
+      <img
+        #image
+        class="img"
+        [srcset]="imageSrcset"
+        [sizes]="imageSizes"
+        [src]="imageSrc"
+        [alt]="alt"
+        decoding="async"
+        [style.objectFit]="objectFit"
+        [style.objectPosition]="objectPosition"
+        (load)="onLoad()"
+      />
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -88,7 +110,9 @@ import { ImagePlaceholder } from './image-placeholder';
     `,
   ],
 })
-export class ImageComponent implements OnChanges {
+export class ImageComponent implements OnChanges, AfterViewInit {
+  @ViewChild('image', { static: false }) readonly image?: ElementRef<HTMLImageElement>;
+
   /**
    * Required, must be a path string. This can be either an absolute external URL, or an internal path depending on the loader.
    */
@@ -121,6 +145,12 @@ export class ImageComponent implements OnChanges {
    * * When `fill`, the image will stretch both width and height to the dimensions of the parent element, provided the parent element is relative. This is usually paired with the objectFit property.
    */
   @Input() layout: ImageLayout = 'intrinsic';
+
+  /**
+   * A string mapping media queries to device sizes. Defaults to `100vw`.
+   * We recommend setting sizes when using `layout="responsive"` or `layout="fill"` and your image will not be the same width as the viewport.
+   */
+  @Input() sizes = '100vw';
 
   /**
    * When true, the image will be considered high priority and preload.
@@ -177,6 +207,10 @@ export class ImageComponent implements OnChanges {
   sizerPaddingTop = '0';
   sizerSvg: SafeUrl | null = null;
 
+  imageSrc = '';
+  imageSrcset = '';
+  imageSizes = '';
+
   constructor(private readonly imageLoader: ImageLoader, private readonly window: Window, private readonly domSanitizer: DomSanitizer) {}
 
   ngOnChanges(): void {
@@ -197,17 +231,43 @@ export class ImageComponent implements OnChanges {
     if (isDevMode() && this.alt.trim().length === 0) {
       console.warn(`Image with src "${this.src}" must use an "alt" property.`);
     }
+
+    const { src, sizes, srcset } = this.imageLoader.getImageAttributes(this.src, this.width, this.layout, this.sizes, this.unoptimized);
+    this.imageSrc = src;
+    this.imageSizes = sizes;
+    this.imageSrcset = srcset;
+  }
+
+  ngAfterViewInit() {
+    if (this.image?.nativeElement.complete) {
+      this.onLoad();
+    }
+  }
+
+  onLoad() {
+    this.loadingComplete.emit();
+
+    if (!this.image || !isDevMode() || this.layout !== 'intrinsic') {
+      return;
+    }
+
+    const { naturalWidth, naturalHeight } = this.image.nativeElement;
+
+    if (this.width != null && this.width != naturalWidth) {
+      console.warn(`Image with src "${this.src}" should have "width" of ${naturalWidth}.`);
+    }
+
+    if (this.height != null && this.height != naturalHeight) {
+      console.warn(`Image with src "${this.src}" should have "height" of ${naturalHeight}.`);
+    }
   }
 
   private toBase64(str: string): string {
     return this.window.btoa(str);
   }
 
-  // TODO: use sizes with responsive
   // TODO: width and height should be required only when not layout=fill, otherwise complain if provided
   // TODO: generate blur placeholder in SSR
-  // TODO: check image size in SSR
-  // TODO: use loader, pass settings
   // TODO: check if loader works https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L426
   // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
   // TODO: warn if placeholder provided but original size is smaller than 40x40

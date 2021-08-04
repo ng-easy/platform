@@ -14,8 +14,8 @@ export const defaultImageOptimizerConfig: ImageOptimizerConfig = {
   formats: [ImageFormat.Jpeg, ImageFormat.Webp],
 };
 
-export function getImageSizes({ deviceSizes, imageSizes }: ImageOptimizerConfig): number[] {
-  return [...new Set([...deviceSizes, ...imageSizes])].sort((a, b) => a - b);
+export function dedupAndSortImageSizes(imageSizes: number[]): number[] {
+  return [...new Set([...imageSizes])].sort((a, b) => a - b);
 }
 
 const minArrayLength = 1;
