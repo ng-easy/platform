@@ -4,7 +4,7 @@
     "defaultBase": "main"
   },
   "implicitDependencies": {
-    "angular.json": "*",
+    "workspace.json": "*",
     "package.json": {
       "scripts": "*",
       "dependencies": "*",
@@ -20,7 +20,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons", "compodoc"],
+        "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons", "compodoc", "storybook-compodoc"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "scan": true,
