@@ -8,7 +8,7 @@ export default {
   component: ImageComponent,
   decorators: [
     moduleMetadata({
-      imports: [ImageModule.forRoot()],
+      imports: [ImageModule.forRoot({})],
     }),
   ],
   parameters: {

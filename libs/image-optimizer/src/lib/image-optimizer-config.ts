@@ -15,7 +15,7 @@ export const defaultImageOptimizerConfig: ImageOptimizerConfig = {
 };
 
 export function getImageSizes({ deviceSizes, imageSizes }: ImageOptimizerConfig): number[] {
-  return [...new Set([...deviceSizes, ...imageSizes])];
+  return [...new Set([...deviceSizes, ...imageSizes])].sort((a, b) => a - b);
 }
 
 const minArrayLength = 1;
