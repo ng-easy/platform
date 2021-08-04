@@ -12,8 +12,8 @@ import {
   getValidatedImageOptimizerConfig,
   ImageOptimizerConfig,
   defaultImageOptimizerConfig,
-  getImageSizes,
   ImageFormat,
+  dedupAndSortImageSizes,
 } from '@ng-easy/image-optimizer';
 
 interface Options extends JsonObject {
@@ -40,7 +40,7 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
     formats: options.formats.length === 0 ? defaultImageOptimizerConfig.formats : options.formats,
   });
   const quality: number = optimizationConfig.quality;
-  const imageSizes: number[] = getImageSizes(optimizationConfig);
+  const imageSizes: number[] = dedupAndSortImageSizes([...optimizationConfig.deviceSizes, ...optimizationConfig.imageSizes]);
 
   for (const assetPath of options.assets) {
     if (!(await fs.pathExists(assetPath))) {
