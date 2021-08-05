@@ -1,5 +1,6 @@
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 
+import imagePlaceholder from '../../assets/image-placeholder.json';
 import { ImageComponent } from './image.component';
 import { ImageModule } from './image.module';
 
@@ -21,6 +22,8 @@ export default {
     alt: 'Bear',
     width: 1080,
     height: 720,
+    placeholder: 'blur',
+    blurDataURL: `data:${imagePlaceholder.image.mime};base64,${imagePlaceholder.image.data}`,
   },
   argTypes: {
     src: {},
