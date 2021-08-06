@@ -29,3 +29,21 @@ export function dedupAndSortImageSizes(imageSizes: number[]): number[] {
 }
 
 export const IMAGE_OPTIMIZER_CONFIG = new InjectionToken<ImageOptimizerConfig>('@ng-easy/image:image-optimizer-config');
+
+type ImageFormatRegexMap = { [key in ImageFormat]: RegExp };
+
+const imageFormatRegexMap: ImageFormatRegexMap = Object.values(ImageFormat).reduce((map, format) => {
+  map[format] = format === ImageFormat.Jpeg ? /\.jpe?g$/i : new RegExp(`\\.${format}$`, 'i');
+  return map;
+}, {} as ImageFormatRegexMap);
+
+export function getImageFormat(src: string): ImageFormat {
+  for (const format in imageFormatRegexMap) {
+    const formatRegex: RegExp = imageFormatRegexMap[format as ImageFormat];
+    if (formatRegex.test(src)) {
+      return format as ImageFormat;
+    }
+  }
+
+  throw new Error(`Image with src "${src}" has an unknown extension.`);
+}

@@ -1,27 +1,75 @@
 import { Inject, Injectable } from '@angular/core';
 
 import { ImageLayout } from './image-layout';
-import { dedupAndSortImageSizes, ImageOptimizerConfig, IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
+import { getImageMimeType } from './image-mime-type';
+import {
+  dedupAndSortImageSizes,
+  getImageFormat,
+  ImageFormat,
+  ImageOptimizerConfig,
+  IMAGE_OPTIMIZER_CONFIG,
+} from './image-optimizer-config';
+import { ImageSources } from './image-sources';
+import { ImageSourcesOptions } from './image-sources-options';
+import { ImageUrlOptions } from './image-url-options';
 
 const viewportWidthRe = /(^|\s)(1?\d?\d)vw/g;
+const preferredOptimizedFormats: readonly ImageFormat[] = [ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif, ImageFormat.Jpeg] as const;
 
 /**
  * Provider that resolves image URLs.
  */
 export abstract class ImageLoader {
-  // TODO: memoize
-  private get allSizes(): number[] {
-    return dedupAndSortImageSizes([...this.imageOptimizerConfig.deviceSizes, ...this.imageOptimizerConfig.imageSizes]);
+  private readonly allSizes: readonly number[] = dedupAndSortImageSizes([
+    ...this.imageOptimizerConfig.deviceSizes,
+    ...this.imageOptimizerConfig.imageSizes,
+  ]);
+  private readonly deviceSizes: readonly number[] = dedupAndSortImageSizes(this.imageOptimizerConfig.deviceSizes);
+  private readonly preferredOptimizedFormat: ImageFormat;
+
+  constructor(private readonly imageOptimizerConfig: ImageOptimizerConfig) {
+    const supportedFormats: Set<ImageFormat> = new Set([...imageOptimizerConfig.formats, ImageFormat.Jpeg]);
+    const preferredOptimizedFormat: ImageFormat | undefined = preferredOptimizedFormats.find((preferredFormat) =>
+      supportedFormats.has(preferredFormat)
+    );
+    if (preferredOptimizedFormat == null) {
+      throw new Error(`There is not a supported preferred image optimizer format.`);
+    }
+    this.preferredOptimizedFormat = preferredOptimizedFormat;
   }
 
-  // TODO: memoize
-  private get deviceSizes(): number[] {
-    return dedupAndSortImageSizes(this.imageOptimizerConfig.deviceSizes);
+  abstract getImageUrl(options: ImageUrlOptions): string;
+
+  getImageSources({ src, format, width, layout, sizes, unoptimized }: ImageSourcesOptions): ImageSources {
+    if (unoptimized) {
+      return { src, sizes: '', srcset: '', mimeType: getImageMimeType(src) };
+    }
+
+    const { widths, kind } = this.getWidths(width, layout, sizes);
+    const lastWidthIndex: number = widths.length - 1;
+    const quality: number = this.imageOptimizerConfig.quality;
+
+    return {
+      sizes: !sizes && kind === 'w' ? '100vw' : sizes,
+      srcset: widths
+        .map((width, index) => `${this.getImageUrl({ src, quality, width, format })} ${kind === 'w' ? width : index + 1}${kind}`)
+        .join(', '),
+      src: this.getImageUrl({ src, quality, width: widths[lastWidthIndex], format }),
+      mimeType: getImageMimeType(format),
+    };
   }
 
-  constructor(protected readonly imageOptimizerConfig: ImageOptimizerConfig) {}
+  getImageOptimizedFormats(src: string, unoptimized: boolean): ImageFormat[] {
+    const format: ImageFormat = getImageFormat(src);
 
-  abstract loader(options: { src: string; width: number; quality: number }): string;
+    if (format === ImageFormat.Png) {
+      return [ImageFormat.Png];
+    } else if (unoptimized) {
+      return [format];
+    } else {
+      return [...new Set([this.preferredOptimizedFormat, ImageFormat.Jpeg])];
+    }
+  }
 
   private getWidths(width: number | undefined, layout: ImageLayout, sizes: string): { widths: number[]; kind: 'w' | 'x' } {
     if (sizes && (layout === 'fill' || layout === 'responsive')) {
@@ -38,11 +86,11 @@ export abstract class ImageLoader {
           kind: 'w',
         };
       }
-      return { widths: this.allSizes, kind: 'w' };
+      return { widths: [...this.allSizes], kind: 'w' };
     }
 
     if (width == null || layout === 'fill' || layout === 'responsive') {
-      return { widths: this.deviceSizes, kind: 'w' };
+      return { widths: [...this.deviceSizes], kind: 'w' };
     }
 
     const widths: number[] = [
@@ -60,28 +108,6 @@ export abstract class ImageLoader {
     ];
     return { widths, kind: 'x' };
   }
-
-  getImageAttributes(
-    src: string,
-    width: number | undefined,
-    layout: ImageLayout,
-    sizes: string,
-    unoptimized: boolean
-  ): { src: string; srcset: string; sizes: string } {
-    if (unoptimized) {
-      return { src, sizes: '', srcset: '' };
-    }
-
-    const { widths, kind } = this.getWidths(width, layout, sizes);
-    const lastWidthIndex: number = widths.length - 1;
-    const quality: number = this.imageOptimizerConfig.quality;
-
-    return {
-      sizes: !sizes && kind === 'w' ? '100vw' : sizes,
-      srcset: widths.map((width, index) => `${this.loader({ src, quality, width })} ${kind === 'w' ? width : index + 1}${kind}`).join(', '),
-      src: this.loader({ src, quality, width: widths[lastWidthIndex] }),
-    };
-  }
 }
 
 @Injectable()
@@ -90,7 +116,7 @@ export class DefaultImageLoader extends ImageLoader {
     super(imageOptimizerConfig);
   }
 
-  loader({ src, width, quality }: { src: string; width: number; quality: number }) {
-    return `${src}?w=${width}&q=${quality}`;
+  getImageUrl({ src, width, quality, format }: ImageUrlOptions) {
+    return `${src}?w=${width}&q=${quality}&fm=${format}`;
   }
 }

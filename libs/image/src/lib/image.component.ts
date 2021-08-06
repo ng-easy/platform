@@ -6,16 +6,17 @@ import {
   EventEmitter,
   OnChanges,
   isDevMode,
-  ElementRef,
-  ViewChild,
   AfterViewInit,
-  Renderer2,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import { ImageLayout } from './image-layout';
 import { ImageLoader } from './image-loader';
+import { ImageFormat } from './image-optimizer-config';
 import { ImagePlaceholder } from './image-placeholder';
+import { ImageSources } from './image-sources';
 
 @Component({
   selector: 'image[src]',
@@ -24,19 +25,31 @@ import { ImagePlaceholder } from './image-placeholder';
       <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
         <img *ngIf="sizerSvg as sizerSrc" [src]="sizerSvg" class="sizer__content" aria-hidden="true" alt="" role="presentation" />
       </div>
-      <img
-        #image
-        class="img"
-        [alt]="alt"
-        decoding="async"
-        [style.objectFit]="objectFit"
-        [style.objectPosition]="objectPosition"
-        [style.backgroundSize]="blurBackgroundSize"
-        [style.backgroundPosition]="blurBackgroundPosition"
-        [style.backgroundImage]="blurBackgroundImage"
-        [style.filter]="blurFilter"
-        (load)="onLoad()"
-      />
+      <picture>
+        <ng-container *ngFor="let source of sources; let last = last; trackBy: getImageMime">
+          <ng-template #sourceTemplate>
+            <source [type]="source.mimeType" [srcset]="source.srcset" [sizes]="sizes" />
+          </ng-template>
+          <img
+            #image
+            *ngIf="last; else sourceTemplate"
+            [srcset]="source.srcset"
+            [sizes]="source.sizes"
+            [src]="source.src"
+            class="img"
+            [alt]="alt"
+            [attr.loading]="loading"
+            decoding="async"
+            [style.objectFit]="objectFit"
+            [style.objectPosition]="objectPosition"
+            [style.backgroundSize]="blurBackgroundSize"
+            [style.backgroundPosition]="blurBackgroundPosition"
+            [style.backgroundImage]="blurBackgroundImage"
+            [style.filter]="blurFilter"
+            (load)="onLoad()"
+          />
+        </ng-container>
+      </picture>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -108,6 +121,8 @@ import { ImagePlaceholder } from './image-placeholder';
         max-width: 100%;
         min-height: 100%;
         max-height: 100%;
+
+        transition: filter 0.1s ease-in-out;
       }
     `,
   ],
@@ -197,6 +212,10 @@ export class ImageComponent implements OnChanges, AfterViewInit {
    */
   @Output() loadingComplete = new EventEmitter<void>();
 
+  get loading(): 'eager' | 'lazy' {
+    return this.priority ? 'eager' : 'lazy';
+  }
+
   get showSizer(): boolean {
     return this.layout === 'intrinsic' || this.layout === 'responsive';
   }
@@ -231,12 +250,13 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     return this.domSanitizer.bypassSecurityTrustUrl(`data:image/svg+xml;base64,${sizerSvg}`);
   }
 
-  get blurBackgroundSize(): string {
-    return this.objectFit ?? 'none';
+  // TODO: add typing
+  get blurBackgroundSize(): 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' {
+    return this.objectFit ?? 'cover';
   }
 
   get blurBackgroundPosition(): string {
-    return this.objectPosition ?? '0% 0%';
+    return this.objectPosition ?? '50% 50%';
   }
 
   get blurBackgroundImage(): string {
@@ -247,27 +267,44 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  blurFilter = 'none';
+  get blurFilter(): string {
+    if (this.placeholder === 'blur' && this.blurDataURL && !this.isImageLoaded) {
+      return `blur(20px)`;
+    } else {
+      return 'none';
+    }
+  }
 
-  constructor(
-    private readonly imageLoader: ImageLoader,
-    private readonly window: Window,
-    private readonly domSanitizer: DomSanitizer,
-    private readonly renderer: Renderer2
-  ) {}
+  get sources(): ImageSources[] {
+    return this.imageLoader.getImageOptimizedFormats(this.src, this.unoptimized).map((format) =>
+      this.imageLoader.getImageSources({
+        src: this.src,
+        format,
+        width: this.width,
+        layout: this.layout,
+        sizes: this.sizes,
+        unoptimized: this.unoptimized,
+      })
+    );
+  }
+
+  private isImageLoaded = false;
+
+  constructor(private readonly imageLoader: ImageLoader, private readonly window: Window, private readonly domSanitizer: DomSanitizer) {}
 
   ngOnChanges() {
     this.validateInputs();
-    this.applyImageAttributes();
   }
 
   ngAfterViewInit() {
-    this.applyImageAttributes();
-
     if (this.image?.nativeElement.complete) {
       // In case the image was rendered by SSR and already completed
       this.onLoad();
     }
+  }
+
+  getImageMime(_: number, { mimeType: mime }: ImageSources) {
+    return mime;
   }
 
   onLoad() {
@@ -281,9 +318,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
       decodePromise
         .catch(() => null)
         .then(() => {
-          if (this.placeholder === 'blur') {
-            this.blurFilter = 'none';
-          }
+          this.isImageLoaded = true;
           this.loadingComplete.emit();
         });
     }
@@ -305,24 +340,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  private applyImageAttributes() {
-    if (this.image?.nativeElement == null) {
-      return;
-    }
-
-    const { srcset, sizes, src } = this.imageLoader.getImageAttributes(this.src, this.width, this.layout, this.sizes, this.unoptimized);
-
-    /**
-     * It's intended to keep `src` the last attribute to enforce the order.
-     * If we keep `src` the first one, Safari will immediately start to fetch `src`, before `sizes` and `srcSet` are even
-     * updated. That causes multiple unnecessary requests if `srcSet` and `sizes` are defined.
-     * This bug cannot be reproduced in Chrome or Firefox.
-     */
-    this.renderer.setAttribute(this.image.nativeElement, 'srcset', srcset);
-    this.renderer.setAttribute(this.image.nativeElement, 'sizes', sizes);
-    this.renderer.setAttribute(this.image.nativeElement, 'src', src);
-  }
-
   private validateInputs() {
     if (this.layout !== 'fill' && (this.width == null || this.height == null || this.width <= 0 || this.height <= 0)) {
       throw new Error(`Image with src "${this.src}" must use "width" and "height" properties or "layout='fill'" property.`);
@@ -342,7 +359,10 @@ export class ImageComponent implements OnChanges, AfterViewInit {
 
     const rand: number = Math.floor(Math.random() * 1000) + 100;
 
-    if (!this.unoptimized && !this.imageLoader.loader({ src: this.src, width: rand, quality: 75 }).includes(rand.toString())) {
+    if (
+      !this.unoptimized &&
+      !this.imageLoader.getImageUrl({ src: this.src, width: rand, quality: 75, format: ImageFormat.Jpeg }).includes(rand.toString())
+    ) {
       console.warn(
         `Image with src "${this.src}" uses a loader that does not implement width. Please implement it or use the "unoptimized" property instead.`
       );
@@ -366,9 +386,12 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
+  // TODO: move config to shared library as a secondary entry point
+  // TODO: Implement as a structural directive
   // TODO: in SSR use as background color the predominant one
   // TODO: generate blur placeholder in SSR
   // TODO: implement priority adding preload to head in SSR
+  // TODO: load async placeholder for non priority images
   // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
   // TODO: support intersection observer
   // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651

@@ -14,7 +14,19 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['sizeRatio', 'wrapperWidth', 'wrapperHeight', 'sizerPaddingTop', 'sizerSvg', 'imageSrc', 'imageSrcset', 'imageSizes'],
+      exclude: [
+        'sizeRatio',
+        'wrapperWidth',
+        'wrapperHeight',
+        'sizerPaddingTop',
+        'sizerSvg',
+        'imageSrc',
+        'imageSrcset',
+        'imageSizes',
+        'blurFilter',
+        'onLoad',
+        'getImageMime',
+      ],
     },
   },
   args: {
