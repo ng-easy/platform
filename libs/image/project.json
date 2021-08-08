@@ -50,7 +50,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/image",
+        "outputPath": "docs/storybook/image",
         "config": {
           "configFolder": "libs/image/.storybook"
         }

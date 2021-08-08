@@ -386,6 +386,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
+  // TODO: adjust low bandwidth
+  // TODO: get placeholder from loader
   // TODO: move config to shared library as a secondary entry point
   // TODO: Implement as a structural directive
   // TODO: in SSR use as background color the predominant one
@@ -396,6 +398,4 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   // TODO: support intersection observer
   // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651
   // TODO: unit tests
-  // TODO: visual diff tests
-  // TODO: Export storybook to GitHub pages
 }

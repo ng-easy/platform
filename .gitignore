@@ -41,3 +41,6 @@ Thumbs.db
 
 # Lighthouse
 /.lighthouseci
+
+# Docs
+/docs

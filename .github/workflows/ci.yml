@@ -214,3 +214,43 @@ jobs:
           temporaryPublicStorage: true
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  docs:
+    name: Docs
+    needs: [npm, build, test, e2e]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    env:
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch latest base branch
+        run: git fetch origin main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14.x
+
+      - name: NPM
+        uses: ng-easy/npm-setup@v1.7.2
+        with:
+          nx-key: e2e
+
+      - name: e2e tests
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: storybook-build
+          all: 'true'
+          parallel: 'true'
+          nxCloud: 'true'
+
+      - name: Deploy to GitHub pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: docs
