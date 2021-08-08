@@ -16,15 +16,17 @@ const iMac: Viewport = { name: 'iMac', width: 2560, height: 1440 };
 const sizes: Viewport[] = [iPadLandscape, iPadPortrait, iPhone4Landscape, iPhone4Portrait, iMac];
 
 describe('@ng-easy/image', () => {
-  describe('default layout', () => {
-    beforeEach(() => cy.visit('/iframe.html?id=imagecomponent--default'));
+  ['intrinsic', 'fixed', 'responsive', 'fill'].forEach((layout) => {
+    describe(`${layout} layout`, () => {
+      beforeEach(() => cy.visit(`/iframe.html?id=imagecomponent--${layout}`));
 
-    sizes.forEach(({ name, width, height }) => {
-      it(`should not have visual regressions for ${name} (${width}x${height}px)`, () => {
-        cy.viewport(width, height);
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(1000);
-        cy.matchImageSnapshot();
+      sizes.forEach(({ name, width, height }) => {
+        it(`should not have visual regressions for ${name} (${width}x${height}px)`, () => {
+          cy.viewport(width, height);
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
+          cy.wait(1000);
+          cy.matchImageSnapshot();
+        });
       });
     });
   });

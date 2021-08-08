@@ -4,6 +4,13 @@
   "sourceRoot": "libs/image/src",
   "prefix": "ng-easy",
   "targets": {
+    "dev": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npx nx run image:storybook-compodoc --watch", "npx nx run image:storybook"],
+        "parallel": true
+      }
+    },
     "build": {
       "executor": "@nrwl/angular:package",
       "outputs": ["dist/libs/image"],
@@ -63,13 +70,6 @@
         "tsConfig": "libs/image/tsconfig.lib.prod.json",
         "outputPath": "dist/compodoc/image",
         "exportFormat": "json"
-      }
-    },
-    "storybook-watch": {
-      "builder": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": ["npx nx run image:storybook-compodoc --watch", "npx nx run image:storybook"],
-        "parallel": true
       }
     },
     "storybook-build": {

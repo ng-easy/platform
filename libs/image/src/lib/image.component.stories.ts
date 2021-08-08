@@ -57,5 +57,14 @@ const Template: Story<ImageComponent> = (args: ImageComponent) => ({
   props: args,
 });
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Intrinsic = Template.bind({});
+Intrinsic.args = {};
+
+export const Fixed = Template.bind({});
+Fixed.args = { layout: 'fixed' };
+
+export const Responsive = Template.bind({});
+Responsive.args = { layout: 'responsive' };
+
+export const Fill = Template.bind({});
+Fill.args = { layout: 'fill', width: undefined, height: undefined };
