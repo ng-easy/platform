@@ -3,8 +3,10 @@ import path from 'path';
 import fs from 'fs-extra';
 import prettyBytes from 'pretty-bytes';
 
+import { ImageFormat } from '@ng-easy/image-config';
+
 import { FilesystemImageCache, ImageCache } from './image-cache';
-import { getImageOptimizer, ImageFormat, ImageOptimizer, ImageOptimizerOptions } from './image-optimizer';
+import { getImageOptimizer, ImageOptimizer, ImageOptimizerOptions } from './image-optimizer';
 
 const imageUri = path.join(__dirname, '..', 'assets', 'code.jpg');
 
