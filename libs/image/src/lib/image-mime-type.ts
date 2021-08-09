@@ -1,4 +1,6 @@
-import { getImageFormat, ImageFormat } from './image-optimizer-config';
+import { ImageFormat } from '@ng-easy/image-config';
+
+import { getImageFormat } from './image-optimizer-config';
 
 export class ImageMimeTypeTag {
   private __brand = 'mimeType';

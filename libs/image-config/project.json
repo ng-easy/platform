@@ -1,0 +1,41 @@
+{
+  "root": "libs/image-config",
+  "sourceRoot": "libs/image-config/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/image-config",
+        "tsConfig": "libs/image-config/tsconfig.lib.json",
+        "packageJson": "libs/image-config/package.json",
+        "main": "libs/image-config/src/index.ts",
+        "assets": ["libs/image-config/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/image-config/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/image-config"],
+      "options": {
+        "jestConfig": "libs/image-config/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "./dist/libs/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

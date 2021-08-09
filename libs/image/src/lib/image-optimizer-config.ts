@@ -1,14 +1,8 @@
 import { InjectionToken } from '@angular/core';
 
-// TODO: move to shared library
+import { ImageFormat } from '@ng-easy/image-config';
 
-export enum ImageFormat {
-  Png = 'png',
-  Jpeg = 'jpeg',
-  Webp = 'webp',
-  Avif = 'avif',
-  Heif = 'heif',
-}
+// TODO: move to shared library
 
 export interface ImageOptimizerConfig {
   deviceSizes: number[];

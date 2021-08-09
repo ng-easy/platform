@@ -6,6 +6,7 @@
     "core-web-vitals-app-e2e": "apps/core-web-vitals-app-e2e",
     "eslint-config": "libs/eslint-config",
     "image": "libs/image",
+    "image-config": "libs/image-config",
     "image-e2e": "apps/image-e2e",
     "image-optimizer": "libs/image-optimizer",
     "prettier-config": "libs/prettier-config"

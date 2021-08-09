@@ -12,9 +12,10 @@ import {
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
+import { ImageFormat } from '@ng-easy/image-config';
+
 import { ImageLayout } from './image-layout';
 import { ImageLoader } from './image-loader';
-import { ImageFormat } from './image-optimizer-config';
 import { ImagePlaceholder } from './image-placeholder';
 import { ImageSources } from './image-sources';
 
@@ -386,7 +387,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  // TODO: adjust low bandwidth
+  // TODO: adjust low bandwidth https://css-tricks.com/optimizing-images-for-users-with-slow-network-speeds/
   // TODO: get placeholder from loader
   // TODO: move config to shared library as a secondary entry point
   // TODO: Implement as a structural directive

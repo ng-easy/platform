@@ -1,14 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 
+import { ImageFormat } from '@ng-easy/image-config';
+
 import { ImageLayout } from './image-layout';
 import { getImageMimeType } from './image-mime-type';
-import {
-  dedupAndSortImageSizes,
-  getImageFormat,
-  ImageFormat,
-  ImageOptimizerConfig,
-  IMAGE_OPTIMIZER_CONFIG,
-} from './image-optimizer-config';
+import { dedupAndSortImageSizes, getImageFormat, ImageOptimizerConfig, IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
 import { ImageSources } from './image-sources';
 import { ImageSourcesOptions } from './image-sources-options';
 import { ImageUrlOptions } from './image-url-options';

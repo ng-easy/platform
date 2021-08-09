@@ -217,7 +217,7 @@ jobs:
 
   docs:
     name: Docs
-    needs: [npm, build, test, e2e]
+    needs: [npm, lint, build, test, e2e]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     env:

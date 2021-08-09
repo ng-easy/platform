@@ -1,4 +1,4 @@
-import { ImageFormat } from './image-optimizer';
+import { ImageFormat } from '@ng-easy/image-config';
 
 export interface ImageOptimizerConfig {
   deviceSizes: number[];

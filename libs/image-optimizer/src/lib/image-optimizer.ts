@@ -1,14 +1,8 @@
 import sharp, { Sharp } from 'sharp';
 
-import { ImageCache } from './image-cache';
+import { ImageFormat } from '@ng-easy/image-config';
 
-export enum ImageFormat {
-  Png = 'png',
-  Jpeg = 'jpeg',
-  Webp = 'webp',
-  Avif = 'avif',
-  Heif = 'heif',
-}
+import { ImageCache } from './image-cache';
 
 export interface ImageOptimizerOptions {
   format: ImageFormat;

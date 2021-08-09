@@ -68,6 +68,7 @@
     "core-web-vitals-e2e",
     "core-web-vitals",
     "eslint-config",
+    "image-config",
     "image-optimizer",
     "image",
     "prettier-config"

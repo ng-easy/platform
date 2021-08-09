@@ -1,0 +1,30 @@
+{
+  "name": "@ng-easy/image-config",
+  "version": "0.0.1",
+  "description": "Builders for Nx and Angular projects",
+  "keywords": [
+    "angular",
+    "image",
+    "optimization",
+    "core-web-vitals",
+    "shared",
+    "config"
+  ],
+  "author": "samuelfernandez",
+  "homepage": "https://github.com/ng-easy/platform/tree/main/libs/image-config",
+  "bugs": {
+    "url": "https://github.com/ng-easy/platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-easy/platform.git"
+  },
+  "engines": {
+    "node": "^14.0.0",
+    "npm": "^7.0.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

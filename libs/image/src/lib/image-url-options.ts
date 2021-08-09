@@ -1,4 +1,4 @@
-import { ImageFormat } from './image-optimizer-config';
+import { ImageFormat } from '@ng-easy/image-config';
 
 export interface ImageUrlOptions {
   src: string;
