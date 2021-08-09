@@ -145,7 +145,7 @@
     "cypress-image-snapshot": "^4.0.1",
     "dotenv": "10.0.0",
     "eslint-plugin-cypress": "^2.11.3",
-    "http-server": "^0.12.3",
+    "http-server": "^13.0.0",
     "husky": "^7.0.1",
     "husky-check-email": "0.0.7",
     "jest": "27.0.6",
