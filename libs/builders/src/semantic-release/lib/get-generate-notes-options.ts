@@ -44,10 +44,10 @@ export function getGenerateNotesOptions(project: string): any {
           commit.type = 'Performance Improvements';
         } else if (commit.type === 'revert' || commit.revert) {
           commit.type = 'Reverts';
-        } else if (discard) {
-          return;
         } else if (commit.type === 'docs') {
           commit.type = 'Documentation';
+        } else if (discard) {
+          return;
         } else if (commit.type === 'style') {
           commit.type = 'Styles';
         } else if (commit.type === 'refactor') {

@@ -58,7 +58,7 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
     packageJson,
     outputPath,
     changelog: `${dirname(packageJson)}/CHANGELOG.md`,
-    dependencies: calculateProjectDependencies(context),
+    dependencies: await calculateProjectDependencies(context),
     build: async () => {
       const buildRun: BuilderRun = await context.scheduleTarget({ project, target: 'build' }, { withDeps: true });
       return await buildRun.result;
