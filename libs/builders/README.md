@@ -69,6 +69,28 @@ Additionally, you can use the following options:
 - `force`: defaults to `false`, forces the release in a non CI environment, can be used to make a release locally
 - `mode`: can be either `independent` or `sync`, defaults to `independent`, choose whether you want to make individual versioning or group all under the same version
 
+If using Nx, the `release` target has to be run respecting the order of dependencies. That can be configured in the `nx.json` root config file:
+
+```json
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build"],
+        "strictlyOrderedTargets": ["build", "release"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [{ "target": "build", "projects": "dependencies" }],
+    "release": [{ "target": "release", "projects": "dependencies" }]
+  }
+}
+```
+
+If using just the Angular CLI, make sure to perform releases according to the order of dependencies.
+
 ### How to use `independent` mode
 
 With this mode each releasable library will have its own version according to [semver](https://semver.org/). This is the preferred approach.

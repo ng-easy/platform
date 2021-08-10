@@ -21,6 +21,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons", "compodoc", "storybook-compodoc"],
+        "strictlyOrderedTargets": ["build", "release"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "scan": true,
@@ -33,11 +34,7 @@
     "libsDir": "libs"
   },
   "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
+    "build": [{ "target": "build", "projects": "dependencies" }],
+    "release": [{ "target": "release", "projects": "dependencies" }]
   }
 }
