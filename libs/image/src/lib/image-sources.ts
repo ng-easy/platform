@@ -1,4 +1,4 @@
-import { ImageMimeType } from './image-mime-type';
+import { ImageMimeType } from '@ng-easy/image-config';
 
 export interface ImageSources {
   srcset: string;

@@ -1,22 +1,4 @@
-import { ImageFormat } from '@ng-easy/image-config';
-
-export interface ImageOptimizerConfig {
-  deviceSizes: number[];
-  imageSizes: number[];
-  quality: number;
-  formats: ImageFormat[];
-}
-
-export const defaultImageOptimizerConfig: ImageOptimizerConfig = {
-  deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-  imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  quality: 75,
-  formats: [ImageFormat.Jpeg, ImageFormat.Webp],
-};
-
-export function dedupAndSortImageSizes(imageSizes: number[]): number[] {
-  return [...new Set([...imageSizes])].sort((a, b) => a - b);
-}
+import { ImageOptimizerConfig } from '@ng-easy/image-config';
 
 const minArrayLength = 1;
 const maxArrayLength = 20;

@@ -16,6 +16,8 @@ export interface ImageOptimizer {
   optimize: (imageUri: string, buffer: Buffer, options: ImageOptimizerOptions, cache?: ImageCache) => Promise<Buffer>;
 }
 
+// TODO: Use getImageFormat from image-config
+
 class JpgOptimizer implements ImageOptimizer {
   readonly supportedFormats = [ImageFormat.Jpeg, ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif];
   private readonly fileExtensionRegex: RegExp[] = this.supportedFormats

@@ -22,17 +22,17 @@ export async function calculateProjectDependencies(context: BuilderContext): Pro
     return dependencies.length > 0;
   });
 
-  context.logger.info(`Project ${target.project} is a dependency of ${dependantProjects.map((project) => `"${project}"`).join(', ')}`);
+  context.logger.info(`Project "${target.project}" is a dependency of ${dependantProjects.map((project) => `"${project}"`).join(', ')}`);
 
   const dependencies: ProjectDependency[] = Object.values(projGraph.nodes)
     .filter(({ type, data, name }) => {
       if (!dependantProjects.includes(name)) {
         return false;
       } else if (type !== ProjectType.lib) {
-        context.logger.info(`Ignoring project ${name} since it is not a library`);
+        context.logger.info(`Ignoring project "${name}" since it is not a library`);
         return false;
       } else if (!data.targets || !data.targets[targetName] || !data.targets[targetName].executor) {
-        context.logger.info(`Ignoring project ${name} since it doesn't have a "${targetName}" target`);
+        context.logger.info(`Ignoring project "${name}" since it doesn't have a "${targetName}" target`);
         return false;
       }
       return true;

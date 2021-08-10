@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { defaultImageOptimizerConfig, ImageOptimizerConfig } from '@ng-easy/image-config';
+
 import { DefaultImageLoader, ImageLoader } from './image-loader';
-import { defaultImageOptimizerConfig, ImageOptimizerConfig, IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
+import { IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
 import { ImageComponent } from './image.component';
 
 export interface ImageModuleConfig {

@@ -4,16 +4,13 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 import fs from 'fs-extra';
 
-import { ImageFormat } from '@ng-easy/image-config';
+import { ImageFormat, ImageOptimizerConfig, defaultImageOptimizerConfig, dedupAndSortImageSizes } from '@ng-easy/image-config';
 import {
   FilesystemImageCache,
   getImageOptimizer,
   ImageCache,
   ImageOptimizer,
   getValidatedImageOptimizerConfig,
-  ImageOptimizerConfig,
-  defaultImageOptimizerConfig,
-  dedupAndSortImageSizes,
 } from '@ng-easy/image-optimizer';
 
 interface Options extends JsonObject {
