@@ -1,6 +1,9 @@
 name: CI
 on:
   push:
+    branches:
+      - main
+      - 'renovate-github/**'
   pull_request:
     branches:
       - main
