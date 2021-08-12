@@ -31,7 +31,7 @@
     "cheerio": "^1.0.0-rc.10",
     "fs-extra": "^10.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin": "^8.0.0",
+    "imagemin": "^8.0.1",
     "jimp": "^0.16.1",
     "semantic-release": "^17.4.4",
     "stream-buffers": "^3.0.2",
