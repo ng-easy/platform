@@ -277,6 +277,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   }
 
   get sources(): ImageSources[] {
+    // TODO: Make this call internal to getImageSources
+    // TODO: Make this reactive based on network
     return this.imageLoader.getImageOptimizedFormats(this.src, this.unoptimized).map((format) =>
       this.imageLoader.getImageSources({
         src: this.src,
