@@ -388,15 +388,13 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   }
 
   // TODO: adjust low bandwidth https://css-tricks.com/optimizing-images-for-users-with-slow-network-speeds/
-  // TODO: get placeholder from loader
-  // TODO: move config to shared library as a secondary entry point
-  // TODO: Implement as a structural directive
-  // TODO: in SSR use as background color the predominant one
-  // TODO: generate blur placeholder in SSR
-  // TODO: implement priority adding preload to head in SSR
-  // TODO: load async placeholder for non priority images
+  // TODO: get placeholder from loader, load async placeholder for non priority images
   // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
+  // TODO: Implement as a structural directive
   // TODO: support intersection observer
   // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651
   // TODO: unit tests
+  // TODO: in SSR use as background color the predominant one
+  // TODO: generate blur placeholder in SSR
+  // TODO: implement priority adding preload to head in SSR
 }

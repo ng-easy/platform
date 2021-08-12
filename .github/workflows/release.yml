@@ -2,7 +2,7 @@ name: Release
 on:
   workflow_dispatch: # manual release
   schedule:
-    - cron: '0 0 * * *' # scheduled nightly release
+    - cron: '0 5 * * *' # scheduled nightly release
 
 jobs:
   npm:
