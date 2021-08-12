@@ -8,6 +8,7 @@ import fs from 'fs-extra';
 
 // eslint-disable-next-line import/no-named-as-default
 import imageOptimizerBuilder from './index';
+import { ImageOptimizerConfigJson } from './options';
 
 describe('@ng-easy/builders:image-optimizer', () => {
   let architect: Architect;
@@ -19,7 +20,7 @@ describe('@ng-easy/builders:image-optimizer', () => {
 
     architectHost = new TestingArchitectHost(__dirname, __dirname);
     architect = new Architect(architectHost, registry);
-    const builderSchema: schema.JsonSchema = await import('./schema.json');
+    const builderSchema = (await import('./schema.json')) as unknown as schema.JsonSchema;
 
     architectHost.addBuilder('@ng-easy/builders:image-optimizer', imageOptimizerBuilder, '', builderSchema);
   });
@@ -31,10 +32,11 @@ describe('@ng-easy/builders:image-optimizer', () => {
 
     const assetsPath: string = path.join(__dirname, 'assets');
     const outputPath: string = path.join(process.cwd(), 'tmp/libs/builders/image-optimizer');
+    await fs.emptyDir(outputPath);
 
     const run: BuilderRun = await architect.scheduleBuilder(
       '@ng-easy/builders:image-optimizer',
-      { assets: [assetsPath], outputPath, deviceSizes: [1080], imageSizes: [600] },
+      { assets: [assetsPath], outputPath, deviceSizes: [1080], imageSizes: [600], quality: 75 } as ImageOptimizerConfigJson,
       { logger }
     );
 
@@ -45,7 +47,7 @@ describe('@ng-easy/builders:image-optimizer', () => {
     expect(output.success).toBe(true);
     expect(logs).toContain(path.normalize(`libs/builders/src/image-optimizer/assets/code.jpg`));
 
-    const outputFiles = await await fs.readdir(outputPath);
+    const outputFiles = await fs.readdir(outputPath);
     expect(outputFiles.length).toBe(4); // 2 sizes * 2 formats = 4 files
   }, 20000);
 });

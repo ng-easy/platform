@@ -1,7 +1,6 @@
 import path from 'path';
 
 import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/architect';
-import { JsonObject } from '@angular-devkit/core';
 import fs from 'fs-extra';
 
 import {
@@ -19,20 +18,11 @@ import {
   getValidatedImageOptimizerConfig,
 } from '@ng-easy/image-optimizer';
 
-interface ImageQualityNetworkJson extends JsonObject, ImageQualityNetwork {}
-
-interface Options extends JsonObject {
-  assets: string[];
-  outputPath: string;
-  deviceSizes: number[];
-  imageSizes: number[];
-  quality: number | ImageQualityNetworkJson | null;
-  formats: ImageFormat[];
-}
+import { ImageOptimizerConfigJson } from './options';
 
 export default createBuilder(imageOptimizerBuilder);
 
-export async function imageOptimizerBuilder(options: Options, context: BuilderContext): Promise<BuilderOutput> {
+export async function imageOptimizerBuilder(options: ImageOptimizerConfigJson, context: BuilderContext): Promise<BuilderOutput> {
   context.logger.info(`Optimizing assets from from:`);
   options.assets.forEach((asset) => context.logger.info(`- ${getRelativePath(asset)}`));
   context.logger.info(`To folder: ${getRelativePath(options.outputPath)}`);

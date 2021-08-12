@@ -55,7 +55,8 @@
             "saveData": { "type": "number", "minimum": 10, "maximum": 100 },
             "default": { "type": "number", "minimum": 10, "maximum": 100 }
           },
-          "required": ["slow-2g", "2g", "3g", "4g", "saveData", "default"]
+          "required": ["slow-2g", "2g", "3g", "4g", "saveData", "default"],
+          "additionalProperties": false
         }
       ]
     },
