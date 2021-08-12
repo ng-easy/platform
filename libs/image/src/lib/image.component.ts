@@ -387,7 +387,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  // TODO: adjust low bandwidth https://css-tricks.com/optimizing-images-for-users-with-slow-network-speeds/
   // TODO: get placeholder from loader, load async placeholder for non priority images
   // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
   // TODO: Implement as a structural directive

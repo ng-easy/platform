@@ -4,7 +4,13 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 import fs from 'fs-extra';
 
-import { ImageFormat, ImageOptimizerConfig, defaultImageOptimizerConfig, dedupAndSortImageSizes } from '@ng-easy/image-config';
+import {
+  ImageFormat,
+  ImageOptimizerConfig,
+  defaultImageOptimizerConfig,
+  dedupAndSortImageSizes,
+  ImageQualityNetwork,
+} from '@ng-easy/image-config';
 import {
   FilesystemImageCache,
   getImageOptimizer,
@@ -13,12 +19,14 @@ import {
   getValidatedImageOptimizerConfig,
 } from '@ng-easy/image-optimizer';
 
+interface ImageQualityNetworkJson extends JsonObject, ImageQualityNetwork {}
+
 interface Options extends JsonObject {
   assets: string[];
   outputPath: string;
   deviceSizes: number[];
   imageSizes: number[];
-  quality: number | null;
+  quality: number | ImageQualityNetworkJson | null;
   formats: ImageFormat[];
 }
 
@@ -36,7 +44,7 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
     quality: options.quality ?? defaultImageOptimizerConfig.quality,
     formats: options.formats.length === 0 ? defaultImageOptimizerConfig.formats : options.formats,
   });
-  const quality: number = optimizationConfig.quality;
+  const qualities: number[] = getQualities(optimizationConfig.quality);
   const imageSizes: number[] = dedupAndSortImageSizes([...optimizationConfig.deviceSizes, ...optimizationConfig.imageSizes]);
 
   for (const assetPath of options.assets) {
@@ -55,13 +63,23 @@ export async function imageOptimizerBuilder(options: Options, context: BuilderCo
 
       for (const width of imageSizes) {
         for (const format of formats) {
-          await imageOptimizer.optimize(filePath, file, { format, width, quality }, fileSystemCache);
+          for (const quality of qualities) {
+            await imageOptimizer.optimize(filePath, file, { format, width, quality }, fileSystemCache);
+          }
         }
       }
     }
   }
 
   return { success: true };
+}
+
+function getQualities(quality: number | ImageQualityNetwork): number[] {
+  if (typeof quality === 'number') {
+    return [quality];
+  }
+
+  return [quality['slow-2g'], quality['2g'], quality['3g'], quality['4g'], quality.default, quality.saveData];
 }
 
 function getRelativePath(absolutePath: string): string {

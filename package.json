@@ -27,7 +27,7 @@
     "ng": "nx",
     "nx": "nx",
     "start": "nx serve --hmr",
-    "build": "nx run-many --target=build --all --configuration production --parallel --with-deps",
+    "build": "nx run-many --target=build --all --configuration production --parallel",
     "build:serve": "http-server dist/apps/core-web-vitals-app/browser",
     "test": "nx run-many --target=test --all --parallel",
     "lint:workspace": "nx workspace-lint",

@@ -39,9 +39,25 @@
     },
     "quality": {
       "description": "Quality of optimized images",
-      "type": "string",
-      "minimum": 10,
-      "maximum": 100
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 10,
+          "maximum": 100
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slow-2g": { "type": "number", "minimum": 10, "maximum": 100 },
+            "2g": { "type": "number", "minimum": 10, "maximum": 100 },
+            "3g": { "type": "number", "minimum": 10, "maximum": 100 },
+            "4g": { "type": "number", "minimum": 10, "maximum": 100 },
+            "saveData": { "type": "number", "minimum": 10, "maximum": 100 },
+            "default": { "type": "number", "minimum": 10, "maximum": 100 }
+          },
+          "required": ["slow-2g", "2g", "3g", "4g", "saveData", "default"]
+        }
+      ]
     },
     "formats": {
       "description": "Optimized output formats",

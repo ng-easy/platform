@@ -4,6 +4,7 @@ import { ImageFormat, dedupAndSortImageSizes, getImageFormat, ImageOptimizerConf
 
 import { ImageLayout } from './image-layout';
 import { IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
+import { getQuality } from './image-quality';
 import { ImageSources } from './image-sources';
 import { ImageSourcesOptions } from './image-sources-options';
 import { ImageUrlOptions } from './image-url-options';
@@ -42,7 +43,7 @@ export abstract class ImageLoader {
 
     const { widths, kind } = this.getWidths(width, layout, sizes);
     const lastWidthIndex: number = widths.length - 1;
-    const quality: number = this.imageOptimizerConfig.quality;
+    const quality: number = getQuality(this.imageOptimizerConfig.quality);
 
     return {
       sizes: !sizes && kind === 'w' ? '100vw' : sizes,
