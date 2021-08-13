@@ -7,3 +7,4 @@ export * from './lib/image-sources';
 export * from './lib/image-sources-options';
 export * from './lib/image.component';
 export * from './lib/image.module';
+export * from './lib/object-fit';

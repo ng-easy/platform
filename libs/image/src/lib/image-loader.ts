@@ -36,26 +36,26 @@ export abstract class ImageLoader {
 
   abstract getImageUrl(options: ImageUrlOptions): string;
 
-  getImageSources({ src, format, width, layout, sizes, unoptimized }: ImageSourcesOptions): ImageSources {
+  getImageSources({ src, width, layout, sizes, unoptimized }: ImageSourcesOptions): ImageSources[] {
     if (unoptimized) {
-      return { src, sizes: '', srcset: '', mimeType: getImageMimeType(src) };
+      return [{ src, sizes: '', srcset: '', mimeType: getImageMimeType(src) }];
     }
 
     const { widths, kind } = this.getWidths(width, layout, sizes);
     const lastWidthIndex: number = widths.length - 1;
     const quality: number = getQuality(this.imageOptimizerConfig.quality);
 
-    return {
+    return this.getImageOptimizedFormats(src, unoptimized).map((format) => ({
       sizes: !sizes && kind === 'w' ? '100vw' : sizes,
       srcset: widths
         .map((width, index) => `${this.getImageUrl({ src, quality, width, format })} ${kind === 'w' ? width : index + 1}${kind}`)
         .join(', '),
       src: this.getImageUrl({ src, quality, width: widths[lastWidthIndex], format }),
       mimeType: getImageMimeType(format),
-    };
+    }));
   }
 
-  getImageOptimizedFormats(src: string, unoptimized: boolean): ImageFormat[] {
+  private getImageOptimizedFormats(src: string, unoptimized: boolean): ImageFormat[] {
     const format: ImageFormat = getImageFormat(src);
 
     if (format === ImageFormat.Png) {

@@ -11,6 +11,8 @@ import {
   ElementRef,
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Observable, Subject } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 import { ImageFormat } from '@ng-easy/image-config';
 
@@ -18,115 +20,13 @@ import { ImageLayout } from './image-layout';
 import { ImageLoader } from './image-loader';
 import { ImagePlaceholder } from './image-placeholder';
 import { ImageSources } from './image-sources';
+import { ObjectFit } from './object-fit';
 
 @Component({
   selector: 'image[src]',
-  template: `
-    <div class="wrapper wrapper--{{ layout }}" [style.width]="wrapperWidth" [style.height]="wrapperHeight">
-      <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
-        <img *ngIf="sizerSvg as sizerSrc" [src]="sizerSvg" class="sizer__content" aria-hidden="true" alt="" role="presentation" />
-      </div>
-      <picture>
-        <ng-container *ngFor="let source of sources; let last = last; trackBy: getImageMime">
-          <ng-template #sourceTemplate>
-            <source [type]="source.mimeType" [srcset]="source.srcset" [sizes]="sizes" />
-          </ng-template>
-          <img
-            #image
-            *ngIf="last; else sourceTemplate"
-            [srcset]="source.srcset"
-            [sizes]="source.sizes"
-            [src]="source.src"
-            class="img"
-            [alt]="alt"
-            [attr.loading]="loading"
-            decoding="async"
-            [style.objectFit]="objectFit"
-            [style.objectPosition]="objectPosition"
-            [style.backgroundSize]="blurBackgroundSize"
-            [style.backgroundPosition]="blurBackgroundPosition"
-            [style.backgroundImage]="blurBackgroundImage"
-            [style.filter]="blurFilter"
-            (load)="onLoad()"
-          />
-        </ng-container>
-      </picture>
-    </div>
-  `,
+  templateUrl: 'image.component.html',
+  styleUrls: ['image.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [
-    `
-      div.wrapper {
-        display: block;
-        overflow: hidden;
-        box-sizing: border-box;
-        margin: 0;
-      }
-
-      div.wrapper--fill {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-      }
-
-      div.wrapper--responsive {
-        position: relative;
-      }
-
-      div.wrapper--intrinsic {
-        display: inline-block;
-        max-width: 100%;
-        position: relative;
-      }
-
-      div.wrapper--fixed {
-        display: inline-block;
-        position: relative;
-      }
-
-      div.sizer {
-        display: block;
-        box-sizing: border-box;
-      }
-
-      div.sizer--intrinsic {
-        max-width: 100%;
-      }
-
-      img.sizer__content {
-        max-width: 100%;
-        display: block;
-        margin: 0;
-        border: none;
-        padding: 0;
-      }
-
-      img.img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-
-        box-sizing: border-box;
-        padding: 0;
-        border: none;
-        margin: auto;
-
-        display: block;
-        width: 0;
-        height: 0;
-        min-width: 100%;
-        max-width: 100%;
-        min-height: 100%;
-        max-height: 100%;
-
-        transition: filter 0.1s ease-in-out;
-      }
-    `,
-  ],
 })
 export class ImageComponent implements OnChanges, AfterViewInit {
   @ViewChild('image', { static: false }) readonly image?: ElementRef<HTMLImageElement>;
@@ -201,7 +101,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   /**
    * The image fit when using `layout="fill"`.
    */
-  @Input() objectFit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' = 'cover';
+  @Input() objectFit: ObjectFit = 'cover';
 
   /**
    * The image fit when using `layout="fill"`.
@@ -237,29 +137,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     return this.layout === 'fixed' ? `${this.height ?? 0}px` : 'auto';
   }
 
-  get sizerSvg(): SafeUrl | null {
-    if (this.layout !== 'intrinsic') {
-      return null;
-    }
-
-    // Create a placeholder svg and convert it to base64
-    const sizerSvg: string = this.window.btoa(
-      `<svg width="${this.width}" height="${this.height}" xmlns="http://www.w3.org/2000/svg" version="1.1"/>`
-    );
-
-    // TODO: try putting the svg in the template, or something else
-    return this.domSanitizer.bypassSecurityTrustUrl(`data:image/svg+xml;base64,${sizerSvg}`);
-  }
-
-  // TODO: add typing
-  get blurBackgroundSize(): 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' {
-    return this.objectFit ?? 'cover';
-  }
-
-  get blurBackgroundPosition(): string {
-    return this.objectPosition ?? '50% 50%';
-  }
-
   get blurBackgroundImage(): string {
     if (this.placeholder === 'blur' && this.blurDataURL) {
       return `url("${this.blurDataURL}")`;
@@ -276,20 +153,36 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  get sources(): ImageSources[] {
-    // TODO: Make this call internal to getImageSources
-    // TODO: Make this reactive based on network
-    return this.imageLoader.getImageOptimizedFormats(this.src, this.unoptimized).map((format) =>
+  private readonly ngOnChanges$ = new Subject<void>();
+  private readonly changes$: Observable<void> = this.ngOnChanges$.pipe(startWith(undefined as void));
+
+  readonly sizerSvg$: Observable<SafeUrl | null> = this.changes$.pipe(
+    map(() => {
+      if (this.layout !== 'intrinsic') {
+        return null;
+      }
+
+      // Create a placeholder svg and convert it to base64
+      const sizerSvg: string = this.window.btoa(
+        `<svg width="${this.width}" height="${this.height}" xmlns="http://www.w3.org/2000/svg" version="1.1"/>`
+      );
+
+      return this.domSanitizer.bypassSecurityTrustUrl(`data:image/svg+xml;base64,${sizerSvg}`);
+    })
+  );
+
+  // TODO: Make this reactive based on network
+  readonly sources$: Observable<ImageSources[]> = this.changes$.pipe(
+    map(() =>
       this.imageLoader.getImageSources({
         src: this.src,
-        format,
         width: this.width,
         layout: this.layout,
         sizes: this.sizes,
         unoptimized: this.unoptimized,
       })
-    );
-  }
+    )
+  );
 
   private isImageLoaded = false;
 
@@ -297,6 +190,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
 
   ngOnChanges() {
     this.validateInputs();
+    this.ngOnChanges$.next();
   }
 
   ngAfterViewInit() {

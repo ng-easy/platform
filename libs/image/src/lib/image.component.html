@@ -1,0 +1,30 @@
+<div class="wrapper wrapper--{{ layout }}" [style.width]="wrapperWidth" [style.height]="wrapperHeight">
+  <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
+    <img *ngIf="sizerSvg$ | async as sizerSrc" [src]="sizerSrc" class="sizer__content" aria-hidden="true" alt="" role="presentation" />
+  </div>
+  <picture>
+    <ng-container *ngFor="let source of sources$ | async; let last = last; trackBy: getImageMime">
+      <ng-template #sourceTemplate>
+        <source [type]="source.mimeType" [srcset]="source.srcset" [sizes]="sizes" />
+      </ng-template>
+      <img
+        #image
+        *ngIf="last; else sourceTemplate"
+        [srcset]="source.srcset"
+        [sizes]="source.sizes"
+        [src]="source.src"
+        class="img"
+        [alt]="alt"
+        [attr.loading]="loading"
+        decoding="async"
+        [style.objectFit]="objectFit"
+        [style.objectPosition]="objectPosition"
+        [style.backgroundSize]="objectFit"
+        [style.backgroundPosition]="objectPosition"
+        [style.backgroundImage]="blurBackgroundImage"
+        [style.filter]="blurFilter"
+        (load)="onLoad()"
+      />
+    </ng-container>
+  </picture>
+</div>

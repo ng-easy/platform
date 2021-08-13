@@ -14,6 +14,10 @@
   "editor.accessibilitySupport": "off",
   "editor.fontFamily": "Hack",
 
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
   "explorer.confirmDragAndDrop": false,
 
   "files.autoSave": "onWindowChange",
