@@ -15,6 +15,10 @@
       <img
         #image
         *ngIf="last; else sourceTemplate"
+        class="img"
+        [alt]="alt"
+        [attr.loading]="loading"
+        decoding="async"
         [style.objectFit]="objectFit"
         [style.objectPosition]="objectPosition"
         [style.backgroundSize]="objectFit"
@@ -24,10 +28,6 @@
         [srcset]="context.isVisible ? source.srcset : ''"
         [sizes]="context.isVisible ? source.sizes : ''"
         [src]="context.isVisible ? source.src : ''"
-        class="img"
-        [alt]="alt"
-        [attr.loading]="loading"
-        decoding="async"
         (load)="onLoad()"
       />
     </ng-container>
