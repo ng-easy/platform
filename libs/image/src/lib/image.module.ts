@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { defaultImageOptimizerConfig, ImageOptimizerConfig } from '@ng-easy/image-config';
 
-import { DefaultImageLoader, ImageLoader } from './image-loader';
-import { IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
-import { ImageComponent } from './image.component';
+import { ImageComponent } from './component';
+import { DefaultImageLoader, ImageLoader } from './services';
+import { IMAGE_OPTIMIZER_CONFIG } from './tokens';
 
 export interface ImageModuleConfig {
   imageOptimizerConfig?: ImageOptimizerConfig;
@@ -14,7 +13,7 @@ export interface ImageModuleConfig {
 
 @NgModule({
   declarations: [ImageComponent],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   exports: [ImageComponent],
 })
 export class ImageModule {

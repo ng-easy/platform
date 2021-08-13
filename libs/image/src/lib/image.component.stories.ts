@@ -1,6 +1,6 @@
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 
-import { ImageComponent } from './image.component';
+import { ImageComponent } from './component';
 import { ImageModule } from './image.module';
 
 export default {

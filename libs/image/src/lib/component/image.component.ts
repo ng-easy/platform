@@ -11,14 +11,11 @@ import {
   ElementRef,
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Observable, of, Subject } from 'rxjs';
-import { map, startWith, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
-import { ImageLayout } from './image-layout';
-import { ImageLoader } from './image-loader';
-import { ImagePlaceholder } from './image-placeholder';
-import { ImageSources } from './image-sources';
-import { ObjectFit } from './object-fit';
+import { ImageLayout, ImagePlaceholder, ObjectFit, ImageSources } from '../models';
+import { ImageLoader } from '../services';
 
 @Component({
   selector: 'image[src]',
@@ -177,11 +174,11 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   );
 
   readonly blurBackgroundImage$: Observable<string> = this.changes$.pipe(
-    switchMap(() => {
+    map(() => {
       if (this.placeholder === 'blur') {
-        return (this.blurDataURL ? of(this.blurDataURL) : this.imageLoader.getPlaceholderSrc(this.src)).pipe(map((src) => `url("${src}")`));
+        return this.blurDataURL ? `url("${this.blurDataURL}")` : `url("${this.imageLoader.getPlaceholderSrc(this.src)}")`;
       } else {
-        return of('none');
+        return 'none';
       }
     })
   );
@@ -240,6 +237,12 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   }
 
   private validateInputs() {
+    if (this.src.startsWith('data:')) {
+      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+      this.unoptimized = true;
+      this.priority = false;
+    }
+
     if (this.layout !== 'fill' && (this.width == null || this.height == null || this.width <= 0 || this.height <= 0)) {
       throw new Error(`Image with src "${this.src}" must use "width" and "height" properties or "layout='fill'" property.`);
     }
@@ -279,7 +282,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
   // TODO: Implement as a structural directive
   // TODO: support intersection observer
   // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651

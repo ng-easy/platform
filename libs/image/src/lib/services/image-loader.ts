@@ -1,16 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { ImageFormat, dedupAndSortImageSizes, getImageFormat, ImageOptimizerConfig, getImageMimeType } from '@ng-easy/image-config';
 
-import { ImageLayout } from './image-layout';
-import { IMAGE_OPTIMIZER_CONFIG } from './image-optimizer-config';
-import { getQuality } from './image-quality';
-import { ImageSources } from './image-sources';
-import { ImageSourcesOptions } from './image-sources-options';
-import { ImageUrlOptions } from './image-url-options';
+import { getQuality } from '../functions';
+import { ImageUrlOptions, ImageSourcesOptions, ImageSources, ImageLayout } from '../models';
+import { IMAGE_OPTIMIZER_CONFIG } from '../tokens';
 
 const viewportWidthRe = /(^|\s)(1?\d?\d)vw/g;
 const preferredOptimizedFormats: readonly ImageFormat[] = [ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif, ImageFormat.Jpeg] as const;
@@ -36,11 +30,7 @@ export abstract class ImageLoader {
     format: ImageFormat.Jpeg,
   }).includes(randomWidth.toString());
 
-  constructor(
-    @Inject(IMAGE_OPTIMIZER_CONFIG) protected readonly imageOptimizerConfig: ImageOptimizerConfig,
-    private readonly http: HttpClient,
-    private readonly window: Window
-  ) {
+  constructor(@Inject(IMAGE_OPTIMIZER_CONFIG) protected readonly imageOptimizerConfig: ImageOptimizerConfig) {
     const supportedFormats: Set<ImageFormat> = new Set([...imageOptimizerConfig.formats, ImageFormat.Jpeg]);
     const preferredOptimizedFormat: ImageFormat | undefined = preferredOptimizedFormats.find((preferredFormat) =>
       supportedFormats.has(preferredFormat)
@@ -72,17 +62,13 @@ export abstract class ImageLoader {
     }));
   }
 
-  getPlaceholderSrc(src: string): Observable<string> {
-    const imageUrl: string = this.getImageUrl({
+  getPlaceholderSrc(src: string): string {
+    return this.getImageUrl({
       src,
       quality: placeholderQuality,
       width: placeholderWidth,
       format: this.preferredOptimizedFormat,
     });
-    return this.http.get(imageUrl, { responseType: 'arraybuffer' }).pipe(
-      map((arrayBuffer) => this.window.btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))),
-      map((base64) => `data:${getImageMimeType(this.preferredOptimizedFormat)};base64,${base64}`)
-    );
   }
 
   private getImageOptimizedFormats(src: string, unoptimized: boolean): ImageFormat[] {
