@@ -179,11 +179,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   readonly blurBackgroundImage$: Observable<string> = this.changes$.pipe(
     switchMap(() => {
       if (this.placeholder === 'blur') {
-        if (this.blurDataURL) {
-          return of(`url("${this.blurDataURL}")`);
-        } else {
-          return this.imageLoader.getPlaceholderSrc(this.src).pipe(map((src) => `url("${src}")`));
-        }
+        return (this.blurDataURL ? of(this.blurDataURL) : this.imageLoader.getPlaceholderSrc(this.src)).pipe(map((src) => `url("${src}")`));
       } else {
         return of('none');
       }
