@@ -12,25 +12,24 @@
       <ng-template #sourceTemplate>
         <source [type]="source.mimeType" [srcset]="source.srcset" [sizes]="sizes" />
       </ng-template>
-      <ng-container *ngIf="last; else sourceTemplate">
-        <img
-          #image
-          [style.objectFit]="objectFit"
-          [style.objectPosition]="objectPosition"
-          [style.backgroundSize]="objectFit"
-          [style.backgroundPosition]="objectPosition"
-          [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
-          [style.filter]="blurFilter"
-          [srcset]="context.isVisible ? source.srcset : ''"
-          [sizes]="context.isVisible ? source.sizes : ''"
-          [src]="context.isVisible ? source.src : ''"
-          class="img"
-          [alt]="alt"
-          [attr.loading]="loading"
-          decoding="async"
-          (load)="onLoad()"
-        />
-      </ng-container>
+      <img
+        #image
+        *ngIf="last; else sourceTemplate"
+        [style.objectFit]="objectFit"
+        [style.objectPosition]="objectPosition"
+        [style.backgroundSize]="objectFit"
+        [style.backgroundPosition]="objectPosition"
+        [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
+        [style.filter]="blurFilter"
+        [srcset]="context.isVisible ? source.srcset : ''"
+        [sizes]="context.isVisible ? source.sizes : ''"
+        [src]="context.isVisible ? source.src : ''"
+        class="img"
+        [alt]="alt"
+        [attr.loading]="loading"
+        decoding="async"
+        (load)="onLoad()"
+      />
     </ng-container>
   </picture>
 </div>
