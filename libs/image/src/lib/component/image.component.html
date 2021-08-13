@@ -1,4 +1,9 @@
-<div class="wrapper wrapper--{{ layout }}" [style.width]="wrapperWidth" [style.height]="wrapperHeight">
+<div
+  class="wrapper wrapper--{{ layout }}"
+  [style.width]="wrapperWidth"
+  [style.height]="wrapperHeight"
+  *ngIf="{ isVisible: isVisible$ | async } as context"
+>
   <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
     <img *ngIf="sizerSvg$ | async as sizerSrc" [src]="sizerSrc" class="sizer__content" aria-hidden="true" alt="" role="presentation" />
   </div>
@@ -8,25 +13,23 @@
         <source [type]="source.mimeType" [srcset]="source.srcset" [sizes]="sizes" />
       </ng-template>
       <ng-container *ngIf="last; else sourceTemplate">
-        <ng-container *ngIf="{ isVisible: isVisible$ | async } as context">
-          <img
-            #image
-            [style.objectFit]="objectFit"
-            [style.objectPosition]="objectPosition"
-            [style.backgroundSize]="objectFit"
-            [style.backgroundPosition]="objectPosition"
-            [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
-            [style.filter]="blurFilter"
-            [srcset]="context.isVisible ? source.srcset : ''"
-            [sizes]="context.isVisible ? source.sizes : ''"
-            [src]="context.isVisible ? source.src : ''"
-            class="img"
-            [alt]="alt"
-            [attr.loading]="loading"
-            decoding="async"
-            (load)="onLoad()"
-          />
-        </ng-container>
+        <img
+          #image
+          [style.objectFit]="objectFit"
+          [style.objectPosition]="objectPosition"
+          [style.backgroundSize]="objectFit"
+          [style.backgroundPosition]="objectPosition"
+          [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
+          [style.filter]="blurFilter"
+          [srcset]="context.isVisible ? source.srcset : ''"
+          [sizes]="context.isVisible ? source.sizes : ''"
+          [src]="context.isVisible ? source.src : ''"
+          class="img"
+          [alt]="alt"
+          [attr.loading]="loading"
+          decoding="async"
+          (load)="onLoad()"
+        />
       </ng-container>
     </ng-container>
   </picture>
