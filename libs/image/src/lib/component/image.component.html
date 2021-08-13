@@ -7,24 +7,27 @@
       <ng-template #sourceTemplate>
         <source [type]="source.mimeType" [srcset]="source.srcset" [sizes]="sizes" />
       </ng-template>
-      <img
-        #image
-        *ngIf="last; else sourceTemplate"
-        [srcset]="source.srcset"
-        [sizes]="source.sizes"
-        [src]="source.src"
-        class="img"
-        [alt]="alt"
-        [attr.loading]="loading"
-        decoding="async"
-        [style.objectFit]="objectFit"
-        [style.objectPosition]="objectPosition"
-        [style.backgroundSize]="objectFit"
-        [style.backgroundPosition]="objectPosition"
-        [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
-        [style.filter]="blurFilter"
-        (load)="onLoad()"
-      />
+      <ng-container *ngIf="last; else sourceTemplate">
+        <ng-container *ngIf="{ isVisible: isVisible$ | async } as context">
+          <img
+            #image
+            [style.objectFit]="objectFit"
+            [style.objectPosition]="objectPosition"
+            [style.backgroundSize]="objectFit"
+            [style.backgroundPosition]="objectPosition"
+            [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
+            [style.filter]="blurFilter"
+            [srcset]="context.isVisible ? source.srcset : ''"
+            [sizes]="context.isVisible ? source.sizes : ''"
+            [src]="context.isVisible ? source.src : ''"
+            class="img"
+            [alt]="alt"
+            [attr.loading]="loading"
+            decoding="async"
+            (load)="onLoad()"
+          />
+        </ng-container>
+      </ng-container>
     </ng-container>
   </picture>
 </div>
