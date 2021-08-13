@@ -11,10 +11,8 @@ import {
   ElementRef,
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Observable, Subject } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-
-import { ImageFormat } from '@ng-easy/image-config';
+import { Observable, of, Subject } from 'rxjs';
+import { map, startWith, switchMap } from 'rxjs/operators';
 
 import { ImageLayout } from './image-layout';
 import { ImageLoader } from './image-loader';
@@ -90,6 +88,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   /**
    * A Data URL to be used as a placeholder image before the `src` image successfully loads. Only takes effect when combined with `placeholder="blur"`.
    * Must be a base64-encoded image. It will be enlarged and blurred, so a very small image (10px or less) is recommended. Including larger images as placeholders may harm your application performance.
+   *
+   * If not provided inline and the loader supports optimization a small placeholder will be fetched automatically.
    */
   @Input() blurDataURL?: string;
 
@@ -137,14 +137,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     return this.layout === 'fixed' ? `${this.height ?? 0}px` : 'auto';
   }
 
-  get blurBackgroundImage(): string {
-    if (this.placeholder === 'blur' && this.blurDataURL) {
-      return `url("${this.blurDataURL}")`;
-    } else {
-      return 'none';
-    }
-  }
-
   get blurFilter(): string {
     if (this.placeholder === 'blur' && this.blurDataURL && !this.isImageLoaded) {
       return `blur(20px)`;
@@ -182,6 +174,20 @@ export class ImageComponent implements OnChanges, AfterViewInit {
         unoptimized: this.unoptimized,
       })
     )
+  );
+
+  readonly blurBackgroundImage$: Observable<string> = this.changes$.pipe(
+    switchMap(() => {
+      if (this.placeholder === 'blur') {
+        if (this.blurDataURL) {
+          return of(`url("${this.blurDataURL}")`);
+        } else {
+          return this.imageLoader.getPlaceholderSrc(this.src).pipe(map((src) => `url("${src}")`));
+        }
+      } else {
+        return of('none');
+      }
+    })
   );
 
   private isImageLoaded = false;
@@ -254,12 +260,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
       console.warn(`Image with src "${this.src}" must use an "alt" property.`);
     }
 
-    const rand: number = Math.floor(Math.random() * 1000) + 100;
-
-    if (
-      !this.unoptimized &&
-      !this.imageLoader.getImageUrl({ src: this.src, width: rand, quality: 75, format: ImageFormat.Jpeg }).includes(rand.toString())
-    ) {
+    if (!this.unoptimized && !this.imageLoader.supportsOptimization) {
       console.warn(
         `Image with src "${this.src}" uses a loader that does not implement width. Please implement it or use the "unoptimized" property instead.`
       );
@@ -272,18 +273,16 @@ export class ImageComponent implements OnChanges, AfterViewInit {
         );
       }
 
-      if (!this.blurDataURL) {
-        console.error(
-          `Image with src "${this.src}" has "placeholder='blur'" property but is missing the "blurDataURL" property.
-          Possible solutions:
-            - Add a "blurDataURL" property, the contents should be a small Data URL to represent the image
-            - Remove the "placeholder" property, effectively no blur effect`
+      if (!this.blurDataURL && !this.imageLoader.supportsOptimization) {
+        console.warn(
+          `Image with src "${this.src}" has "placeholder='blur'" property but is missing the "blurDataURL" property. ` +
+            `Placeholder could be fetched from the loader, but it doesn't support optimization. ` +
+            `Please implement it, or pass an inline "blurDataURL".`
         );
       }
     }
   }
 
-  // TODO: get placeholder from loader, load async placeholder for non priority images
   // TODO: handle data: src https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L345
   // TODO: Implement as a structural directive
   // TODO: support intersection observer

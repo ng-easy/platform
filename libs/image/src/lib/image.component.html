@@ -21,7 +21,7 @@
         [style.objectPosition]="objectPosition"
         [style.backgroundSize]="objectFit"
         [style.backgroundPosition]="objectPosition"
-        [style.backgroundImage]="blurBackgroundImage"
+        [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
         [style.filter]="blurFilter"
         (load)="onLoad()"
       />

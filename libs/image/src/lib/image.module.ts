@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { defaultImageOptimizerConfig, ImageOptimizerConfig } from '@ng-easy/image-config';
@@ -13,7 +14,7 @@ export interface ImageModuleConfig {
 
 @NgModule({
   declarations: [ImageComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   exports: [ImageComponent],
 })
 export class ImageModule {

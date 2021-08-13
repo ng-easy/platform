@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { ImageFormat, dedupAndSortImageSizes, getImageFormat, ImageOptimizerConfig, getImageMimeType } from '@ng-easy/image-config';
 
@@ -11,6 +14,9 @@ import { ImageUrlOptions } from './image-url-options';
 
 const viewportWidthRe = /(^|\s)(1?\d?\d)vw/g;
 const preferredOptimizedFormats: readonly ImageFormat[] = [ImageFormat.Webp, ImageFormat.Avif, ImageFormat.Heif, ImageFormat.Jpeg] as const;
+const placeholderQuality = 15;
+const placeholderWidth = 15;
+const randomWidth: number = Math.floor(Math.random() * 1000) + 100;
 
 /**
  * Provider that resolves image URLs.
@@ -23,7 +29,18 @@ export abstract class ImageLoader {
   private readonly deviceSizes: readonly number[] = dedupAndSortImageSizes(this.imageOptimizerConfig.deviceSizes);
   private readonly preferredOptimizedFormat: ImageFormat;
 
-  constructor(private readonly imageOptimizerConfig: ImageOptimizerConfig) {
+  readonly supportsOptimization: boolean = this.getImageUrl({
+    src: 'test',
+    width: randomWidth,
+    quality: 75,
+    format: ImageFormat.Jpeg,
+  }).includes(randomWidth.toString());
+
+  constructor(
+    @Inject(IMAGE_OPTIMIZER_CONFIG) protected readonly imageOptimizerConfig: ImageOptimizerConfig,
+    private readonly http: HttpClient,
+    private readonly window: Window
+  ) {
     const supportedFormats: Set<ImageFormat> = new Set([...imageOptimizerConfig.formats, ImageFormat.Jpeg]);
     const preferredOptimizedFormat: ImageFormat | undefined = preferredOptimizedFormats.find((preferredFormat) =>
       supportedFormats.has(preferredFormat)
@@ -53,6 +70,19 @@ export abstract class ImageLoader {
       src: this.getImageUrl({ src, quality, width: widths[lastWidthIndex], format }),
       mimeType: getImageMimeType(format),
     }));
+  }
+
+  getPlaceholderSrc(src: string): Observable<string> {
+    const imageUrl: string = this.getImageUrl({
+      src,
+      quality: placeholderQuality,
+      width: placeholderWidth,
+      format: this.preferredOptimizedFormat,
+    });
+    return this.http.get(imageUrl, { responseType: 'arraybuffer' }).pipe(
+      map((arrayBuffer) => this.window.btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))),
+      map((base64) => `data:${getImageMimeType(this.preferredOptimizedFormat)};base64,${base64}`)
+    );
   }
 
   private getImageOptimizedFormats(src: string, unoptimized: boolean): ImageFormat[] {
@@ -108,10 +138,6 @@ export abstract class ImageLoader {
 
 @Injectable()
 export class DefaultImageLoader extends ImageLoader {
-  constructor(@Inject(IMAGE_OPTIMIZER_CONFIG) imageOptimizerConfig: ImageOptimizerConfig) {
-    super(imageOptimizerConfig);
-  }
-
   getImageUrl({ src, width, quality, format }: ImageUrlOptions) {
     return `${src}?w=${width}&q=${quality}&fm=${format}`;
   }
