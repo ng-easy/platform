@@ -24,7 +24,7 @@ describe('@ng-easy/image', () => {
         it(`should not have visual regressions for ${name} (${width}x${height}px)`, () => {
           cy.viewport(width, height);
           // eslint-disable-next-line cypress/no-unnecessary-waiting
-          cy.wait(1500);
+          cy.wait(layout === 'list' ? 4000 : 1000); // Give enough time to load the images
           cy.matchImageSnapshot();
         });
       });
