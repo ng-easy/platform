@@ -12,10 +12,10 @@ import {
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable, Subject } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, switchMap } from 'rxjs/operators';
 
 import { ImageLayout, ImagePlaceholder, ObjectFit, ImageSources } from '../models';
-import { ImageLoader } from '../services';
+import { ImageIntersectionObserver, ImageLoader } from '../services';
 
 @Component({
   selector: 'image[src]',
@@ -183,9 +183,19 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     })
   );
 
+  readonly isVisible$: Observable<boolean> = this.changes$.pipe(
+    switchMap(() => this.intersection.isVisible(this.elementRef.nativeElement, this.priority))
+  );
+
   private isImageLoaded = false;
 
-  constructor(private readonly imageLoader: ImageLoader, private readonly window: Window, private readonly domSanitizer: DomSanitizer) {}
+  constructor(
+    private readonly imageLoader: ImageLoader,
+    private readonly window: Window,
+    private readonly domSanitizer: DomSanitizer,
+    private readonly elementRef: ElementRef,
+    private readonly intersection: ImageIntersectionObserver
+  ) {}
 
   ngOnChanges() {
     this.validateInputs();
@@ -283,7 +293,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   }
 
   // TODO: Implement as a structural directive
-  // TODO: support intersection observer
   // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651
   // TODO: unit tests
   // TODO: in SSR use as background color the predominant one

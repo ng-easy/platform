@@ -1,4 +1,9 @@
-<div class="wrapper wrapper--{{ layout }}" [style.width]="wrapperWidth" [style.height]="wrapperHeight">
+<div
+  class="wrapper wrapper--{{ layout }}"
+  [style.width]="wrapperWidth"
+  [style.height]="wrapperHeight"
+  *ngIf="{ isVisible: isVisible$ | async } as context"
+>
   <div class="sizer sizer--{{ layout }}" [style.padding-top]="sizerPaddingTop" *ngIf="showSizer">
     <img *ngIf="sizerSvg$ | async as sizerSrc" [src]="sizerSrc" class="sizer__content" aria-hidden="true" alt="" role="presentation" />
   </div>
@@ -10,9 +15,6 @@
       <img
         #image
         *ngIf="last; else sourceTemplate"
-        [srcset]="source.srcset"
-        [sizes]="source.sizes"
-        [src]="source.src"
         class="img"
         [alt]="alt"
         [attr.loading]="loading"
@@ -23,6 +25,9 @@
         [style.backgroundPosition]="objectPosition"
         [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
         [style.filter]="blurFilter"
+        [srcset]="context.isVisible ? source.srcset : ''"
+        [sizes]="context.isVisible ? source.sizes : ''"
+        [src]="context.isVisible ? source.src : ''"
         (load)="onLoad()"
       />
     </ng-container>
