@@ -62,6 +62,7 @@ export abstract class ImageLoader {
     }));
   }
 
+  // TODO: use jpg format instead of preferredOptimizedFormat
   getPlaceholderSrc(src: string): string {
     return this.getImageUrl({
       src,

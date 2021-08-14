@@ -40,12 +40,14 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   /**
    * The width of the image, in pixels. Must be an integer without a unit.
    * Required, except for those with `layout="fill"`.
+   * TODO: accept string
    */
   @Input() width?: number;
 
   /**
    * The height of the image, in pixels. Must be an integer without a unit.
    * Required, except for those with `layout="fill"`.
+   * TODO: accept string
    */
   @Input() height?: number;
 
@@ -213,6 +215,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     return mime;
   }
 
+  // TODO: fix this being called twice
   onLoad() {
     if (!this.image) {
       return;
@@ -261,8 +264,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
       return;
     }
 
-    if (this.layout === 'fill' && (this.width != null || this.width != null)) {
-      `Image with src "${this.src}" and "layout='fill'" has unused properties assigned. Please remove "width" and "height".`;
+    if (this.layout === 'fill' && (this.width != null || this.height != null)) {
+      console.warn(`Image with src "${this.src}" and "layout='fill'" has unused properties assigned. Please remove "width" and "height".`);
     }
 
     if (this.alt.trim().length === 0) {

@@ -16,7 +16,7 @@ const iMac: Viewport = { name: 'iMac', width: 2560, height: 1440 };
 const sizes: Viewport[] = [iPadLandscape, iPadPortrait, iPhone4Landscape, iPhone4Portrait, iMac];
 
 describe('@ng-easy/image', () => {
-  ['intrinsic', 'fixed', 'responsive', 'fill'].forEach((layout) => {
+  ['intrinsic', 'fixed', 'responsive', 'fill', 'list'].forEach((layout) => {
     describe(`${layout} layout`, () => {
       beforeEach(() => cy.visit(`/iframe.html?id=imagecomponent--${layout}`));
 
