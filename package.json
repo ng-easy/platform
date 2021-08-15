@@ -119,6 +119,7 @@
     "@nrwl/tao": "12.7.1",
     "@schemastore/package": "0.0.6",
     "@schemastore/web-manifest": "0.0.5",
+    "@storybook/addon-a11y": "^6.3.7",
     "@storybook/addon-docs": "^6.3.7",
     "@storybook/addon-essentials": "~6.3.7",
     "@storybook/angular": "~6.3.7",
