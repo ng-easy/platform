@@ -18,7 +18,7 @@ const sizes: Viewport[] = [iPadLandscape, iPadPortrait, iPhone4Landscape, iPhone
 describe('@ng-easy/image', () => {
   ['intrinsic', 'fixed', 'responsive', 'fill'].forEach((layout) => {
     describe(`${layout} layout`, () => {
-      beforeEach(() => cy.visit(`/iframe.html?id=imagecomponent--${layout}`));
+      beforeEach(() => cy.visit(`/iframe.html?id=image-imagecomponent--${layout}`));
 
       sizes.forEach(({ name, width, height }) => {
         it(`should not have visual regressions for ${name} (${width}x${height}px)`, () => {
