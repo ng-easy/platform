@@ -44,7 +44,7 @@
   "peerDependencies": {
     "@angular-devkit/build-angular": "12.2.1",
     "@angular-devkit/core": "^12.2.1",
-    "@nrwl/workspace": "12.7.1",
+    "@nrwl/workspace": "12.7.2",
     "prettier": "^2.3.2",
     "rxjs": "~6.6.7",
     "@ng-easy/image-config": "^1.2.2",
