@@ -11,7 +11,7 @@ export function getAnalyzeCommitsOptions(project: string, mode: 'independent' | 
     parserOpts = { headerPattern: new RegExp(`^(\\w*)(?:\\((${project}|\\*|deps)\\))?: (.*)$`) };
     releaseRules = releaseRules.map((rule) => ({ ...rule, scope: project }));
   } else {
-    parserOpts = { headerPattern: new RegExp(`^(\\w*)(?:\\((\\w*)\\))?: (.*)$`) };
+    parserOpts = { headerPattern: new RegExp(`^(.*)(?:\\((\\w*)\\))?: (.*)$`) };
   }
 
   return { releaseRules, parserOpts };
