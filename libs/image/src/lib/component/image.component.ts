@@ -14,8 +14,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable, Subject } from 'rxjs';
 import { map, startWith, switchMap } from 'rxjs/operators';
 
+import { ImageLoader } from '../loaders';
 import { ImageLayout, ImagePlaceholder, ObjectFit, ImageSources } from '../models';
-import { ImageIntersectionObserver, ImageLoader } from '../services';
+import { ImageIntersectionObserver, ImageLoaderRegistry } from '../services';
 
 @Component({
   selector: 'image[src]',
@@ -53,13 +54,20 @@ export class ImageComponent implements OnChanges, AfterViewInit {
 
   /**
    * The layout behavior of the image as the viewport changes size. Defaults to `intrinsic`.
-   *
+   * TODO: confirm functionality with next.js
    * * When `fixed,` the image dimensions will not change as the viewport changes (no responsiveness) similar to the native img element.
    * * When `intrinsic`, the image will scale the dimensions down for smaller viewports but maintain the original dimensions for larger viewports.
    * * When `responsive`, the image will scale the dimensions down for smaller viewports and scale up for larger viewports.
    * * When `fill`, the image will stretch both width and height to the dimensions of the parent element, provided the parent element is relative. This is usually paired with the objectFit property.
    */
   @Input() layout: ImageLayout = 'intrinsic';
+
+  /**
+   * The name of the loader to be used. If in configuration there is only one, this property can be omitted, the default will be used.
+   */
+  @Input() set loader(loaderName: string) {
+    this.imageLoader = this.imageLoaderRegistry.getLoader(loaderName);
+  }
 
   /**
    * A string mapping media queries to device sizes. Defaults to `100vw`.
@@ -111,6 +119,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
    * Output emits once the image is completely loaded and the placeholder has been removed.
    */
   @Output() loadingComplete = new EventEmitter<void>();
+
+  private imageLoader: ImageLoader = this.imageLoaderRegistry.getLoader();
 
   get loading(): 'eager' | 'lazy' {
     return this.priority ? 'eager' : 'lazy';
@@ -192,7 +202,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   private isImageLoaded = false;
 
   constructor(
-    private readonly imageLoader: ImageLoader,
+    private readonly imageLoaderRegistry: ImageLoaderRegistry,
     private readonly window: Window,
     private readonly domSanitizer: DomSanitizer,
     private readonly elementRef: ElementRef,
@@ -232,20 +242,17 @@ export class ImageComponent implements OnChanges, AfterViewInit {
         });
     }
 
-    if (!isDevMode() || this.layout !== 'intrinsic') {
-      return;
-    }
+    if (isDevMode() && this.layout === 'fixed') {
+      // Check if the size of the image was OK, can help while developing
+      const { naturalWidth, naturalHeight } = this.image.nativeElement;
 
-    // Check if the size of the image was OK, can help while developing
+      if (this.width != null && this.width != naturalWidth) {
+        console.warn(`Image with src "${this.src}" should have "width" of ${naturalWidth}.`);
+      }
 
-    const { naturalWidth, naturalHeight } = this.image.nativeElement;
-
-    if (this.width != null && this.width != naturalWidth) {
-      console.warn(`Image with src "${this.src}" should have "width" of ${naturalWidth}.`);
-    }
-
-    if (this.height != null && this.height != naturalHeight) {
-      console.warn(`Image with src "${this.src}" should have "height" of ${naturalHeight}.`);
+      if (this.height != null && this.height != naturalHeight) {
+        console.warn(`Image with src "${this.src}" should have "height" of ${naturalHeight}.`);
+      }
     }
   }
 
@@ -272,7 +279,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
       console.warn(`Image with src "${this.src}" must use an "alt" property.`);
     }
 
-    if (!this.unoptimized && !this.imageLoader.supportsOptimization) {
+    if (!this.unoptimized && !this.imageLoader.supportsWidth) {
       console.warn(
         `Image with src "${this.src}" uses a loader that does not implement width. Please implement it or use the "unoptimized" property instead.`
       );
@@ -285,7 +292,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
         );
       }
 
-      if (!this.blurDataURL && !this.imageLoader.supportsOptimization) {
+      if (!this.blurDataURL && !this.imageLoader.supportsWidth) {
         console.warn(
           `Image with src "${this.src}" has "placeholder='blur'" property but is missing the "blurDataURL" property. ` +
             `Placeholder could be fetched from the loader, but it doesn't support optimization. ` +
@@ -295,8 +302,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  // TODO: Implement as a structural directive
-  // TODO: provide default image loaders https://github.com/vercel/next.js/blob/807d1ec7ef5925a4fa4b93b61ab72a8c5760531b/packages/next/client/image.tsx#L651
   // TODO: unit tests
   // TODO: in SSR use as background color the predominant one
   // TODO: generate blur placeholder in SSR

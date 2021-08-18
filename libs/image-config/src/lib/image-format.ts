@@ -1,3 +1,4 @@
+// TODO: convert to string type
 export enum ImageFormat {
   Png = 'png',
   Jpeg = 'jpeg',

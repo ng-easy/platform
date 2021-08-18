@@ -3,42 +3,22 @@ import { moduleMetadata, Meta, Story } from '@storybook/angular';
 
 import { ImageComponent } from './component';
 import { ImageModule } from './image.module';
+import { akamaiImageLoader, cloudinaryImageLoader, ImigixImageLoader } from './loaders';
 
 @Component({
   template: `
-    <h2><code>layout="fixed"</code></h2>
-    <image
-      src="https://assets.imgix.net/unsplash/bear.jpg"
-      alt="Bear"
-      [width]="1080"
-      [height]="720"
-      layout="fixed"
-      placeholder="blur"
-    ></image>
-
     <h2><code>layout="intrinsic"</code></h2>
-    <image
-      src="https://assets.imgix.net/examples/kingfisher.jpg"
-      alt="Kingfisher"
-      [width]="3840"
-      [height]="2560"
-      layout="intrinsic"
-      placeholder="blur"
-    ></image>
+    <image layout="intrinsic" src="unsplash/bear.jpg" alt="Bear" [width]="4752" [height]="3168" placeholder="blur"></image>
+
+    <h2><code>layout="fixed"</code></h2>
+    <image layout="fixed" loader="akamai" src="01.jpg" alt="Car" [width]="1366" [height]="768" placeholder="blur"></image>
 
     <h2><code>layout="responsive"</code></h2>
-    <image
-      src="https://assets.imgix.net/unsplash/transport.jpg"
-      alt="Transport"
-      [width]="3600"
-      [height]="2400"
-      layout="responsive"
-      placeholder="blur"
-    ></image>
+    <image layout="intrinsic" src="examples/kingfisher.jpg" alt="Kingfisher" [width]="4136" [height]="2757" placeholder="blur"></image>
 
     <h2><code>layout="fill"</code></h2>
     <div style="width: 100%; height: 250px; position: relative">
-      <image src="https://assets.imgix.net/unsplash/bridge.jpg" alt="Bridge" layout="fill" placeholder="blur"></image>
+      <image layout="fill" loader="cloudinary" src="balloons.jpg" alt="Balloons" placeholder="blur"></image>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,7 +37,16 @@ export default {
   component: ImageListComponent,
   decorators: [
     moduleMetadata({
-      imports: [ImageModule.forRoot({}), ImageListModule],
+      imports: [
+        ImageModule.forRoot({
+          loaders: [
+            ImigixImageLoader,
+            cloudinaryImageLoader('https://res.cloudinary.com/idemo/image/upload'),
+            akamaiImageLoader('https://www.akamai.com/fetch-dv-data/www/im-demo/360'),
+          ],
+        }),
+        ImageListModule,
+      ],
     }),
   ],
   parameters: {
