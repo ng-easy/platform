@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, isDevMode } from '@angular/core';
 
 import { ImageFormat, dedupAndSortImageSizes, getImageFormat, ImageOptimizerConfig, getImageMimeType } from '@ng-easy/image-config';
 
@@ -23,12 +23,21 @@ export abstract class ImageLoader {
   private readonly deviceSizes: readonly number[] = dedupAndSortImageSizes(this.imageOptimizerConfig.deviceSizes);
   private readonly preferredOptimizedFormat: ImageFormat;
 
-  readonly supportsOptimization: boolean = this.getImageUrl({
+  readonly supportsWidth: boolean = this.getImageUrl({
     src: 'test',
     width: randomWidth,
     quality: 75,
     format: ImageFormat.Jpeg,
   }).includes(randomWidth.toString());
+
+  readonly supportsFormat: boolean = this.getImageUrl({
+    src: 'test',
+    width: randomWidth,
+    quality: 75,
+    format: ImageFormat.Webp,
+  }).includes(ImageFormat.Webp);
+
+  abstract readonly name: string;
 
   constructor(@Inject(IMAGE_OPTIMIZER_CONFIG) protected readonly imageOptimizerConfig: ImageOptimizerConfig) {
     const supportedFormats: Set<ImageFormat> = new Set([...imageOptimizerConfig.formats, ImageFormat.Jpeg]);
@@ -49,33 +58,44 @@ export abstract class ImageLoader {
     }
 
     const { widths, kind } = this.getWidths(width, layout, sizes);
-    const lastWidthIndex: number = widths.length - 1;
     const quality: number = getQuality(this.imageOptimizerConfig.quality);
+
+    // Only use widths inferior to original image
+    const supportedWidths: number[] = widths.filter((sourceWidth) => width == null || sourceWidth <= width);
+
+    if (isDevMode() && widths.length > supportedWidths.length) {
+      console.warn(
+        `Image with src "${src}" has width only of ${width}px. Use a image with at least a width of ${
+          widths[widths.length - 1]
+        }px to display it nicely on big screens.`
+      );
+    }
 
     return this.getImageOptimizedFormats(src, unoptimized).map((format) => ({
       sizes: !sizes && kind === 'w' ? '100vw' : sizes,
-      srcset: widths
+      srcset: supportedWidths
         .map((width, index) => `${this.getImageUrl({ src, quality, width, format })} ${kind === 'w' ? width : index + 1}${kind}`)
         .join(', '),
-      src: this.getImageUrl({ src, quality, width: widths[lastWidthIndex], format }),
+      src: this.getImageUrl({ src, quality, width: supportedWidths[supportedWidths.length - 1], format }),
       mimeType: getImageMimeType(format),
     }));
   }
 
-  // TODO: use jpg format instead of preferredOptimizedFormat
   getPlaceholderSrc(src: string): string {
     return this.getImageUrl({
       src,
       quality: placeholderQuality,
       width: placeholderWidth,
-      format: this.preferredOptimizedFormat,
+      format: getImageFormat(src),
     });
   }
 
   private getImageOptimizedFormats(src: string, unoptimized: boolean): ImageFormat[] {
     const format: ImageFormat = getImageFormat(src);
 
-    if (format === ImageFormat.Png) {
+    if (!this.supportsFormat) {
+      return [format];
+    } else if (format === ImageFormat.Png) {
       return [ImageFormat.Png];
     } else if (unoptimized) {
       return [format];
@@ -121,11 +141,10 @@ export abstract class ImageLoader {
     ];
     return { widths, kind: 'x' };
   }
-}
 
-@Injectable()
-export class DefaultImageLoader extends ImageLoader {
-  getImageUrl({ src, width, quality, format }: ImageUrlOptions) {
-    return `${src}?w=${width}&q=${quality}&fm=${format}`;
+  protected normalizeSrc(src: string): string {
+    src = src[0] === '/' ? src.slice(1) : src; // Trim initial /
+    src = src[src.length - 1] === '/' ? src.slice(0, -1) : src;
+    return src;
   }
 }

@@ -2,19 +2,30 @@ import { moduleMetadata, Story, Meta } from '@storybook/angular';
 
 import { ImageComponent } from './component';
 import { ImageModule } from './image.module';
+import { cloudinaryImageLoader, ImigixImageLoader } from './loaders';
+import { akamaiImageLoader } from './loaders/akamai-loader';
 
 export default {
   title: 'Image/ImageComponent',
   component: ImageComponent,
   decorators: [
     moduleMetadata({
-      imports: [ImageModule.forRoot({})],
+      imports: [
+        ImageModule.forRoot({
+          loaders: [
+            ImigixImageLoader,
+            cloudinaryImageLoader('https://res.cloudinary.com/idemo/image/upload'),
+            akamaiImageLoader('https://www.akamai.com/fetch-dv-data/www/im-demo/360'),
+          ],
+        }),
+      ],
     }),
   ],
   parameters: {
     controls: {
       include: [
         'src',
+        'loader',
         'alt',
         'width',
         'height',
@@ -31,10 +42,10 @@ export default {
     },
   },
   args: {
-    src: 'https://assets.imgix.net/unsplash/bear.jpg',
+    src: 'unsplash/bear.jpg',
     alt: 'Bear',
-    width: 1080,
-    height: 720,
+    width: 4752,
+    height: 3168,
     placeholder: 'blur',
   },
   argTypes: {
@@ -61,10 +72,10 @@ export const Intrinsic = Template.bind({});
 Intrinsic.args = {};
 
 export const Fixed = Template.bind({});
-Fixed.args = { layout: 'fixed' };
+Fixed.args = { layout: 'fixed', loader: 'akamai', src: '01.jpg', alt: 'Car', width: 1366, height: 768 };
 
 export const Responsive = Template.bind({});
-Responsive.args = { layout: 'responsive' };
+Responsive.args = { layout: 'responsive', src: 'examples/kingfisher.jpg', alt: 'Kingfisher', width: 4136, height: 2757 };
 
 export const Fill = Template.bind({});
-Fill.args = { layout: 'fill', width: undefined, height: undefined };
+Fill.args = { layout: 'fill', loader: 'cloudinary', src: 'balloons.jpg', alt: 'Balloons', width: undefined, height: undefined };
