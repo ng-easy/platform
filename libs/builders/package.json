@@ -35,7 +35,7 @@
     "jimp": "^0.16.1",
     "semantic-release": "^17.4.5",
     "stream-buffers": "^3.0.2",
-    "sharp": "^0.28.3",
+    "sharp": "^0.29.0",
     "svgo": "^2.4.0",
     "tinycolor2": "^1.4.2",
     "to-ico": "^1.1.5",
