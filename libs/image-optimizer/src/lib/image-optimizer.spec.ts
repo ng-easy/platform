@@ -28,8 +28,8 @@ describe('@ng-easy/image-optimizer', () => {
 
       const imageOptimizationTests: ImageOptimizationTest[] = [
         { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
-        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
-        { options: { format: ImageFormat.Heif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
+        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.026 },
+        { options: { format: ImageFormat.Heif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.026 },
         { options: { format: ImageFormat.Jpeg, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
       ];
 
@@ -64,7 +64,7 @@ describe('@ng-easy/image-optimizer', () => {
 
       const imageOptimizationTests: ImageOptimizationTest[] = [
         { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
-        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
+        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.026 },
       ];
 
       for (const imageOptimizationTest of imageOptimizationTests) {
@@ -87,7 +87,7 @@ describe('@ng-easy/image-optimizer', () => {
 
       const imageOptimizationTests: ImageOptimizationTest[] = [
         { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
-        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
+        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.026 },
       ];
 
       for (const imageOptimizationTest of imageOptimizationTests) {
