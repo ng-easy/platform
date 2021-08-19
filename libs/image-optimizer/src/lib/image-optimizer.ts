@@ -1,4 +1,4 @@
-import sharp, { Sharp } from 'sharp';
+import sharp, { AvifOptions, HeifOptions, JpegOptions, PngOptions, Sharp, WebpOptions } from 'sharp';
 
 import { ImageFormat } from '@ng-easy/image-config';
 
@@ -34,7 +34,12 @@ class JpgOptimizer implements ImageOptimizer {
       return cachedImage;
     }
 
-    const sharpImage: Sharp = sharp(buffer).resize({ width: options.width })[options.format]({ quality: options.quality });
+    const chromaSubsampling = '4:2:0'; // https://github.com/lovell/sharp/issues/2850#issuecomment-901943531
+    const formatOptions: JpegOptions | PngOptions | WebpOptions | AvifOptions | HeifOptions = {
+      quality: options.quality,
+      chromaSubsampling,
+    };
+    const sharpImage: Sharp = sharp(buffer).resize({ width: options.width })[options.format](formatOptions);
     const optimizedImage: Buffer = await sharpImage.toBuffer();
     await cache?.persist(imageUri, optimizedImage, options);
 

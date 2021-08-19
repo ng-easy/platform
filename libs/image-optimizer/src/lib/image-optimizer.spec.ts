@@ -63,7 +63,8 @@ describe('@ng-easy/image-optimizer', () => {
       const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'), 'hash');
 
       const imageOptimizationTests: ImageOptimizationTest[] = [
-        { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+        { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
+        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
       ];
 
       for (const imageOptimizationTest of imageOptimizationTests) {
@@ -85,7 +86,8 @@ describe('@ng-easy/image-optimizer', () => {
       const imageCache: ImageCache = new FilesystemImageCache(path.join(process.cwd(), 'tmp'), 'composite');
 
       const imageOptimizationTests: ImageOptimizationTest[] = [
-        { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.035 },
+        { options: { format: ImageFormat.Webp, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.024 },
+        { options: { format: ImageFormat.Avif, width: 1080, quality: 70 }, expectedOptimizationRatio: 0.025 },
       ];
 
       for (const imageOptimizationTest of imageOptimizationTests) {
