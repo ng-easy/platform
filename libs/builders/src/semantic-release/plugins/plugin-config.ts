@@ -10,6 +10,7 @@ export interface PluginConfig extends Options {
   changelog: string;
   outputPath: string;
   mode?: 'independent' | 'sync';
+  releaseCommitMessage: string;
   dependencies: ProjectDependency[];
   build: () => Promise<BuilderOutput>;
 }

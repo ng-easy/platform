@@ -5,7 +5,7 @@ import { JsonObject } from '@angular-devkit/core';
 import { readJsonFile } from '@nrwl/workspace/src/utilities/fileutils';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { emptyDir } from 'fs-extra';
-import semanticRelease, { Result } from 'semantic-release';
+import semanticRelease, { BranchSpec, PluginSpec, Result } from 'semantic-release';
 
 import {
   createLoggerStream,
@@ -17,9 +17,9 @@ import {
 import { PluginConfig } from './plugins/plugin-config';
 import { SemanticReleaseSchema } from './schema';
 
-const buildPlugin = require.resolve('./plugins/build');
-const updatePackageVersionPlugin = require.resolve('./plugins/update-package-version');
-const updateDependenciesPlugin = require.resolve('./plugins/update-dependencies');
+const buildPluginName = require.resolve('./plugins/build');
+const updatePackageVersionPluginName = require.resolve('./plugins/update-package-version');
+const updateDependenciesPluginName = require.resolve('./plugins/update-dependencies');
 
 export default createBuilder(semanticReleaseBuilder);
 
@@ -52,11 +52,15 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
 
   // Launch semantic release
   context.logger.info(`Starting semantic release for project "${project}"`);
+  context.logger.info(`Using configuration:`);
+  context.logger.info(JSON.stringify(options, null, 2));
+
   const pluginConfig: PluginConfig = {
     project,
     packageName,
     packageJson,
     outputPath,
+    releaseCommitMessage: options.releaseCommitMessage,
     changelog: `${dirname(packageJson)}/CHANGELOG.md`,
     dependencies: await calculateProjectDependencies(context),
     build: async () => {
@@ -65,23 +69,34 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
     },
   };
 
+  const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', getAnalyzeCommitsOptions(project, options.mode)];
+  const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions(project)];
+  const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: pluginConfig.changelog }];
+  const buildPlugin: PluginSpec = [buildPluginName, pluginConfig];
+  const npmPlugin: PluginSpec = ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }];
+  const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName)];
+  const updatePackageVersionPlugin: PluginSpec = [updatePackageVersionPluginName, pluginConfig];
+  const updateDependenciesPlugin: PluginSpec = [updateDependenciesPluginName, pluginConfig];
+
+  const plugins: PluginSpec[] = [
+    commitAnalyzerPlugin,
+    releaseNotesPlugin,
+    options.changelog ? changelogPlugin : null,
+    buildPlugin,
+    options.npm ? npmPlugin : null,
+    options.github ? githubPlugin : null,
+    updatePackageVersionPlugin,
+    updateDependenciesPlugin,
+  ].filter<[string, any]>((plugin): plugin is [string, any] => plugin != null);
+
   try {
     const result: Result = await semanticRelease(
       {
         tagFormat: `${packageName}@\${version}`,
-        branches: ['master', 'main', 'next', { name: 'beta', prerelease: true }, { name: 'alpha', prerelease: true }],
+        branches: options.branches as ReadonlyArray<BranchSpec>,
         extends: undefined,
         dryRun: options.dryRun,
-        plugins: [
-          ['@semantic-release/commit-analyzer', getAnalyzeCommitsOptions(project, options.mode)],
-          ['@semantic-release/release-notes-generator', getGenerateNotesOptions(project)],
-          ['@semantic-release/changelog', { changelogFile: pluginConfig.changelog }],
-          [buildPlugin, pluginConfig],
-          ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }],
-          ['@semantic-release/github', getGithubOptions(outputPath, packageName)],
-          [updatePackageVersionPlugin, pluginConfig],
-          [updateDependenciesPlugin, pluginConfig],
-        ],
+        plugins,
         ci: !options.force,
       },
       {

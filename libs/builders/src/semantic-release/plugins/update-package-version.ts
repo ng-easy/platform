@@ -19,11 +19,8 @@ function createGitConfig(pluginConfig: PluginConfig, context: Context): Options 
   const assets: string[] = [pluginConfig.changelog, pluginConfig.packageJson];
   context.logger.log('Committing files:');
   assets.forEach((asset) => context.logger.log(asset));
-
-  return {
-    assets,
-    message: `chore(release): :package: ${pluginConfig.project}@\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`,
-  };
+  const message = pluginConfig.releaseCommitMessage.replace('${project}', pluginConfig.project);
+  return { assets, message };
 }
 
 async function updatePackageVersion(pluginConfig: PluginConfig, nextRelease: NextRelease): Promise<void> {
