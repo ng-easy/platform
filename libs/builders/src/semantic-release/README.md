@@ -7,6 +7,7 @@ This builder is a wrapper of [**semantic-release**](https://github.com/semantic-
 - [`@semantic-release/changelog`](https://www.npmjs.com/package/@semantic-release/changelog)
 - [`@semantic-release/npm`](https://www.npmjs.com/package/@semantic-release/npm)
 - [`@semantic-release/github`](https://www.npmjs.com/package/@semantic-release/github)
+- [`@semantic-release/git`](https://www.npmjs.com/package/@semantic-release/git)
 
 The configuration of the plugins is opinionated and it includes for configured projects:
 
@@ -129,6 +130,10 @@ git push
 ```
 
 And then do a release.
+
+## Authentication
+
+The release process needs write permissions to the remote git repo. Please refer to [`semantic-release` authentication docs](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/ci-configuration.md#authentication) on how to setup env variables for your CI.
 
 ## Tips for GitHub Actions CI
 
