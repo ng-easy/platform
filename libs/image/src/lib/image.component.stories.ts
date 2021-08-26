@@ -15,7 +15,7 @@ export default {
           loaders: [
             ImigixImageLoader,
             cloudinaryImageLoader('https://res.cloudinary.com/idemo/image/upload'),
-            akamaiImageLoader('https://www.akamai.com/fetch-dv-data/www/im-demo/360'),
+            akamaiImageLoader('https://www.akamai.com/content/dam/site/im-demo/media-viewer/'),
           ],
         }),
       ],
@@ -72,7 +72,7 @@ export const Intrinsic = Template.bind({});
 Intrinsic.args = {};
 
 export const Fixed = Template.bind({});
-Fixed.args = { layout: 'fixed', loader: 'akamai', src: '01.jpg', alt: 'Car', width: 1366, height: 768 };
+Fixed.args = { layout: 'fixed', loader: 'akamai', src: '10.jpg', alt: 'Car', width: 1366, height: 768 };
 
 export const Responsive = Template.bind({});
 Responsive.args = { layout: 'responsive', src: 'examples/kingfisher.jpg', alt: 'Kingfisher', width: 4136, height: 2757 };

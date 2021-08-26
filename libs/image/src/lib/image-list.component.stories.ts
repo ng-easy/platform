@@ -11,7 +11,7 @@ import { akamaiImageLoader, cloudinaryImageLoader, ImigixImageLoader } from './l
     <image layout="intrinsic" src="unsplash/bear.jpg" alt="Bear" [width]="4752" [height]="3168" placeholder="blur"></image>
 
     <h2><code>layout="fixed"</code></h2>
-    <image layout="fixed" loader="akamai" src="01.jpg" alt="Car" [width]="1366" [height]="768" placeholder="blur"></image>
+    <image layout="fixed" loader="akamai" src="10.jpg" alt="Car" [width]="1366" [height]="768" placeholder="blur"></image>
 
     <h2><code>layout="responsive"</code></h2>
     <image layout="intrinsic" src="examples/kingfisher.jpg" alt="Kingfisher" [width]="4136" [height]="2757" placeholder="blur"></image>
@@ -42,7 +42,7 @@ export default {
           loaders: [
             ImigixImageLoader,
             cloudinaryImageLoader('https://res.cloudinary.com/idemo/image/upload'),
-            akamaiImageLoader('https://www.akamai.com/fetch-dv-data/www/im-demo/360'),
+            akamaiImageLoader('https://www.akamai.com/content/dam/site/im-demo/media-viewer/'),
           ],
         }),
         ImageListModule,
