@@ -50,7 +50,7 @@ jobs:
           nx-key: build
 
       - name: Build
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: build,favicons
           affected: 'true'
@@ -97,7 +97,7 @@ jobs:
         run: npm run lint:workspace
 
       - name: Lint projects
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: lint
           affected: 'true'
@@ -130,7 +130,7 @@ jobs:
           nx-key: test
 
       - name: Test
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: test
           affected: 'true'
@@ -171,7 +171,7 @@ jobs:
           path: dist
 
       - name: e2e tests
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: storybook-compodoc,e2e
           affected: 'true'
@@ -242,7 +242,7 @@ jobs:
           nx-key: e2e
 
       - name: e2e tests
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: storybook-build
           all: 'true'

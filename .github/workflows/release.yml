@@ -31,14 +31,14 @@ jobs:
           nx-key: build
 
       - name: Build release scripts
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: build
           projects: builders
           nxCloud: 'true'
 
       - name: Release
-        uses: mansagroup/nrwl-nx-action@v2.0.6
+        uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: release
           nxCloud: 'true'
