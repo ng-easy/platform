@@ -1,7 +1,6 @@
 import { dirname } from 'path';
 
 import { BuilderOutput, createBuilder, BuilderContext, BuilderRun } from '@angular-devkit/architect';
-import { JsonObject } from '@angular-devkit/core';
 import { readJsonFile } from '@nrwl/workspace/src/utilities/fileutils';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { emptyDir } from 'fs-extra';
@@ -13,6 +12,7 @@ import {
   getGenerateNotesOptions,
   calculateProjectDependencies,
   getGithubOptions,
+  getBuildTargetOptions,
 } from './lib';
 import { PluginConfig } from './plugins/plugin-config';
 import { SemanticReleaseSchema } from './schema';
@@ -24,8 +24,6 @@ const updateDependenciesPluginName = require.resolve('./plugins/update-dependenc
 export default createBuilder(semanticReleaseBuilder);
 
 async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: BuilderContext): Promise<BuilderOutput> {
-  context.logger.info(`Running initial validations...`);
-
   const { project } = context.target ?? {};
 
   if (project == null) {
@@ -33,14 +31,7 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
   }
 
   // Validate build target
-  const buildTargetOptions = await context.getTargetOptions({ project, target: 'build' }).catch(() => ({} as JsonObject));
-  const { packageJson, outputPath } = buildTargetOptions;
-  if (typeof packageJson !== 'string') {
-    return failureOutput(context, `Project "${project}" doesn't have option packageJson in build target`);
-  }
-  if (typeof outputPath !== 'string') {
-    return failureOutput(context, `Project "${project}" doesn't have option outputPath in build target`);
-  }
+  const { packageJson, outputPath } = await getBuildTargetOptions(context, project);
   await emptyDir(`${outputPath}-tar`);
 
   // Validate source package json
@@ -51,7 +42,7 @@ async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: B
   }
 
   // Launch semantic release
-  context.logger.info(`Starting semantic release for project "${project}"`);
+  context.logger.info(`Starting semantic release for project "${project}" with package name ${packageName} from path ${outputPath}`);
   context.logger.info(`Using configuration:`);
   context.logger.info(JSON.stringify(options, null, 2));
 

@@ -1,4 +1,4 @@
-import { ApplicationRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { defer, Observable, of, Subject } from 'rxjs';
 import { delay, distinctUntilChanged, finalize, map, takeUntil, tap } from 'rxjs/operators';
 
@@ -13,11 +13,9 @@ export class ImageIntersectionObserver {
     },
     {
       // TODO: tweak distances
-      root: this.appRef.components[0]?.location.nativeElement,
+      // https://web.dev/browser-level-image-lazy-loading/
     }
   );
-
-  constructor(private readonly appRef: ApplicationRef) {}
 
   isVisible(element: Element, priority: boolean): Observable<boolean> {
     if (this.browserSupportsLazyLoading || priority) {
