@@ -2,7 +2,7 @@ import path from 'path';
 
 import { BuilderContext } from '@angular-devkit/architect';
 import fs from 'fs-extra';
-import imagemin from 'imagemin';
+import { BufferOptions } from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import jimp from 'jimp';
 import sharp from 'sharp';
@@ -114,7 +114,7 @@ async function createFaviconPng(
 
   if (options.optimize ?? true) {
     const imagemin = await importEsm('imagemin');
-    const buffer: (buffer: Buffer, options?: imagemin.BufferOptions) => Promise<Buffer> = imagemin.buffer;
+    const buffer: (buffer: Buffer, options?: BufferOptions) => Promise<Buffer> = imagemin.buffer;
     iconFile = await buffer(iconFile, { plugins: [imageminPngquant({ quality: [0.3, 0.5] })] });
   }
 
