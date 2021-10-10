@@ -151,7 +151,7 @@
     "husky-check-email": "0.0.7",
     "jest": "27.2.5",
     "jest-preset-angular": "10.0.1",
-    "lint-staged": "^11.2.2",
+    "lint-staged": "^11.2.3",
     "mini-css-extract-plugin": "^2.4.2",
     "ng-packagr": "12.2.3",
     "pretty-bytes": "^5.6.0",
