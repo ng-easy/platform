@@ -142,7 +142,7 @@
     "@types/xml2js": "^0.4.9",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
-    "cypress": "^6.9.1",
+    "cypress": "^8.6.0",
     "cypress-image-snapshot": "^4.0.1",
     "dotenv": "10.0.0",
     "eslint-plugin-cypress": "^2.12.1",
