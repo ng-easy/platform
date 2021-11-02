@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "@ng-easy/image-config": "^1.2.23",
-    "@ng-easy/image-optimizer": "^1.3.26",
+    "@ng-easy/image-optimizer": "^1.3.27",
     "@nrwl/workspace": "^13.1.2",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.2",
