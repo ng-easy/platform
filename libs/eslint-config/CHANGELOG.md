@@ -1,3 +1,10 @@
+## [3.1.30](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.29...@ng-easy/eslint-config@3.1.30) (2021-11-05)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency @nrwl/workspace to v13.1.3 ([a214fa6](https://github.com/ng-easy/platform/commit/a214fa690b7f48111504519a4c34fb406742a5b6))
+
 ## [3.1.29](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.28...@ng-easy/eslint-config@3.1.29) (2021-11-02)
 
 
