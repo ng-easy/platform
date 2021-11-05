@@ -1,3 +1,11 @@
+## [1.3.28](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@1.3.27...@ng-easy/image-optimizer@1.3.28) (2021-11-05)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency @nrwl/workspace to v13.1.3 ([a214fa6](https://github.com/ng-easy/platform/commit/a214fa690b7f48111504519a4c34fb406742a5b6))
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 1.2.24 [skip ci] ([b09874e](https://github.com/ng-easy/platform/commit/b09874e6427ac6b509c94b5b5689f9a5b7c0f948))
+
 ## [1.3.27](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@1.3.26...@ng-easy/image-optimizer@1.3.27) (2021-11-02)
 
 
