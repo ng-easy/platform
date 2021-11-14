@@ -1,3 +1,10 @@
+## [1.0.29](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.28...@ng-easy/prettier-config@1.0.29) (2021-11-14)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint-plugin-import to ^2.25.3 ([8b5757a](https://github.com/ng-easy/platform/commit/8b5757a987ac63b9fedc73ce37b3f25dbffb3f30))
+
 ## [1.0.28](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.27...@ng-easy/prettier-config@1.0.28) (2021-11-12)
 
 
