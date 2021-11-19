@@ -24,7 +24,8 @@
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "scan": true,
-        "accessToken": "ZDJlYjRhOTMtZGI1OS00YzIyLWE4NjctZGIwZWRlYzcwOWEzfHJlYWQ="
+        "accessToken": "ZDJlYjRhOTMtZGI1OS00YzIyLWE4NjctZGIwZWRlYzcwOWEzfHJlYWQ=",
+        "parallel": 1
       }
     }
   },
