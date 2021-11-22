@@ -59,7 +59,7 @@
     "@angular/platform-server": "13.0.2",
     "@angular/router": "13.0.2",
     "@ngrx/component-store": "13.0.1",
-    "@nrwl/workspace": "13.2.1",
+    "@nrwl/workspace": "13.2.2",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
