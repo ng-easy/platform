@@ -83,7 +83,7 @@
     "imagemin-pngquant": "^9.0.2",
     "jimp": "^0.16.1",
     "lodash": "^4.17.21",
-    "prettier": "2.4.1",
+    "prettier": "2.5.0",
     "rxjs": "~6.6.7",
     "semantic-release": "^18.0.1",
     "sharp": "^0.29.3",
