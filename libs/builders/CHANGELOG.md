@@ -1,3 +1,12 @@
+## [3.4.7](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.4.6...@ng-easy/builders@3.4.7) (2021-11-29)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency @nrwl/workspace to v13.2.3 ([9bfe2b2](https://github.com/ng-easy/platform/commit/9bfe2b279b0a2d236aff8354360a8c87802ba382))
+* **builders:** :arrow_up: update @ng-easy/image-config to 1.2.28 [skip ci] ([2a13c3a](https://github.com/ng-easy/platform/commit/2a13c3a7af1356294b98be1e5cf765f13427a8ea))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 1.3.32 [skip ci] ([63f0af8](https://github.com/ng-easy/platform/commit/63f0af86a92c150ae9374bb4955fb0e166c18ef7))
+
 ## [3.4.6](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.4.5...@ng-easy/builders@3.4.6) (2021-11-27)
 
 
