@@ -1,3 +1,14 @@
+## [3.1.33](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.32...@ng-easy/eslint-config@3.1.33) (2021-12-02)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency @nrwl/workspace to v13.2.0 ([164d454](https://github.com/ng-easy/platform/commit/164d45401b912c8aae83e44544d778119d119ffe))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.1 ([b45c656](https://github.com/ng-easy/platform/commit/b45c656a0e611d34ae7ee7415dde3d5365a97b89))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.2 ([58724b1](https://github.com/ng-easy/platform/commit/58724b1eb18dcbea8e74eac5f68d50093248950f))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.3 ([9bfe2b2](https://github.com/ng-easy/platform/commit/9bfe2b279b0a2d236aff8354360a8c87802ba382))
+* :arrow_up: update dependency prettier to v2.5.0 ([0c4a9d5](https://github.com/ng-easy/platform/commit/0c4a9d567c2cb7fc88418abcff7a83532b1e6906))
+
 ## [3.1.33](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.32...@ng-easy/eslint-config@3.1.33) (2021-11-29)
 
 
