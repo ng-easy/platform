@@ -1,3 +1,11 @@
+## [1.3.33](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@1.3.32...@ng-easy/image-optimizer@1.3.33) (2021-12-08)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency prettier to v2.5.1 ([5487209](https://github.com/ng-easy/platform/commit/548720985539f274c894ce0a45c60b065cd3d4cb))
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 1.2.29 [skip ci] ([c5ae27e](https://github.com/ng-easy/platform/commit/c5ae27e10718aace1c0e7a153075bf0ce9aebcf4))
+
 ## [1.3.32](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@1.3.31...@ng-easy/image-optimizer@1.3.32) (2021-11-29)
 
 
