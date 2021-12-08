@@ -1,3 +1,10 @@
+## [1.0.32](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.31...@ng-easy/prettier-config@1.0.32) (2021-12-08)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency prettier to v2.5.1 ([5487209](https://github.com/ng-easy/platform/commit/548720985539f274c894ce0a45c60b065cd3d4cb))
+
 ## [1.0.31](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.30...@ng-easy/prettier-config@1.0.31) (2021-11-29)
 
 
