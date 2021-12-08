@@ -1,3 +1,10 @@
+## [1.2.29](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@1.2.28...@ng-easy/image-config@1.2.29) (2021-12-08)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency prettier to v2.5.1 ([5487209](https://github.com/ng-easy/platform/commit/548720985539f274c894ce0a45c60b065cd3d4cb))
+
 ## [1.2.28](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@1.2.27...@ng-easy/image-config@1.2.28) (2021-11-29)
 
 
