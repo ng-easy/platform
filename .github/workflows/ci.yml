@@ -58,7 +58,7 @@ jobs:
           nxCloud: 'true'
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: build-artifacts
           path: dist
@@ -165,7 +165,7 @@ jobs:
           nx-key: e2e
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-artifacts
           path: dist
@@ -179,7 +179,7 @@ jobs:
           nxCloud: 'true'
 
       - name: e2e test upload diffs
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.0
         if: failure()
         with:
           name: visual-testing-diffs
@@ -199,7 +199,7 @@ jobs:
           fetch-depth: 20 # https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/troubleshooting.md
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: build-artifacts
           path: dist
