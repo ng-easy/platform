@@ -1,3 +1,12 @@
+## [3.4.8](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.4.7...@ng-easy/builders@3.4.8) (2021-12-08)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency prettier to v2.5.1 ([5487209](https://github.com/ng-easy/platform/commit/548720985539f274c894ce0a45c60b065cd3d4cb))
+* **builders:** :arrow_up: update @ng-easy/image-config to 1.2.29 [skip ci] ([9d70559](https://github.com/ng-easy/platform/commit/9d705599a4603c4c0a9cf37cb6b7e6c3775e6819))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 1.3.33 [skip ci] ([fddafc7](https://github.com/ng-easy/platform/commit/fddafc7db68875ec4c2f64ee2cab7fc3998a0f53))
+
 ## [3.4.7](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.4.6...@ng-easy/builders@3.4.7) (2021-11-29)
 
 
