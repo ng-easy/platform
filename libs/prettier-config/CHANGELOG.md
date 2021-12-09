@@ -1,3 +1,10 @@
+## [1.0.33](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.32...@ng-easy/prettier-config@1.0.33) (2021-12-09)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency @nrwl/workspace to v13.2.4 ([c47bf2a](https://github.com/ng-easy/platform/commit/c47bf2af3d66b17e006d61ed871f3f197e1e8d28))
+
 ## [1.0.32](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.31...@ng-easy/prettier-config@1.0.32) (2021-12-08)
 
 
