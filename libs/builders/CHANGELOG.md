@@ -1,3 +1,12 @@
+## [3.4.11](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.4.10...@ng-easy/builders@3.4.11) (2021-12-11)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency tailwindcss to v3 ([#319](https://github.com/ng-easy/platform/issues/319)) ([9712ad9](https://github.com/ng-easy/platform/commit/9712ad9d0fec6f1617159f7fc981f7a7b382dcee))
+* **builders:** :arrow_up: update @ng-easy/image-config to 1.2.32 [skip ci] ([06303bc](https://github.com/ng-easy/platform/commit/06303bca8d7962acfcfaf1c60e6c19be162e4b61))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 1.3.36 [skip ci] ([d857eff](https://github.com/ng-easy/platform/commit/d857effca84fc9f32cb8a6edc8dfc5cbe5d49f64))
+
 ## [3.4.10](https://github.com/ng-easy/platform/compare/@ng-easy/builders@3.4.9...@ng-easy/builders@3.4.10) (2021-12-10)
 
 
