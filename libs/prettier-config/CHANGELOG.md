@@ -1,3 +1,10 @@
+## [1.0.35](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.34...@ng-easy/prettier-config@1.0.35) (2021-12-11)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency tailwindcss to v3 ([#319](https://github.com/ng-easy/platform/issues/319)) ([9712ad9](https://github.com/ng-easy/platform/commit/9712ad9d0fec6f1617159f7fc981f7a7b382dcee))
+
 ## [1.0.34](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@1.0.33...@ng-easy/prettier-config@1.0.34) (2021-12-10)
 
 
