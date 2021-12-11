@@ -1,3 +1,10 @@
+## [1.2.32](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@1.2.31...@ng-easy/image-config@1.2.32) (2021-12-11)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency tailwindcss to v3 ([#319](https://github.com/ng-easy/platform/issues/319)) ([9712ad9](https://github.com/ng-easy/platform/commit/9712ad9d0fec6f1617159f7fc981f7a7b382dcee))
+
 ## [1.2.31](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@1.2.30...@ng-easy/image-config@1.2.31) (2021-12-10)
 
 
