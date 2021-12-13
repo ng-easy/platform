@@ -1,5 +1,14 @@
 module.exports = {
-  plugins: ['prettier', 'json', 'import', 'unused-imports', 'deprecation', 'prefer-arrow', '@typescript-eslint', '@angular-eslint'],
+  plugins: [
+    'prettier',
+    'json',
+    'import',
+    'unused-imports',
+    '@delagen/deprecation',
+    'prefer-arrow',
+    '@typescript-eslint',
+    '@angular-eslint',
+  ],
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx', '*.json', '*.html'],
