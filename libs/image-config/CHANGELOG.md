@@ -1,3 +1,10 @@
+## [1.2.33](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@1.2.32...@ng-easy/image-config@1.2.33) (2021-12-13)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency @nrwl/workspace to v13.3.1 ([2d3f181](https://github.com/ng-easy/platform/commit/2d3f181084cbc774b357e87ea51d96e718253371))
+
 ## [1.2.32](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@1.2.31...@ng-easy/image-config@1.2.32) (2021-12-11)
 
 
