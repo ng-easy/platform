@@ -1,3 +1,31 @@
+# [3.2.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.32...@ng-easy/eslint-config@3.2.0) (2021-12-15)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([3f70ea8](https://github.com/ng-easy/platform/commit/3f70ea8e702a29156fb1c83bdd52bdbf997b80e7))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.0 ([164d454](https://github.com/ng-easy/platform/commit/164d45401b912c8aae83e44544d778119d119ffe))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.1 ([b45c656](https://github.com/ng-easy/platform/commit/b45c656a0e611d34ae7ee7415dde3d5365a97b89))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.2 ([58724b1](https://github.com/ng-easy/platform/commit/58724b1eb18dcbea8e74eac5f68d50093248950f))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.3 ([9bfe2b2](https://github.com/ng-easy/platform/commit/9bfe2b279b0a2d236aff8354360a8c87802ba382))
+* :arrow_up: update dependency @nrwl/workspace to v13.2.4 ([c47bf2a](https://github.com/ng-easy/platform/commit/c47bf2af3d66b17e006d61ed871f3f197e1e8d28))
+* :arrow_up: update dependency @nrwl/workspace to v13.3.0 ([1e14852](https://github.com/ng-easy/platform/commit/1e14852582f49a9545321f5fa9cfcaa5dcb85754))
+* :arrow_up: update dependency @nrwl/workspace to v13.3.1 ([2d3f181](https://github.com/ng-easy/platform/commit/2d3f181084cbc774b357e87ea51d96e718253371))
+* :arrow_up: update dependency @nrwl/workspace to v13.3.4 ([#324](https://github.com/ng-easy/platform/issues/324)) ([823a122](https://github.com/ng-easy/platform/commit/823a122b4791592104ecf9618f8eeeffcf2dc6b5))
+* :arrow_up: update dependency prettier to v2.5.0 ([0c4a9d5](https://github.com/ng-easy/platform/commit/0c4a9d567c2cb7fc88418abcff7a83532b1e6906))
+* :arrow_up: update dependency prettier to v2.5.1 ([5487209](https://github.com/ng-easy/platform/commit/548720985539f274c894ce0a45c60b065cd3d4cb))
+* :arrow_up: update dependency tailwindcss to v3 ([#319](https://github.com/ng-easy/platform/issues/319)) ([9712ad9](https://github.com/ng-easy/platform/commit/9712ad9d0fec6f1617159f7fc981f7a7b382dcee))
+
+
+### Features
+
+* **eslint-config:** :sparkles: upgrade to eslint v8 ([8f8a1cf](https://github.com/ng-easy/platform/commit/8f8a1cfd2b806dbe6bcbba044d066dbca0f8f874))
+
+
+### BREAKING CHANGES
+
+* **eslint-config:** Upgrade to eslint v8
+
 ## [3.1.33](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.32...@ng-easy/eslint-config@3.1.33) (2021-12-15)
 
 
