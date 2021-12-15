@@ -53,9 +53,9 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: build,favicons
-          affected: 'true'
           parallel: 'true'
           nxCloud: 'true'
+          affected: 'false'
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2.3.0
@@ -100,9 +100,9 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: lint
-          affected: 'true'
           parallel: 'true'
           nxCloud: 'true'
+          affected: 'false'
 
   test:
     name: Test
@@ -133,10 +133,10 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: test
-          affected: 'true'
           parallel: 'true'
           maxParallel: '3'
           nxCloud: 'true'
+          affected: 'false'
 
   e2e:
     name: e2e tests
@@ -174,9 +174,9 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: storybook-compodoc,e2e
-          affected: 'true'
           parallel: 'true'
           nxCloud: 'true'
+          affected: 'false'
 
       - name: e2e test upload diffs
         uses: actions/upload-artifact@v2.3.0
