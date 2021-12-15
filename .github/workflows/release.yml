@@ -42,6 +42,7 @@ jobs:
         with:
           targets: release
           nxCloud: 'true'
+          affected: 'false'
         env:
           CI: true
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

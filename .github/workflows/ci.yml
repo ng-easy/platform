@@ -241,7 +241,7 @@ jobs:
         with:
           nx-key: e2e
 
-      - name: e2e tests
+      - name: Storybook
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: storybook-build
