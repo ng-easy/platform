@@ -115,7 +115,7 @@ All commits will be considered for a potential version bump. Changelog will stil
 ## Bump major version
 
 ```shell
-git commit -m "feat: :sparkles: bump major version" -m "BREAKING CHANGE New version"
+git commit -m "feat: :sparkles: bump major version" -m "BREAKING CHANGE New version" --allow-empty
 ```
 
 ## Force a specific version
