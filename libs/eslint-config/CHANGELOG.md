@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.0...@ng-easy/eslint-config@3.2.1) (2021-12-19)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([7fd534c](https://github.com/ng-easy/platform/commit/7fd534cec8bba0fce03c4512a5600b4c4f19897e))
+
 # [3.2.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.1.32...@ng-easy/eslint-config@3.2.0) (2021-12-15)
 
 
