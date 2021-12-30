@@ -1,3 +1,11 @@
+## [2.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@2.0.2...@ng-easy/prettier-config@2.0.3) (2021-12-30)
+
+
+### Bug Fixes
+
+* :arrow_up: update all non-major dependencies ([aad3154](https://github.com/ng-easy/platform/commit/aad31545935475f2fbd38a4f7472a16f7518ca98))
+* :arrow_up: update client tooling ([#338](https://github.com/ng-easy/platform/issues/338)) ([bf2cbed](https://github.com/ng-easy/platform/commit/bf2cbeddac78ebe53cf28da1bf56cee946af0d7a))
+
 ## [2.0.2](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@2.0.1...@ng-easy/prettier-config@2.0.2) (2021-12-22)
 
 
