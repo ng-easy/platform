@@ -17,7 +17,8 @@ interface BrowserBuilderSchema {
   index: string;
 }
 
-export default createBuilder(faviconsBuilder);
+const builder: any = createBuilder(faviconsBuilder);
+export default builder;
 
 async function faviconsBuilder(options: Options, context: BuilderContext): Promise<BuilderOutput> {
   context.reportStatus(`Generating favicons from ${options.favicon}`);

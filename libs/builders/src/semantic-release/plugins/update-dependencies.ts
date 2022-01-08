@@ -1,4 +1,4 @@
-import { readJsonFile, writeJsonFile } from '@nrwl/workspace/src/utilities/fileutils';
+import { readJsonFile, writeJsonFile } from '@nrwl/tao/src/utils/fileutils';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { prepare as gitPrepare } from '@semantic-release/git';
 import { Context, NextRelease, Options } from 'semantic-release';
