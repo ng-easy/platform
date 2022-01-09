@@ -1,7 +1,7 @@
 import { dirname } from 'path';
 
 import { BuilderOutput, createBuilder, BuilderContext, BuilderRun } from '@angular-devkit/architect';
-import { readJsonFile } from '@nrwl/workspace/src/utilities/fileutils';
+import { readJsonFile } from '@nrwl/tao/src/utils/fileutils';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { emptyDir } from 'fs-extra';
 import semanticRelease, { BranchSpec, PluginSpec, Result } from 'semantic-release';
@@ -21,7 +21,8 @@ const buildPluginName = require.resolve('./plugins/build');
 const updatePackageVersionPluginName = require.resolve('./plugins/update-package-version');
 const updateDependenciesPluginName = require.resolve('./plugins/update-dependencies');
 
-export default createBuilder(semanticReleaseBuilder);
+const builder: any = createBuilder(semanticReleaseBuilder);
+export default builder;
 
 async function semanticReleaseBuilder(options: SemanticReleaseSchema, context: BuilderContext): Promise<BuilderOutput> {
   const { project } = context.target ?? {};

@@ -1,9 +1,8 @@
 import path from 'path';
 
-import { Architect, BuilderRun, BuilderOutput } from '@angular-devkit/architect';
+import { Architect, BuilderRun, BuilderOutput, ScheduleOptions } from '@angular-devkit/architect';
 import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { logging, schema } from '@angular-devkit/core';
-import { Logger } from '@angular-devkit/core/src/logger';
 import fs from 'fs-extra';
 
 // eslint-disable-next-line import/no-named-as-default
@@ -26,18 +25,19 @@ describe('@ng-easy/builders:image-optimizer', () => {
   });
 
   it('optimizes assets from a folder', async () => {
-    const logger: Logger = new logging.Logger('');
+    const logger: any = new logging.Logger('');
     const logs: string[] = [];
-    logger.subscribe((ev) => logs.push(ev.message));
+    logger.subscribe((ev: logging.LogEntry) => logs.push(ev.message));
 
     const assetsPath: string = path.join(__dirname, 'assets');
     const outputPath: string = path.join(process.cwd(), 'tmp/libs/builders/image-optimizer');
     await fs.emptyDir(outputPath);
 
+    const scheduleOptions: ScheduleOptions = { logger };
     const run: BuilderRun = await architect.scheduleBuilder(
       '@ng-easy/builders:image-optimizer',
       { assets: [assetsPath], outputPath, deviceSizes: [1080], imageSizes: [600], quality: 75 } as ImageOptimizerConfigJson,
-      { logger }
+      scheduleOptions
     );
 
     const output: BuilderOutput = await run.result;

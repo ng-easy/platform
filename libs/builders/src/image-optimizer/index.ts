@@ -20,7 +20,8 @@ import {
 
 import { ImageOptimizerConfigJson } from './options';
 
-export default createBuilder(imageOptimizerBuilder);
+const builder: any = createBuilder(imageOptimizerBuilder);
+export default builder;
 
 export async function imageOptimizerBuilder(options: ImageOptimizerConfigJson, context: BuilderContext): Promise<BuilderOutput> {
   context.logger.info(`Optimizing assets from from:`);

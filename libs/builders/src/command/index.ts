@@ -8,7 +8,8 @@ interface Options extends JsonObject {
   args: string[];
 }
 
-export default createBuilder(commandBuilder);
+const builder: any = createBuilder(commandBuilder);
+export default builder;
 
 function commandBuilder(options: Options, context: BuilderContext): Promise<BuilderOutput> {
   context.reportStatus(`Executing "${options.command}"...`);
