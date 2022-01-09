@@ -6,7 +6,7 @@ import { BufferOptions } from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import jimp from 'jimp';
 import sharp from 'sharp';
-import { optimize } from 'svgo';
+import { optimize, OptimizedError, OptimizedSvg } from 'svgo';
 import color from 'tinycolor2';
 import toIco from 'to-ico';
 import xml from 'xml2js';
@@ -143,7 +143,11 @@ async function createFaviconIco(file: Buffer, filename: string, ext: SourceExten
 }
 
 function createFaviconSvg(file: Buffer, filename: string): { iconFile: Buffer; iconName: string } {
-  const svg: string = optimize(file.toString()).data;
+  const optimizeResult = optimize(file.toString());
+  if (isOptimizeResultError(optimizeResult)) {
+    throw new Error(`Error when optimizing svg file ${filename}: ${optimizeResult.error}`);
+  }
+  const svg: string = optimizeResult.data;
   const iconName = `${filename}.svg`;
   return { iconFile: Buffer.from(svg), iconName };
 }
@@ -176,7 +180,11 @@ async function renderPng(file: Buffer, width: number, height: number): Promise<j
  * cause other errors with "unnecessarily high" image density values.
  */
 async function ensureSvgSize(file: Buffer): Promise<Buffer> {
-  const svg: string = optimize(file.toString(), { plugins: ['removeDimensions'] }).data;
+  const optimizeResult = optimize(file.toString(), { plugins: ['removeDimensions'] });
+  if (isOptimizeResultError(optimizeResult)) {
+    throw new Error(`Error when optimizing svg: ${optimizeResult.error}`);
+  }
+  const svg: string = optimizeResult.data;
   const svgDoc = await xml.parseStringPromise(svg);
   let [, , svgWidth, svgHeight] = svgDoc.svg.$.viewBox.split(/[ ,]+/g);
 
@@ -206,4 +214,8 @@ function isValidSourceExtension(ext: string): ext is SourceExtensions {
 function parseColor(hex: string): number {
   const { r, g, b, a } = color(hex).toRgb();
   return jimp.rgbaToInt(r, g, b, a * 255);
+}
+
+function isOptimizeResultError(result: OptimizedSvg | OptimizedError): result is OptimizedError {
+  return !!result.error;
 }
