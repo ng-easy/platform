@@ -1,3 +1,15 @@
+## [4.0.4](https://github.com/ng-easy/platform/compare/@ng-easy/builders@4.0.3...@ng-easy/builders@4.0.4) (2022-01-10)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([#340](https://github.com/ng-easy/platform/issues/340)) ([5907c65](https://github.com/ng-easy/platform/commit/5907c65b08b37588c52c37c697424b9017714649))
+* :arrow_up: upgrade @nrwl/workspace to v13.4.1 ([#339](https://github.com/ng-easy/platform/issues/339)) ([878a422](https://github.com/ng-easy/platform/commit/878a422e81d91af16cf5c24abb4eddddd0e9ea8f))
+* **builders:** :arrow_up: update @ng-easy/image-config to 2.0.4 [skip ci] ([a1b1fc9](https://github.com/ng-easy/platform/commit/a1b1fc90de400cbc0a5d945e6c3c907c36a7907d))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 2.0.4 [skip ci] ([577625f](https://github.com/ng-easy/platform/commit/577625f6f3fdf19c655ba565126d778490c778d7))
+* **builders:** :arrow_up: upgrade @nrwl/workspace to 13.4.1 ([a0941e3](https://github.com/ng-easy/platform/commit/a0941e335fb36cb62c320ef16b3176983b42743a))
+* update package-lock.json ([#343](https://github.com/ng-easy/platform/issues/343)) ([29f4a32](https://github.com/ng-easy/platform/commit/29f4a328005f7139525c52308e3daff78b64e3a9))
+
 ## [4.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/builders@4.0.2...@ng-easy/builders@4.0.3) (2021-12-30)
 
 
