@@ -1,3 +1,12 @@
+## [3.2.4](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.3...@ng-easy/eslint-config@3.2.4) (2022-01-10)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([#340](https://github.com/ng-easy/platform/issues/340)) ([5907c65](https://github.com/ng-easy/platform/commit/5907c65b08b37588c52c37c697424b9017714649))
+* :arrow_up: upgrade @nrwl/workspace to v13.4.1 ([#339](https://github.com/ng-easy/platform/issues/339)) ([878a422](https://github.com/ng-easy/platform/commit/878a422e81d91af16cf5c24abb4eddddd0e9ea8f))
+* update package-lock.json ([#343](https://github.com/ng-easy/platform/issues/343)) ([29f4a32](https://github.com/ng-easy/platform/commit/29f4a328005f7139525c52308e3daff78b64e3a9))
+
 ## [3.2.3](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.2...@ng-easy/eslint-config@3.2.3) (2021-12-30)
 
 
