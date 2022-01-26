@@ -1,3 +1,10 @@
+## [3.2.8](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.7...@ng-easy/eslint-config@3.2.8) (2022-01-26)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling to ^5.10.1 ([9aa4310](https://github.com/ng-easy/platform/commit/9aa4310d6a03f8cd11f81508efdbdb0016b59b0e))
+
 ## [3.2.7](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.6...@ng-easy/eslint-config@3.2.7) (2022-01-23)
 
 
