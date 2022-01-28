@@ -1,3 +1,10 @@
+## [3.2.9](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.8...@ng-easy/eslint-config@3.2.9) (2022-01-28)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint-plugin-jsdoc to ^37.7.0 ([1ae83d4](https://github.com/ng-easy/platform/commit/1ae83d446a46fb81b3bb0a7ef6fe906bdef9b204))
+
 ## [3.2.8](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@3.2.7...@ng-easy/eslint-config@3.2.8) (2022-01-26)
 
 
