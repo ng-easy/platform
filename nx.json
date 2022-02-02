@@ -19,8 +19,21 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["browser", "server", "build", "test", "lint", "e2e", "favicons", "compodoc", "storybook-compodoc"],
-        "strictlyOrderedTargets": ["build", "release"],
+        "cacheableOperations": [
+          "browser",
+          "server",
+          "build",
+          "test",
+          "lint",
+          "e2e",
+          "favicons",
+          "compodoc",
+          "storybook-compodoc"
+        ],
+        "strictlyOrderedTargets": [
+          "build",
+          "release"
+        ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "accessToken": "ZDJlYjRhOTMtZGI1OS00YzIyLWE4NjctZGIwZWRlYzcwOWEzfHJlYWQ=",
