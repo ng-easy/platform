@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@4.0.10...@ng-easy/builders@5.0.0) (2022-02-02)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling to ^5.10.2 ([ad1b3d6](https://github.com/ng-easy/platform/commit/ad1b3d6d40fd35bba29e2e80dd5f1bed44b734c9))
+* :arrow_up: update dependency @nrwl/workspace to ^13.7.1 ([#330](https://github.com/ng-easy/platform/issues/330)) ([41d9ad2](https://github.com/ng-easy/platform/commit/41d9ad2fc63189fd87a52fa3d919afee846d5d58))
+* :arrow_up: update dependency semantic-release to v19 ([#351](https://github.com/ng-easy/platform/issues/351)) ([9760b9a](https://github.com/ng-easy/platform/commit/9760b9a800495086e759cbfc867c8e2144199c03))
+* ⬆️ upgrade @nrwl/workspace to v13.7.1 ([#357](https://github.com/ng-easy/platform/issues/357)) ([b949e20](https://github.com/ng-easy/platform/commit/b949e203bd40e1baa75ebce82efdd43d5d3d1014))
+* **builders:** :arrow_up: update @ng-easy/image-config to 3.0.0 [skip ci] ([c0f8501](https://github.com/ng-easy/platform/commit/c0f8501c705a68711de30f37afe0b1e19d46e49f))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 3.0.0 [skip ci] ([7d66f9c](https://github.com/ng-easy/platform/commit/7d66f9c7b31b07e67e5ee3cb8d5b110071ed271f))
+
+
+### BREAKING CHANGES
+
+* upgrade major version of semantic-release
+
 ## [4.0.10](https://github.com/ng-easy/platform/compare/@ng-easy/builders@4.0.9...@ng-easy/builders@4.0.10) (2022-02-01)
 
 
