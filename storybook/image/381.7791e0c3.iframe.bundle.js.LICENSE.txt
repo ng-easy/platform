@@ -40,8 +40,8 @@ object-assign
  */
 
 /**
- * @license Angular v13.0.2
- * (c) 2010-2021 Google LLC. https://angular.io/
+ * @license Angular v13.2.0
+ * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
 
