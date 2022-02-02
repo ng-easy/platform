@@ -4,7 +4,7 @@ import { BuilderOutput, createBuilder, BuilderContext, BuilderRun } from '@angul
 import { readJsonFile } from '@nrwl/tao/src/utils/fileutils';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { emptyDir } from 'fs-extra';
-import semanticRelease, { BranchSpec, PluginSpec, Result } from 'semantic-release';
+import { BranchSpec, PluginSpec, Result, default as semanticRelease } from 'semantic-release';
 
 import {
   createLoggerStream,
