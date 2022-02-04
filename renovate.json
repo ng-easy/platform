@@ -1,4 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":label(dependencies)", ":assignee(samuelfernandez)", "github>ng-easy/renovate-config"]
+  "extends": [
+    "config:base",
+    ":label(dependencies)",
+    ":assignee(samuelfernandez)",
+    "github>ng-easy/renovate-config",
+    "github>ng-easy/renovate-config:nrwlWorkspace"
+  ]
 }
