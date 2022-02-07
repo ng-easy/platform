@@ -3,9 +3,12 @@ import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { prepare as gitPrepare } from '@semantic-release/git';
 import { Context, NextRelease, Options } from 'semantic-release';
 
+import { InlinePlugin } from './inline-plugin';
 import { PluginConfig } from './plugin-config';
 
 async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
+  context.logger.log(`Nx Update Dependencies: Verify conditions`);
+
   for (let i = 0; i < pluginConfig.dependencies.length; i++) {
     const { project, packageJsonPath } = pluginConfig.dependencies[i];
     await gitPrepare(createGitConfig(pluginConfig.packageName, project, packageJsonPath, context), context);
@@ -13,6 +16,8 @@ async function verifyConditions(pluginConfig: PluginConfig, context: Context): P
 }
 
 async function prepare(pluginConfig: PluginConfig, context: Context): Promise<void> {
+  context.logger.log(`Nx Update Dependencies: Prepare`);
+
   const nextRelease: NextRelease = context.nextRelease as NextRelease;
 
   for (let i = 0; i < pluginConfig.dependencies.length; i++) {
@@ -49,4 +54,4 @@ function createGitConfig(packageName: string, depProject: string, depPackageJson
   };
 }
 
-export = { verifyConditions, prepare };
+export const inlinePluginUpdateDependencies: InlinePlugin = { verifyConditions, prepare, name: 'update-dependencies' };

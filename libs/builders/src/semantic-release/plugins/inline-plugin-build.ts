@@ -2,11 +2,14 @@ import SemanticReleaseError from '@semantic-release/error';
 import { copySync, ensureDir, ensureDirSync, pathExistsSync } from 'fs-extra';
 import { Context } from 'semantic-release';
 
+import { InlinePlugin } from './inline-plugin';
 import { PluginConfig } from './plugin-config';
 
 let needsBuild = false;
 
 async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
+  context.logger.log(`Nx Build Plugin: Verify conditions`);
+
   if (pathExistsSync(`${pluginConfig.outputPath}/package.json`)) {
     context.logger.log(`Project was already built`);
   } else {
@@ -19,6 +22,8 @@ async function verifyConditions(pluginConfig: PluginConfig, context: Context): P
 }
 
 async function prepare(pluginConfig: PluginConfig, context: Context): Promise<void> {
+  context.logger.log(`Nx Build Plugin: Prepare`);
+
   if (!needsBuild) {
     return;
   }
@@ -36,4 +41,4 @@ async function prepare(pluginConfig: PluginConfig, context: Context): Promise<vo
   }
 }
 
-export = { verifyConditions, prepare };
+export const inlinePluginBuild: InlinePlugin = { verifyConditions, prepare, name: 'build' };

@@ -3,13 +3,18 @@ import { verifyConditions as gitVerifyConditions, prepare as gitPrepare } from '
 import { readFile, writeFile } from 'fs-extra';
 import { Context, NextRelease, Options } from 'semantic-release';
 
+import { InlinePlugin } from './inline-plugin';
 import { PluginConfig } from './plugin-config';
 
 async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
+  context.logger.log(`Nx Update Package Version: Verify conditions`);
+
   await gitVerifyConditions(createGitConfig(pluginConfig, context), context);
 }
 
 async function prepare(pluginConfig: PluginConfig, context: Context): Promise<void> {
+  context.logger.log(`Nx Update Package Version: Prepare`);
+
   const nextRelease: NextRelease = context.nextRelease as NextRelease;
   await updatePackageVersion(pluginConfig, nextRelease);
   await gitPrepare(createGitConfig(pluginConfig, context), context);
@@ -29,4 +34,4 @@ async function updatePackageVersion(pluginConfig: PluginConfig, nextRelease: Nex
   await writeFile(pluginConfig.packageJson, JSON.stringify(packageJson, null, 2));
 }
 
-export = { verifyConditions, prepare };
+export const inlinePluginUpdatePackageVersion: InlinePlugin = { verifyConditions, prepare, name: 'update-package-version' };
