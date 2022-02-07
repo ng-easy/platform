@@ -3,22 +3,22 @@
     "command": {
       "implementation": "./src/command",
       "schema": "./src/command/schema.json",
-      "description": "Runs any command line in the operating system."
+      "description": "Runs any command line in the operating system"
     },
     "favicons": {
       "implementation": "./src/favicons",
       "schema": "./src/favicons/schema.json",
-      "description": "Generates the favicons for the web page."
+      "description": "Generates the favicons for the web page"
     },
     "image-optimizer": {
       "implementation": "./src/image-optimizer",
       "schema": "./src/image-optimizer/schema.json",
-      "description": "Optimizes images as static assets."
+      "description": "Optimizes images as static assets"
     },
     "semantic-release": {
-      "implementation": "./src/semantic-release",
-      "schema": "./src/semantic-release/schema.json",
-      "description": "Performs a semantic release"
+      "implementation": "./src/semantic-release/project-builder",
+      "schema": "./src/semantic-release/project-schema.json",
+      "description": "Performs the semantic release of a project"
     }
   }
 }
