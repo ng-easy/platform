@@ -10,21 +10,20 @@ import {
   createLoggerStream,
   getAnalyzeCommitsOptions,
   getGenerateNotesOptions,
-  calculateProjectDependencies,
+  getProjectDependencies,
   getGithubOptions,
   getBuildTargetOptions,
 } from './lib';
-import { InlinePluginSpec } from './plugins/inline-plugin';
+import { InlinePluginSpec, PluginConfig } from './models';
 import { inlinePluginBuild } from './plugins/inline-plugin-build';
 import { inlinePluginUpdateDependencies } from './plugins/inline-plugin-update-dependencies';
 import { inlinePluginUpdatePackageVersion } from './plugins/inline-plugin-update-package-version';
-import { PluginConfig } from './plugins/plugin-config';
-import { SemanticReleaseSchema } from './project-schema';
+import { SemanticReleaseProjectSchema } from './project-schema';
 
 const builder: any = createBuilder(semanticReleaseProjectBuilder);
 export default builder;
 
-async function semanticReleaseProjectBuilder(options: SemanticReleaseSchema, context: BuilderContext): Promise<BuilderOutput> {
+async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSchema, context: BuilderContext): Promise<BuilderOutput> {
   const { project } = context.target ?? {};
 
   if (project == null) {
@@ -54,15 +53,15 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseSchema, con
     outputPath,
     releaseCommitMessage: options.releaseCommitMessage,
     changelog: `${dirname(packageJson)}/CHANGELOG.md`,
-    dependencies: await calculateProjectDependencies(context),
+    dependencies: await getProjectDependencies(context),
     build: async () => {
       const buildRun: BuilderRun = await context.scheduleTarget({ project, target: 'build' });
       return await buildRun.result;
     },
   };
 
-  const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', getAnalyzeCommitsOptions(project, options.mode)];
-  const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions(project)];
+  const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', getAnalyzeCommitsOptions([project], options.mode)];
+  const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions([project])];
   const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: pluginConfig.changelog }];
   const buildPlugin: InlinePluginSpec = [inlinePluginBuild, pluginConfig];
   const npmPlugin: PluginSpec = ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }];

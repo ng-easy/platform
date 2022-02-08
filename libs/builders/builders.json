@@ -19,6 +19,11 @@
       "implementation": "./src/semantic-release/project-builder",
       "schema": "./src/semantic-release/project-schema.json",
       "description": "Performs the semantic release of a project"
+    },
+    "workspace-semantic-release": {
+      "implementation": "./src/semantic-release/workspace-builder",
+      "schema": "./src/semantic-release/workspace-schema.json",
+      "description": "Performs the semantic release of a collection of projects in a workspace"
     }
   }
 }

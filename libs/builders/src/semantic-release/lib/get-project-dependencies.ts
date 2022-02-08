@@ -2,12 +2,9 @@ import { BuilderContext } from '@angular-devkit/architect';
 import { createProjectGraphAsync, ProjectGraph, ProjectType } from '@nrwl/workspace/src/core/project-graph';
 import { pathExists } from 'fs-extra';
 
-export interface ProjectDependency {
-  project: string;
-  packageJsonPath: string;
-}
+import { ProjectDependency } from '../models';
 
-export async function calculateProjectDependencies(context: BuilderContext): Promise<ProjectDependency[]> {
+export async function getProjectDependencies(context: BuilderContext): Promise<ProjectDependency[]> {
   if (!(await pathExists('nx.json'))) {
     context.logger.warn(`Project dependencies can only be detected in Nx workspaces, skipping`);
     return [];

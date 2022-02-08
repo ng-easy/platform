@@ -3,8 +3,7 @@ import { verifyConditions as gitVerifyConditions, prepare as gitPrepare } from '
 import { readFile, writeFile } from 'fs-extra';
 import { Context, NextRelease, Options } from 'semantic-release';
 
-import { InlinePlugin } from './inline-plugin';
-import { PluginConfig } from './plugin-config';
+import { InlinePlugin, PluginConfig } from '../models';
 
 async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
   context.logger.log(`Nx Update Package Version: Verify conditions`);

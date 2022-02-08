@@ -1,0 +1,13 @@
+{
+  "root": "libs/workspace",
+  "sourceRoot": "libs/workspace",
+  "projectType": "library",
+  "targets": {
+    "release-image": {
+      "executor": "./dist/libs/builders:workspace-semantic-release",
+      "options": {
+        "tag": "release:image"
+      }
+    }
+  }
+}

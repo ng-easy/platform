@@ -1,15 +1,8 @@
 import { JsonObject } from '@angular-devkit/core';
 
-export type SemanticReleaseCommitScope = 'project' | 'all';
+import { BranchSpecJson } from './models';
 
-export interface BranchSpecJson extends JsonObject {
-  name: string;
-  channel: string | false | null;
-  range: string | null;
-  prerelease: string | boolean | null;
-}
-
-export interface SemanticReleaseSchema extends JsonObject {
+export interface SemanticReleaseProjectSchema extends JsonObject {
   dryRun: boolean;
   force: boolean;
   mode: 'independent' | 'sync';
