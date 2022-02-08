@@ -1,9 +1,9 @@
 import { Context, Options } from 'semantic-release';
 
-export interface InlinePlugin {
+export interface InlinePlugin<T extends Options> {
   name: string;
-  verifyConditions?(options: Options, context: Context): Promise<void>;
-  prepare?(options: Options, context: Context): Promise<void>;
+  verifyConditions?(options: T, context: Context): Promise<void>;
+  prepare?(options: T, context: Context): Promise<void>;
 }
 
-export type InlinePluginSpec = InlinePlugin | [InlinePlugin, any];
+export type InlinePluginSpec<T> = [InlinePlugin<T>, T];

@@ -14,7 +14,7 @@ import {
   getGithubOptions,
   getBuildTargetOptions,
 } from './lib';
-import { InlinePluginSpec, PluginConfig } from './models';
+import { InlinePluginSpec, ReleaseOptions, ReleaseProjectOptions } from './models';
 import { inlinePluginBuild } from './plugins/inline-plugin-build';
 import { inlinePluginUpdateDependencies } from './plugins/inline-plugin-update-dependencies';
 import { inlinePluginUpdatePackageVersion } from './plugins/inline-plugin-update-package-version';
@@ -46,7 +46,7 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
   context.logger.info(`Using configuration:`);
   context.logger.info(JSON.stringify(options, null, 2));
 
-  const pluginConfig: PluginConfig = {
+  const releaseProjectOptions: ReleaseProjectOptions = {
     project,
     packageName,
     packageJson,
@@ -59,15 +59,18 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
       return await buildRun.result;
     },
   };
+  const releaseOptions: ReleaseOptions = {
+    projects: [releaseProjectOptions],
+  };
 
   const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', getAnalyzeCommitsOptions([project], options.mode)];
   const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions([project])];
-  const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: pluginConfig.changelog }];
-  const buildPlugin: InlinePluginSpec = [inlinePluginBuild, pluginConfig];
+  const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: releaseProjectOptions.changelog }];
+  const buildPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginBuild, releaseOptions];
   const npmPlugin: PluginSpec = ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }];
   const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName)];
-  const updatePackageVersionPlugin: InlinePluginSpec = [inlinePluginUpdatePackageVersion, pluginConfig];
-  const updateDependenciesPlugin: InlinePluginSpec = [inlinePluginUpdateDependencies, pluginConfig];
+  const updatePackageVersionPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginUpdatePackageVersion, releaseOptions];
+  const updateDependenciesPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginUpdateDependencies, releaseOptions];
 
   const plugins = [
     commitAnalyzerPlugin,
@@ -78,7 +81,7 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
     options.github ? githubPlugin : null,
     updatePackageVersionPlugin,
     updateDependenciesPlugin,
-  ].filter((plugin: PluginSpec | InlinePluginSpec | null): plugin is PluginSpec => plugin != null) as PluginSpec[];
+  ].filter((plugin: PluginSpec | InlinePluginSpec<any> | null): plugin is PluginSpec => plugin != null) as PluginSpec[];
 
   try {
     const result: Result = await semanticRelease(

@@ -3,34 +3,55 @@ import { verifyConditions as gitVerifyConditions, prepare as gitPrepare } from '
 import { readFile, writeFile } from 'fs-extra';
 import { Context, NextRelease, Options } from 'semantic-release';
 
-import { InlinePlugin, PluginConfig } from '../models';
+import { InlinePlugin, ReleaseOptions, ReleaseProjectOptions } from '../models';
 
-async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
+async function verifyConditions(projectOptions: ReleaseOptions, context: Context): Promise<void> {
   context.logger.log(`Nx Update Package Version: Verify conditions`);
 
-  await gitVerifyConditions(createGitConfig(pluginConfig, context), context);
+  await gitVerifyConditions(createGitConfig(projectOptions, context), context);
 }
 
-async function prepare(pluginConfig: PluginConfig, context: Context): Promise<void> {
+async function prepare(releaseOptions: ReleaseOptions, context: Context): Promise<void> {
   context.logger.log(`Nx Update Package Version: Prepare`);
 
   const nextRelease: NextRelease = context.nextRelease as NextRelease;
-  await updatePackageVersion(pluginConfig, nextRelease);
-  await gitPrepare(createGitConfig(pluginConfig, context), context);
+  await updatePackageVersion(releaseOptions, nextRelease);
+  await gitPrepare(createGitConfig(releaseOptions, context, true), context);
 }
 
-function createGitConfig(pluginConfig: PluginConfig, context: Context): Options {
-  const assets: string[] = [pluginConfig.changelog, pluginConfig.packageJson];
-  context.logger.log('Committing files:');
-  assets.forEach((asset) => context.logger.log(asset));
-  const message = pluginConfig.releaseCommitMessage.replace('${project}', pluginConfig.project);
+function createGitConfig(releaseOptions: ReleaseOptions, context: Context, log: boolean = false): Options {
+  const assets: string[] = [];
+  let message = '';
+
+  if (log) {
+    context.logger.log('Committing files:');
+  }
+
+  for (let i = 0; i < releaseOptions.projects.length; i++) {
+    const options: ReleaseProjectOptions = releaseOptions.projects[i];
+    assets.push(options.changelog, options.packageJson);
+
+    if (log) {
+      assets.forEach((asset) => context.logger.log(asset));
+    }
+
+    message = options.releaseCommitMessage.replace('${project}', options.project);
+  }
+
   return { assets, message };
 }
 
-async function updatePackageVersion(pluginConfig: PluginConfig, nextRelease: NextRelease): Promise<void> {
-  const packageJson: JSONSchemaForNPMPackageJsonFiles = JSON.parse(await readFile(pluginConfig.packageJson, { encoding: 'utf-8' }));
-  packageJson.version = nextRelease.version;
-  await writeFile(pluginConfig.packageJson, JSON.stringify(packageJson, null, 2));
+async function updatePackageVersion(releaseOptions: ReleaseOptions, nextRelease: NextRelease): Promise<void> {
+  for (let i = 0; i < releaseOptions.projects.length; i++) {
+    const options: ReleaseProjectOptions = releaseOptions.projects[i];
+    const packageJson: JSONSchemaForNPMPackageJsonFiles = JSON.parse(await readFile(options.packageJson, { encoding: 'utf-8' }));
+    packageJson.version = nextRelease.version;
+    await writeFile(options.packageJson, JSON.stringify(packageJson, null, 2));
+  }
 }
 
-export const inlinePluginUpdatePackageVersion: InlinePlugin = { verifyConditions, prepare, name: 'update-package-version' };
+export const inlinePluginUpdatePackageVersion: InlinePlugin<ReleaseOptions> = {
+  verifyConditions,
+  prepare,
+  name: 'update-package-version',
+};

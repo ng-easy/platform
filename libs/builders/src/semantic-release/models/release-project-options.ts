@@ -3,7 +3,7 @@ import { Options } from 'semantic-release';
 
 import { ProjectDependency } from './project-dependency';
 
-export interface PluginConfig extends Options {
+export interface ReleaseProjectOptions {
   project: string;
   packageName: string;
   packageJson: string;
@@ -13,4 +13,8 @@ export interface PluginConfig extends Options {
   releaseCommitMessage: string;
   dependencies: ProjectDependency[];
   build: () => Promise<BuilderOutput>;
+}
+
+export interface ReleaseOptions extends Options {
+  projects: ReleaseProjectOptions[];
 }
