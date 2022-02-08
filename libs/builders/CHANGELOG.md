@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.0.2...@ng-easy/builders@5.1.0) (2022-02-08)
+
+
+### Features
+
+* **builders:** :sparkles: scaffold new workspace release builder ([#369](https://github.com/ng-easy/platform/issues/369)) ([01e7ab9](https://github.com/ng-easy/platform/commit/01e7ab9c39d05b8e5272b370cc2587e8108c4177))
+
 ## [5.0.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.0.1...@ng-easy/builders@5.0.2) (2022-02-06)
 
 
