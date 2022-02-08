@@ -9,6 +9,7 @@
     "image-config": "libs/image-config",
     "image-e2e": "apps/image-e2e",
     "image-optimizer": "libs/image-optimizer",
-    "prettier-config": "libs/prettier-config"
+    "prettier-config": "libs/prettier-config",
+    "workspace": "libs/workspace"
   }
 }

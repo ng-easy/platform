@@ -3,8 +3,7 @@ import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { prepare as gitPrepare } from '@semantic-release/git';
 import { Context, NextRelease, Options } from 'semantic-release';
 
-import { InlinePlugin } from './inline-plugin';
-import { PluginConfig } from './plugin-config';
+import { InlinePlugin, PluginConfig } from '../models';
 
 async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
   context.logger.log(`Nx Update Dependencies: Verify conditions`);

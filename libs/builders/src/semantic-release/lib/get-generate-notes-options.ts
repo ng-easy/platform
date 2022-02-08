@@ -24,7 +24,7 @@ interface SemanticReleaseContext {
   repoUrl: string;
 }
 
-export function getGenerateNotesOptions(project: string): any {
+export function getGenerateNotesOptions(projects: string[]): any {
   return {
     writerOpts: {
       transform(commit: SemanticReleaseCommit, context: SemanticReleaseContext): SemanticReleaseCommit | undefined {
@@ -98,7 +98,7 @@ export function getGenerateNotesOptions(project: string): any {
           return commit; // Workspace wide commit, consider it
         }
 
-        if (commit.scope !== '' && commit.scope !== project) {
+        if (commit.scope !== '' && !projects.includes(commit.scope)) {
           return; // Omit commit if project is not included in scope
         }
 

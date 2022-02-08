@@ -1,7 +1,7 @@
 import { BuilderOutput } from '@angular-devkit/architect';
 import { Options } from 'semantic-release';
 
-import { ProjectDependency } from '../lib';
+import { ProjectDependency } from './project-dependency';
 
 export interface PluginConfig extends Options {
   project: string;

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "tag": {
+      "description": "Nx tag for all projects that will be released",
+      "type": "string",
+      "maxLength": 100,
+      "minLength": 1
+    }
+  },
+  "required": ["tag"],
+  "additionalProperties": false
+}

@@ -2,8 +2,7 @@ import SemanticReleaseError from '@semantic-release/error';
 import { copySync, ensureDir, ensureDirSync, pathExistsSync } from 'fs-extra';
 import { Context } from 'semantic-release';
 
-import { InlinePlugin } from './inline-plugin';
-import { PluginConfig } from './plugin-config';
+import { InlinePlugin, PluginConfig } from '../models';
 
 let needsBuild = false;
 
