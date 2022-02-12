@@ -24,7 +24,7 @@ function createGitConfig(releaseOptions: ReleaseOptions, context: Context, log: 
   let message = '';
 
   if (log) {
-    context.logger.log('Committing files:');
+    context.logger.log('Updating package version on files:');
   }
 
   for (let i = 0; i < releaseOptions.projects.length; i++) {
@@ -32,7 +32,7 @@ function createGitConfig(releaseOptions: ReleaseOptions, context: Context, log: 
     assets.push(options.changelog, options.packageJson);
 
     if (log) {
-      assets.forEach((asset) => context.logger.log(asset));
+      assets.forEach((asset) => context.logger.log(`- ${asset}`));
     }
 
     message = options.releaseCommitMessage.replace('${project}', options.project);

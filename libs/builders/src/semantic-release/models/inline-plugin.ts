@@ -6,4 +6,4 @@ export interface InlinePlugin<T extends Options> {
   prepare?(options: T, context: Context): Promise<void>;
 }
 
-export type InlinePluginSpec<T> = [InlinePlugin<T>, T];
+export type InlinePluginSpec<T extends Options> = [InlinePlugin<T>, T];

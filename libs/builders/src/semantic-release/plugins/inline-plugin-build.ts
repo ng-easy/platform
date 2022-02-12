@@ -1,5 +1,5 @@
 import SemanticReleaseError from '@semantic-release/error';
-import { copySync, ensureDir, ensureDirSync, pathExistsSync } from 'fs-extra';
+import { copySync, emptyDir, ensureDir, ensureDirSync, pathExistsSync } from 'fs-extra';
 import { Context } from 'semantic-release';
 
 import { InlinePlugin, ReleaseOptions, ReleaseProjectOptions } from '../models';
@@ -17,6 +17,8 @@ async function verifyConditions(releaseOptions: ReleaseOptions, context: Context
 
   for (let i = 0; i < releaseOptions.projects.length; i++) {
     const options: ReleaseProjectOptions = releaseOptions.projects[i];
+    await emptyDir(`${options.outputPath}-tar`);
+
     if (pathExistsSync(`${options.outputPath}/package.json`)) {
       context.logger.log(`Project was already built`);
     } else {

@@ -3,7 +3,6 @@ import { dirname } from 'path';
 import { BuilderOutput, createBuilder, BuilderContext, BuilderRun } from '@angular-devkit/architect';
 import { readJsonFile } from '@nrwl/tao/src/utils/fileutils';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
-import { emptyDir } from 'fs-extra';
 import { BranchSpec, PluginSpec, Result, default as semanticRelease } from 'semantic-release';
 
 import {
@@ -30,11 +29,8 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
     return failureOutput(context, `Invalid project`);
   }
 
-  // Validate build target
-  const { packageJson, outputPath } = await getBuildTargetOptions(context, project);
-  await emptyDir(`${outputPath}-tar`);
-
   // Validate source package json
+  const { packageJson, outputPath } = await getBuildTargetOptions(context, project);
   const sourcePackageJson: JSONSchemaForNPMPackageJsonFiles = readJsonFile(packageJson);
   const packageName: string | undefined = sourcePackageJson.name;
   if (packageName == null) {

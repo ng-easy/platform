@@ -5,8 +5,6 @@ import { Context, NextRelease, Options } from 'semantic-release';
 
 import { InlinePlugin, ReleaseOptions, ReleaseProjectOptions } from '../models';
 
-// TODO: fix to call git only once
-
 async function verifyConditions(releaseOptions: ReleaseOptions, context: Context): Promise<void> {
   context.logger.log(`Nx Update Dependencies: Verify conditions`);
 
@@ -62,8 +60,8 @@ function createGitConfig(
   const assets: string[] = [depPackageJsonPath];
 
   if (log) {
-    context.logger.log('Committing files:');
-    assets.forEach((asset) => context.logger.log(asset));
+    context.logger.log(`Updating version of ${packageName} in file:`);
+    assets.forEach((asset) => context.logger.log(`- ${asset}`));
   }
 
   return {
