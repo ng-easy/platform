@@ -3,26 +3,34 @@ import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { prepare as gitPrepare } from '@semantic-release/git';
 import { Context, NextRelease, Options } from 'semantic-release';
 
-import { InlinePlugin, PluginConfig } from '../models';
+import { InlinePlugin, ReleaseOptions, ReleaseProjectOptions } from '../models';
 
-async function verifyConditions(pluginConfig: PluginConfig, context: Context): Promise<void> {
+async function verifyConditions(releaseOptions: ReleaseOptions, context: Context): Promise<void> {
   context.logger.log(`Nx Update Dependencies: Verify conditions`);
 
-  for (let i = 0; i < pluginConfig.dependencies.length; i++) {
-    const { project, packageJsonPath } = pluginConfig.dependencies[i];
-    await gitPrepare(createGitConfig(pluginConfig.packageName, project, packageJsonPath, context), context);
+  for (let i = 0; i < releaseOptions.projects.length; i++) {
+    const options: ReleaseProjectOptions = releaseOptions.projects[i];
+
+    for (let i = 0; i < options.dependencies.length; i++) {
+      const { project, packageJsonPath } = options.dependencies[i];
+      await gitPrepare(createGitConfig(options.packageName, project, packageJsonPath, context), context);
+    }
   }
 }
 
-async function prepare(pluginConfig: PluginConfig, context: Context): Promise<void> {
+async function prepare(releaseOptions: ReleaseOptions, context: Context): Promise<void> {
   context.logger.log(`Nx Update Dependencies: Prepare`);
 
   const nextRelease: NextRelease = context.nextRelease as NextRelease;
 
-  for (let i = 0; i < pluginConfig.dependencies.length; i++) {
-    const { project, packageJsonPath } = pluginConfig.dependencies[i];
-    updateDependencyPackage(pluginConfig.packageName, packageJsonPath, nextRelease.version, context);
-    await gitPrepare(createGitConfig(pluginConfig.packageName, project, packageJsonPath, context), context);
+  for (let i = 0; i < releaseOptions.projects.length; i++) {
+    const options: ReleaseProjectOptions = releaseOptions.projects[i];
+
+    for (let i = 0; i < options.dependencies.length; i++) {
+      const { project, packageJsonPath } = options.dependencies[i];
+      updateDependencyPackage(options.packageName, packageJsonPath, nextRelease.version, context);
+      await gitPrepare(createGitConfig(options.packageName, project, packageJsonPath, context, true), context);
+    }
   }
 }
 
@@ -42,10 +50,19 @@ function updateDependencyPackage(packageName: string, depPackageJsonPath: string
   writeJsonFile(depPackageJsonPath, packageJson);
 }
 
-function createGitConfig(packageName: string, depProject: string, depPackageJsonPath: string, context: Context): Options {
+function createGitConfig(
+  packageName: string,
+  depProject: string,
+  depPackageJsonPath: string,
+  context: Context,
+  log: boolean = false
+): Options {
   const assets: string[] = [depPackageJsonPath];
-  context.logger.log('Committing files:');
-  assets.forEach((asset) => context.logger.log(asset));
+
+  if (log) {
+    context.logger.log(`Updating version of ${packageName} in file:`);
+    assets.forEach((asset) => context.logger.log(`- ${asset}`));
+  }
 
   return {
     assets,
@@ -53,4 +70,8 @@ function createGitConfig(packageName: string, depProject: string, depPackageJson
   };
 }
 
-export const inlinePluginUpdateDependencies: InlinePlugin = { verifyConditions, prepare, name: 'update-dependencies' };
+export const inlinePluginUpdateDependencies: InlinePlugin<ReleaseOptions> = {
+  verifyConditions,
+  prepare,
+  name: 'update-dependencies',
+};
