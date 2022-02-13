@@ -4,7 +4,7 @@
     "config:base",
     ":label(dependencies)",
     ":assignee(samuelfernandez)",
-    "github>ng-easy/renovate-config:nrwlWorkspace",
-    "github>ng-easy/renovate-config"
+    "github>ng-easy/renovate-config",
+    "github>ng-easy/renovate-config:nrwlWorkspace"
   ]
 }
