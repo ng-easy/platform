@@ -27,7 +27,7 @@
   "dependencies": {
     "@ng-easy/image-config": "^3.0.2",
     "@ng-easy/image-optimizer": "^3.0.2",
-    "@nrwl/workspace": "^13.7.3",
+    "@nrwl/workspace": "^13.8.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -37,7 +37,7 @@
     "imagemin": "^8.0.1",
     "jimp": "^0.16.1",
     "semantic-release": "^19.0.2",
-    "sharp": "^0.30.0",
+    "sharp": "^0.30.1",
     "stream-buffers": "^3.0.2",
     "svgo": "^2.8.0",
     "tinycolor2": "^1.4.2",
