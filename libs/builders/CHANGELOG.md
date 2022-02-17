@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.1.0...@ng-easy/builders@5.1.1) (2022-02-17)
+
+
+### Bug Fixes
+
+* **builders:** adjust executor schema to work with Nx 13 ([#376](https://github.com/ng-easy/platform/issues/376)) ([193eb61](https://github.com/ng-easy/platform/commit/193eb6128e5a3e6903868f690eedbe866c9bb018))
+
 # [5.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.0.2...@ng-easy/builders@5.1.0) (2022-02-08)
 
 
