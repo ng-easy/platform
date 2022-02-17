@@ -28,9 +28,9 @@
             "type": "object",
             "properties": {
               "name": { "type": "string", "maxLength": 100, "minLength": 1 },
-              "channel": { "oneOf": [{ "type": "string", "maxLength": 100, "minLength": 1 }, { "const": false }] },
+              "channel": { "anyOf": [{ "type": "string", "maxLength": 100, "minLength": 1 }, { "type": "boolean" }] },
               "range": { "type": "string", "maxLength": 100, "minLength": 1 },
-              "prerelease": { "oneOf": [{ "type": "string", "maxLength": 100, "minLength": 1 }, { "type": "boolean" }] }
+              "prerelease": { "anyOf": [{ "type": "string", "maxLength": 100, "minLength": 1 }, { "type": "boolean" }] }
             },
             "additionalProperties": false,
             "required": ["name"]
