@@ -25,7 +25,11 @@ export async function getProjectDependencies(context: BuilderContext): Promise<P
     return dependencies.length > 0;
   });
 
-  context.logger.info(`Project "${target.project}" is a dependency of ${dependantProjects.map((project) => `"${project}"`).join(', ')}`);
+  if (dependantProjects.length > 0) {
+    context.logger.info(`Project "${target.project}" is a dependency of ${dependantProjects.map((project) => `"${project}"`).join(', ')}`);
+  } else {
+    context.logger.info(`Project "${target.project}" is not a dependency of any other project`);
+  }
 
   const dependencies: ProjectDependency[] = Object.values(projGraph.nodes)
     .filter(({ type, data, name }) => {

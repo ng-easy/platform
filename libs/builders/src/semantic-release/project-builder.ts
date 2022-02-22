@@ -62,8 +62,7 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
 
   const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions([project], options.mode);
 
-  context.logger.info(`Regex to match commits:`);
-  context.logger.info(analyzeCommitOptions.parserOpts.headerPattern.source);
+  context.logger.info(`Regex to match commits: ${analyzeCommitOptions.parserOpts.headerPattern.source}`);
   context.logger.info('');
 
   const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', analyzeCommitOptions];
