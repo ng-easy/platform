@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.1.1...@ng-easy/builders@5.2.0) (2022-02-22)
+
+
+### Features
+
+* **builders:** :sparkles: support comma separated projects as the scope ([#377](https://github.com/ng-easy/platform/issues/377), [#378](https://github.com/ng-easy/platform/issues/378)) ([ce4ba81](https://github.com/ng-easy/platform/commit/ce4ba81d877aa90feae3ed9aea897bd34fcf4420))
+
 ## [5.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.1.0...@ng-easy/builders@5.1.1) (2022-02-17)
 
 
