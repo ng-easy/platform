@@ -98,7 +98,8 @@ export function getGenerateNotesOptions(projects: string[]): any {
           return commit; // Workspace wide commit, consider it
         }
 
-        if (commit.scope !== '' && !projects.includes(commit.scope)) {
+        const scopes: string[] = commit.scope.split(','); // Support comma separated projects
+        if (commit.scope !== '' && intersect(projects, scopes).length === 0) {
           return; // Omit commit if project is not included in scope
         }
 
@@ -106,4 +107,9 @@ export function getGenerateNotesOptions(projects: string[]): any {
       },
     },
   };
+}
+
+function intersect<T>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): ReadonlyArray<T> {
+  const setB = new Set(b);
+  return [...new Set(a)].filter((x) => setB.has(x));
 }

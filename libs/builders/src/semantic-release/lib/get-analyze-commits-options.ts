@@ -1,19 +1,19 @@
-interface ParserOptions {
+export interface ParserOptions {
   headerPattern: RegExp;
 }
 
-interface ReleaseRule {
+export interface ReleaseRule {
   type: string;
   release: string;
   scope?: string;
 }
 
-interface AnalyzeCommitsOptions {
+export interface AnalyzeCommitsOptions {
   releaseRules: ReleaseRule[];
   parserOpts: ParserOptions;
 }
 
-const baseReleaseRules: ReleaseRule[] = [
+const releaseRules: ReleaseRule[] = [
   { type: 'feat', release: 'minor' },
   { type: 'fix', release: 'patch' },
   { type: 'perf', release: 'patch' },
@@ -21,23 +21,17 @@ const baseReleaseRules: ReleaseRule[] = [
 ];
 
 export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent' | 'sync' | 'group'): AnalyzeCommitsOptions {
-  let parserOpts: ParserOptions;
-  let releaseRules: ReleaseRule[];
+  let headerPattern: RegExp;
 
   if (mode === 'independent' || mode === 'group') {
-    parserOpts = {
-      headerPattern: new RegExp(`^(\\w*)(?:\\((${projects.map((project) => escapeRegExp(project)).join('|')}|\\*|deps)\\))?: (.*)$`),
-    };
-    releaseRules = [];
-    projects.forEach((project) => {
-      baseReleaseRules.forEach((rule) => releaseRules.push({ ...rule, scope: project }));
-    });
+    headerPattern = new RegExp(
+      `^(\\w*)(?:\\(([^:]*,)*(${projects.map((project) => escapeRegExp(project)).join('|')}|\\*|deps)(,[^:]*)*\\))?: (.*)$`
+    );
   } else {
-    parserOpts = { headerPattern: new RegExp(`^(\\w*)(?:\\(([^:]*)\\))?: (.*)$`) };
-    releaseRules = baseReleaseRules;
+    headerPattern = new RegExp(`^(\\w*)(?:\\(([^:]*)\\))?: (.*)$`);
   }
 
-  return { releaseRules, parserOpts };
+  return { releaseRules, parserOpts: { headerPattern } };
 }
 
 function escapeRegExp(string: string): string {
