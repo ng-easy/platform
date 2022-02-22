@@ -12,6 +12,7 @@ import {
   getProjectDependencies,
   getGithubOptions,
   getBuildTargetOptions,
+  AnalyzeCommitsOptions,
 } from './lib';
 import { InlinePluginSpec, ReleaseOptions, ReleaseProjectOptions } from './models';
 import { inlinePluginBuild } from './plugins/inline-plugin-build';
@@ -59,7 +60,13 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
     projects: [releaseProjectOptions],
   };
 
-  const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', getAnalyzeCommitsOptions([project], options.mode)];
+  const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions([project], options.mode);
+
+  context.logger.info(`Regex to match commits:`);
+  context.logger.info(analyzeCommitOptions.parserOpts.headerPattern.source);
+  context.logger.info('');
+
+  const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', analyzeCommitOptions];
   const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions([project])];
   const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: releaseProjectOptions.changelog }];
   const buildPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginBuild, releaseOptions];

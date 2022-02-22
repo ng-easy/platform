@@ -68,10 +68,11 @@ If using just the Angular CLI, make sure to perform releases according to the or
 
 With this mode each releasable library will have its own version according to [semver](https://semver.org/). This is the preferred approach.
 
-[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. When the builder is configured in `independent` mode, only the following commits will considered that apply for the individual project:
+[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. When the builder is configured in `independent` mode, only the following commits will considered that apply for the individual project based on the scope:
 
-- Those without scope or scope equal to `*`
+- No scope, `*` or `deps`
 - Those where the scope is equal to the project name
+- If the scope is a comma separated list, the project name should be one of the items
 
 Example of `angular.json`/`workspace.json`:
 
@@ -79,7 +80,12 @@ Example of `angular.json`/`workspace.json`:
 {
   "projects": {
     "library": {
-      // Only commits like "feat: new feature", "feat(*): new feature" or "feat(library): new feature" will be considered
+      // Only these commits will be considered:
+      //   - feat: new feature
+      //   - feat(*): new feature
+      //   - feat(deps): upgrade dependency
+      //   - feat(library): new feature
+      //   - feat(library,some-other-library): new feature
       "targets": {
         "build": {
           /* */
