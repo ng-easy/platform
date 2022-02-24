@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.2.0...@ng-easy/builders@5.2.1) (2022-02-24)
+
+
+### Bug Fixes
+
+* **builders:** :loud_sound: improve log of dependency graph ([#379](https://github.com/ng-easy/platform/issues/379)) ([46c6ba8](https://github.com/ng-easy/platform/commit/46c6ba84473b5bee9b82af84c067339a67b5e8da))
+
 # [5.2.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.1.1...@ng-easy/builders@5.2.0) (2022-02-22)
 
 
