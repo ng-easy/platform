@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.0.2...@ng-easy/eslint-config@4.0.3) (2022-02-26)
+
+
+### Bug Fixes
+
+* **eslint-config:** :bug: widen range of eslint-config-prettier ([#384](https://github.com/ng-easy/platform/issues/384)) ([d32ab1b](https://github.com/ng-easy/platform/commit/d32ab1b9ecbc3d14728d4b68703b1a543a9a494f))
+
 ## [4.0.2](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.0.1...@ng-easy/eslint-config@4.0.2) (2022-02-06)
 
 
