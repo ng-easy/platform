@@ -1,3 +1,14 @@
+## [5.2.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.2.1...@ng-easy/builders@5.2.2) (2022-02-27)
+
+
+### Bug Fixes
+
+* :arrow_up: update all non-major dependencies ([21c73d7](https://github.com/ng-easy/platform/commit/21c73d7fa5ebaca606303d19c3df0421434f0fc3))
+* :arrow_up: update nrwl workspace ([#389](https://github.com/ng-easy/platform/issues/389)) ([dcc3bc6](https://github.com/ng-easy/platform/commit/dcc3bc6db198bec37cfb947104fd003729aa0390))
+* :lock: refresh nrwl workspace ([bcba537](https://github.com/ng-easy/platform/commit/bcba5370efcb71be3faa2830516ef439051cc6c6))
+* **builders:** :arrow_up: update @ng-easy/image-config to 3.0.3 [skip ci] ([04b4d91](https://github.com/ng-easy/platform/commit/04b4d9178c5ed12fae7ed3d16965588a8b732f24))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 3.0.3 [skip ci] ([cf803bf](https://github.com/ng-easy/platform/commit/cf803bfa4944394f538b71172b0fd1dfe2e65bb1))
+
 ## [5.2.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@5.2.0...@ng-easy/builders@5.2.1) (2022-02-24)
 
 
