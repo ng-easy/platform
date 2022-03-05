@@ -15,7 +15,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3.0.0
@@ -35,7 +35,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
 
@@ -58,7 +58,7 @@ jobs:
           affected: 'false'
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3.0.0
         with:
           name: build-artifacts
           path: dist
@@ -76,7 +76,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
 
@@ -112,7 +112,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
 
@@ -147,7 +147,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
 
@@ -165,7 +165,7 @@ jobs:
           nx-key: e2e
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v2.1.0
+        uses: actions/download-artifact@v3.0.0
         with:
           name: build-artifacts
           path: dist
@@ -179,7 +179,7 @@ jobs:
           affected: 'false'
 
       - name: e2e test upload diffs
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3.0.0
         if: failure()
         with:
           name: visual-testing-diffs
@@ -193,13 +193,13 @@ jobs:
     if: ${{ fromJson(needs.build.outputs.has-build-artifacts) }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           ref: ${{ github.event.pull_request.head.sha }} # https://github.com/GoogleChrome/lighthouse-ci/issues/172
           fetch-depth: 20 # https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/troubleshooting.md
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v2.1.0
+        uses: actions/download-artifact@v3.0.0
         with:
           name: build-artifacts
           path: dist
@@ -224,7 +224,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
 
