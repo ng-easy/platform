@@ -1,3 +1,22 @@
+# [4.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.0.4...@ng-easy/eslint-config@4.1.0) (2022-03-05)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([#394](https://github.com/ng-easy/platform/issues/394)) ([74186bd](https://github.com/ng-easy/platform/commit/74186bd1904907a6b2d6674e8c0423585b64ea75))
+* :arrow_up: update dependency sharp to ^0.30.2 ([#393](https://github.com/ng-easy/platform/issues/393)) ([8060094](https://github.com/ng-easy/platform/commit/80600942e069bbdfac0af29e13271cff981e04b1))
+* :lock: refresh nrwl workspace ([#396](https://github.com/ng-easy/platform/issues/396)) ([4a3b925](https://github.com/ng-easy/platform/commit/4a3b9258479d8b5b6b84a23524c50cc975202141))
+
+
+### Features
+
+* **eslint-config:** :sparkles: add deprecated rule for ts files ([#410](https://github.com/ng-easy/platform/issues/410)) ([97cd438](https://github.com/ng-easy/platform/commit/97cd4386cd030794ba94d351a880ea7f08e803e8))
+
+
+### BREAKING CHANGES
+
+* **eslint-config:** will consider deprecation notes as errors
+
 ## [4.0.4](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.0.3...@ng-easy/eslint-config@4.0.4) (2022-02-27)
 
 
