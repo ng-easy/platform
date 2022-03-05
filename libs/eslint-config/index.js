@@ -42,6 +42,7 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         '@angular-eslint/prefer-on-push-component-change-detection': 'warn',
         'import/no-unresolved': ['off'],
+        '@delagen/deprecation/deprecation': 'error',
       },
       settings: {
         'import/resolver': {
