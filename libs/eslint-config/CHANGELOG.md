@@ -1,3 +1,11 @@
+## [4.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.1.0...@ng-easy/eslint-config@4.1.1) (2022-03-13)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([259138b](https://github.com/ng-easy/platform/commit/259138bfb16f81acd2902c16cd25234ca2a90618))
+* :arrow_up: update dependency eslint-plugin-jsdoc to v38 ([#413](https://github.com/ng-easy/platform/issues/413)) ([398bad5](https://github.com/ng-easy/platform/commit/398bad5bc5b801203e60d4f7c3508373d7874937))
+
 # [4.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.0.4...@ng-easy/eslint-config@4.1.0) (2022-03-05)
 
 
