@@ -1,3 +1,11 @@
+## [4.0.1](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@4.0.0...@ng-easy/prettier-config@4.0.1) (2022-03-13)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([259138b](https://github.com/ng-easy/platform/commit/259138bfb16f81acd2902c16cd25234ca2a90618))
+* :arrow_up: update dependency eslint-plugin-jsdoc to v38 ([#413](https://github.com/ng-easy/platform/issues/413)) ([398bad5](https://github.com/ng-easy/platform/commit/398bad5bc5b801203e60d4f7c3508373d7874937))
+
 # [4.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@3.0.3...@ng-easy/prettier-config@4.0.0) (2022-03-05)
 
 
