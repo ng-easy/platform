@@ -1,3 +1,11 @@
+## [4.1.2](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.1.1...@ng-easy/eslint-config@4.1.2) (2022-03-14)
+
+
+### Bug Fixes
+
+* :lock: refresh ([de66563](https://github.com/ng-easy/platform/commit/de665635422c7da4a8719531913fe7630ef98724))
+* :lock: refresh nrwl workspace ([b387309](https://github.com/ng-easy/platform/commit/b387309922fdf52822c5e7f85a62a0a8e326aa66))
+
 ## [4.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.1.0...@ng-easy/eslint-config@4.1.1) (2022-03-13)
 
 
