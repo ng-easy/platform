@@ -1,7 +1,7 @@
 import { dirname } from 'path';
 
 import { BuilderOutput, createBuilder, BuilderContext, BuilderRun } from '@angular-devkit/architect';
-import { readJsonFile } from '@nrwl/tao/src/utils/fileutils';
+import { readJsonFile } from '@nrwl/devkit';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { BranchSpec, PluginSpec, Result, default as semanticRelease } from 'semantic-release';
 

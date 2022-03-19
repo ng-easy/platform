@@ -2,7 +2,7 @@ import { dirname, resolve, join } from 'path';
 
 import { BuilderContext } from '@angular-devkit/architect';
 import { JsonObject } from '@angular-devkit/core';
-import { readJsonFile } from '@nrwl/tao/src/utils/fileutils';
+import { readJsonFile } from '@nrwl/devkit';
 
 export interface BuildOptions {
   packageJson: string;
