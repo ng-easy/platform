@@ -1,3 +1,13 @@
+## [4.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.0.2...@ng-easy/image-config@4.0.3) (2022-03-20)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([#418](https://github.com/ng-easy/platform/issues/418)) ([f67269f](https://github.com/ng-easy/platform/commit/f67269f191d92f5e82cd8498e7a5badc4d2a3ebb))
+* :arrow_up: update dependency eslint-plugin-jsdoc to ^38.0.6 ([#420](https://github.com/ng-easy/platform/issues/420)) ([fe9e569](https://github.com/ng-easy/platform/commit/fe9e56937b2ab271e842f3d45585933e1de8ad15))
+* :arrow_up: update dependency sharp to ^0.30.3 ([894de09](https://github.com/ng-easy/platform/commit/894de09888469ffcb413ddefb00098cf2f0db863))
+* :lock: refresh nrwl workspace ([#419](https://github.com/ng-easy/platform/issues/419)) ([5b05ac5](https://github.com/ng-easy/platform/commit/5b05ac5b16ebeebe5c8c6c55281e4a1f6b420e35))
+
 ## [4.0.2](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.0.1...@ng-easy/image-config@4.0.2) (2022-03-14)
 
 
