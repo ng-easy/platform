@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@4.0.3...@ng-easy/prettier-config@4.0.4) (2022-03-27)
+
+
+### Bug Fixes
+
+* :lock: refresh nrwl workspace ([a38803b](https://github.com/ng-easy/platform/commit/a38803bc42acfddadb748f652e66027edb5d2d08))
+
 ## [4.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@4.0.2...@ng-easy/prettier-config@4.0.3) (2022-03-20)
 
 
