@@ -47,7 +47,7 @@
   "peerDependencies": {
     "@angular-devkit/build-angular": "13.3.0",
     "@angular-devkit/core": "^13.3.0",
-    "prettier": "^2.6.0",
+    "prettier": "^2.6.1",
     "rxjs": "~6.6.7"
   },
   "builders": "builders.json",
