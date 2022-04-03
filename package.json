@@ -94,7 +94,7 @@
     "tslib": "^2.3.1",
     "xml2js": "^0.4.23",
     "zone.js": "0.11.5",
-    "nx": "13.9.5"
+    "nx": "13.9.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.0",
