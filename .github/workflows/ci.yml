@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v3.0.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.1.0
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.3
+        uses: ng-easy/npm-setup@v1.8.4
 
   build:
     name: Build
@@ -40,12 +40,12 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.1.0
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.3
+        uses: ng-easy/npm-setup@v1.8.4
         with:
           nx-key: build
 
@@ -84,12 +84,12 @@ jobs:
         run: git fetch origin main
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.1.0
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.3
+        uses: ng-easy/npm-setup@v1.8.4
         with:
           nx-key: lint
 
@@ -120,12 +120,12 @@ jobs:
         run: git fetch origin main
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.1.0
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.3
+        uses: ng-easy/npm-setup@v1.8.4
         with:
           nx-key: test
 
@@ -155,12 +155,12 @@ jobs:
         run: git fetch origin main
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.1.0
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.3
+        uses: ng-easy/npm-setup@v1.8.4
         with:
           nx-key: e2e
 
@@ -232,12 +232,12 @@ jobs:
         run: git fetch origin main
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.1.0
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.3
+        uses: ng-easy/npm-setup@v1.8.4
         with:
           nx-key: e2e
 
