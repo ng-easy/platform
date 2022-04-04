@@ -1,3 +1,11 @@
+## [4.0.6](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@4.0.5...@ng-easy/prettier-config@4.0.6) (2022-04-04)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency nx to v13.9.6 ([2787ccf](https://github.com/ng-easy/platform/commit/2787ccfbb57059f4ee059ef70c4fabb495d2affc))
+* :lock: refresh nrwl workspace ([3159278](https://github.com/ng-easy/platform/commit/3159278a695176a73a84ae52c12f436de75b6359))
+
 ## [4.0.5](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@4.0.4...@ng-easy/prettier-config@4.0.5) (2022-03-28)
 
 
