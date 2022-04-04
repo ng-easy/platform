@@ -1,3 +1,12 @@
+## [4.0.6](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@4.0.5...@ng-easy/image-optimizer@4.0.6) (2022-04-04)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency nx to v13.9.6 ([2787ccf](https://github.com/ng-easy/platform/commit/2787ccfbb57059f4ee059ef70c4fabb495d2affc))
+* :lock: refresh nrwl workspace ([3159278](https://github.com/ng-easy/platform/commit/3159278a695176a73a84ae52c12f436de75b6359))
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 4.0.6 [skip ci] ([7e73024](https://github.com/ng-easy/platform/commit/7e730247a4f011e75b670d1d796e17627eb80dc9))
+
 ## [4.0.5](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@4.0.4...@ng-easy/image-optimizer@4.0.5) (2022-03-28)
 
 
