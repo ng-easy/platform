@@ -27,7 +27,7 @@
   "dependencies": {
     "@ng-easy/image-config": "^4.0.7",
     "@ng-easy/image-optimizer": "^4.0.7",
-    "@nrwl/workspace": "^13.9.6",
+    "@nrwl/workspace": "^13.10.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -45,8 +45,8 @@
     "xml2js": "^0.4.23"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": "13.3.1",
-    "@angular-devkit/core": "^13.3.1",
+    "@angular-devkit/build-angular": "13.3.2",
+    "@angular-devkit/core": "^13.3.2",
     "prettier": "^2.6.2",
     "rxjs": "~6.6.7"
   },

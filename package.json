@@ -45,7 +45,7 @@
     "lhci": "lhci autorun"
   },
   "dependencies": {
-    "@angular-devkit/core": "13.3.1",
+    "@angular-devkit/core": "13.3.2",
     "@angular/animations": "13.3.2",
     "@angular/cdk": "13.3.2",
     "@angular/common": "13.3.2",
