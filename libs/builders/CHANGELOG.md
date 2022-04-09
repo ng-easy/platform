@@ -1,3 +1,13 @@
+## [6.0.7](https://github.com/ng-easy/platform/compare/@ng-easy/builders@6.0.6...@ng-easy/builders@6.0.7) (2022-04-09)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint-plugin-jsdoc to v39 ([#438](https://github.com/ng-easy/platform/issues/438)) ([9479d14](https://github.com/ng-easy/platform/commit/9479d14ba49f62de51ef39b0ed5fde091b8409ca))
+* **builders:** :arrow_up: update @ng-easy/image-config to 4.0.7 [skip ci] ([3854146](https://github.com/ng-easy/platform/commit/385414612ce3a41145b4c91ffe45066da58031bf))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 4.0.7 [skip ci] ([4cafd64](https://github.com/ng-easy/platform/commit/4cafd64683134cdd9f2a8e9b18f66aaac5b924d3))
+* update nrwl workspace to v13.10.1 ([#433](https://github.com/ng-easy/platform/issues/433)) ([0945854](https://github.com/ng-easy/platform/commit/09458548563a779496ececfa40885bf6a65ead6b))
+
 ## [6.0.6](https://github.com/ng-easy/platform/compare/@ng-easy/builders@6.0.5...@ng-easy/builders@6.0.6) (2022-04-04)
 
 
