@@ -1,5 +1,5 @@
 import { BuilderContext } from '@angular-devkit/architect';
-import { createProjectGraphAsync, ProjectGraph, ProjectType } from '@nrwl/workspace/src/core/project-graph';
+import { ProjectGraph, createProjectGraphAsync } from '@nrwl/devkit';
 import { pathExists } from 'fs-extra';
 
 import { ProjectDependency } from '../models';
@@ -35,7 +35,7 @@ export async function getProjectDependencies(context: BuilderContext): Promise<P
     .filter(({ type, data, name }) => {
       if (!dependantProjects.includes(name)) {
         return false;
-      } else if (type !== ProjectType.lib) {
+      } else if (type !== 'lib') {
         context.logger.info(`Ignoring project "${name}" since it is not a library`);
         return false;
       } else if (!data.targets || !data.targets[targetName] || !data.targets[targetName].executor) {

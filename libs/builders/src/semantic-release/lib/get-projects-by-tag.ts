@@ -1,6 +1,5 @@
 import { BuilderContext } from '@angular-devkit/architect';
-import { ProjectGraphDependency, ProjectGraphNode, ProjectGraphProjectNode } from '@nrwl/tao/src/shared/project-graph';
-import { createProjectGraphAsync, ProjectGraph } from '@nrwl/workspace/src/core/project-graph';
+import { createProjectGraphAsync, ProjectGraph, ProjectGraphDependency, ProjectGraphNode, ProjectGraphProjectNode } from '@nrwl/devkit';
 import { pathExists } from 'fs-extra';
 
 export async function getProjectsByTag(
