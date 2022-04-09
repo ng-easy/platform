@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "prettier": "^2.6.1"
+    "prettier": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"
