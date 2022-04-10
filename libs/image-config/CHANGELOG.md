@@ -1,3 +1,10 @@
+## [4.0.8](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.0.7...@ng-easy/image-config@4.0.8) (2022-04-10)
+
+
+### Bug Fixes
+
+* :lock: refresh nrwl workspace ([8397f30](https://github.com/ng-easy/platform/commit/8397f307a6d1c93a4e8c63a1fdf7138da5bf2819))
+
 ## [4.0.7](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.0.6...@ng-easy/image-config@4.0.7) (2022-04-09)
 
 
