@@ -12,7 +12,7 @@ jobs:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.0.1
         with:
           fetch-depth: 0
           persist-credentials: false # Needed so that semantic release can use the admin token
@@ -21,12 +21,12 @@ jobs:
         run: git fetch origin main
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 14.x
 
       - name: NPM
-        uses: ng-easy/npm-setup@v1.8.4
+        uses: ng-easy/npm-setup@v1.8.5
         with:
           nx-key: build
 
