@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/image-optimizer",
-  "version": "4.0.9",
+  "version": "4.0.10",
   "description": "Node library that implements image optimizations for the web",
   "keywords": [
     "node",
