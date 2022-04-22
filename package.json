@@ -16,8 +16,8 @@
     "url": "git+https://github.com/ng-easy/platform.git"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=16.14.0",
+    "npm": ">=8.5.5"
   },
   "license": "MIT",
   "scripts": {
@@ -174,4 +174,3 @@
   },
   "private": true
 }
-
