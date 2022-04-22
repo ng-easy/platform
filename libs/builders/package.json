@@ -27,7 +27,7 @@
   "dependencies": {
     "@ng-easy/image-config": "^4.0.10",
     "@ng-easy/image-optimizer": "^4.0.10",
-    "@nrwl/workspace": "^13.10.2",
+    "@nrwl/workspace": "^14.0.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
