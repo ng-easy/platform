@@ -9,7 +9,9 @@ import fs from 'fs-extra';
 import imageOptimizerBuilder from './index';
 import { ImageOptimizerConfigJson } from './options';
 
-describe('@ng-easy/builders:image-optimizer', () => {
+const builderName = '@ng-easy/builders:image-optimizer';
+
+describe(builderName, () => {
   let architect: Architect;
   let architectHost: TestingArchitectHost;
 
@@ -21,7 +23,7 @@ describe('@ng-easy/builders:image-optimizer', () => {
     architect = new Architect(architectHost, registry);
     const builderSchema = (await import('./schema.json')) as unknown as schema.JsonSchema;
 
-    architectHost.addBuilder('@ng-easy/builders:image-optimizer', imageOptimizerBuilder, '', builderSchema);
+    architectHost.addBuilder(builderName, imageOptimizerBuilder, '', builderSchema);
   });
 
   it('optimizes assets from a folder', async () => {
@@ -35,7 +37,7 @@ describe('@ng-easy/builders:image-optimizer', () => {
 
     const scheduleOptions: ScheduleOptions = { logger };
     const run: BuilderRun = await architect.scheduleBuilder(
-      '@ng-easy/builders:image-optimizer',
+      builderName,
       { assets: [assetsPath], outputPath, deviceSizes: [1080], imageSizes: [600], quality: 75 } as ImageOptimizerConfigJson,
       scheduleOptions
     );

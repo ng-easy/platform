@@ -256,6 +256,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     }
   }
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   private validateInputs() {
     if (this.src.startsWith('data:')) {
       // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs

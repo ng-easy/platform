@@ -5,6 +5,8 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 
 import { WindowRefService } from './core';
 
+const BUTTON_UPPERCASE = 'button-uppercase';
+
 @Component({
   selector: 'nge-root',
   templateUrl: 'app.component.html',
@@ -175,11 +177,7 @@ export class AppComponent implements OnInit {
   }
 
   get isMobile(): boolean {
-    if (this.breakObserver.isMatched('(max-width: 599px)')) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.breakObserver.isMatched('(max-width: 599px)');
   }
 
   toggleGuides(): void {
@@ -193,16 +191,16 @@ export class AppComponent implements OnInit {
   toggleUppercase(): void {
     this.isToggledUppercase = !this.isToggledUppercase;
     if (this.isToggledUppercase) {
-      this.document?.body.classList.add('button-uppercase');
+      this.document?.body.classList.add(BUTTON_UPPERCASE);
       this.windowRef.nativeWindow?.localStorage.setItem('isToggledUppercase', JSON.stringify(true));
     } else {
-      this.document?.body.classList.remove('button-uppercase');
+      this.document?.body.classList.remove(BUTTON_UPPERCASE);
       this.windowRef.nativeWindow?.localStorage.setItem('isToggledUppercase', JSON.stringify(false));
     }
   }
 
   ngOnInit(): void {
-    if (this.document?.body.classList.contains('button-uppercase')) {
+    if (this.document?.body.classList.contains(BUTTON_UPPERCASE)) {
       this.isToggledUppercase = true;
     } else if (this.windowRef.nativeWindow?.localStorage.getItem('isToggledUppercase')) {
       this.isToggledUppercase = JSON.parse(this.windowRef.nativeWindow?.localStorage.getItem('isToggledUppercase') ?? 'false');

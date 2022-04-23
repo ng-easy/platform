@@ -76,12 +76,14 @@
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-sonarjs": "^0.13.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "fs-extra": "^10.1.0",
     "imagemin": "^8.0.1",
     "imagemin-pngquant": "^9.0.2",
     "jimp": "^0.16.1",
     "lodash": "^4.17.21",
+    "nx": "14.0.2",
     "prettier": "2.6.2",
     "rxjs": "~6.6.7",
     "semantic-release": "^19.0.2",
@@ -93,9 +95,7 @@
     "to-ico": "^1.1.5",
     "tslib": "^2.4.0",
     "xml2js": "^0.4.23",
-    "zone.js": "0.11.5",
-    "nx": "14.0.2",
-    "@storybook/core-server": "6.4.22"
+    "zone.js": "0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.3",
@@ -124,6 +124,7 @@
     "@storybook/addon-essentials": "6.4.22",
     "@storybook/angular": "6.4.22",
     "@storybook/builder-webpack5": "6.4.22",
+    "@storybook/core-server": "6.4.22",
     "@storybook/manager-webpack5": "6.4.22",
     "@twittwer/compodoc": "1.7.0",
     "@types/cheerio": "^0.22.31",
@@ -174,4 +175,3 @@
   },
   "private": true
 }
-

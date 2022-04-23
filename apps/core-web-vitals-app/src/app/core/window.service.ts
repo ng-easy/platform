@@ -9,10 +9,7 @@ function getWindow(): any {
 export class WindowRefService {
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
-  get nativeWindow(): Window | undefined {
-    if (isPlatformBrowser(this.platformId)) {
-      return getWindow();
-    }
-    return;
+  get nativeWindow(): Window | null {
+    return isPlatformBrowser(this.platformId) ? getWindow() : null;
   }
 }

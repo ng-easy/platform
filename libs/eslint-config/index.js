@@ -8,6 +8,7 @@ module.exports = {
     'prefer-arrow',
     '@typescript-eslint',
     '@angular-eslint',
+    'sonarjs',
   ],
   overrides: [
     {
@@ -16,9 +17,15 @@ module.exports = {
       rules: {},
     },
     {
+      files: ['*.js', '*.jsx'],
+      extends: ['eslint:recommended', 'plugin:sonarjs/recommended'],
+      rules: {},
+    },
+    {
       files: ['*.ts', '*.tsx'],
       extends: [
         'eslint:recommended',
+        'plugin:sonarjs/recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
