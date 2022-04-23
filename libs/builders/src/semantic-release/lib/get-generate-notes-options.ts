@@ -27,6 +27,7 @@ interface SemanticReleaseContext {
 export function getGenerateNotesOptions(projects: string[]): any {
   return {
     writerOpts: {
+      // eslint-disable-next-line sonarjs/cognitive-complexity
       transform(commit: SemanticReleaseCommit, context: SemanticReleaseContext): SemanticReleaseCommit | undefined {
         let discard = true;
         const issues: number[] = [];

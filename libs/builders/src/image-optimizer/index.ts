@@ -23,6 +23,7 @@ import { ImageOptimizerConfigJson } from './options';
 const builder: any = createBuilder(imageOptimizerBuilder);
 export default builder;
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export async function imageOptimizerBuilder(options: ImageOptimizerConfigJson, context: BuilderContext): Promise<BuilderOutput> {
   context.logger.info(`Optimizing assets from from:`);
   options.assets.forEach((asset) => context.logger.info(`- ${getRelativePath(asset)}`));

@@ -27,7 +27,8 @@ async function semanticReleaseWorkspaceBuilder(options: SemanticReleaseWorkspace
   nodes.forEach((node) => {
     const nodeDependencies: ProjectGraphDependency[] = dependencies[node.name] ?? [];
     if (nodeDependencies.length > 0) {
-      context.logger.info(`  - Project "${node.name}", depends on ${nodeDependencies.map((dep) => `"${dep.target}"`).join(', ')}`);
+      const nodeDependenciesList = nodeDependencies.map((dep) => `"${dep.target}"`).join(', ');
+      context.logger.info(`  - Project "${node.name}", depends on ${nodeDependenciesList}`);
     } else {
       context.logger.info(`  - Project "${node.name}"`);
     }
