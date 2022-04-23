@@ -1,3 +1,22 @@
+# [4.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.0.10...@ng-easy/image-config@4.1.0) (2022-04-23)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([#452](https://github.com/ng-easy/platform/issues/452)) ([468b481](https://github.com/ng-easy/platform/commit/468b4819cd7e4181f32680646aa891d6eff6b7bc))
+* :arrow_up: update dependency sharp to ^0.30.4 ([#453](https://github.com/ng-easy/platform/issues/453)) ([bf9f5a9](https://github.com/ng-easy/platform/commit/bf9f5a9a86e162be011aa2e81ac70529c704f557))
+* :arrow_up: update nrwl workspace ([#454](https://github.com/ng-easy/platform/issues/454)) ([d8462a2](https://github.com/ng-easy/platform/commit/d8462a238297fcce85b1b33d7bafc700ec3d03bc))
+
+
+### Features
+
+* :arrow_up: upgrade node to v16 and npm to npm to v8.5.5 ([#447](https://github.com/ng-easy/platform/issues/447)) ([a2f9a28](https://github.com/ng-easy/platform/commit/a2f9a28a642b4a9dbea0a26d71a53daeeecbb55f))
+
+
+### BREAKING CHANGES
+
+* update node and npm major versions
+
 ## [4.0.10](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.0.9...@ng-easy/image-config@4.0.10) (2022-04-18)
 
 
