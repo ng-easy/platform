@@ -250,7 +250,7 @@ jobs:
           nxCloud: 'true'
 
       - name: Deploy to GitHub pages
-        uses: JamesIves/github-pages-deploy-action@v4.3.1
+        uses: JamesIves/github-pages-deploy-action@v4.3.2
         with:
           branch: gh-pages
           folder: docs
