@@ -1,3 +1,25 @@
+# [4.4.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.3.0...@ng-easy/eslint-config@4.4.0) (2022-04-24)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint to ^8.14.0 ([40c7bea](https://github.com/ng-easy/platform/commit/40c7bea9b9a66a7a1f7e9d8172c2654ce726f348))
+
+
+### Documentation
+
+* :memo: add downloads badge ([#466](https://github.com/ng-easy/platform/issues/466)) ([880b43d](https://github.com/ng-easy/platform/commit/880b43dd1b5d2587ddb9032c502acc9b44ffb45a))
+
+
+### Features
+
+* **eslint-config:** :sparkles: add sonarjs linting rules ([#464](https://github.com/ng-easy/platform/issues/464)) ([911fe17](https://github.com/ng-easy/platform/commit/911fe17a6e0be2bb49e5289f28fd060666c4f4d7))
+
+
+### BREAKING CHANGES
+
+* **eslint-config:** add sonar lint rules
+
 # [4.3.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.2.3...@ng-easy/eslint-config@4.3.0) (2022-04-23)
 
 
