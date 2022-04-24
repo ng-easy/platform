@@ -1,3 +1,17 @@
+# [7.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@6.1.0...@ng-easy/builders@7.0.0) (2022-04-24)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint to ^8.14.0 ([40c7bea](https://github.com/ng-easy/platform/commit/40c7bea9b9a66a7a1f7e9d8172c2654ce726f348))
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.0.0 [skip ci] ([9f19f67](https://github.com/ng-easy/platform/commit/9f19f67e35e469749115040158fda9d3baabc049))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.0.0 [skip ci] ([2fc010b](https://github.com/ng-easy/platform/commit/2fc010b2aa5654ab8acdafc521c9668a4fb5f36a))
+
+
+### Documentation
+
+* :memo: add downloads badge ([#466](https://github.com/ng-easy/platform/issues/466)) ([880b43d](https://github.com/ng-easy/platform/commit/880b43dd1b5d2587ddb9032c502acc9b44ffb45a))
+
 # [6.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@6.0.10...@ng-easy/builders@6.1.0) (2022-04-23)
 
 
