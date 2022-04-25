@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.0...@ng-easy/image-config@5.0.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint-plugin-jsdoc to v39.2.8 ([dddd2ad](https://github.com/ng-easy/platform/commit/dddd2ada7a7fadf0353109c9d2243ff87e78227c))
+
 # [5.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@4.1.0...@ng-easy/image-config@5.0.0) (2022-04-24)
 
 
