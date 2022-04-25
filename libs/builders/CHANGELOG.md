@@ -1,3 +1,12 @@
+## [7.0.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.0.0...@ng-easy/builders@7.0.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency eslint-plugin-jsdoc to v39.2.8 ([dddd2ad](https://github.com/ng-easy/platform/commit/dddd2ada7a7fadf0353109c9d2243ff87e78227c))
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.0.1 [skip ci] ([96a5fd1](https://github.com/ng-easy/platform/commit/96a5fd106495ded4fbca5946fe89ef40efc1c719))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.0.1 [skip ci] ([8e7099d](https://github.com/ng-easy/platform/commit/8e7099dae83da360821efde2fc50cda5e8af53c2))
+
 # [7.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@6.1.0...@ng-easy/builders@7.0.0) (2022-04-24)
 
 
