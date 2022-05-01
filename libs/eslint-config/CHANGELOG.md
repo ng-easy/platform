@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.4.1...@ng-easy/eslint-config@4.4.2) (2022-05-01)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([741adff](https://github.com/ng-easy/platform/commit/741adff022aef3f517829ae2a9fd9551c7ab9385))
+
 ## [4.4.1](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.4.0...@ng-easy/eslint-config@4.4.1) (2022-04-25)
 
 
