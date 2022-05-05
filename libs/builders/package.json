@@ -48,7 +48,7 @@
     "@angular-devkit/build-angular": "13.3.4",
     "@angular-devkit/core": "^13.3.4",
     "prettier": "^2.6.2",
-    "rxjs": "^7.4.0"
+    "rxjs": "^7.5.5"
   },
   "builders": "builders.json",
   "publishConfig": {
