@@ -1,3 +1,11 @@
+## [5.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.2...@ng-easy/image-optimizer@5.0.3) (2022-05-05)
+
+
+### Bug Fixes
+
+* :arrow_up: update dependency rxjs to v7.5.5 ([932e59b](https://github.com/ng-easy/platform/commit/932e59b60f571ff2742c713403d99f6632c09313))
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.0.3 [skip ci] ([26d4b7d](https://github.com/ng-easy/platform/commit/26d4b7d5316f2943af729be8292720096d1b2168))
+
 ## [5.0.2](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.1...@ng-easy/image-optimizer@5.0.2) (2022-05-01)
 
 
