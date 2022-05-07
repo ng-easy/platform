@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.3...@ng-easy/image-config@5.0.4) (2022-05-07)
+
+
+### Bug Fixes
+
+* :arrow_up: update client tooling ([b0f5322](https://github.com/ng-easy/platform/commit/b0f5322e1a52d74e5925ab1719e54037d73f1ef4))
+
 ## [5.0.3](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.2...@ng-easy/image-config@5.0.3) (2022-05-05)
 
 
