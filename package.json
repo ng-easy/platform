@@ -141,6 +141,7 @@
     "@types/tinycolor2": "1.4.3",
     "@types/to-ico": "1.1.1",
     "@types/xml2js": "0.4.11",
+    "codecov": "3.8.3",
     "copy-webpack-plugin": "10.2.4",
     "cross-env": "7.0.3",
     "cypress": "8.7.0",
@@ -175,4 +176,3 @@
   },
   "private": true
 }
-

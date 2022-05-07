@@ -1,0 +1,25 @@
+comment:
+  layout: reach
+  behavior: new
+  require_changes: true
+
+coverage:
+  range: 75..100
+  round: nearest
+  precision: 1
+  status:
+    patch:
+      default:
+        target: 75%
+        threshold: 10%
+    project:
+      default:
+        target: 75%
+        threshold: 10%
+      builders:
+        flags: [travis-github]
+
+flags:
+  builders:
+    paths:
+      - coverage/libs/builders

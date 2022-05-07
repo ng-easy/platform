@@ -14,7 +14,7 @@
       "outputs": ["coverage/libs/builders"],
       "options": {
         "jestConfig": "libs/builders/jest.config.js",
-        "passWithNoTests": true
+        "codeCoverage": true
       }
     },
     "build": {
