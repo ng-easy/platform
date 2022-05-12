@@ -25,7 +25,8 @@
       "outputs": ["coverage/libs/image-config"],
       "options": {
         "jestConfig": "libs/image-config/jest.config.js",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "codeCoverage": true
       }
     },
     "release": {

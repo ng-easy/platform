@@ -25,7 +25,7 @@
       "outputs": ["coverage/libs/image-optimizer"],
       "options": {
         "jestConfig": "libs/image-optimizer/jest.config.js",
-        "passWithNoTests": true
+        "codeCoverage": true
       }
     },
     "release": {
