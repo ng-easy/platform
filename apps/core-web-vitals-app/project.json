@@ -92,7 +92,7 @@
       "outputs": ["coverage/apps/core-web-vitals-app"],
       "options": {
         "jestConfig": "apps/core-web-vitals-app/jest.config.js",
-        "passWithNoTests": true,
+        "codeCoverage": true,
         "aot": true
       }
     },

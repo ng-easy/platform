@@ -17,9 +17,29 @@ coverage:
         target: 75%
         threshold: 10%
       builders:
-        flags: [travis-github]
+        flags: [builders]
+      image:
+        flags: [image]
+      image-config:
+        flags: [image-config]
+      image-optimizer:
+        flags: [image-optimizer]
+      core-web-vitals-app:
+        flags: [core-web-vitals-app]
 
 flags:
   builders:
     paths:
       - coverage/libs/builders
+  image:
+    paths:
+      - coverage/libs/image
+  image-config:
+    paths:
+      - coverage/libs/image-config
+  image-optimizer:
+    paths:
+      - coverage/libs/image-optimizer
+  core-web-vitals-app:
+    paths:
+      - coverage/libs/core-web-vitals-app
