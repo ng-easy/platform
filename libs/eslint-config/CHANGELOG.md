@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.4.4...@ng-easy/eslint-config@4.5.0) (2022-05-12)
+
+
+### Features
+
+* **eslint-config:** :sparkles: set env to support node, browser and es2022 ([#497](https://github.com/ng-easy/platform/issues/497)) ([ff14a73](https://github.com/ng-easy/platform/commit/ff14a7363fec249f40e4a8e2638d291f1f15406d))
+
 ## [4.4.4](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.4.3...@ng-easy/eslint-config@4.4.4) (2022-05-07)
 
 
