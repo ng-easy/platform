@@ -1,3 +1,11 @@
+## [5.0.5](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.4...@ng-easy/image-optimizer@5.0.5) (2022-05-14)
+
+
+### Bug Fixes
+
+* :arrow_up: update nrwl workspace ([f9105a2](https://github.com/ng-easy/platform/commit/f9105a2ad06229f5e0288c6d157698015b36c7d8))
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.0.5 [skip ci] ([e07127a](https://github.com/ng-easy/platform/commit/e07127af5af00d9687fcc51b53efe50cc1f37dc3))
+
 ## [5.0.4](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.3...@ng-easy/image-optimizer@5.0.4) (2022-05-07)
 
 
