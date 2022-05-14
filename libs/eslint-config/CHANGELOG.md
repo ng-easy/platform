@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.0...@ng-easy/eslint-config@4.5.1) (2022-05-14)
+
+
+### Bug Fixes
+
+* :arrow_up: update nrwl workspace ([f9105a2](https://github.com/ng-easy/platform/commit/f9105a2ad06229f5e0288c6d157698015b36c7d8))
+
 # [4.5.0](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.4.4...@ng-easy/eslint-config@4.5.0) (2022-05-12)
 
 
