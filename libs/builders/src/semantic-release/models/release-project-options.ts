@@ -9,12 +9,12 @@ export interface ReleaseProjectOptions {
   packageJson: string;
   changelog: string;
   outputPath: string;
-  mode?: 'independent' | 'sync';
   releaseCommitMessage: string;
   dependencies: ProjectDependency[];
   build: () => Promise<BuilderOutput>;
 }
 
 export interface ReleaseOptions extends Options {
+  mode: 'independent' | 'sync';
   projects: ReleaseProjectOptions[];
 }

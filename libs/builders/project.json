@@ -15,6 +15,11 @@
       "options": {
         "jestConfig": "libs/builders/jest.config.js",
         "codeCoverage": true
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
       }
     },
     "build": {

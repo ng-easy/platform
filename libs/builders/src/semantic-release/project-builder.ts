@@ -5,19 +5,9 @@ import { readJsonFile } from '@nrwl/devkit';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { BranchSpec, PluginSpec, Result, default as semanticRelease } from 'semantic-release';
 
-import {
-  createLoggerStream,
-  getAnalyzeCommitsOptions,
-  getGenerateNotesOptions,
-  getProjectDependencies,
-  getGithubOptions,
-  getBuildTargetOptions,
-  AnalyzeCommitsOptions,
-} from './lib';
+import { createLoggerStream, getGenerateNotesOptions, getProjectDependencies, getGithubOptions, getBuildTargetOptions } from './lib';
 import { InlinePluginSpec, ReleaseOptions, ReleaseProjectOptions } from './models';
-import { inlinePluginBuild } from './plugins/inline-plugin-build';
-import { inlinePluginUpdateDependencies } from './plugins/inline-plugin-update-dependencies';
-import { inlinePluginUpdatePackageVersion } from './plugins/inline-plugin-update-package-version';
+import { inlinePluginAnalyzeCommits, inlinePluginBuild, inlinePluginUpdateDependencies, inlinePluginUpdatePackageVersion } from './plugins';
 import { SemanticReleaseProjectSchema } from './project-schema';
 
 const builder: any = createBuilder(semanticReleaseProjectBuilder);
@@ -56,16 +46,9 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
       return await buildRun.result;
     },
   };
-  const releaseOptions: ReleaseOptions = {
-    projects: [releaseProjectOptions],
-  };
+  const releaseOptions: ReleaseOptions = { mode: options.mode, projects: [releaseProjectOptions] };
 
-  const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions([project], options.mode);
-
-  context.logger.info(`Regex to match commits: ${analyzeCommitOptions.parserOpts.headerPattern.source}`);
-  context.logger.info('');
-
-  const commitAnalyzerPlugin: PluginSpec = ['@semantic-release/commit-analyzer', analyzeCommitOptions];
+  const commitAnalyzerPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginAnalyzeCommits, releaseOptions];
   const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions([project])];
   const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: releaseProjectOptions.changelog }];
   const buildPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginBuild, releaseOptions];
