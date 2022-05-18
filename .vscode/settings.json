@@ -75,6 +75,7 @@
     "image-config",
     "image-optimizer",
     "image",
-    "prettier-config"
+    "prettier-config",
+    "deps"
   ]
 }
