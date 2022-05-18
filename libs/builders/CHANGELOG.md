@@ -1,3 +1,10 @@
+## [7.1.4](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.1.3...@ng-easy/builders@7.1.4) (2022-05-18)
+
+
+### Bug Fixes
+
+* **builders:** :bug: fix detection of scope when releasing multiple projects ([#504](https://github.com/ng-easy/platform/issues/504)) ([97d9b1b](https://github.com/ng-easy/platform/commit/97d9b1b9c65e22a9a5bccf925a8f8d11ae2701ef))
+
 ## [7.1.3](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.1.2...@ng-easy/builders@7.1.3) (2022-05-15)
 
 
