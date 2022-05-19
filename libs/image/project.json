@@ -32,7 +32,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/image"],
       "options": {
-        "jestConfig": "libs/image/jest.config.js",
+        "jestConfig": "libs/image/jest.config.ts",
         "passWithNoTests": true,
         "codeCoverage": true
       }

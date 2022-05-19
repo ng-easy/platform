@@ -24,7 +24,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/image-optimizer"],
       "options": {
-        "jestConfig": "libs/image-optimizer/jest.config.js",
+        "jestConfig": "libs/image-optimizer/jest.config.ts",
         "codeCoverage": true
       }
     },

@@ -4,17 +4,17 @@ comment:
   require_changes: true
 
 coverage:
-  range: 75..100
+  range: 0..100
   round: nearest
   precision: 1
   status:
     patch:
       default:
-        target: 75%
+        target: 50%
         threshold: 10%
     project:
       default:
-        target: 75%
+        target: 50%
         threshold: 10%
       builders:
         flags: [builders]

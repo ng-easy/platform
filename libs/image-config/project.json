@@ -24,7 +24,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/image-config"],
       "options": {
-        "jestConfig": "libs/image-config/jest.config.js",
+        "jestConfig": "libs/image-config/jest.config.ts",
         "passWithNoTests": true,
         "codeCoverage": true
       }

@@ -1,6 +1,6 @@
 const { getJestProjects } = require('@nrwl/jest');
 
-module.exports = {
-  coverageReporters: ['html'],
+export default {
+  coverageReporters: ['html', 'lcov'],
   projects: [...getJestProjects()],
 };
