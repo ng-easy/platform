@@ -1,10 +1,10 @@
-module.exports = {
-  displayName: 'core-web-vitals-app',
-  preset: '../../jest.preset.js',
+export default {
+  displayName: 'image',
+  preset: '../../jest.preset.ts',
   globals: {
     'ts-jest': {
-      stringifyContentPathRegex: '\\.(html|svg)$',
       tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
@@ -17,6 +17,6 @@ module.exports = {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
-  coverageDirectory: '../../coverage/apps/core-web-vitals-app',
+  coverageDirectory: '../../coverage/libs/image',
   coverageReporters: ['lcov'],
 };

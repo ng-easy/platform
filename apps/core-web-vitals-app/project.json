@@ -91,7 +91,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/core-web-vitals-app"],
       "options": {
-        "jestConfig": "apps/core-web-vitals-app/jest.config.js",
+        "jestConfig": "apps/core-web-vitals-app/jest.config.ts",
         "codeCoverage": true,
         "aot": true
       }

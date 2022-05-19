@@ -1,6 +1,6 @@
-module.exports = {
-  displayName: 'image-config',
-  preset: '../../jest.preset.js',
+export default {
+  displayName: 'image-optimizer',
+  preset: '../../jest.preset.ts',
   globals: {
     'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' },
   },
@@ -9,6 +9,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/image-config',
+  coverageDirectory: '../../coverage/libs/image-optimizer',
   coverageReporters: ['lcov'],
 };
