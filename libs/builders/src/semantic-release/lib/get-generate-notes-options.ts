@@ -40,7 +40,7 @@ export function getGenerateNotesOptions(projects: string[]): any {
         if (commit.type === 'feat') {
           commit.type = 'Features';
         } else if (commit.type === 'fix') {
-          commit.type = 'Bug Fixes';
+          commit.type = 'Bug Fixes and Dependency Updates';
         } else if (commit.type === 'perf') {
           commit.type = 'Performance Improvements';
         } else if (commit.type === 'revert' || commit.revert) {
