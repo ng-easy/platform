@@ -89,11 +89,11 @@ describe('@ng-easy/builders:semantic-release', () => {
         expect(await analyzeCommits(options, context)).toBeNull();
       });
 
-      it('should consider the update if the scope applies to another project when change is breaking', async () => {
+      it('should not consider the update if the scope applies to another project when a change is breaking', async () => {
         addCommit('fix(another-project): fix with breaking', '', breakingChangeMessage);
         const options = getReleaseOptions(['project'], 'independent');
 
-        expect(await analyzeCommits(options, context)).toBe('major');
+        expect(await analyzeCommits(options, context)).toBeNull();
       });
 
       it('should consider update when multiple projects are used', async () => {
