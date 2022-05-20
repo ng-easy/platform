@@ -1,3 +1,15 @@
+# [7.2.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.1.5...@ng-easy/builders@7.2.0) (2022-05-20)
+
+
+### Bug Fixes and Dependency Updates
+
+* **builders:** :bug: breaking changs will be scoped to the project ([#399](https://github.com/ng-easy/platform/issues/399)) ([#514](https://github.com/ng-easy/platform/issues/514)) ([e02435d](https://github.com/ng-easy/platform/commit/e02435de49df977a357d1583b7392f342fcf851c))
+
+
+### Features
+
+* **builders:** :sparkles: enhance changelog entry for fix upgrades ([#398](https://github.com/ng-easy/platform/issues/398)) ([#515](https://github.com/ng-easy/platform/issues/515)) ([d49e208](https://github.com/ng-easy/platform/commit/d49e208b3c938db36331a2fd6c38aded579619f6))
+
 ## [7.1.5](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.1.4...@ng-easy/builders@7.1.5) (2022-05-20)
 
 
