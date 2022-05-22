@@ -1,3 +1,13 @@
+## [7.2.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.2.0...@ng-easy/builders@7.2.1) (2022-05-22)
+
+
+### Bug Fixes and Dependency Updates
+
+* :arrow_up: update dependency cheerio to v1.0.0-rc.11 ([#517](https://github.com/ng-easy/platform/issues/517)) ([607be30](https://github.com/ng-easy/platform/commit/607be303691b4e0c0deae9d63b21fc5f5cb19ddc))
+* :arrow_up: update dependency eslint to v8.16.0 ([e1bbd97](https://github.com/ng-easy/platform/commit/e1bbd9763c88c3f5b6b4008da272fbe7088a0cda))
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.0.8 [skip ci] ([89d0e05](https://github.com/ng-easy/platform/commit/89d0e05d001477e8613869570e98f0bee8202754))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.0.8 [skip ci] ([8f5eb8c](https://github.com/ng-easy/platform/commit/8f5eb8c9d183333a3e8f977d0687145e0c846444))
+
 # [7.2.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.1.5...@ng-easy/builders@7.2.0) (2022-05-20)
 
 
