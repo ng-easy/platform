@@ -1,3 +1,11 @@
+## [4.5.4](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.3...@ng-easy/eslint-config@4.5.4) (2022-05-22)
+
+
+### Bug Fixes and Dependency Updates
+
+* :arrow_up: update dependency cheerio to v1.0.0-rc.11 ([#517](https://github.com/ng-easy/platform/issues/517)) ([607be30](https://github.com/ng-easy/platform/commit/607be303691b4e0c0deae9d63b21fc5f5cb19ddc))
+* :arrow_up: update dependency eslint to v8.16.0 ([e1bbd97](https://github.com/ng-easy/platform/commit/e1bbd9763c88c3f5b6b4008da272fbe7088a0cda))
+
 ## [4.5.3](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.2...@ng-easy/eslint-config@4.5.3) (2022-05-20)
 
 
