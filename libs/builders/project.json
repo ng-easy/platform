@@ -59,6 +59,5 @@
       }
     }
   },
-  "tags": [],
-  "implicitDependencies": ["workspace-release-image"]
+  "tags": []
 }
