@@ -1,3 +1,10 @@
+# [7.3.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.2.1...@ng-easy/builders@7.3.0) (2022-05-25)
+
+
+### Features
+
+* **builders:** :sparkles: new workspace builder for grouped releases ([#526](https://github.com/ng-easy/platform/issues/526)) ([c47dddb](https://github.com/ng-easy/platform/commit/c47dddbcb621910c58fc55957e26e6399f195fe3))
+
 ## [7.2.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.2.0...@ng-easy/builders@7.2.1) (2022-05-22)
 
 

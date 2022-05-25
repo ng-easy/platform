@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/builders",
-  "version": "7.2.1",
+  "version": "7.3.0",
   "description": "Builders for Nx and Angular projects",
   "keywords": [
     "angular",
