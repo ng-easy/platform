@@ -3,10 +3,17 @@ import { dirname } from 'path';
 import { BuilderOutput, createBuilder, BuilderContext, BuilderRun } from '@angular-devkit/architect';
 import { readJsonFile } from '@nrwl/devkit';
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
-import { BranchSpec, PluginSpec, Result, default as semanticRelease } from 'semantic-release';
+import { BranchSpec, PluginSpec } from 'semantic-release';
 
-import { createLoggerStream, getGenerateNotesOptions, getProjectDependencies, getGithubOptions, getBuildTargetOptions } from './lib';
-import { InlinePluginSpec, ReleaseOptions, ReleaseProjectOptions } from './models';
+import {
+  getGenerateNotesOptions,
+  getProjectDependencies,
+  getGithubOptions,
+  getBuildTargetOptions,
+  runSemanticRelease,
+  failureOutput,
+} from './lib';
+import { InlinePluginSpec, ReleaseProjectOptions } from './models';
 import { inlinePluginAnalyzeCommits, inlinePluginBuild, inlinePluginUpdateDependencies, inlinePluginUpdatePackageVersion } from './plugins';
 import { SemanticReleaseProjectSchema } from './project-schema';
 
@@ -14,9 +21,9 @@ const builder: any = createBuilder(semanticReleaseProjectBuilder);
 export default builder;
 
 async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSchema, context: BuilderContext): Promise<BuilderOutput> {
-  const { project } = context.target ?? {};
+  const { project, target } = context.target ?? {};
 
-  if (project == null) {
+  if (project == null || target == null) {
     return failureOutput(context, `Invalid project`);
   }
 
@@ -28,36 +35,37 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
     return failureOutput(context, `File ${packageJson} doesn't have a valid package name`);
   }
 
-  // Launch semantic release
+  // Prepare plugins for semantic release
   context.logger.info(`Starting semantic release for project "${project}" with package name ${packageName} from path ${outputPath}`);
   context.logger.info(`Using configuration:`);
   context.logger.info(JSON.stringify(options, null, 2));
 
   const releaseProjectOptions: ReleaseProjectOptions = {
+    mode: options.mode,
     project,
+    relatedProjects: [],
     packageName,
     packageJson,
     outputPath,
     releaseCommitMessage: options.releaseCommitMessage,
-    changelog: `${dirname(packageJson)}/CHANGELOG.md`,
-    dependencies: await getProjectDependencies(context),
+    changelogFile: `${dirname(packageJson)}/CHANGELOG.md`,
+    dependencies: await getProjectDependencies(context, project),
     build: async () => {
       const buildRun: BuilderRun = await context.scheduleTarget({ project, target: 'build' });
       return await buildRun.result;
     },
   };
-  const releaseOptions: ReleaseOptions = { mode: options.mode, projects: [releaseProjectOptions] };
 
-  const commitAnalyzerPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginAnalyzeCommits, releaseOptions];
+  const commitAnalyzerPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginAnalyzeCommits, releaseProjectOptions];
   const releaseNotesPlugin: PluginSpec = ['@semantic-release/release-notes-generator', getGenerateNotesOptions([project])];
-  const changelogPlugin: PluginSpec = ['@semantic-release/changelog', { changelogFile: releaseProjectOptions.changelog }];
-  const buildPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginBuild, releaseOptions];
+  const changelogPlugin: PluginSpec = ['@semantic-release/changelog', releaseProjectOptions];
+  const buildPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginBuild, releaseProjectOptions];
   const npmPlugin: PluginSpec = ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }];
   const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName)];
-  const updatePackageVersionPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginUpdatePackageVersion, releaseOptions];
-  const updateDependenciesPlugin: InlinePluginSpec<ReleaseOptions> = [inlinePluginUpdateDependencies, releaseOptions];
+  const updatePackageVersionPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginUpdatePackageVersion, releaseProjectOptions];
+  const updateDependenciesPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginUpdateDependencies, releaseProjectOptions];
 
-  const plugins = [
+  const plugins: PluginSpec[] = [
     commitAnalyzerPlugin,
     releaseNotesPlugin,
     options.changelog ? changelogPlugin : null,
@@ -68,43 +76,17 @@ async function semanticReleaseProjectBuilder(options: SemanticReleaseProjectSche
     updateDependenciesPlugin,
   ].filter((plugin: PluginSpec | InlinePluginSpec<any> | null): plugin is PluginSpec => plugin != null) as PluginSpec[];
 
-  try {
-    const result: Result = await semanticRelease(
-      {
-        tagFormat: `${packageName}@\${version}`,
-        branches: options.branches as ReadonlyArray<BranchSpec>,
-        extends: undefined,
-        dryRun: options.dryRun,
-        plugins,
-        ci: !options.force,
-      },
-      {
-        env: { ...process.env } as { [key: string]: string },
-        cwd: '.',
-        stdout: createLoggerStream(context) as unknown as NodeJS.WriteStream,
-        stderr: createLoggerStream(context) as unknown as NodeJS.WriteStream,
-      }
-    );
+  // Launch semantic release
 
-    if (result) {
-      const { nextRelease } = result;
-      context.logger.info(`The "${project}" project was released with version ${nextRelease.version}`);
-    } else {
-      context.logger.info(`No new release for the "${project}" project`);
-    }
-  } catch (err) {
-    if (err instanceof Error) {
-      context.logger.info(`${err.name}: ${err.message}`);
-    }
-    return { success: false, error: `The automated release failed with error: ${err}` };
-  }
-
-  return { success: true };
-}
-
-function failureOutput(context: BuilderContext, error?: string): BuilderOutput {
-  if (error != null) {
-    context.logger.info(error);
-  }
-  return { success: false, error: error as unknown as string };
+  return await runSemanticRelease(
+    {
+      branches: options.branches as BranchSpec[],
+      dryRun: options.dryRun,
+      force: options.force,
+      plugins,
+      project,
+      tagFormat: `${packageName}@\${version}`,
+    },
+    context
+  );
 }
