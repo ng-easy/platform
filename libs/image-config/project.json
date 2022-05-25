@@ -28,14 +28,6 @@
         "passWithNoTests": true,
         "codeCoverage": true
       }
-    },
-    "release": {
-      "executor": "./dist/libs/builders:semantic-release",
-      "configurations": {
-        "local": {
-          "force": true
-        }
-      }
     }
   },
   "tags": ["release:image"]

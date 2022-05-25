@@ -2,6 +2,12 @@
   "$schema": "http://json-schema.org/schema",
   "type": "object",
   "properties": {
+    "mode": {
+      "description": "Choose whether you want to make individual versioning or group all under the same version",
+      "type": "string",
+      "enum": ["independent", "sync"],
+      "default": "independent"
+    },
     "dryRun": {
       "description": "Runs the release process without releasing",
       "type": "boolean",
@@ -11,12 +17,6 @@
       "description": "Forces the release in a non CI environment, can be used to make a release locally",
       "type": "boolean",
       "default": false
-    },
-    "mode": {
-      "description": "Choose whether you want to make individual versioning or group all under the same version",
-      "type": "string",
-      "enum": ["independent", "sync"],
-      "default": "independent"
     },
     "branches": {
       "description": "Branches configuration for workflow release",

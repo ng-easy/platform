@@ -7,6 +7,56 @@
       "type": "string",
       "maxLength": 100,
       "minLength": 1
+    },
+    "dryRun": {
+      "description": "Runs the release process without releasing",
+      "type": "boolean",
+      "default": false
+    },
+    "force": {
+      "description": "Forces the release in a non CI environment, can be used to make a release locally",
+      "type": "boolean",
+      "default": false
+    },
+    "branches": {
+      "description": "Branches configuration for workflow release",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string", "maxLength": 100, "minLength": 1 },
+          {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "maxLength": 100, "minLength": 1 },
+              "channel": { "anyOf": [{ "type": "string", "maxLength": 100, "minLength": 1 }, { "type": "boolean" }] },
+              "range": { "type": "string", "maxLength": 100, "minLength": 1 },
+              "prerelease": { "anyOf": [{ "type": "string", "maxLength": 100, "minLength": 1 }, { "type": "boolean" }] }
+            },
+            "additionalProperties": false,
+            "required": ["name"]
+          }
+        ]
+      },
+      "uniqueItems": true,
+      "default": ["master", "main", "next", { "name": "beta", "prerelease": true }, { "name": "alpha", "prerelease": true }]
+    },
+    "releaseCommitMessage": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 200,
+      "default": "chore(release): :package: ${project}@${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    },
+    "changelog": {
+      "type": "boolean",
+      "default": true
+    },
+    "npm": {
+      "type": "boolean",
+      "default": true
+    },
+    "github": {
+      "type": "boolean",
+      "default": true
     }
   },
   "required": ["tag"],
