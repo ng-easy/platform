@@ -10,6 +10,6 @@
     "image-e2e": "apps/image-e2e",
     "image-optimizer": "libs/image-optimizer",
     "prettier-config": "libs/prettier-config",
-    "workspace": "libs/workspace"
+    "workspace-release-image": "libs/workspace-release-image"
   }
 }

@@ -1,9 +1,9 @@
 {
-  "root": "libs/workspace",
-  "sourceRoot": "libs/workspace",
+  "root": "libs/workspace-release-image",
+  "sourceRoot": "libs/workspace-release-image",
   "projectType": "library",
   "targets": {
-    "release-image": {
+    "release": {
       "executor": "./dist/libs/builders:workspace-semantic-release",
       "options": {
         "tag": "release:image"

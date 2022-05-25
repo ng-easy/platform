@@ -6,7 +6,11 @@ import { ProjectDependency } from '../models';
 
 const releaseTarget = 'release';
 
-export async function getProjectDependencies(context: BuilderContext, project: string): Promise<ProjectDependency[]> {
+export async function getProjectDependencies(
+  context: BuilderContext,
+  project: string,
+  mode: 'independent' | 'tag' | 'sync'
+): Promise<ProjectDependency[]> {
   if (!(await pathExists('nx.json'))) {
     context.logger.warn(`Project dependencies can only be detected in Nx workspaces, skipping`);
     return [];
@@ -32,7 +36,7 @@ export async function getProjectDependencies(context: BuilderContext, project: s
       } else if (type !== 'lib') {
         context.logger.info(`Ignoring project "${name}" since it is not a library`);
         return false;
-      } else if (!data.targets || !data.targets[releaseTarget] || !data.targets[releaseTarget].executor) {
+      } else if (mode === 'independent' && (!data.targets || !data.targets[releaseTarget] || !data.targets[releaseTarget].executor)) {
         context.logger.info(`Ignoring project "${name}" since it doesn't have a "${releaseTarget}" target`);
         return false;
       }

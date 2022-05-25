@@ -1,8 +1,4 @@
 import { JsonObject } from '@angular-devkit/core';
+import { BranchSpec } from 'semantic-release';
 
-export interface BranchSpecJson extends JsonObject {
-  name: string;
-  channel: string | false | null;
-  range: string | null;
-  prerelease: string | boolean | null;
-}
+export type BranchSpecJson = BranchSpec & JsonObject;

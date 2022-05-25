@@ -16,59 +16,12 @@ The configuration of the plugins is opinionated and it includes for configured p
 - GitHub release
 - Update the package version in the source code
 
-## Configuration of the builder
+## Releasing Projects Independently
 
-In your `angular.json`/`workspace.json` you can use the builder with:
+### Configuring the Builder
 
-```json
-"release": {
-  "builder": "@ng-easy/builders:semantic-release",
-  "configurations": {
-    "local": {
-      "force": true
-    }
-  }
-}
-```
-
-Additionally, you can use the following options:
-
-- `dryRun`: defaults to `false`, runs the release process without releasing
-- `force`: defaults to `false`, forces the release in a non CI environment, can be used to make a release locally
-- `mode`: can be either `independent` or `sync`, defaults to `independent`, choose whether you want to make individual versioning or group all under the same version
-- `branches`: branches configuration for workflow release as explained in [`semantic-release` docs](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/workflow-configuration.md#branches-properties), defaults to `["master", "main", "next", { "name": "beta", "prerelease": true }, { "name": "alpha", "prerelease": true }]`
-- `releaseCommitMessage`: defaults to `chore(release): :package: \${project}@\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`, the message for the release commit to upgrade the changelog and package version, refer to [`semantic-release/git` options](https://github.com/semantic-release/git#options)
-- `changelog`: defaults to `true`, generates project's changelog
-- `npm`: defaults to `true`, releases to `npm`
-- `github`: defaults to `true`, releases to `github`
-
-If using Nx, the `release` target has to be run respecting the order of dependencies. That can be configured in the `nx.json` root config file:
-
-```json
-{
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build"],
-        "strictlyOrderedTargets": ["build", "release"]
-      }
-    }
-  },
-  "targetDependencies": {
-    "build": [{ "target": "build", "projects": "dependencies" }],
-    "release": [{ "target": "release", "projects": "dependencies" }]
-  }
-}
-```
-
-If using just the Angular CLI, make sure to perform releases according to the order of dependencies.
-
-## How to use `independent` mode
-
-With this mode each releasable library will have its own version according to [semver](https://semver.org/). This is the preferred approach.
-
-[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. When the builder is configured in `independent` mode, only the following commits will considered that apply for the individual project based on the scope:
+[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`.
+When the builder is configured in `independent` mode, only the following commits will considered that apply for the individual project based on the scope:
 
 - No scope, `*` or `deps`
 - Those where the scope is equal to the project name
@@ -91,7 +44,12 @@ Example of `angular.json`/`workspace.json`:
           /* */
         },
         "release": {
-          "builder": "@ng-easy/builders:semantic-release"
+          "builder": "@ng-easy/builders:semantic-release",
+          "configurations": {
+            "local": {
+              "force": true
+            }
+          }
         }
       }
     }
@@ -99,24 +57,42 @@ Example of `angular.json`/`workspace.json`:
 }
 ```
 
-Dependencies will be calculated using Nx project graph. When `projectA` is a dependency of `projectB` and the first gets upgraded to a new version, it will create a new commit that will bump the version of the latter. It will happen only if both projects are a buildable and publishable library, having the `release` target correctly configured. Please notice that handling dependencies doesn't work in regular Angular workspaces, it requires Nx.
+Additionally, you can use the following options:
 
-## How to use `sync` mode
+- `dryRun`: defaults to `false`, runs the release process without releasing
+- `force`: defaults to `false`, forces the release in a non CI environment, can be used to make a release locally
+- `mode`: can be either `independent` or `sync`, defaults to `independent`, choose whether you want to make individual versioning or group all under the same version
+- `branches`: branches configuration for workflow release as explained in [`semantic-release` docs](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/workflow-configuration.md#branches-properties), defaults to `["master", "main", "next", { "name": "beta", "prerelease": true }, { "name": "alpha", "prerelease": true }]`
+- `releaseCommitMessage`: defaults to `chore(release): :package: \${project}@\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`, the message for the release commit to upgrade the changelog and package version, refer to [`semantic-release/git` options](https://github.com/semantic-release/git#options)
+- `changelog`: defaults to `true`, generates project's changelog
+- `npm`: defaults to `true`, releases to `npm`
+- `github`: defaults to `true`, releases to `github`
 
-With this mode each all libraries will have the same version.
+### Configuring the Nx Workspace
 
-Just use these options:
+If using Nx, the `release` target has to be run respecting the order of dependencies. That can be configured in the `nx.json` root config file:
 
 ```json
-"release": {
-  "builder": "@ng-easy/builders:semantic-release",
-  "options": {
-    "mode": "sync"
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build"],
+        "strictlyOrderedTargets": ["build", "release"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [{ "target": "build", "projects": "dependencies" }],
+    "release": [{ "target": "release", "projects": "dependencies" }]
   }
 }
 ```
 
-All commits will be considered for a potential version bump. Changelog will still be in each project, only containing the changes that apply to the specific library.
+Dependencies will be calculated using Nx project graph. When `projectA` is a dependency of `projectB` and the first gets upgraded to a new version, it will create a new commit that will bump the version of the latter. It will happen only if both projects are a buildable and publishable library, having the `release` target correctly configured. Please notice that handling dependencies doesn't work in regular Angular workspaces, it requires Nx.
+
+If using just the Angular CLI, make sure to perform releases according to the order of dependencies.
 
 ## Bump major version
 
