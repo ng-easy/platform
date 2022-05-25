@@ -3,18 +3,15 @@ import { Options } from 'semantic-release';
 
 import { ProjectDependency } from './project-dependency';
 
-export interface ReleaseProjectOptions {
+export interface ReleaseProjectOptions extends Options {
+  mode: 'independent' | 'sync' | 'tag';
   project: string;
+  relatedProjects: string[];
   packageName: string;
   packageJson: string;
-  changelog: string;
+  changelogFile: string;
   outputPath: string;
   releaseCommitMessage: string;
   dependencies: ProjectDependency[];
   build: () => Promise<BuilderOutput>;
-}
-
-export interface ReleaseOptions extends Options {
-  mode: 'independent' | 'sync';
-  projects: ReleaseProjectOptions[];
 }

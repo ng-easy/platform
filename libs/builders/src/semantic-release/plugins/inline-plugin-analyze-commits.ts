@@ -2,10 +2,12 @@ import { analyzeCommits } from '@semantic-release/commit-analyzer';
 import { Context, Commit } from 'semantic-release';
 
 import { AnalyzeCommitsOptions, getAnalyzeCommitsOptions } from '../lib';
-import { InlinePlugin, ReleaseOptions } from '../models';
+import { InlinePlugin, ReleaseProjectOptions } from '../models';
 
-async function inlineAnalyzeCommits(releaseOptions: ReleaseOptions, context: Context): Promise<string | null> {
-  const projects = releaseOptions.projects.map(({ project }) => project);
+async function inlineAnalyzeCommits(releaseOptions: ReleaseProjectOptions, context: Context): Promise<string | null> {
+  context.logger.log(`Nx Analyze Commits Plugin: VAnalyze Commits`);
+
+  const projects: string[] = [releaseOptions.project, ...releaseOptions.relatedProjects];
   const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions(projects, releaseOptions.mode);
 
   context.logger.log(`Regex to match commits: ${analyzeCommitOptions.parserOpts.headerPattern.source}`);
@@ -16,7 +18,10 @@ async function inlineAnalyzeCommits(releaseOptions: ReleaseOptions, context: Con
   return await analyzeCommits(analyzeCommitOptions, context);
 }
 
-export const inlinePluginAnalyzeCommits: InlinePlugin<ReleaseOptions> = { analyzeCommits: inlineAnalyzeCommits, name: 'analyze-commits' };
+export const inlinePluginAnalyzeCommits: InlinePlugin<ReleaseProjectOptions> = {
+  analyzeCommits: inlineAnalyzeCommits,
+  name: 'analyze-commits',
+};
 
 function filterCommits(commits: Commit[], headerPattern: RegExp): Commit[] {
   return commits.filter((commit) => headerPattern.test(commit.subject));

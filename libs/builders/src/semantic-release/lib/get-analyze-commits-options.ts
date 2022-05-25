@@ -24,11 +24,11 @@ const defaultReleaseRules: readonly ReleaseRule[] = [
 
 const sharedScopes: readonly string[] = ['\\*', 'deps']; // escape for micromatch
 
-export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent' | 'sync' | 'group'): AnalyzeCommitsOptions {
+export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent' | 'sync' | 'tag'): AnalyzeCommitsOptions {
   let headerPattern: RegExp;
   const releaseRules: ReleaseRule[] = [{ breaking: true, release: 'major' }];
 
-  if (mode === 'independent' || mode === 'group') {
+  if (mode === 'independent' || mode === 'tag') {
     // Build release rules
     releaseRules.push({ scope: '*', release: false }); // ignore commits from other scopes, if later they match last wins
     [...projects, ...sharedScopes].forEach((project) => {

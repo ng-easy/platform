@@ -4,32 +4,25 @@ import { pathExists } from 'fs-extra';
 
 import { ProjectDependency } from '../models';
 
-export async function getProjectDependencies(context: BuilderContext): Promise<ProjectDependency[]> {
+const releaseTarget = 'release';
+
+export async function getProjectDependencies(context: BuilderContext, project: string): Promise<ProjectDependency[]> {
   if (!(await pathExists('nx.json'))) {
     context.logger.warn(`Project dependencies can only be detected in Nx workspaces, skipping`);
     return [];
   }
 
   const projGraph: ProjectGraph = await createProjectGraphAsync();
-
-  const target = context.target;
-  const targetName = context.target?.target;
-
-  if (target == null || targetName == null) {
-    context.logger.info('Target is needed to find dependent projects.');
-    return [];
-  }
-
-  const dependantProjects: string[] = Object.keys(projGraph.dependencies).filter((project) => {
-    const dependencies = projGraph.dependencies[project].filter((dependency) => dependency.target === target.project);
+  const dependantProjects: string[] = Object.keys(projGraph.dependencies).filter((dependencyProject) => {
+    const dependencies = projGraph.dependencies[dependencyProject].filter((dependency) => dependency.target === project);
     return dependencies.length > 0;
   });
 
   if (dependantProjects.length > 0) {
-    const dependantProjectList = dependantProjects.map((project) => `"${project}"`).join(', ');
-    context.logger.info(`Project "${target.project}" is a dependency of ${dependantProjectList}`);
+    const dependantProjectList = dependantProjects.map((dependencyProject) => `"${dependencyProject}"`).join(', ');
+    context.logger.info(`Project "${project}" is a dependency of ${dependantProjectList}`);
   } else {
-    context.logger.info(`Project "${target.project}" is not a dependency of any other project`);
+    context.logger.info(`Project "${project}" is not a dependency for any other project`);
   }
 
   const dependencies: ProjectDependency[] = Object.values(projGraph.nodes)
@@ -39,8 +32,8 @@ export async function getProjectDependencies(context: BuilderContext): Promise<P
       } else if (type !== 'lib') {
         context.logger.info(`Ignoring project "${name}" since it is not a library`);
         return false;
-      } else if (!data.targets || !data.targets[targetName] || !data.targets[targetName].executor) {
-        context.logger.info(`Ignoring project "${name}" since it doesn't have a "${targetName}" target`);
+      } else if (!data.targets || !data.targets[releaseTarget] || !data.targets[releaseTarget].executor) {
+        context.logger.info(`Ignoring project "${name}" since it doesn't have a "${releaseTarget}" target`);
         return false;
       }
       return true;

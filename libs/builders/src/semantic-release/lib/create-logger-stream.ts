@@ -1,9 +1,9 @@
-import { PassThrough, Writable } from 'stream';
+import { PassThrough } from 'stream';
 
 import { BuilderContext } from '@angular-devkit/architect';
 import { WritableStreamBuffer } from 'stream-buffers';
 
-export function createLoggerStream(context: BuilderContext): Writable {
+export function createLoggerStream(context: BuilderContext): NodeJS.WriteStream {
   const passthrough = new PassThrough();
   const bufferedStream = new WritableStreamBuffer();
   let bufferedString = '';
@@ -26,5 +26,5 @@ export function createLoggerStream(context: BuilderContext): Writable {
     }
   });
 
-  return passthrough;
+  return passthrough as unknown as NodeJS.WriteStream;
 }
