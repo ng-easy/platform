@@ -1,3 +1,10 @@
+## [5.0.10](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.9...@ng-easy/image-optimizer@5.0.10) (2022-05-26)
+
+
+### Bug Fixes and Dependency Updates
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.0.10 [skip ci] ([38e8d82](https://github.com/ng-easy/platform/commit/38e8d82bda8f005f4ecbec0ddb257620aa0b46f5))
+
 ## [5.0.9](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.8...@ng-easy/image-optimizer@5.0.9) (2022-05-26)
 
 
