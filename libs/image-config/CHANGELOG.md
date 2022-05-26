@@ -1,3 +1,10 @@
+## [5.0.11](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.10...@ng-easy/image-config@5.0.11) (2022-05-26)
+
+
+### :bug: Bug Fixes
+
+* :arrow_up: update dependency sharp to v0.30.5 ([#532](https://github.com/ng-easy/platform/issues/532)) ([0564d09](https://github.com/ng-easy/platform/commit/0564d098bd06a35d856efe86f91dc5e54f24b425))
+
 ## [5.0.10](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.9...@ng-easy/image-config@5.0.10) (2022-05-26)
 
 ## [5.0.9](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.8...@ng-easy/image-config@5.0.9) (2022-05-26)
