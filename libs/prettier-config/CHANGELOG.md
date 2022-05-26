@@ -1,3 +1,10 @@
+## [5.0.9](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.8...@ng-easy/prettier-config@5.0.9) (2022-05-26)
+
+
+### :bug: Bug Fixes
+
+* :arrow_up: update dependency sharp to v0.30.5 ([#532](https://github.com/ng-easy/platform/issues/532)) ([0564d09](https://github.com/ng-easy/platform/commit/0564d098bd06a35d856efe86f91dc5e54f24b425))
+
 ## [5.0.8](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.7...@ng-easy/prettier-config@5.0.8) (2022-05-22)
 
 
