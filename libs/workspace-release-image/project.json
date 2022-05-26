@@ -4,7 +4,8 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "nx:noop"
+      "executor": "nx:noop",
+      "outputs": ["libs/workspace-release-image"]
     },
     "release": {
       "executor": "./dist/libs/builders:workspace-semantic-release",
