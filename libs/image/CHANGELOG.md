@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/ng-easy/platform/compare/@ng-easy/image@1.0.0...@ng-easy/image@1.0.1) (2022-05-26)
+
+
+### Bug Fixes and Dependency Updates
+
+* **image:** :arrow_up: update @ng-easy/image-config to 5.0.9 [skip ci] ([26e74ec](https://github.com/ng-easy/platform/commit/26e74ecb523c87b5811f87c57cad3bebae41f783))
+* **image:** :package: update package.json ([#528](https://github.com/ng-easy/platform/issues/528)) ([907dd94](https://github.com/ng-easy/platform/commit/907dd94102a4a06c5cf6b87f7d4b711578c6f7b5))
+
 # 1.0.0 (2022-05-25)
 
 
