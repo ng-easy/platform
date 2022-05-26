@@ -1,3 +1,10 @@
+## [4.5.5](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.4...@ng-easy/eslint-config@4.5.5) (2022-05-26)
+
+
+### :bug: Bug Fixes
+
+* :arrow_up: update dependency sharp to v0.30.5 ([#532](https://github.com/ng-easy/platform/issues/532)) ([0564d09](https://github.com/ng-easy/platform/commit/0564d098bd06a35d856efe86f91dc5e54f24b425))
+
 ## [4.5.4](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.3...@ng-easy/eslint-config@4.5.4) (2022-05-22)
 
 
