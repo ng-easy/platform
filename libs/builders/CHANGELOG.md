@@ -1,3 +1,10 @@
+## [7.4.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.4.0...@ng-easy/builders@7.4.1) (2022-05-26)
+
+
+### :bug: Bug Fixes
+
+* **builders:** :bug: fix correct emoji for bugs and deps ([#533](https://github.com/ng-easy/platform/issues/533)) ([e165964](https://github.com/ng-easy/platform/commit/e16596458039d94c43a113aa530093487979bfc4))
+
 # [7.4.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.3.2...@ng-easy/builders@7.4.0) (2022-05-26)
 
 
