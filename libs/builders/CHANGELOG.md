@@ -1,3 +1,22 @@
+# [7.4.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.3.2...@ng-easy/builders@7.4.0) (2022-05-26)
+
+
+### :arrow_up: Dependency Updates
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.0.11 [skip ci] ([ace95e0](https://github.com/ng-easy/platform/commit/ace95e06f100990a3cf0b67045a858d90c8630e9))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.0.11 [skip ci] ([7affd88](https://github.com/ng-easy/platform/commit/7affd88220887cad31dd2066718fdcb2807c7aa1))
+
+
+### :bug: Bug Fixes
+
+* :arrow_up: update dependency sharp to v0.30.5 ([#532](https://github.com/ng-easy/platform/issues/532)) ([0564d09](https://github.com/ng-easy/platform/commit/0564d098bd06a35d856efe86f91dc5e54f24b425))
+
+
+### :sparkles: Features
+
+* **builders:** :sparkles: add emoji to changelog and separate update deps commits ([#531](https://github.com/ng-easy/platform/issues/531)) ([ea1f839](https://github.com/ng-easy/platform/commit/ea1f8394cb4adbeaa1d6cea787cfdce935bcd1f4)), closes [#527](https://github.com/ng-easy/platform/issues/527)
+* **builders:** :sparkles: new workspace builder to release projects in sync ([#530](https://github.com/ng-easy/platform/issues/530)) ([1624e66](https://github.com/ng-easy/platform/commit/1624e6659b8c35c0ef16e67d0e3a795a8939cbbb)), closes [#400](https://github.com/ng-easy/platform/issues/400) [#182](https://github.com/ng-easy/platform/issues/182)
+
 ## [7.3.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.3.1...@ng-easy/builders@7.3.2) (2022-05-26)
 
 
