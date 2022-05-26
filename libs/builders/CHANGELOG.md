@@ -1,3 +1,11 @@
+## [7.3.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.3.1...@ng-easy/builders@7.3.2) (2022-05-26)
+
+
+### Bug Fixes and Dependency Updates
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.0.10 [skip ci] ([585f7e4](https://github.com/ng-easy/platform/commit/585f7e4995b3635ff71e4f4d9a76a250dc51f539))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.0.10 [skip ci] ([e444702](https://github.com/ng-easy/platform/commit/e4447021e0d2b97d01f624da287a4f86d73efc64))
+
 ## [7.3.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.3.0...@ng-easy/builders@7.3.1) (2022-05-26)
 
 
