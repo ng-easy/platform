@@ -3,6 +3,9 @@
   "sourceRoot": "libs/workspace-release-image",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "nx:noop"
+    },
     "release": {
       "executor": "./dist/libs/builders:workspace-semantic-release",
       "options": {
