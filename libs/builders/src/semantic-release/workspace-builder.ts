@@ -14,6 +14,10 @@ async function semanticReleaseWorkspaceBuilder(options: SemanticReleaseWorkspace
     return failureOutput(context, `Invalid project`);
   }
 
+  if (target !== 'release') {
+    return failureOutput(context, `Builders can only be applied in a target named "release"`);
+  }
+
   context.logger.info(`Configuration for semantic release:`);
   context.logger.info(JSON.stringify(options, null, 2));
   context.logger.info('');

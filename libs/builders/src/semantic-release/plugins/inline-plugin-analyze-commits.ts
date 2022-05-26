@@ -7,7 +7,7 @@ import { InlinePlugin, ReleaseProjectOptions } from '../models';
 async function inlineAnalyzeCommits(releaseOptions: ReleaseProjectOptions, context: Context): Promise<string | null> {
   context.logger.log(`Nx Analyze Commits Plugin: VAnalyze Commits`);
 
-  const projects: string[] = [releaseOptions.project, ...releaseOptions.relatedProjects];
+  const projects: string[] = [...new Set([releaseOptions.project, ...releaseOptions.relatedProjects])];
   const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions(projects, releaseOptions.mode);
 
   context.logger.log(`Regex to match commits: ${analyzeCommitOptions.parserOpts.headerPattern.source}`);

@@ -1,5 +1,6 @@
 import { Commit, Context } from 'semantic-release';
 
+import { getAnalyzeCommitsOptions } from '../lib';
 import { InlinePlugin, ReleaseProjectOptions } from '../models';
 import { inlinePluginAnalyzeCommits } from './inline-plugin-analyze-commits';
 
@@ -124,6 +125,12 @@ describe('@ng-easy/builders:semantic-release', () => {
         const options = getReleaseOptions('project', 'independent');
 
         expect(await analyzeCommits(options, context)).toBe('major');
+      });
+
+      it('should not support invalid project names', () => {
+        expect(() => {
+          getAnalyzeCommitsOptions(['01891$'], 'independent');
+        }).toThrow();
       });
     });
   });

@@ -22,11 +22,19 @@ const defaultReleaseRules: readonly ReleaseRule[] = [
   { type: 'docs', release: 'patch' },
 ];
 
-const sharedScopes: readonly string[] = ['\\*', 'deps']; // escape for micromatch
+const allowedProjectName = '[a-zA-Z\\-]';
+const allowedProjectNameRegex = new RegExp(`^${allowedProjectName}+$`);
+const sharedScopes: readonly string[] = ['\\*', 'deps']; // escape for micromatch and regex
 
 export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent' | 'sync' | 'tag'): AnalyzeCommitsOptions {
   let headerPattern: RegExp;
   const releaseRules: ReleaseRule[] = [{ breaking: true, release: 'major' }];
+
+  projects.forEach((project) => {
+    if (!allowedProjectNameRegex.test(project)) {
+      throw new Error(`Project "${project}" does not have a supported name for the builder, it should match ${allowedProjectName}`);
+    }
+  });
 
   if (mode === 'independent' || mode === 'tag') {
     // Build release rules
@@ -39,11 +47,13 @@ export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent'
 
     // make sure to get a match for breaking changes to avoid default rules to apply
     releaseRules.push({ breaking: true, release: 'major' });
+    const projectRegex = projects
+      .map((project) => escapeRegExp(project))
+      .concat(sharedScopes)
+      .join('|');
 
     // Build header pattern
-    headerPattern = new RegExp(
-      `^(\\w*)(?:\\(.*(?<![a-zA-Z\\-])(${projects.map((project) => escapeRegExp(project)).join('|')}|deps|\\*)(?![a-zA-Z\\-]).*\\))?: (.*)$`
-    );
+    headerPattern = new RegExp(`^(\\w*)(?:\\(.*(?<!${allowedProjectName})(${projectRegex})(?!${allowedProjectName}).*\\))?: (.*)$`);
   } else {
     headerPattern = new RegExp(`^(\\w*)(?:\\(([^:]*)\\))?: (.*)$`);
   }
