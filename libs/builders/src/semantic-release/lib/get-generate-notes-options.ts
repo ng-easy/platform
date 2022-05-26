@@ -38,27 +38,31 @@ export function getGenerateNotesOptions(projects: string[]): any {
         });
 
         if (commit.type === 'feat') {
-          commit.type = 'Features';
+          commit.type = ':sparkles: Features';
         } else if (commit.type === 'fix') {
-          commit.type = 'Bug Fixes and Dependency Updates';
+          if (commit.scope === 'deps') {
+            commit.type = ':bug: Bug Fixes';
+          } else {
+            commit.type = ':arrow_up: Dependency Updates';
+          }
         } else if (commit.type === 'perf') {
-          commit.type = 'Performance Improvements';
+          commit.type = ':zap: Performance Improvements';
         } else if (commit.type === 'revert' || commit.revert) {
-          commit.type = 'Reverts';
+          commit.type = ':rewind: Reverts';
         } else if (commit.type === 'docs') {
-          commit.type = 'Documentation';
+          commit.type = ':memo: Documentation';
         } else if (discard) {
           return;
         } else if (commit.type === 'style') {
-          commit.type = 'Styles';
+          commit.type = ':lipstick: Styles';
         } else if (commit.type === 'refactor') {
-          commit.type = 'Refactor';
+          commit.type = ':recycle: Refactor';
         } else if (commit.type === 'test') {
-          commit.type = 'Tests';
+          commit.type = ':white_check_mark: Tests';
         } else if (commit.type === 'build') {
-          commit.type = 'Build System';
+          commit.type = ':building_construction: Build System';
         } else if (commit.type === 'ci') {
-          commit.type = 'Continuous Integration';
+          commit.type = ':green_heart: Continuous Integration';
         }
 
         if (commit.scope === '*' || commit.scope === 'deps') {
