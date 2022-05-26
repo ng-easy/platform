@@ -1,3 +1,5 @@
+## [5.0.9](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.8...@ng-easy/image-config@5.0.9) (2022-05-26)
+
 ## [5.0.8](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.0.7...@ng-easy/image-config@5.0.8) (2022-05-22)
 
 
