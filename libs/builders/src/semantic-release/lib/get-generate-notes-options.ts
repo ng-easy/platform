@@ -41,9 +41,9 @@ export function getGenerateNotesOptions(projects: string[]): any {
           commit.type = ':sparkles: Features';
         } else if (commit.type === 'fix') {
           if (commit.scope === 'deps') {
-            commit.type = ':bug: Bug Fixes';
-          } else {
             commit.type = ':arrow_up: Dependency Updates';
+          } else {
+            commit.type = ':bug: Bug Fixes';
           }
         } else if (commit.type === 'perf') {
           commit.type = ':zap: Performance Improvements';
