@@ -37,6 +37,8 @@ export async function addReleaseTargetGenerator(tree: Tree, schema: AddReleaseTa
     },
   };
 
+  projectConfiguration.targets = targets;
+
   updateProjectConfiguration(tree, project, projectConfiguration);
 
   await formatFiles(tree);

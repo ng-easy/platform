@@ -4,7 +4,7 @@
     "add-release-target": {
       "factory": "./src/semantic-release/add-release-target-generator#addReleaseTargetSchematic",
       "schema": "./src/semantic-release/add-release-target-schema.json",
-      "aliases": ["add", "ng-add"],
+      "aliases": [],
       "x-type": "init",
       "description": "Adds the release target to a project"
     }
@@ -13,7 +13,7 @@
     "add-release-target": {
       "factory": "./src/semantic-release/add-release-target-generator#addReleaseTargetGenerator",
       "schema": "./src/semantic-release/add-release-target-schema.json",
-      "aliases": ["add", "ng-add"],
+      "aliases": [],
       "x-type": "init",
       "description": "Adds the release target to a project"
     }
