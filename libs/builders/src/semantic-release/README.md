@@ -16,6 +16,14 @@ The configuration of the plugins is opinionated and it includes for configured p
 - GitHub release
 - Update the package version in the source code
 
+## Setup
+
+```shell
+npm install -D @ng-easy/builders
+nx g @ng-easy/builders:add-release-target # Add release target to default project or
+nx g @ng-easy/builders:add-release-target --project projectName
+```
+
 ## Releasing Projects Independently
 
 ### Configuring the Builder

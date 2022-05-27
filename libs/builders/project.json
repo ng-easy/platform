@@ -35,6 +35,7 @@
         "assets": [
           "libs/builders/README.md",
           "libs/builders/builders.json",
+          "libs/builders/generators.json",
           {
             "input": "libs/builders/src",
             "output": "/src",

@@ -51,7 +51,9 @@
     "prettier": "^2.6.2",
     "rxjs": "^7.5.5"
   },
-  "builders": "builders.json",
+  "schematics": "./generators.json",
+  "generators": "./generators.json",
+  "builders": "./builders.json",
   "publishConfig": {
     "access": "public"
   }
