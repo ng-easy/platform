@@ -1,3 +1,10 @@
+# [7.5.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.4.1...@ng-easy/builders@7.5.0) (2022-05-27)
+
+
+### :sparkles: Features
+
+* **builders:** :sparkles: validate project names and targets on semrel executors ([#534](https://github.com/ng-easy/platform/issues/534)) ([cb07d63](https://github.com/ng-easy/platform/commit/cb07d633f927c11c0e1e28ca26e3bd51b3edf103)), closes [#525](https://github.com/ng-easy/platform/issues/525)
+
 ## [7.4.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.4.0...@ng-easy/builders@7.4.1) (2022-05-26)
 
 
