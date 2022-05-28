@@ -1,3 +1,10 @@
+# [7.6.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.5.0...@ng-easy/builders@7.6.0) (2022-05-28)
+
+
+### :sparkles: Features
+
+* **builders:** ✨ add install generator ([#535](https://github.com/ng-easy/platform/issues/535)) ([e02d13c](https://github.com/ng-easy/platform/commit/e02d13cb1a4c453cb601e0f1f9ad10a916141c3f)), closes [#401](https://github.com/ng-easy/platform/issues/401)
+
 # [7.5.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.4.1...@ng-easy/builders@7.5.0) (2022-05-27)
 
 
