@@ -1,3 +1,10 @@
+## [7.6.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.6.1...@ng-easy/builders@7.6.2) (2022-05-31)
+
+
+### :bug: Bug Fixes
+
+* **builders:** :bug: widen peer dependency on [@angular](https://github.com/angular) ([#542](https://github.com/ng-easy/platform/issues/542)) ([71e2f88](https://github.com/ng-easy/platform/commit/71e2f887983e34768c76953d9be014252621f964))
+
 ## [7.6.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.6.0...@ng-easy/builders@7.6.1) (2022-05-29)
 
 
