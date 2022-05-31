@@ -1,3 +1,15 @@
+# [8.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.6.2...@ng-easy/builders@8.0.0) (2022-05-31)
+
+
+### :sparkles: Features
+
+* **builders:** :sparkles: remove mode config ([#543](https://github.com/ng-easy/platform/issues/543)) ([ef8a429](https://github.com/ng-easy/platform/commit/ef8a429bab9e2f8d41093ba0f695d47c5b6bc642))
+
+
+### BREAKING CHANGES
+
+* **builders:** use `workspace-semantic-release` for sync mode
+
 ## [7.6.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@7.6.1...@ng-easy/builders@7.6.2) (2022-05-31)
 
 
