@@ -181,7 +181,7 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: storybook-compodoc,e2e
-          parallel: 'true'
+          parallel: 'false' # https://github.com/nrwl/nx/issues/6842#issuecomment-1026763612
           nxCloud: 'true'
           affected: 'false'
 
