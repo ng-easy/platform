@@ -46,7 +46,7 @@ async function semanticReleaseWorkspaceBuilder(options: SemanticReleaseWorkspace
   const projects: string[] = nodes.map(({ name }) => name);
 
   for (const project of projects) {
-    const result: BuilderOutput = await runSemanticRelease({ ...options, mode: 'tag' }, context, project, projects);
+    const result: BuilderOutput = await runSemanticRelease(options, context, project, projects);
     context.logger.info('');
     if (!result.success) {
       return result;

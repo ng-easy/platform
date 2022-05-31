@@ -2,12 +2,6 @@
   "$schema": "http://json-schema.org/schema",
   "type": "object",
   "properties": {
-    "mode": {
-      "description": "Choose whether you want to make individual versioning or group all under the same version",
-      "type": "string",
-      "enum": ["independent", "sync"],
-      "default": "independent"
-    },
     "dryRun": {
       "description": "Runs the release process without releasing",
       "type": "boolean",

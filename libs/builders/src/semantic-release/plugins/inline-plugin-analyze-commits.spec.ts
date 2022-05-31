@@ -20,11 +20,10 @@ describe('@ng-easy/builders:semantic-release', () => {
 
     function getReleaseOptions(
       project: string,
-
-      mode: ReleaseProjectOptions['mode'],
+      root: ReleaseProjectOptions['root'] = false,
       relatedProjects: string[] = []
     ): ReleaseProjectOptions {
-      return { mode, project, relatedProjects } as ReleaseProjectOptions;
+      return { root, project, relatedProjects } as ReleaseProjectOptions;
     }
 
     beforeEach(() => {
@@ -35,23 +34,23 @@ describe('@ng-easy/builders:semantic-release', () => {
       }
     });
 
-    describe('independent mode', () => {
+    describe('individual project', () => {
       it('should consider no update if there is no match', async () => {
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBeNull();
       });
 
       it('should consider no update if there is a chore change', async () => {
         addCommit('chore(project): chore');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBeNull();
       });
 
       it('should consider patch update if there is a fix commit', async () => {
         addCommit('fix(project): fix');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('patch');
       });
@@ -59,77 +58,77 @@ describe('@ng-easy/builders:semantic-release', () => {
       it('should consider minor update if there is a feat commit', async () => {
         addCommit('fix(project): this should be overridden');
         addCommit('feat(project): feat');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('minor');
       });
 
       it('should consider major update if there is a breaking change', async () => {
         addCommit('fix(project): this should be a breaking', '', breakingChangeMessage);
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('major');
       });
 
       it('should consider the update if the scope applies to all projects', async () => {
         addCommit('fix(*): fix');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('patch');
       });
 
       it('should consider the update if the scope applies is dependencies', async () => {
         addCommit('fix(deps): fix');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('patch');
       });
 
       it('should consider no update if the scope applies to another project', async () => {
         addCommit('fix(another-project): fix');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBeNull();
       });
 
       it('should not consider the update if the scope applies to another project when a change is breaking', async () => {
         addCommit('fix(another-project): fix with breaking', '', breakingChangeMessage);
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBeNull();
       });
 
       it('should consider update when multiple projects are used', async () => {
         addCommit('fix(another-project): fix');
-        const options = getReleaseOptions('project', 'independent', ['another-project']);
+        const options = getReleaseOptions('project', false, ['another-project']);
 
         expect(await analyzeCommits(options, context)).toBe('patch');
       });
 
       it('should consider update when the scope has multiple projects', async () => {
         addCommit('fix(another-project,project): fix');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('patch');
       });
 
       it('should consider update when there is no scope', async () => {
         addCommit('fix: fix');
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('patch');
       });
 
       it('should consider update when there is no scope and a breaking change', async () => {
         addCommit('fix: fix', '', breakingChangeMessage);
-        const options = getReleaseOptions('project', 'independent');
+        const options = getReleaseOptions('project');
 
         expect(await analyzeCommits(options, context)).toBe('major');
       });
 
       it('should not support invalid project names', () => {
         expect(() => {
-          getAnalyzeCommitsOptions(['01891$'], 'independent');
+          getAnalyzeCommitsOptions(['01891$']);
         }).toThrow();
       });
     });
