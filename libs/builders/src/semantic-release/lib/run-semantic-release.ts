@@ -20,7 +20,6 @@ import { getGithubOptions } from './get-github-options';
 import { getProjectDependencies } from './get-project-dependencies';
 
 export interface RunSemanticReleaseOptions {
-  mode: 'independent' | 'sync' | 'tag';
   branches: BranchSpecJson[];
   changelog: boolean;
   dryRun: boolean;
@@ -48,7 +47,6 @@ export async function runSemanticRelease(
   context.logger.info(`Starting semantic release for project "${project}" with package name ${packageName} from path ${outputPath}`);
 
   const releaseProjectOptions: ReleaseProjectOptions = {
-    mode: options.mode,
     project,
     relatedProjects: relatedProjects.filter((relatedProject) => relatedProject !== project),
     packageName,
@@ -56,7 +54,7 @@ export async function runSemanticRelease(
     outputPath,
     releaseCommitMessage: options.releaseCommitMessage,
     changelogFile: `${dirname(packageJson)}/CHANGELOG.md`,
-    dependencies: await getProjectDependencies(context, project, options.mode),
+    dependencies: await getProjectDependencies(context, project, relatedProjects.length > 0),
     build: async () => {
       const buildRun: BuilderRun = await context.scheduleTarget({ project, target: 'build' });
       return await buildRun.result;

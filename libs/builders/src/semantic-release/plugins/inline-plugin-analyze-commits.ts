@@ -8,7 +8,7 @@ async function inlineAnalyzeCommits(releaseOptions: ReleaseProjectOptions, conte
   context.logger.log(`Nx Analyze Commits Plugin: VAnalyze Commits`);
 
   const projects: string[] = [...new Set([releaseOptions.project, ...releaseOptions.relatedProjects])];
-  const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions(projects, releaseOptions.mode);
+  const analyzeCommitOptions: AnalyzeCommitsOptions = getAnalyzeCommitsOptions(projects, releaseOptions.root);
 
   context.logger.log(`Regex to match commits: ${analyzeCommitOptions.parserOpts.headerPattern.source}`);
   context.logger.log('');

@@ -28,7 +28,7 @@ nx g @ng-easy/builders:add-release-target --project projectName
 
 ### Configuring the Builder
 
-[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. When the builder is configured in `independent` mode, only the following commits will considered that apply for the individual project based on the scope:
+[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. Only the following commits will considered that apply for the individual project based on the scope:
 
 - No scope, `*` or `deps`
 - Those where the scope is equal to the project name
@@ -68,7 +68,6 @@ Additionally, you can use the following options:
 
 - `dryRun`: defaults to `false`, runs the release process without releasing
 - `force`: defaults to `false`, forces the release in a non CI environment, can be used to make a release locally
-- `mode`: can be either `independent` or `sync`, defaults to `independent`, choose whether you want to make individual versioning or group all under the same version
 - `branches`: branches configuration for workflow release as explained in [`semantic-release` docs](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/workflow-configuration.md#branches-properties), defaults to `["master", "main", "next", { "name": "beta", "prerelease": true }, { "name": "alpha", "prerelease": true }]`
 - `releaseCommitMessage`: defaults to `chore(release): :package: \${project}@\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`, the message for the release commit to upgrade the changelog and package version, refer to [`semantic-release/git` options](https://github.com/semantic-release/git#options)
 - `changelog`: defaults to `true`, generates project's changelog

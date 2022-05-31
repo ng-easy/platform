@@ -4,7 +4,7 @@ import { Options } from 'semantic-release';
 import { ProjectDependency } from './project-dependency';
 
 export interface ReleaseProjectOptions extends Options {
-  mode: 'independent' | 'sync' | 'tag';
+  root?: boolean;
   project: string;
   relatedProjects: string[];
   packageName: string;

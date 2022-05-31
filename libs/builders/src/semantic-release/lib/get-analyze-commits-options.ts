@@ -26,7 +26,7 @@ const allowedProjectName = '[a-zA-Z\\-]';
 const allowedProjectNameRegex = new RegExp(`^${allowedProjectName}+$`);
 const sharedScopes: readonly string[] = ['\\*', 'deps']; // escape for micromatch and regex
 
-export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent' | 'sync' | 'tag'): AnalyzeCommitsOptions {
+export function getAnalyzeCommitsOptions(projects: string[], root: boolean = false): AnalyzeCommitsOptions {
   let headerPattern: RegExp;
   const releaseRules: ReleaseRule[] = [{ breaking: true, release: 'major' }];
 
@@ -36,7 +36,9 @@ export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent'
     }
   });
 
-  if (mode === 'independent' || mode === 'tag') {
+  if (root) {
+    headerPattern = new RegExp(`^(\\w*)(?:\\(([^:]*)\\))?: (.*)$`);
+  } else {
     // Build release rules
     releaseRules.push({ scope: '*', release: false }); // ignore commits from other scopes, if later they match last wins
     [...projects, ...sharedScopes].forEach((project) => {
@@ -54,8 +56,6 @@ export function getAnalyzeCommitsOptions(projects: string[], mode: 'independent'
 
     // Build header pattern
     headerPattern = new RegExp(`^(\\w*)(?:\\(.*(?<!${allowedProjectName})(${projectRegex})(?!${allowedProjectName}).*\\))?: (.*)$`);
-  } else {
-    headerPattern = new RegExp(`^(\\w*)(?:\\(([^:]*)\\))?: (.*)$`);
   }
 
   return { releaseRules, parserOpts: { headerPattern } };
