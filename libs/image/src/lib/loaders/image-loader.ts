@@ -76,7 +76,7 @@ export abstract class ImageLoader {
       srcset: supportedWidths
         .map((width, index) => `${this.getImageUrl({ src, quality, width, format })} ${kind === 'w' ? width : index + 1}${kind}`)
         .join(', '),
-      src: this.getImageUrl({ src, quality, width: supportedWidths[supportedWidths.length - 1], format }),
+      src: this.getImageUrl({ src, quality, width: supportedWidths[supportedWidths.length - 1] ?? width, format }),
       mimeType: getImageMimeType(format),
     }));
   }

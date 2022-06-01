@@ -24,7 +24,7 @@
         [style.backgroundSize]="objectFit"
         [style.backgroundPosition]="objectPosition"
         [style.backgroundImage]="(blurBackgroundImage$ | async) ?? 'none'"
-        [style.filter]="blurFilter"
+        [style.filter]="blurFilter$ | async"
         [srcset]="context.isVisible ? source.srcset : ''"
         [sizes]="context.isVisible ? source.sizes : ''"
         [src]="context.isVisible ? source.src : ''"
