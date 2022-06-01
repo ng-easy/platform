@@ -10,14 +10,15 @@ import {
   AfterViewInit,
   ViewChild,
   ElementRef,
+  Inject,
 } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Observable, Subject } from 'rxjs';
-import { map, startWith, switchMap } from 'rxjs/operators';
+import { Observable, of, Subject, filter, map, startWith, switchMap, take, BehaviorSubject } from 'rxjs';
 
 import { ImageLoader } from '../loaders';
 import { ImageLayout, ImagePlaceholder, ObjectFit, ImageSources } from '../models';
-import { ImageIntersectionObserver, ImageLoaderRegistry } from '../services';
+import { IntersectionObserverService, ImageLoaderRegistry } from '../services';
+import { LAZY_LOAD_SUPPORT } from '../tokens';
 
 @Component({
   selector: 'image[src]',
@@ -157,14 +158,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     return this.layout === 'fixed' ? `${this.height ?? 0}px` : 'auto';
   }
 
-  get blurFilter(): string {
-    if (this.placeholder === 'blur' && this.blurDataURL && !this.isImageLoaded) {
-      return `blur(20px)`;
-    } else {
-      return 'none';
-    }
-  }
-
   private readonly ngOnChanges$ = new Subject<void>();
   private readonly changes$: Observable<void> = this.ngOnChanges$.pipe(startWith(undefined as void));
 
@@ -183,7 +176,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     })
   );
 
-  // TODO: Make this reactive based on network
   readonly sources$: Observable<ImageSources[]> = this.changes$.pipe(
     map(() =>
       this.imageLoader.getImageSources({
@@ -194,6 +186,19 @@ export class ImageComponent implements OnChanges, AfterViewInit {
         unoptimized: this.unoptimized,
       })
     )
+  );
+
+  private readonly isImageLoaded$ = new BehaviorSubject(false);
+
+  readonly blurFilter$: Observable<string> = this.changes$.pipe(
+    switchMap(() => this.isImageLoaded$),
+    map((isImageLoaded) => {
+      if (this.placeholder === 'blur' && this.blurDataURL && !isImageLoaded) {
+        return `blur(20px)`;
+      } else {
+        return 'none';
+      }
+    })
   );
 
   readonly blurBackgroundImage$: Observable<string> = this.changes$.pipe(
@@ -207,17 +212,18 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   );
 
   readonly isVisible$: Observable<boolean> = this.changes$.pipe(
-    switchMap(() => this.intersection.isVisible(this.elementRef.nativeElement, this.priority))
+    switchMap(() => (this.lazyLoadingSupport || this.priority ? of(true) : this.intersection.isVisible(this.elementRef.nativeElement))),
+    filter((isVisible) => isVisible),
+    take(1)
   );
-
-  private isImageLoaded = false;
 
   constructor(
     private readonly imageLoaderRegistry: ImageLoaderRegistry,
     private readonly window: Window,
     private readonly domSanitizer: DomSanitizer,
     private readonly elementRef: ElementRef,
-    private readonly intersection: ImageIntersectionObserver
+    private readonly intersection: IntersectionObserverService,
+    @Inject(LAZY_LOAD_SUPPORT) private readonly lazyLoadingSupport: boolean
   ) {}
 
   ngOnChanges() {
@@ -242,13 +248,15 @@ export class ImageComponent implements OnChanges, AfterViewInit {
       return;
     }
 
-    if (!this.image.nativeElement.src.startsWith('data:')) {
+    if (this.image.nativeElement.src.startsWith('data:')) {
+      this.isImageLoaded$.next(true);
+    } else {
       const decodePromise: Promise<void> = 'decode' in this.image.nativeElement ? this.image.nativeElement.decode() : Promise.resolve();
 
       decodePromise
         .catch(() => null)
         .then(() => {
-          this.isImageLoaded = true;
+          this.isImageLoaded$.next(true);
           this.loadingComplete.emit();
         });
     }
@@ -282,6 +290,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     if (!isDevMode()) {
       return;
     }
+
+    // TODO: optimize production build
 
     if (this.layout === 'fill' && (this.width != null || this.height != null)) {
       console.warn(`Image with src "${this.src}" and "layout='fill'" has unused properties assigned. Please remove "width" and "height".`);
