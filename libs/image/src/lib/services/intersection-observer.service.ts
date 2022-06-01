@@ -1,30 +1,25 @@
 import { Injectable } from '@angular/core';
-import { defer, Observable, of, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, finalize, map } from 'rxjs/operators';
+import { animationFrameScheduler, defer, Observable, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, finalize, map, observeOn } from 'rxjs/operators';
+
+export const defaultIntersectionObserverOptions: IntersectionObserverInit = {};
 
 // Reference: https://web.dev/browser-level-image-lazy-loading
 @Injectable({ providedIn: 'root' })
 export class IntersectionObserverService {
-  private readonly intersections$ = new Subject<IntersectionObserverEntry[]>();
-  private readonly intersectionObserver = new IntersectionObserver(
-    (entries) => {
-      this.intersections$.next(entries);
-    },
-    {
-      // TODO: tweak distances
-      // https://web.dev/browser-level-image-lazy-loading/
-    }
-  );
+  private readonly intersectionsMap = new Map<IntersectionObserverInit, Subject<IntersectionObserverEntry[]>>();
+  private readonly intersectionObserverMap = new Map<IntersectionObserverInit, IntersectionObserver>();
 
-  isVisible(element: Element): Observable<boolean> {
-    const intersectionObserver = this.intersectionObserver;
-    if (intersectionObserver == null) {
+  isVisible(element: Element, options: IntersectionObserverInit = defaultIntersectionObserverOptions): Observable<boolean> {
+    if (!('IntersectionObserver' in window)) {
       return of(true);
     }
 
+    const { intersectionObserver, intersections$ } = this.getIntersectionObserver(options);
+
     return defer(() => {
       intersectionObserver.observe(element);
-      return this.intersections$;
+      return intersections$;
     }).pipe(
       map((entries: IntersectionObserverEntry[]) => {
         // Entries collection can emit the same element multiple times in the same batch
@@ -35,9 +30,26 @@ export class IntersectionObserverService {
       // IntersectionObserver only emits entries that have changed, don't need to react if target element is not involved
       filter((entry): entry is IntersectionObserverEntry => !!entry),
       map((entry) => entry.isIntersecting),
-      debounceTime(0), // To allow elements render one by one TODO: debounce request animation frame
+      debounceTime(0), // To allow elements render one by one
       distinctUntilChanged(),
+      observeOn(animationFrameScheduler), // Make sure rendering happens when there is an animation frame ready
       finalize(() => intersectionObserver.unobserve(element))
     );
+  }
+
+  private getIntersectionObserver(options: IntersectionObserverInit) {
+    const newIntersections$ = this.intersectionsMap.get(options);
+    const newIntersectionObserver = this.intersectionObserverMap.get(options);
+    if (newIntersections$ && newIntersectionObserver) {
+      return { intersections$: newIntersections$, intersectionObserver: newIntersectionObserver };
+    }
+
+    const intersections$ = new Subject<IntersectionObserverEntry[]>();
+    const intersectionObserver = new IntersectionObserver((entries) => intersections$.next(entries), options);
+
+    this.intersectionsMap.set(options, intersections$);
+    this.intersectionObserverMap.set(options, intersectionObserver);
+
+    return { intersections$, intersectionObserver };
   }
 }
