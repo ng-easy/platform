@@ -18,7 +18,7 @@ import { Observable, of, Subject, filter, map, startWith, switchMap, take, Behav
 import { ImageLoader } from '../loaders';
 import { ImageLayout, ImagePlaceholder, ObjectFit, ImageSources } from '../models';
 import { IntersectionObserverService, ImageLoaderRegistry } from '../services';
-import { LAZY_LOAD_SUPPORT } from '../tokens';
+import { IMAGE_INTERSECTION_OBSERVER_OPTIONS, LAZY_LOAD_SUPPORT } from '../tokens';
 
 @Component({
   selector: 'image[src]',
@@ -212,7 +212,11 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   );
 
   readonly isVisible$: Observable<boolean> = this.changes$.pipe(
-    switchMap(() => (this.lazyLoadingSupport || this.priority ? of(true) : this.intersection.isVisible(this.elementRef.nativeElement))),
+    switchMap(() =>
+      this.lazyLoadingSupport || this.priority
+        ? of(true)
+        : this.intersection.isVisible(this.elementRef.nativeElement, this.imageIntersectionObserverOptions)
+    ),
     filter((isVisible) => isVisible),
     take(1)
   );
@@ -223,7 +227,8 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     private readonly domSanitizer: DomSanitizer,
     private readonly elementRef: ElementRef,
     private readonly intersection: IntersectionObserverService,
-    @Inject(LAZY_LOAD_SUPPORT) private readonly lazyLoadingSupport: boolean
+    @Inject(LAZY_LOAD_SUPPORT) private readonly lazyLoadingSupport: boolean,
+    @Inject(IMAGE_INTERSECTION_OBSERVER_OPTIONS) private readonly imageIntersectionObserverOptions: IntersectionObserverInit
   ) {}
 
   ngOnChanges() {
@@ -242,7 +247,6 @@ export class ImageComponent implements OnChanges, AfterViewInit {
     return mime;
   }
 
-  // TODO: fix this being called twice
   onLoad() {
     if (!this.image) {
       return;
