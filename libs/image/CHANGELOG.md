@@ -1,3 +1,21 @@
+# [5.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.0.12...@ng-easy/image@5.1.0) (2022-06-01)
+
+
+### :bug: Bug Fixes
+
+* **image:** :sparkles: width and height can be strings ([#544](https://github.com/ng-easy/platform/issues/544)) ([adfe0d5](https://github.com/ng-easy/platform/commit/adfe0d53f2826c8afcaa2ae44089d3c807bf45d5))
+* **image:** :zap: intersection observer didn't work well on race conditions ([#545](https://github.com/ng-easy/platform/issues/545)) ([c201869](https://github.com/ng-easy/platform/commit/c2018698c7428ab31fceb10ca21a0499104c818e))
+
+
+### :memo: Documentation
+
+* **image:** :memo: add readme to storybook ([#547](https://github.com/ng-easy/platform/issues/547)) ([50ec167](https://github.com/ng-easy/platform/commit/50ec167f3e9d3e811ca37bacd175519d73679072))
+
+
+### :sparkles: Features
+
+* **image:** :sparkles: using intersection observer tresholds according to Chrome ([#546](https://github.com/ng-easy/platform/issues/546)) ([b907eec](https://github.com/ng-easy/platform/commit/b907eecf0dd3eccdef23d704ec27287b353f068f))
+
 ## [5.0.12](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.0.11...@ng-easy/image@5.0.12) (2022-05-29)
 
 ### :arrow_up: Dependency Updates
