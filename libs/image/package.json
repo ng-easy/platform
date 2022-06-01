@@ -26,6 +26,7 @@
     "access": "public"
   },
   "peerDependencies": {
+    "@angular/cdk": "^13.3.8",
     "@angular/common": "^13.3.10",
     "@angular/core": "^13.3.10",
     "@angular/platform-browser": "^13.3.10",

@@ -1,3 +1,4 @@
+import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -41,16 +42,26 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   /**
    * The width of the image, in pixels. Must be an integer without a unit.
    * Required, except for those with `layout="fill"`.
-   * TODO: accept string
    */
-  @Input() width?: number;
+  @Input() get width(): number | undefined {
+    return this._width;
+  }
+  set width(v: NumberInput) {
+    this._width = v != null ? Math.max(0, coerceNumberProperty(v)) : undefined;
+  }
+  private _width?: number;
 
   /**
    * The height of the image, in pixels. Must be an integer without a unit.
    * Required, except for those with `layout="fill"`.
-   * TODO: accept string
    */
-  @Input() height?: number;
+  @Input() get height(): number | undefined {
+    return this._height;
+  }
+  set height(v: NumberInput) {
+    this._height = v != null ? Math.max(0, coerceNumberProperty(v)) : undefined;
+  }
+  private _height?: number;
 
   /**
    * The layout behavior of the image as the viewport changes size. Defaults to `intrinsic`.
