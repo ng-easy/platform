@@ -1,3 +1,5 @@
+# [5.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.12...@ng-easy/image-optimizer@5.1.0) (2022-06-01)
+
 ## [5.0.12](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.0.11...@ng-easy/image-optimizer@5.0.12) (2022-05-29)
 
 
