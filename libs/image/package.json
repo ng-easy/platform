@@ -30,6 +30,6 @@
     "@angular/common": "^13.3.11",
     "@angular/core": "^13.3.11",
     "@angular/platform-browser": "^13.3.11",
-    "@ng-easy/image-config": "^5.1.0"
+    "@ng-easy/image-config": "^5.1.1"
   }
 }
