@@ -24,8 +24,8 @@
   "license": "MIT",
   "peerDependencies": {
     "fs-extra": "^10.1.0",
-    "sharp": "^0.30.5",
-    "@ng-easy/image-config": "^5.0.12"
+    "sharp": "^0.30.6",
+    "@ng-easy/image-config": "^5.1.0"
   },
   "publishConfig": {
     "access": "public"

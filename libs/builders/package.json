@@ -38,7 +38,7 @@
     "imagemin": "^8.0.1",
     "jimp": "^0.16.1",
     "semantic-release": "^19.0.2",
-    "sharp": "^0.30.5",
+    "sharp": "^0.30.6",
     "stream-buffers": "^3.0.2",
     "svgo": "^2.8.0",
     "tinycolor2": "^1.4.2",
