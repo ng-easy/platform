@@ -1,3 +1,11 @@
+## [4.5.7](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.6...@ng-easy/eslint-config@4.5.7) (2022-06-04)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([112faf8](https://github.com/ng-easy/platform/commit/112faf8c4efff397189f1a711f529a01af0b0f07))
+* :arrow_up: update nrwl workspace ([35dd20a](https://github.com/ng-easy/platform/commit/35dd20a55e42d3cf8159400990a32a22807fdb88))
+
 ## [4.5.6](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.5...@ng-easy/eslint-config@4.5.6) (2022-05-29)
 
 
