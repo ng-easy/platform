@@ -131,7 +131,7 @@
     "@types/cypress-image-snapshot": "3.1.6",
     "@types/fs-extra": "9.0.13",
     "@types/imagemin": "8.0.0",
-    "@types/jest": "28.1.0",
+    "@types/jest": "28.1.1",
     "@types/lodash": "4.14.182",
     "@types/node": "16.11.38",
     "@types/semantic-release": "17.2.3",
