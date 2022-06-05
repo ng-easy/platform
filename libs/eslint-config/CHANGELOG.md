@@ -1,3 +1,11 @@
+## [4.5.8](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.7...@ng-easy/eslint-config@4.5.8) (2022-06-05)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([5a193e3](https://github.com/ng-easy/platform/commit/5a193e335e71d3c378c0dcb829ca73cc31dc45f8))
+* :arrow_up: update dependency @ng-easy/image-config to ^5.1.1 ([7feb99c](https://github.com/ng-easy/platform/commit/7feb99cca3611226ca98d1bc66ee525320974ef3))
+
 ## [4.5.7](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.6...@ng-easy/eslint-config@4.5.7) (2022-06-04)
 
 
