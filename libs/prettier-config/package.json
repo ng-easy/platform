@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/prettier-config",
-  "version": "5.0.12",
+  "version": "5.0.13",
   "description": "Shared Prettier configuration for ng-easy projects",
   "keywords": [
     "angular",

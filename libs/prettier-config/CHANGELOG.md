@@ -1,3 +1,10 @@
+## [5.0.13](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.12...@ng-easy/prettier-config@5.0.13) (2022-06-06)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency @ng-easy/image-config to ^5.1.2 ([264effb](https://github.com/ng-easy/platform/commit/264effbe15847732df338c798a14dc3342a9c16d))
+
 ## [5.0.12](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.11...@ng-easy/prettier-config@5.0.12) (2022-06-05)
 
 
