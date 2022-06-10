@@ -86,7 +86,7 @@
     "nx": "14.2.4",
     "prettier": "2.6.2",
     "rxjs": "7.5.5",
-    "semantic-release": "19.0.2",
+    "semantic-release": "19.0.3",
     "sharp": "0.30.6",
     "stream-buffers": "3.0.2",
     "svgo": "2.8.0",
