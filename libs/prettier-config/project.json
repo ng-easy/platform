@@ -1,23 +1,29 @@
 {
-  "root": "libs/prettier-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/prettier-config/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/prettier-config/**/*.js"]
+        "lintFilePatterns": [
+          "libs/prettier-config/**/*.js"
+        ]
       }
     },
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/prettier-config",
         "tsConfig": "libs/prettier-config/tsconfig.lib.json",
         "packageJson": "libs/prettier-config/package.json",
         "main": "libs/prettier-config/index.js",
-        "assets": ["libs/prettier-config/README.md"]
+        "assets": [
+          "libs/prettier-config/README.md"
+        ]
       }
     },
     "release": {

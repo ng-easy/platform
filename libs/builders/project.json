@@ -1,17 +1,21 @@
 {
-  "root": "libs/builders",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/builders/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/builders/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/builders/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/builders"],
+      "outputs": [
+        "coverage/libs/builders"
+      ],
       "options": {
         "jestConfig": "libs/builders/jest.config.ts",
         "codeCoverage": true
@@ -24,7 +28,9 @@
     },
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/builders",
         "tsConfig": "libs/builders/tsconfig.lib.json",
@@ -48,7 +54,10 @@
       "executor": "./dist/libs/builders:command",
       "options": {
         "command": "cmd",
-        "args": ["/c", "dir"]
+        "args": [
+          "/c",
+          "dir"
+        ]
       }
     },
     "release": {
@@ -61,5 +70,7 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["workspace-release-image"]
+  "implicitDependencies": [
+    "workspace-release-image"
+  ]
 }

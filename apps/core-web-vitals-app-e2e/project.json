@@ -1,5 +1,5 @@
 {
-  "root": "apps/core-web-vitals-app-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/core-web-vitals-app-e2e/src",
   "projectType": "application",
   "targets": {
@@ -15,10 +15,16 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/core-web-vitals-app-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/core-web-vitals-app-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
-  "tags": ["e2e"],
-  "implicitDependencies": ["core-web-vitals-app"]
+  "tags": [
+    "e2e"
+  ],
+  "implicitDependencies": [
+    "core-web-vitals-app"
+  ]
 }

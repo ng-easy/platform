@@ -1,33 +1,43 @@
 {
-  "root": "libs/image-optimizer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/image-optimizer/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/image-optimizer",
         "tsConfig": "libs/image-optimizer/tsconfig.lib.json",
         "packageJson": "libs/image-optimizer/package.json",
         "main": "libs/image-optimizer/src/index.ts",
-        "assets": ["libs/image-optimizer/*.md"]
+        "assets": [
+          "libs/image-optimizer/*.md"
+        ]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/image-optimizer/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/image-optimizer/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/image-optimizer"],
+      "outputs": [
+        "coverage/libs/image-optimizer"
+      ],
       "options": {
         "jestConfig": "libs/image-optimizer/jest.config.ts",
         "codeCoverage": true
       }
     }
   },
-  "tags": ["release:image"]
+  "tags": [
+    "release:image"
+  ]
 }

@@ -1,28 +1,36 @@
 {
-  "root": "libs/image-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/image-config/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/image-config",
         "tsConfig": "libs/image-config/tsconfig.lib.json",
         "packageJson": "libs/image-config/package.json",
         "main": "libs/image-config/src/index.ts",
-        "assets": ["libs/image-config/*.md"]
+        "assets": [
+          "libs/image-config/*.md"
+        ]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/image-config/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/image-config/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/image-config"],
+      "outputs": [
+        "coverage/libs/image-config"
+      ],
       "options": {
         "jestConfig": "libs/image-config/jest.config.ts",
         "passWithNoTests": true,
@@ -30,5 +38,7 @@
       }
     }
   },
-  "tags": ["release:image"]
+  "tags": [
+    "release:image"
+  ]
 }
