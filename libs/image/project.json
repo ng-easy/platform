@@ -1,4 +1,5 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/image/src",
   "prefix": "ng-easy",
@@ -6,13 +7,18 @@
     "dev": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["npx nx run image:storybook-compodoc --watch", "npx nx run image:storybook"],
+        "commands": [
+          "npx nx run image:storybook-compodoc --watch",
+          "npx nx run image:storybook"
+        ],
         "parallel": true
       }
     },
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/image"],
+      "outputs": [
+        "dist/libs/image"
+      ],
       "options": {
         "project": "libs/image/ng-package.json",
         "tsConfig": "libs/image/tsconfig.lib.prod.json"
@@ -29,7 +35,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/image"],
+      "outputs": [
+        "coverage/libs/image"
+      ],
       "options": {
         "jestConfig": "libs/image/jest.config.ts",
         "passWithNoTests": true,
@@ -39,7 +47,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/image/src/**/*.ts", "libs/image/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/image/src/**/*.ts",
+          "libs/image/src/**/*.html"
+        ]
       }
     },
     "storybook": {
@@ -53,7 +64,9 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputDir": "docs/storybook/image",
         "configDir": "libs/image/.storybook",
@@ -63,7 +76,9 @@
     },
     "storybook-compodoc": {
       "executor": "@twittwer/compodoc:compodoc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "tsConfig": "libs/image/tsconfig.lib.prod.json",
         "outputPath": "dist/compodoc/image",
@@ -73,10 +88,15 @@
     "storybook-build": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["npx nx run image:storybook-compodoc", "npx nx run image:build-storybook"],
+        "commands": [
+          "npx nx run image:storybook-compodoc",
+          "npx nx run image:build-storybook"
+        ],
         "parallel": false
       }
     }
   },
-  "tags": ["release:image"]
+  "tags": [
+    "release:image"
+  ]
 }

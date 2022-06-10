@@ -11,5 +11,6 @@
     "image-optimizer": "libs/image-optimizer",
     "prettier-config": "libs/prettier-config",
     "workspace-release-image": "libs/workspace-release-image"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

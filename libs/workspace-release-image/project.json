@@ -1,11 +1,13 @@
 {
-  "root": "libs/workspace-release-image",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/workspace-release-image",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "nx:noop",
-      "outputs": ["libs/workspace-release-image"]
+      "outputs": [
+        "libs/workspace-release-image"
+      ]
     },
     "release": {
       "executor": "./dist/libs/builders:workspace-semantic-release",

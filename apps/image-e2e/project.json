@@ -1,5 +1,5 @@
 {
-  "root": "apps/image-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/image-e2e/src",
   "projectType": "application",
   "targets": {
@@ -15,10 +15,16 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/image-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/image-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
-  "tags": ["e2e"],
-  "implicitDependencies": ["image"]
+  "tags": [
+    "e2e"
+  ],
+  "implicitDependencies": [
+    "image"
+  ]
 }
