@@ -1,3 +1,12 @@
+## [5.0.14](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.13...@ng-easy/prettier-config@5.0.14) (2022-06-11)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([15b4e34](https://github.com/ng-easy/platform/commit/15b4e34bc32b0ca06ba542e2cdf58c2ba53eb37b))
+* :arrow_up: update dependency semantic-release to v19.0.3 [security] ([8eebcde](https://github.com/ng-easy/platform/commit/8eebcde8a80a269307ae57e7cf2c4bc6d16b151d))
+* :arrow_up: update nrwl workspace ([044f244](https://github.com/ng-easy/platform/commit/044f244c09f186384359053ad3d25a549ec1fd2b))
+
 ## [5.0.13](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.12...@ng-easy/prettier-config@5.0.13) (2022-06-06)
 
 
