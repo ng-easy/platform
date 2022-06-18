@@ -32,20 +32,6 @@
     "appsDir": "apps",
     "libsDir": "libs"
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "release": [
-      {
-        "target": "release",
-        "projects": "dependencies"
-      }
-    ]
-  },
   "generators": {
     "@nrwl/angular": {
       "application": {
@@ -91,5 +77,13 @@
     }
   },
   "defaultProject": "image",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json"
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "release": {
+      "dependsOn": ["^release"]
+    }
+  }
 }
