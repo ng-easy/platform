@@ -1,3 +1,15 @@
+# [9.0.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@8.0.9...@ng-easy/builders@9.0.0) (2022-06-23)
+
+
+### :sparkles: Features
+
+* **builders:** :sparkles: new major version for Angular 14 upgrade ([3fced76](https://github.com/ng-easy/platform/commit/3fced7633d886b05a21db9792e84276631a4ce64))
+
+
+### BREAKING CHANGES
+
+* **builders:** Angular 14
+
 ## [8.0.9](https://github.com/ng-easy/platform/compare/@ng-easy/builders@8.0.8...@ng-easy/builders@8.0.9) (2022-06-20)
 
 
