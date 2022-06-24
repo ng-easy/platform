@@ -56,7 +56,7 @@ jobs:
           targets: build,favicons
           parallel: 'true'
           nxCloud: 'true'
-          affected: 'false'
+          affected: 'true'
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3.1.0
@@ -103,7 +103,7 @@ jobs:
           targets: lint
           parallel: 'true'
           nxCloud: 'true'
-          affected: 'false'
+          affected: 'true'
 
   test:
     name: Test
@@ -134,10 +134,9 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: test
-          parallel: 'true'
-          maxParallel: '3'
+          parallel: 'false'
           nxCloud: 'true'
-          affected: 'false'
+          affected: 'true'
 
       - name: Code coverage
         uses: codecov/codecov-action@v3.1.0
@@ -183,7 +182,7 @@ jobs:
           targets: storybook-compodoc,e2e
           parallel: 'false' # https://github.com/nrwl/nx/issues/6842#issuecomment-1026763612
           nxCloud: 'true'
-          affected: 'false'
+          affected: 'true'
 
       - name: e2e test upload diffs
         uses: actions/upload-artifact@v3.1.0

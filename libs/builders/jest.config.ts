@@ -11,4 +11,5 @@ export default {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/libs/builders',
   coverageReporters: ['lcov'],
+  maxWorkers: 1,
 };
