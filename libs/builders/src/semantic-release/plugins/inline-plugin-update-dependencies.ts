@@ -19,8 +19,13 @@ async function prepare(releaseOptions: ReleaseProjectOptions, context: Context):
 
   const nextRelease: NextRelease = context.nextRelease as NextRelease;
 
-  for (let i = 0; i < releaseOptions.dependencies.length; i++) {
-    const { project, packageJsonPath } = releaseOptions.dependencies[i];
+  if (releaseOptions.dependencies.length > 0) {
+    const projects = releaseOptions.dependencies.map(({ project }) => project).join(', ');
+    context.logger.log(`Will update version on projects: ${projects}`);
+  }
+
+  for (const dependency of releaseOptions.dependencies) {
+    const { project, packageJsonPath } = dependency;
     updateDependencyPackage(releaseOptions.packageName, packageJsonPath, nextRelease.version, context);
     await gitPrepare(createGitConfig(releaseOptions.packageName, project, packageJsonPath, context, true), context);
   }
