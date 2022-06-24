@@ -134,7 +134,7 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2.1.0
         with:
           targets: test
-          parallel: 'false'
+          parallel: 'true'
           nxCloud: 'true'
           affected: 'true'
 
