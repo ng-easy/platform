@@ -143,8 +143,8 @@ export abstract class ImageLoader {
   }
 
   protected normalizeSrc(src: string): string {
-    src = src[0] === '/' ? src.slice(1) : src; // Trim initial /
-    src = src[src.length - 1] === '/' ? src.slice(0, -1) : src;
+    src = src.startsWith('/') ? src.slice(1) : src; // Trim initial /
+    src = src.endsWith('/') ? src.slice(0, -1) : src;
     return src;
   }
 }

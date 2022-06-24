@@ -15,7 +15,7 @@ export class ImageLoaderRegistry {
       }
 
       if (this.loaderMap.has(loader.name)) {
-        console.error(`Duplicated image loader with name "${loader.name}". Fix it by declaring image loaders only in one module.`);
+        throw new Error(`Duplicated image loader with name "${loader.name}". Fix it by declaring image loaders only in one module.`);
       }
 
       this.loaderMap.set(loader.name, loader);
@@ -32,7 +32,7 @@ export class ImageLoaderRegistry {
 
     const loader: ImageLoader | undefined = this.loaderMap.get(loaderName);
     if (loader == null) {
-      throw new Error(`There is no image loader with name "loaderName".`);
+      throw new Error(`There is no image loader with name "${loaderName}".`);
     }
     return loader;
   }
