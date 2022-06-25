@@ -1,3 +1,15 @@
+## [5.0.19](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.18...@ng-easy/prettier-config@5.0.19) (2022-06-25)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([3e9bbc1](https://github.com/ng-easy/platform/commit/3e9bbc1e533beb019c0dcf91f9268cb006e6e089))
+
+
+### :bug: Bug Fixes
+
+* :package: update directory of repository within monorepo ([#583](https://github.com/ng-easy/platform/issues/583)) ([9ac5a61](https://github.com/ng-easy/platform/commit/9ac5a6148730a0cb24835d96a3312667824c4385))
+
 ## [5.0.18](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.17...@ng-easy/prettier-config@5.0.18) (2022-06-20)
 
 
