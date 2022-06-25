@@ -47,8 +47,8 @@
     "xml2js": "^0.4.23"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": "^14.0.2",
-    "@angular-devkit/core": "^14.0.2",
+    "@angular-devkit/build-angular": "^14.0.3",
+    "@angular-devkit/core": "^14.0.3",
     "prettier": "^2.7.1",
     "rxjs": "^7.5.5"
   },
