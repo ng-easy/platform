@@ -1,3 +1,12 @@
+## [4.5.17](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.16...@ng-easy/eslint-config@4.5.17) (2022-06-25)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3 ([#591](https://github.com/ng-easy/platform/issues/591)) ([b981a52](https://github.com/ng-easy/platform/commit/b981a52dc7513ffcb2452f49a5bc04f548647841))
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.1.0 ([#593](https://github.com/ng-easy/platform/issues/593)) ([25a4149](https://github.com/ng-easy/platform/commit/25a414979e8be3b87b5341a96aad575fb4461daa))
+* :arrow_up: update nrwl workspace to v14 ([#594](https://github.com/ng-easy/platform/issues/594)) ([a68a584](https://github.com/ng-easy/platform/commit/a68a5848a652f21acf5b3f6d8cdabb41c17d90a7))
+
 ## [4.5.16](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.15...@ng-easy/eslint-config@4.5.16) (2022-06-25)
 
 
