@@ -54,7 +54,7 @@ export async function runSemanticRelease(
     outputPath,
     releaseCommitMessage: options.releaseCommitMessage,
     changelogFile: `${dirname(packageJson)}/CHANGELOG.md`,
-    dependencies: await getProjectDependencies(context, project, relatedProjects.length > 0),
+    dependencies: await getProjectDependencies(context, project, relatedProjects),
     build: async () => {
       const buildRun: BuilderRun = await context.scheduleTarget({ project, target: 'build' });
       return await buildRun.result;
