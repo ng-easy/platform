@@ -1,3 +1,15 @@
+## [5.1.9](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.8...@ng-easy/image-optimizer@5.1.9) (2022-06-25)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([3e9bbc1](https://github.com/ng-easy/platform/commit/3e9bbc1e533beb019c0dcf91f9268cb006e6e089))
+
+
+### :bug: Bug Fixes
+
+* :package: update directory of repository within monorepo ([#583](https://github.com/ng-easy/platform/issues/583)) ([9ac5a61](https://github.com/ng-easy/platform/commit/9ac5a6148730a0cb24835d96a3312667824c4385))
+
 ## [5.1.8](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.7...@ng-easy/image-optimizer@5.1.8) (2022-06-20)
 
 
