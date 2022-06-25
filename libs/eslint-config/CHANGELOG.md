@@ -1,3 +1,15 @@
+## [4.5.15](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.14...@ng-easy/eslint-config@4.5.15) (2022-06-25)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([3e9bbc1](https://github.com/ng-easy/platform/commit/3e9bbc1e533beb019c0dcf91f9268cb006e6e089))
+
+
+### :bug: Bug Fixes
+
+* :package: update directory of repository within monorepo ([#583](https://github.com/ng-easy/platform/issues/583)) ([9ac5a61](https://github.com/ng-easy/platform/commit/9ac5a6148730a0cb24835d96a3312667824c4385))
+
 ## [4.5.14](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.13...@ng-easy/eslint-config@4.5.14) (2022-06-20)
 
 
