@@ -1,3 +1,11 @@
+## [5.1.12](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.11...@ng-easy/image-config@5.1.12) (2022-07-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([6376ca8](https://github.com/ng-easy/platform/commit/6376ca80032f85d9248e3b676ca6c887e7ec5655))
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.1.5 ([495b1ab](https://github.com/ng-easy/platform/commit/495b1ab78b064ce9879c8992ffa746748abdc0b9))
+
 ## [5.1.11](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.10...@ng-easy/image-config@5.1.11) (2022-06-25)
 
 
