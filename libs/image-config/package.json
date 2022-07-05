@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/image-config",
-  "version": "5.1.12",
+  "version": "5.1.13",
   "description": "Builders for Nx and Angular projects",
   "keywords": [
     "angular",
