@@ -1,3 +1,11 @@
+## [4.5.19](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.18...@ng-easy/eslint-config@4.5.19) (2022-07-05)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling to v5.30.4 ([d67149c](https://github.com/ng-easy/platform/commit/d67149c200fef5f2386ce64ff7c2976077320e0d))
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.2.0 ([508b0cd](https://github.com/ng-easy/platform/commit/508b0cd68abd015cca8031d51cd68fee12a24f48))
+
 ## [4.5.18](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.17...@ng-easy/eslint-config@4.5.18) (2022-07-03)
 
 
