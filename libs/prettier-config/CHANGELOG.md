@@ -1,3 +1,10 @@
+## [5.0.24](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.23...@ng-easy/prettier-config@5.0.24) (2022-07-09)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([1b944fa](https://github.com/ng-easy/platform/commit/1b944fa5a5293036924501e140c2e818f85aab78))
+
 ## [5.0.23](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.22...@ng-easy/prettier-config@5.0.23) (2022-07-05)
 
 
