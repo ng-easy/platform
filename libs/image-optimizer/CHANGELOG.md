@@ -1,3 +1,15 @@
+## [5.1.14](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.13...@ng-easy/image-optimizer@5.1.14) (2022-07-09)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([1b944fa](https://github.com/ng-easy/platform/commit/1b944fa5a5293036924501e140c2e818f85aab78))
+
+
+### :bug: Bug Fixes
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.1.14 [skip ci] ([ae2fcfd](https://github.com/ng-easy/platform/commit/ae2fcfdaeafe68a340a25f576b965362ece7a3cb))
+
 ## [5.1.13](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.12...@ng-easy/image-optimizer@5.1.13) (2022-07-05)
 
 
