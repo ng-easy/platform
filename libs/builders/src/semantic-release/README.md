@@ -28,11 +28,13 @@ nx g @ng-easy/builders:add-release-target --project projectName
 
 ### Configuring the Builder
 
-[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. Only the following commits will considered that apply for the individual project based on the scope:
+[Conventional commits](https://www.conventionalcommits.org/) follow the pattern `<type>[(optional scope)]: <description>`. Only the following commits will be considered for the individual project based on the scope:
 
 - No scope, `*` or `deps`
 - Those where the scope is equal to the project name
 - If the scope is a comma separated list, the project name should be one of the items
+
+The `scope` is used to determine, whether a commit belongs to a specific project. For example, the commit `fix(builder): fix issue 12345` will be used to determine a new `bugfix` version of the `builder` library. All other libraries will not trigger a new release in this case. Omitting the `scope` or setting the scope to `*` will add this commit to all libraries to be released.
 
 Example of `angular.json`/`workspace.json`:
 
