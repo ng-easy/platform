@@ -1,27 +1,24 @@
 import * as path from 'path';
 
-import cheerio from 'cheerio';
+import { CheerioAPI, load } from 'cheerio';
 import * as fs from 'fs-extra';
 
 import { writeFormatted } from '../core';
 import { FaviconConfig } from './favicon-configs';
 
-export type CheerioRoot = ReturnType<typeof cheerio.load>;
-export type Cheerio = ReturnType<typeof cheerio>;
-
-export async function loadIndex(outputPath: string, index: string): Promise<CheerioRoot> {
+export async function loadIndex(outputPath: string, index: string): Promise<CheerioAPI> {
   index = path.parse(index).base;
   index = path.join(outputPath, index);
   const file: Buffer = await fs.readFile(index);
-  return cheerio.load(file);
+  return load(file);
 }
 
-export function removeFavicon(indexDocument: CheerioRoot): void {
+export function removeFavicon(indexDocument: CheerioAPI): void {
   indexDocument('head').find('link[rel="icon"]').remove();
   indexDocument('head').find('link[rel="apple-touch-icon"]').remove();
 }
 
-export function addFaviconIndex(indexDocument: CheerioRoot, iconName: string | null, faviconConfig: FaviconConfig): void {
+export function addFaviconIndex(indexDocument: CheerioAPI, iconName: string | null, faviconConfig: FaviconConfig): void {
   if (faviconConfig.dest !== 'link' || iconName == null) {
     return;
   }
@@ -31,7 +28,7 @@ export function addFaviconIndex(indexDocument: CheerioRoot, iconName: string | n
   indexDocument('head base').after(link);
 }
 
-export async function saveIndex(outputPath: string, index: string, indexDocument: CheerioRoot): Promise<void> {
+export async function saveIndex(outputPath: string, index: string, indexDocument: CheerioAPI): Promise<void> {
   index = path.parse(index).base;
   index = path.join(outputPath, index);
   await writeFormatted(index, indexDocument.html());

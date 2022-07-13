@@ -1,9 +1,10 @@
 import { BuilderContext, BuilderOutput, createBuilder, targetFromTargetString } from '@angular-devkit/architect';
 import { JsonObject } from '@angular-devkit/core';
+import { CheerioAPI } from 'cheerio';
 
 import { createFavicon } from './create-favicon';
 import { FaviconConfig, faviconConfigs } from './favicon-configs';
-import { addFaviconIndex, CheerioRoot, loadIndex, removeFavicon, saveIndex } from './html';
+import { addFaviconIndex, loadIndex, removeFavicon, saveIndex } from './html';
 import { addFaviconManifest, readManifest, saveManifest, WebManifest } from './manifest';
 
 interface Options extends JsonObject {
@@ -32,7 +33,7 @@ async function faviconsBuilder(options: Options, context: BuilderContext): Promi
   const index: string = rawBrowserOptions.index;
   const background: string | null = options.background;
 
-  const indexDocument: CheerioRoot = await loadIndex(outputPath, index);
+  const indexDocument: CheerioAPI = await loadIndex(outputPath, index);
   const manifest: WebManifest = await readManifest(outputPath, indexDocument);
   removeFavicon(indexDocument);
 

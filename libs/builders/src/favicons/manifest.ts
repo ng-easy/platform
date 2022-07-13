@@ -2,16 +2,16 @@ import * as path from 'path';
 
 import { BuilderContext } from '@angular-devkit/architect';
 import { JSONSchemaForWebApplicationManifestFiles } from '@schemastore/web-manifest';
+import { CheerioAPI } from 'cheerio';
 import { Element } from 'domhandler';
 import * as fs from 'fs-extra';
 
 import { writeFormatted } from '../core';
 import { FaviconConfig } from './favicon-configs';
-import { CheerioRoot } from './html';
 
 export type WebManifest = JSONSchemaForWebApplicationManifestFiles;
 
-export async function readManifest(outputPath: string, indexDocument: CheerioRoot): Promise<WebManifest> {
+export async function readManifest(outputPath: string, indexDocument: CheerioAPI): Promise<WebManifest> {
   const manifestFileName: string = getManifestFileName(indexDocument);
   const manifestFilePath = path.join(outputPath, manifestFileName);
 
@@ -46,7 +46,7 @@ export async function saveManifest(
   context: BuilderContext,
   outputPath: string,
   manifest: WebManifest,
-  indexDocument: CheerioRoot
+  indexDocument: CheerioAPI
 ): Promise<void> {
   const manifestFileName: string = getManifestFileName(indexDocument);
   const manifestFilePath = path.join(outputPath, manifestFileName);
@@ -59,7 +59,7 @@ export async function saveManifest(
   context.logger.info(`Manifest generated at ${manifestFilePath}`);
 }
 
-export function getManifestFileName(indexDocument: CheerioRoot): string {
+export function getManifestFileName(indexDocument: CheerioAPI): string {
   const manifest: Element | undefined = indexDocument('head link[rel="manifest"]')[0];
-  return manifest == null ? 'manifest.webmanifest' : manifest.attribs['href'];
+  return manifest == null ? 'manifest.webmanifest' : manifest.attribs.href;
 }
