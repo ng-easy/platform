@@ -32,7 +32,7 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "cheerio": "^1.0.0-rc.11",
+    "cheerio": "^1.0.0-rc.12",
     "domhandler": "^5.0.3",
     "fs-extra": "^10.1.0",
     "imagemin-pngquant": "^9.0.2",
@@ -50,7 +50,7 @@
     "@angular-devkit/build-angular": "^14.0.5",
     "@angular-devkit/core": "^14.0.5",
     "prettier": "^2.7.1",
-    "rxjs": "^7.5.5"
+    "rxjs": "^7.5.6"
   },
   "schematics": "./generators.json",
   "generators": "./generators.json",
