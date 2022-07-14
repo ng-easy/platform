@@ -1,3 +1,10 @@
+## [5.1.15](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.14...@ng-easy/image-config@5.1.15) (2022-07-14)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([#597](https://github.com/ng-easy/platform/issues/597)) ([ddfe018](https://github.com/ng-easy/platform/commit/ddfe01871b4ad5c962ebbb6e8fe831ee8666aa4a))
+
 ## [5.1.14](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.13...@ng-easy/image-config@5.1.14) (2022-07-09)
 
 
