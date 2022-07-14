@@ -1,3 +1,16 @@
+## [9.0.7](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.6...@ng-easy/builders@9.0.7) (2022-07-14)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([#597](https://github.com/ng-easy/platform/issues/597)) ([ddfe018](https://github.com/ng-easy/platform/commit/ddfe01871b4ad5c962ebbb6e8fe831ee8666aa4a))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.15 [skip ci] ([72c080e](https://github.com/ng-easy/platform/commit/72c080ec875afff99300022c06a4ad16a1df8282))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.15 [skip ci] ([6f32e7e](https://github.com/ng-easy/platform/commit/6f32e7e91ae652d5a5c8de8b8297968ae1721884))
+
 ## [9.0.6](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.5...@ng-easy/builders@9.0.6) (2022-07-09)
 
 
