@@ -208,6 +208,98 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # Personal access token with repo permissions
 ```
 
+You can also use a `Matrix Setup` for your projects to be released. This works as follows:
+
+```yml
+name: Release
+on:
+  workflow_dispatch: # manual release
+  schedule:
+    - cron: '0 0 * * *' # scheduled nightly release
+
+jobs:
+  npm:
+    name: Release Matrix
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 1
+      matrix:
+        projects: [project-a, project-b, project-c] # add your projects to be processed here
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+          persist-credentials: false # Needed so that semantic release can use the admin token
+
+      - name: Fetch latest base branch
+        run: git fetch origin main
+
+      # Setup node, install dependencies
+
+      - name: Build Package
+        run: npx nx run ${{ matrix.projects }}:build
+
+      - name: Release Package
+        run: npx nx run ${{ matrix.projects }}:release
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+```
+
+Alternatively, you can use the `Inputs` feature provided by `GitHub` to create a user-interface that lets you select a specific project to be released.
+
+```yml
+name: Release Project
+on:
+  workflow_dispatch: # manual release
+    inputs:
+      project:
+        type: choice
+        description: Project to Release
+        options:
+          - project-a
+          - project-b
+          - project-c
+          # add more projects to be released here
+
+jobs:
+  npm:
+    name: Release ${{ github.event.inputs.project }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch latest base branch
+        run: git fetch origin main
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Setup NPM
+        uses: ng-easy/npm-setup@v2
+
+      - name: Build Package
+        run: npx nx run ${{ github.event.inputs.project }}:build
+
+      - name: Release Package
+        run: npx nx run ${{ github.event.inputs.project }}:release
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+```
+
 **When creating a new project to be released, it results in a lot of noise on previous PRs and a log initial changelog. How can I avoid that?**
 
 It is expected, since it will reflect the history of the repo. If you don't want that to happen, use steps above to force an initial version by pushing a tag like `{packageName}@0.9.0` to git so that it serves as the baseline.
