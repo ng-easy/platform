@@ -18,6 +18,7 @@ import { getBuildTargetOptions } from './get-build-target-options';
 import { getGenerateNotesOptions } from './get-generate-notes-options';
 import { getGithubOptions } from './get-github-options';
 import { getProjectDependencies } from './get-project-dependencies';
+import { getGitCurrentSha, getGitPullRebase, getGitRemoteHeadSha, getGitStatus } from './git';
 
 export interface RunSemanticReleaseOptions {
   branches: BranchSpecJson[];
@@ -27,6 +28,8 @@ export interface RunSemanticReleaseOptions {
   github: boolean;
   npm: boolean;
   releaseCommitMessage: string;
+  verbose: boolean;
+  forceGitPullRebase: boolean;
 }
 
 export async function runSemanticRelease(
@@ -45,6 +48,14 @@ export async function runSemanticRelease(
 
   // Prepare plugins for semantic release
   context.logger.info(`Starting semantic release for project "${project}" with package name ${packageName} from path ${outputPath}`);
+
+  if (options.verbose) {
+    await logGitStatus(context);
+  }
+
+  if (options.forceGitPullRebase) {
+    await logPullRebase(context);
+  }
 
   const releaseProjectOptions: ReleaseProjectOptions = {
     project,
@@ -113,4 +124,24 @@ export async function runSemanticRelease(
   }
 
   return { success: true };
+}
+
+async function logGitStatus(context: BuilderContext) {
+  context.logger.info('Git current commit:');
+  context.logger.info(await getGitCurrentSha());
+  context.logger.info('');
+
+  context.logger.info('Git remote commit:');
+  context.logger.info(await getGitRemoteHeadSha());
+  context.logger.info('');
+
+  context.logger.info('Git status:');
+  context.logger.info(await getGitStatus());
+  context.logger.info('');
+}
+
+async function logPullRebase(context: BuilderContext) {
+  context.logger.info('Git rebase:');
+  context.logger.info(await getGitPullRebase());
+  context.logger.info('');
 }
