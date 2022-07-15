@@ -57,6 +57,16 @@
     "github": {
       "type": "boolean",
       "default": true
+    },
+    "verbose": {
+      "description": "Output verbose logging",
+      "type": "boolean",
+      "default": false
+    },
+    "forceGitPullRebase": {
+      "description": "Experimental flag to force a git pull rebase before running the release process",
+      "type": "boolean",
+      "default": false
     }
   },
   "required": ["tag"],
