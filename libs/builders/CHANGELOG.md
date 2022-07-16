@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.8...@ng-easy/builders@9.1.0) (2022-07-16)
+
+
+### :sparkles: Features
+
+* **builders:** :sparkles: flag to disable github success comments on semrel builder ([#623](https://github.com/ng-easy/platform/issues/623)) ([1a56d1c](https://github.com/ng-easy/platform/commit/1a56d1c71ce970590bc838cbc0e2fa0c2c44d4a1)), closes [#610](https://github.com/ng-easy/platform/issues/610)
+
 ## [9.0.8](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.7...@ng-easy/builders@9.0.8) (2022-07-16)
 
 
