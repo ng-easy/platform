@@ -1,3 +1,20 @@
+## [9.0.8](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.7...@ng-easy/builders@9.0.8) (2022-07-16)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([e83215d](https://github.com/ng-easy/platform/commit/e83215d831279f0998825d89d06ee9f061b3c6f6))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.16 [skip ci] ([2f05495](https://github.com/ng-easy/platform/commit/2f0549551d4d07db73eb1f93c64a8342615af575))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.16 [skip ci] ([7c5c27d](https://github.com/ng-easy/platform/commit/7c5c27dc56907cbf81ce2c4e43de25662f3ca446))
+* **builders:** :bug: fix getting remote commit ([#599](https://github.com/ng-easy/platform/issues/599)) ([558f671](https://github.com/ng-easy/platform/commit/558f671b703d23ee70786285b518d5a881488a52))
+* **builders:** :bug: fix git command to get remote commit ([#621](https://github.com/ng-easy/platform/issues/621)) ([e47aaf9](https://github.com/ng-easy/platform/commit/e47aaf96928b7bdd8fc6fbd8f007316ad185efd2))
+* **builders:** :bug: fix import of execa since it is an ESM module ([#616](https://github.com/ng-easy/platform/issues/616)) ([a938505](https://github.com/ng-easy/platform/commit/a9385053a40d0be279ebb0460e53b433277acd97))
+* **builders:** :loud_sound: add logging for git issue ([#599](https://github.com/ng-easy/platform/issues/599)) ([#615](https://github.com/ng-easy/platform/issues/615)) ([418abc8](https://github.com/ng-easy/platform/commit/418abc8cff45cb68b6a1d74b130e324f3ee4ab65))
+
 ## [9.0.7](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.6...@ng-easy/builders@9.0.7) (2022-07-14)
 
 
