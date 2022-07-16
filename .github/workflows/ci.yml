@@ -261,3 +261,18 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
+
+  failure:
+    name: Failure
+    needs: [npm, lint, build, test, e2e, docs]
+    runs-on: ubuntu-latest
+    if: failure() && github.ref == 'refs/heads/main'
+    steps:
+      - uses: nashmaniac/create-issue-action@v1.1
+        name: Create Issue
+        with:
+          title: 'bug(main): CI pipeline failed'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: ${{ github.actor }}
+          labels: bug
+          body: GitHub [CI workflow for main branch](https://github.com/ng-easy/platform/actions/workflows/ci.yml?query=branch%3Amain) failed
