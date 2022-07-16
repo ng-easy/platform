@@ -262,19 +262,6 @@ jobs:
           branch: gh-pages
           folder: docs
 
-  contributors:
-    name: Contributors
-    needs: [npm, lint, build, test, e2e, docs]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: wow-actions/contributors-list@v1.0.8
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          commitMessage: 'chore: update contributors [skip ci]'
-          includeBots: false
-          svgPath: CONTRIBUTORS.svg
-
   failure:
     name: Failure
     needs: [npm, lint, build, test, e2e, docs]
