@@ -26,6 +26,7 @@ export interface RunSemanticReleaseOptions {
   dryRun: boolean;
   force: boolean;
   github: boolean;
+  githubSuccessComment: boolean;
   npm: boolean;
   releaseCommitMessage: string;
   verbose: boolean;
@@ -77,7 +78,7 @@ export async function runSemanticRelease(
   const changelogPlugin: PluginSpec = ['@semantic-release/changelog', releaseProjectOptions];
   const buildPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginBuild, releaseProjectOptions];
   const npmPlugin: PluginSpec = ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }];
-  const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName)];
+  const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName, options.githubSuccessComment)];
   const updatePackageVersionPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginUpdatePackageVersion, releaseProjectOptions];
   const updateDependenciesPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginUpdateDependencies, releaseProjectOptions];
 
@@ -99,7 +100,7 @@ export async function runSemanticRelease(
         branches: options.branches,
         extends: undefined,
         dryRun: options.dryRun,
-        plugins: plugins,
+        plugins,
         ci: !options.force,
       },
       {
@@ -127,12 +128,9 @@ export async function runSemanticRelease(
 }
 
 async function logGitStatus(context: BuilderContext) {
+  context.logger.info('');
   context.logger.info(`Git current commit: ${await getGitCurrentSha()}`);
-  context.logger.info('');
-
   context.logger.info(`Git remote commit: ${await getGitRemoteHeadSha()}`);
-  context.logger.info('');
-
   context.logger.info('Git status:');
   context.logger.info(await getGitStatus());
   context.logger.info('');

@@ -75,6 +75,7 @@ Additionally, you can use the following options:
 - `changelog`: defaults to `true`, generates project's changelog
 - `npm`: defaults to `true`, releases to `npm`
 - `github`: defaults to `true`, releases to `github`
+- `githubSuccessComment`: set to `false` to disable commenting on issues and pull requests resolved by the release
 
 ### Configuring the Nx Workspace
 
