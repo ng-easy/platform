@@ -127,12 +127,10 @@ export async function runSemanticRelease(
 }
 
 async function logGitStatus(context: BuilderContext) {
-  context.logger.info('Git current commit:');
-  context.logger.info(await getGitCurrentSha());
+  context.logger.info(`Git current commit: ${await getGitCurrentSha()}`);
   context.logger.info('');
 
-  context.logger.info('Git remote commit:');
-  context.logger.info(await getGitRemoteHeadSha());
+  context.logger.info(`Git remote commit: ${await getGitRemoteHeadSha()}`);
   context.logger.info('');
 
   context.logger.info('Git status:');
