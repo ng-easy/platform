@@ -1,0 +1,18 @@
+name: Contributors
+on:
+  workflow_dispatch: # manual dispatch
+  schedule:
+    - cron: '0 1 * * 0' # At 01:00 on Sunday
+  push:
+    branches:
+      - main
+jobs:
+  contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wow-actions/contributors-list@v1.0.8
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          commitMessage: 'chore: update contributors [skip ci]'
+          includeBots: false
+          svgPath: CONTRIBUTORS.svg
