@@ -2,13 +2,13 @@ import { importEsm } from '../../core';
 
 export async function getGitCurrentSha(): Promise<string> {
   const { execa } = await importEsm('execa');
-  const { stdout } = await execa('git', ['log', '-n', '1']);
+  const { stdout } = await execa('git', ['rev-parse', 'HEAD']);
   return stdout;
 }
 
 export async function getGitRemoteHeadSha(): Promise<string> {
   const { execa } = await importEsm('execa');
-  const { stdout } = await execa('git', ['log', '-n', '1', 'origin/HEAD']);
+  const { stdout } = await execa('git', ['rev-parse', 'origin/HEAD']);
   return stdout;
 }
 
@@ -20,7 +20,7 @@ export async function getGitStatus(): Promise<string> {
 
 export async function getGitPullRebase(): Promise<string> {
   const { execa } = await importEsm('execa');
-  await execa('git', ['fetch', 'origin', 'HEAD']);
-  const { stdout } = await execa('git', ['pull', '--rebase']);
-  return stdout;
+  const { stdout: outFetch } = await execa('git', ['fetch']);
+  const { stdout: outRebase } = await execa('git', ['pull', '--rebase']);
+  return `${outFetch}\n${outRebase}`;
 }
