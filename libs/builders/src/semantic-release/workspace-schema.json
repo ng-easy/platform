@@ -41,20 +41,24 @@
       "default": ["master", "main", "next", { "name": "beta", "prerelease": true }, { "name": "alpha", "prerelease": true }]
     },
     "releaseCommitMessage": {
+      "description": "The message for the release commit",
       "type": "string",
       "minLength": 20,
       "maxLength": 200,
       "default": "chore(release): :package: ${project}@${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     },
     "changelog": {
+      "description": "Generate the changelog for the project",
       "type": "boolean",
       "default": true
     },
     "npm": {
+      "description": "Publish to NPM",
       "type": "boolean",
       "default": true
     },
     "github": {
+      "description": "Publish a GitHub release and comment on released Pull Requests/Issues",
       "type": "boolean",
       "default": true
     },
