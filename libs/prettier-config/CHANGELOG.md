@@ -1,3 +1,10 @@
+## [5.0.27](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.26...@ng-easy/prettier-config@5.0.27) (2022-07-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint to v8.20.0 ([bf14d44](https://github.com/ng-easy/platform/commit/bf14d44bca849015e1a531284f6d5b97bcc7fb9b))
+
 ## [5.0.26](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.25...@ng-easy/prettier-config@5.0.26) (2022-07-16)
 
 
