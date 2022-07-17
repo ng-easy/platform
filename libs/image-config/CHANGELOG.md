@@ -1,3 +1,10 @@
+## [5.1.17](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.16...@ng-easy/image-config@5.1.17) (2022-07-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint to v8.20.0 ([bf14d44](https://github.com/ng-easy/platform/commit/bf14d44bca849015e1a531284f6d5b97bcc7fb9b))
+
 ## [5.1.16](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.15...@ng-easy/image-config@5.1.16) (2022-07-16)
 
 
