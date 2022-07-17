@@ -1,3 +1,17 @@
+## [9.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.0...@ng-easy/builders@9.1.1) (2022-07-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint to v8.20.0 ([bf14d44](https://github.com/ng-easy/platform/commit/bf14d44bca849015e1a531284f6d5b97bcc7fb9b))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.17 [skip ci] ([50fa6bc](https://github.com/ng-easy/platform/commit/50fa6bc7d1d930f38e329d1f5d8a392aea3d0996))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.17 [skip ci] ([84660e8](https://github.com/ng-easy/platform/commit/84660e81114eba5c95abb76b5b3ba36d97836551))
+* **builders:** :memo: add description to properties of semrel schema ([#625](https://github.com/ng-easy/platform/issues/625)) ([12a300a](https://github.com/ng-easy/platform/commit/12a300a338bd38ecbfd9d089004bd9d857226e07))
+
 # [9.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.8...@ng-easy/builders@9.1.0) (2022-07-16)
 
 
