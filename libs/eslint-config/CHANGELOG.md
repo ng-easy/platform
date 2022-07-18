@@ -1,3 +1,10 @@
+## [4.5.24](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.23...@ng-easy/eslint-config@4.5.24) (2022-07-18)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.2.7 ([d3062e4](https://github.com/ng-easy/platform/commit/d3062e45087e0bac8d72476270e58de6b47341a1))
+
 ## [4.5.23](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.22...@ng-easy/eslint-config@4.5.23) (2022-07-17)
 
 
