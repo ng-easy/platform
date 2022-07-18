@@ -1,5 +1,9 @@
-export function getGithubOptions(outputPath: string, packageName: string): any {
-  return { addReleases: 'bottom', assets: [{ path: `${outputPath}-tar/*.*` }], successComment: getSuccessComment(packageName) };
+export function getGithubOptions(outputPath: string, packageName: string, githubSuccessComment: boolean): any {
+  return {
+    addReleases: 'bottom',
+    assets: [{ path: `${outputPath}-tar/*.*` }],
+    successComment: githubSuccessComment && getSuccessComment(packageName),
+  };
 }
 
 function getSuccessComment(packageName: string): string {

@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/image",
-  "version": "5.1.15",
+  "version": "5.1.18",
   "description": "Image component for Angular",
   "keywords": [
     "angular",
@@ -27,10 +27,10 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/cdk": "^14.0.4",
-    "@angular/common": "^14.0.5",
-    "@angular/core": "^14.0.5",
-    "@angular/platform-browser": "^14.0.5",
-    "@ng-easy/image-config": "^5.1.15"
+    "@angular/cdk": "^14.0.5",
+    "@angular/common": "^14.0.6",
+    "@angular/core": "^14.0.6",
+    "@angular/platform-browser": "^14.0.6",
+    "@ng-easy/image-config": "^5.1.18"
   }
 }

@@ -8,6 +8,9 @@ export interface SemanticReleaseBaseSchema extends JsonObject {
   dryRun: boolean;
   force: boolean;
   github: boolean;
+  githubSuccessComment: boolean;
   npm: boolean;
   releaseCommitMessage: string;
+  verbose: boolean;
+  forceGitPullRebase: boolean;
 }

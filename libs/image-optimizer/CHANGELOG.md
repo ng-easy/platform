@@ -1,3 +1,39 @@
+## [5.1.18](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.17...@ng-easy/image-optimizer@5.1.18) (2022-07-18)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.2.7 ([d3062e4](https://github.com/ng-easy/platform/commit/d3062e45087e0bac8d72476270e58de6b47341a1))
+
+
+### :bug: Bug Fixes
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.1.18 [skip ci] ([f94dc7c](https://github.com/ng-easy/platform/commit/f94dc7ca2fba96bf04eb8a1302ea701ed4e4fe4e))
+
+## [5.1.17](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.16...@ng-easy/image-optimizer@5.1.17) (2022-07-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint to v8.20.0 ([bf14d44](https://github.com/ng-easy/platform/commit/bf14d44bca849015e1a531284f6d5b97bcc7fb9b))
+
+
+### :bug: Bug Fixes
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.1.17 [skip ci] ([214c37a](https://github.com/ng-easy/platform/commit/214c37a831410ea7bdc50542eb523b5e66561ef7))
+
+## [5.1.16](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.15...@ng-easy/image-optimizer@5.1.16) (2022-07-16)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([e83215d](https://github.com/ng-easy/platform/commit/e83215d831279f0998825d89d06ee9f061b3c6f6))
+
+
+### :bug: Bug Fixes
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.1.16 [skip ci] ([0037a9d](https://github.com/ng-easy/platform/commit/0037a9d929fa392d9b9999eab0e113ccf1791cf5))
+
 ## [5.1.15](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.14...@ng-easy/image-optimizer@5.1.15) (2022-07-14)
 
 

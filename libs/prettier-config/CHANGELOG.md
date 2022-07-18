@@ -1,3 +1,24 @@
+## [5.0.28](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.27...@ng-easy/prettier-config@5.0.28) (2022-07-18)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.2.7 ([d3062e4](https://github.com/ng-easy/platform/commit/d3062e45087e0bac8d72476270e58de6b47341a1))
+
+## [5.0.27](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.26...@ng-easy/prettier-config@5.0.27) (2022-07-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint to v8.20.0 ([bf14d44](https://github.com/ng-easy/platform/commit/bf14d44bca849015e1a531284f6d5b97bcc7fb9b))
+
+## [5.0.26](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.25...@ng-easy/prettier-config@5.0.26) (2022-07-16)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([e83215d](https://github.com/ng-easy/platform/commit/e83215d831279f0998825d89d06ee9f061b3c6f6))
+
 ## [5.0.25](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.24...@ng-easy/prettier-config@5.0.25) (2022-07-14)
 
 

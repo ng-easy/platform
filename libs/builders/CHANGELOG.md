@@ -1,3 +1,54 @@
+## [9.1.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.1...@ng-easy/builders@9.1.2) (2022-07-18)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.2.7 ([d3062e4](https://github.com/ng-easy/platform/commit/d3062e45087e0bac8d72476270e58de6b47341a1))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.18 [skip ci] ([3846a89](https://github.com/ng-easy/platform/commit/3846a8955e8c4003f6d4d27ec901d40d4cd7044e))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.18 [skip ci] ([21066a1](https://github.com/ng-easy/platform/commit/21066a111e1d1086b0400f333ac7072c91ffcf42))
+
+## [9.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.0...@ng-easy/builders@9.1.1) (2022-07-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint to v8.20.0 ([bf14d44](https://github.com/ng-easy/platform/commit/bf14d44bca849015e1a531284f6d5b97bcc7fb9b))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.17 [skip ci] ([50fa6bc](https://github.com/ng-easy/platform/commit/50fa6bc7d1d930f38e329d1f5d8a392aea3d0996))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.17 [skip ci] ([84660e8](https://github.com/ng-easy/platform/commit/84660e81114eba5c95abb76b5b3ba36d97836551))
+* **builders:** :memo: add description to properties of semrel schema ([#625](https://github.com/ng-easy/platform/issues/625)) ([12a300a](https://github.com/ng-easy/platform/commit/12a300a338bd38ecbfd9d089004bd9d857226e07))
+
+# [9.1.0](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.8...@ng-easy/builders@9.1.0) (2022-07-16)
+
+
+### :sparkles: Features
+
+* **builders:** :sparkles: flag to disable github success comments on semrel builder ([#623](https://github.com/ng-easy/platform/issues/623)) ([1a56d1c](https://github.com/ng-easy/platform/commit/1a56d1c71ce970590bc838cbc0e2fa0c2c44d4a1)), closes [#610](https://github.com/ng-easy/platform/issues/610)
+
+## [9.0.8](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.7...@ng-easy/builders@9.0.8) (2022-07-16)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([e83215d](https://github.com/ng-easy/platform/commit/e83215d831279f0998825d89d06ee9f061b3c6f6))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.16 [skip ci] ([2f05495](https://github.com/ng-easy/platform/commit/2f0549551d4d07db73eb1f93c64a8342615af575))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.16 [skip ci] ([7c5c27d](https://github.com/ng-easy/platform/commit/7c5c27dc56907cbf81ce2c4e43de25662f3ca446))
+* **builders:** :bug: fix getting remote commit ([#599](https://github.com/ng-easy/platform/issues/599)) ([558f671](https://github.com/ng-easy/platform/commit/558f671b703d23ee70786285b518d5a881488a52))
+* **builders:** :bug: fix git command to get remote commit ([#621](https://github.com/ng-easy/platform/issues/621)) ([e47aaf9](https://github.com/ng-easy/platform/commit/e47aaf96928b7bdd8fc6fbd8f007316ad185efd2))
+* **builders:** :bug: fix import of execa since it is an ESM module ([#616](https://github.com/ng-easy/platform/issues/616)) ([a938505](https://github.com/ng-easy/platform/commit/a9385053a40d0be279ebb0460e53b433277acd97))
+* **builders:** :loud_sound: add logging for git issue ([#599](https://github.com/ng-easy/platform/issues/599)) ([#615](https://github.com/ng-easy/platform/issues/615)) ([418abc8](https://github.com/ng-easy/platform/commit/418abc8cff45cb68b6a1d74b130e324f3ee4ab65))
+
 ## [9.0.7](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.0.6...@ng-easy/builders@9.0.7) (2022-07-14)
 
 

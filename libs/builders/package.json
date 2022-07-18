@@ -1,6 +1,6 @@
 {
   "name": "@ng-easy/builders",
-  "version": "9.0.7",
+  "version": "9.1.2",
   "description": "Builders for Nx and Angular projects",
   "keywords": [
     "angular",
@@ -26,14 +26,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ng-easy/image-config": "^5.1.15",
-    "@ng-easy/image-optimizer": "^5.1.15",
-    "@nrwl/workspace": "^14.4.2",
+    "@ng-easy/image-config": "^5.1.18",
+    "@ng-easy/image-optimizer": "^5.1.18",
+    "@nrwl/workspace": "^14.4.3",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "cheerio": "^1.0.0-rc.12",
     "domhandler": "^5.0.3",
+    "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin": "^8.0.1",
@@ -47,8 +48,8 @@
     "xml2js": "^0.4.23"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": "^14.0.5",
-    "@angular-devkit/core": "^14.0.5",
+    "@angular-devkit/build-angular": "^14.0.6",
+    "@angular-devkit/core": "^14.0.6",
     "prettier": "^2.7.1",
     "rxjs": "^7.5.6"
   },

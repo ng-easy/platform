@@ -6,16 +6,12 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/builders/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/builders/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/builders"
-      ],
+      "outputs": ["coverage/libs/builders"],
       "options": {
         "jestConfig": "libs/builders/jest.config.ts",
         "codeCoverage": true
@@ -28,9 +24,7 @@
     },
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/builders",
         "tsConfig": "libs/builders/tsconfig.lib.json",
@@ -54,14 +48,15 @@
       "executor": "./dist/libs/builders:command",
       "options": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "dir"
-        ]
+        "args": ["/c", "dir"]
       }
     },
     "release": {
       "executor": "./dist/libs/builders:semantic-release",
+      "options": {
+        "verbose": true,
+        "forceGitPullRebase": true
+      },
       "configurations": {
         "local": {
           "force": true
@@ -70,7 +65,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": [
-    "workspace-release-image"
-  ]
+  "implicitDependencies": ["workspace-release-image"]
 }

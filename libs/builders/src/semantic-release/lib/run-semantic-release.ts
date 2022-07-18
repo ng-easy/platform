@@ -18,6 +18,7 @@ import { getBuildTargetOptions } from './get-build-target-options';
 import { getGenerateNotesOptions } from './get-generate-notes-options';
 import { getGithubOptions } from './get-github-options';
 import { getProjectDependencies } from './get-project-dependencies';
+import { getGitCurrentSha, getGitPullRebase, getGitRemoteHeadSha, getGitStatus } from './git';
 
 export interface RunSemanticReleaseOptions {
   branches: BranchSpecJson[];
@@ -25,8 +26,11 @@ export interface RunSemanticReleaseOptions {
   dryRun: boolean;
   force: boolean;
   github: boolean;
+  githubSuccessComment: boolean;
   npm: boolean;
   releaseCommitMessage: string;
+  verbose: boolean;
+  forceGitPullRebase: boolean;
 }
 
 export async function runSemanticRelease(
@@ -45,6 +49,14 @@ export async function runSemanticRelease(
 
   // Prepare plugins for semantic release
   context.logger.info(`Starting semantic release for project "${project}" with package name ${packageName} from path ${outputPath}`);
+
+  if (options.verbose) {
+    await logGitStatus(context);
+  }
+
+  if (options.forceGitPullRebase) {
+    await logPullRebase(context);
+  }
 
   const releaseProjectOptions: ReleaseProjectOptions = {
     project,
@@ -66,7 +78,7 @@ export async function runSemanticRelease(
   const changelogPlugin: PluginSpec = ['@semantic-release/changelog', releaseProjectOptions];
   const buildPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginBuild, releaseProjectOptions];
   const npmPlugin: PluginSpec = ['@semantic-release/npm', { pkgRoot: outputPath, tarballDir: `${outputPath}-tar` }];
-  const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName)];
+  const githubPlugin: PluginSpec = ['@semantic-release/github', getGithubOptions(outputPath, packageName, options.githubSuccessComment)];
   const updatePackageVersionPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginUpdatePackageVersion, releaseProjectOptions];
   const updateDependenciesPlugin: InlinePluginSpec<ReleaseProjectOptions> = [inlinePluginUpdateDependencies, releaseProjectOptions];
 
@@ -88,7 +100,7 @@ export async function runSemanticRelease(
         branches: options.branches,
         extends: undefined,
         dryRun: options.dryRun,
-        plugins: plugins,
+        plugins,
         ci: !options.force,
       },
       {
@@ -113,4 +125,19 @@ export async function runSemanticRelease(
   }
 
   return { success: true };
+}
+
+async function logGitStatus(context: BuilderContext) {
+  context.logger.info('');
+  context.logger.info(`Git current commit: ${await getGitCurrentSha()}`);
+  context.logger.info(`Git remote commit: ${await getGitRemoteHeadSha()}`);
+  context.logger.info('Git status:');
+  context.logger.info(await getGitStatus());
+  context.logger.info('');
+}
+
+async function logPullRebase(context: BuilderContext) {
+  context.logger.info('Git rebase:');
+  context.logger.info(await getGitPullRebase());
+  context.logger.info('');
 }
