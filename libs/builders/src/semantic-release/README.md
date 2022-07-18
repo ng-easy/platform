@@ -208,7 +208,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # Personal access token with repo permissions
 ```
 
-You can also use the `Inputs` feature provided by `GitHub` to create a user-interface that lets you select a specific project to be released.
+If packages to be released don't depend on each other (i.e., `package-b` required `package-a` to properly work), you can also use the `Inputs` feature provided by `GitHub` to create a user-interface that lets you select a specific project to be processed. However, if projects are dependent on each other, the previously described approach will take care of the release project in proper order (i.e., first release `project-a` and then `project-b`).
 
 ```yml
 name: Release Project
