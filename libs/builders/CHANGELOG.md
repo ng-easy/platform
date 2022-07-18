@@ -1,3 +1,16 @@
+## [9.1.2](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.1...@ng-easy/builders@9.1.2) (2022-07-18)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency eslint-import-resolver-typescript to v3.2.7 ([d3062e4](https://github.com/ng-easy/platform/commit/d3062e45087e0bac8d72476270e58de6b47341a1))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.18 [skip ci] ([3846a89](https://github.com/ng-easy/platform/commit/3846a8955e8c4003f6d4d27ec901d40d4cd7044e))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.18 [skip ci] ([21066a1](https://github.com/ng-easy/platform/commit/21066a111e1d1086b0400f333ac7072c91ffcf42))
+
 ## [9.1.1](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.0...@ng-easy/builders@9.1.1) (2022-07-17)
 
 
