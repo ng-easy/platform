@@ -209,6 +209,71 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # Personal access token with repo permissions
 ```
 
+If packages to be released don't depend on each other (i.e., `package-b` required `package-a` to properly work), you can also use the `Inputs` feature provided by `GitHub` to create a user-interface that lets you select a specific project to be processed. However, if projects are dependent on each other, the previously described approach will take care of the release project in proper order (i.e., first release `project-a` and then `project-b`).
+
+```yml
+name: Release Project
+on:
+  workflow_dispatch: # manual release
+    inputs:
+      project:
+        type: choice
+        description: Project to Release
+        options:
+          - project-a
+          - project-b
+          - project-c
+          # add more projects to be released here
+
+jobs:
+  npm:
+    name: Release ${{ github.event.inputs.project }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch latest base branch
+        run: git fetch origin main
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Setup NPM
+        uses: ng-easy/npm-setup@v2
+        with:
+          nx-key: build
+
+      - name: Build Package
+        run: npx nx run ${{ github.event.inputs.project }}:build
+
+      - name: Release Package
+        run: npx nx run ${{ github.event.inputs.project }}:release
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      # Alternatively, you could use the nrwl-nx-package as well to build or release the packages
+      # see the example below (for release)
+      - name: Release Package
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: release
+          nxCloud: 'true'
+          projects: ${{ github.event.inputs.project }}
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # Personal access token with repo permissions
+```
+
 **When creating a new project to be released, it results in a lot of noise on previous PRs and a log initial changelog. How can I avoid that?**
 
 It is expected, since it will reflect the history of the repo. If you don't want that to happen, use steps above to force an initial version by pushing a tag like `{packageName}@0.9.0` to git so that it serves as the baseline.
