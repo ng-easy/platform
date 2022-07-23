@@ -1,3 +1,10 @@
+## [4.5.25](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.24...@ng-easy/eslint-config@4.5.25) (2022-07-23)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([e40a671](https://github.com/ng-easy/platform/commit/e40a6719014fa4c966da552b728554af32e30187))
+
 ## [4.5.24](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.23...@ng-easy/eslint-config@4.5.24) (2022-07-18)
 
 
