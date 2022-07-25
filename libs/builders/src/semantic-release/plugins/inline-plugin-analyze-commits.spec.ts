@@ -27,8 +27,8 @@ describe('@ng-easy/builders:semantic-release', () => {
     }
 
     beforeEach(() => {
-      logger = { log: jest.fn(), error: jest.fn() };
-      context = { logger, env: {}, commits: [] };
+      logger = { log: jest.fn(), error: jest.fn() } as unknown as Logger;
+      context = { logger, env: {}, commits: [], branch: { name: 'main' } };
       if (inlinePluginAnalyzeCommits.analyzeCommits) {
         analyzeCommits = inlinePluginAnalyzeCommits.analyzeCommits;
       }
