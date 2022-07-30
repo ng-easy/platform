@@ -1,3 +1,16 @@
+## [5.1.21](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.20...@ng-easy/image-optimizer@5.1.21) (2022-07-30)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([944f205](https://github.com/ng-easy/platform/commit/944f205779b28790fe8f388af3480af6868557d8))
+* :arrow_up: update dependency tailwindcss to v3.1.7 ([22114ff](https://github.com/ng-easy/platform/commit/22114ffe23319370afa955a169a9066e31ed92f8))
+
+
+### :bug: Bug Fixes
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.1.21 [skip ci] ([10dd27c](https://github.com/ng-easy/platform/commit/10dd27cb820d4a77c06f27056c4e35ebc2abc9b3))
+
 ## [5.1.20](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.19...@ng-easy/image-optimizer@5.1.20) (2022-07-24)
 
 
