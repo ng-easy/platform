@@ -1,3 +1,11 @@
+## [5.0.31](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.30...@ng-easy/prettier-config@5.0.31) (2022-07-30)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([944f205](https://github.com/ng-easy/platform/commit/944f205779b28790fe8f388af3480af6868557d8))
+* :arrow_up: update dependency tailwindcss to v3.1.7 ([22114ff](https://github.com/ng-easy/platform/commit/22114ffe23319370afa955a169a9066e31ed92f8))
+
 ## [5.0.30](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.29...@ng-easy/prettier-config@5.0.30) (2022-07-24)
 
 
