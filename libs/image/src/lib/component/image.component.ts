@@ -130,7 +130,7 @@ export class ImageComponent implements OnChanges, AfterViewInit {
   /**
    * Output emits once the image is completely loaded and the placeholder has been removed.
    */
-  @Output() loadingComplete = new EventEmitter<void>();
+  @Output() loadingComplete = new EventEmitter<void>(); // TODO: emit naturalWidth and naturalHeight
 
   private imageLoader: ImageLoader = this.imageLoaderRegistry.getLoader();
 
