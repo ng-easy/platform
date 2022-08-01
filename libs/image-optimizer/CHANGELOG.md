@@ -1,3 +1,10 @@
+## [5.1.22](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.21...@ng-easy/image-optimizer@5.1.22) (2022-08-01)
+
+
+### :bug: Bug Fixes
+
+* **image-optimizer:** :arrow_up: update @ng-easy/image-config to 5.1.22 [skip ci] ([c4d64ea](https://github.com/ng-easy/platform/commit/c4d64ea5e18ea7ca6d13086ee19abfef922398a9))
+
 ## [5.1.21](https://github.com/ng-easy/platform/compare/@ng-easy/image-optimizer@5.1.20...@ng-easy/image-optimizer@5.1.21) (2022-07-30)
 
 
