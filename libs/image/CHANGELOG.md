@@ -1,3 +1,15 @@
+## [5.1.22](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.21...@ng-easy/image@5.1.22) (2022-08-01)
+
+
+### :bug: Bug Fixes
+
+* **image:** :arrow_up: update @ng-easy/image-config to 5.1.22 [skip ci] ([dbce21e](https://github.com/ng-easy/platform/commit/dbce21ecedb09ea3654e15b2334d59ed65835fd9))
+
+
+### :memo: Documentation
+
+* **image:** :memo: create a comprehensive README ([#607](https://github.com/ng-easy/platform/issues/607)) ([#640](https://github.com/ng-easy/platform/issues/640)) ([8439ee2](https://github.com/ng-easy/platform/commit/8439ee229ff44bdcb63d85fcd427795dc4637833))
+
 ## [5.1.21](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.20...@ng-easy/image@5.1.21) (2022-07-30)
 
 
