@@ -6,25 +6,20 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/core-web-vitals-app-e2e/cypress.json",
+        "cypressConfig": "apps/core-web-vitals-app-e2e/cypress.config.ts",
         "tsConfig": "apps/core-web-vitals-app-e2e/tsconfig.e2e.json",
         "devServerTarget": "core-web-vitals-app:serve:production",
-        "headless": true
+        "headless": true,
+        "testingType": "e2e"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/core-web-vitals-app-e2e/**/*.{js,ts}"
-        ]
+        "lintFilePatterns": ["apps/core-web-vitals-app-e2e/**/*.{js,ts}"]
       }
     }
   },
-  "tags": [
-    "e2e"
-  ],
-  "implicitDependencies": [
-    "core-web-vitals-app"
-  ]
+  "tags": ["e2e"],
+  "implicitDependencies": ["core-web-vitals-app"]
 }

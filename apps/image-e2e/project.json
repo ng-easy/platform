@@ -6,25 +6,20 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/image-e2e/cypress.json",
+        "cypressConfig": "apps/image-e2e/cypress.config.ts",
         "tsConfig": "apps/image-e2e/tsconfig.e2e.json",
         "devServerTarget": "image:storybook",
-        "headless": true
+        "headless": true,
+        "testingType": "e2e"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/image-e2e/**/*.{js,ts}"
-        ]
+        "lintFilePatterns": ["apps/image-e2e/**/*.{js,ts}"]
       }
     }
   },
-  "tags": [
-    "e2e"
-  ],
-  "implicitDependencies": [
-    "image"
-  ]
+  "tags": ["e2e"],
+  "implicitDependencies": ["image"]
 }
