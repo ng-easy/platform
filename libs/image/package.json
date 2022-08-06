@@ -27,10 +27,10 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/cdk": "^14.1.0",
-    "@angular/common": "^14.1.0",
-    "@angular/core": "^14.1.0",
-    "@angular/platform-browser": "^14.1.0",
+    "@angular/cdk": "^14.1.1",
+    "@angular/common": "^14.1.1",
+    "@angular/core": "^14.1.1",
+    "@angular/platform-browser": "^14.1.1",
     "@ng-easy/image-config": "^5.1.22"
   }
 }
