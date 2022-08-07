@@ -136,7 +136,7 @@
     "@types/lodash": "4.14.182",
     "@types/node": "18.0.0",
     "@types/semantic-release": "17.2.4",
-    "@types/sharp": "0.30.4",
+    "@types/sharp": "0.30.5",
     "@types/stream-buffers": "3.0.4",
     "@types/svgo": "2.6.3",
     "@types/tinycolor2": "1.4.3",
