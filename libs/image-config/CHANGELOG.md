@@ -1,3 +1,10 @@
+## [5.1.26](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.25...@ng-easy/image-config@5.1.26) (2022-08-27)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency semantic-release to v19.0.5 ([7837995](https://github.com/ng-easy/platform/commit/78379953ecb58622245eebeb67376133297acfa1))
+
 ## [5.1.25](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.24...@ng-easy/image-config@5.1.25) (2022-08-20)
 
 
