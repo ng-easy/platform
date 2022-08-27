@@ -1,3 +1,10 @@
+## [4.5.31](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.30...@ng-easy/eslint-config@4.5.31) (2022-08-27)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency semantic-release to v19.0.5 ([7837995](https://github.com/ng-easy/platform/commit/78379953ecb58622245eebeb67376133297acfa1))
+
 ## [4.5.30](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.29...@ng-easy/eslint-config@4.5.30) (2022-08-20)
 
 
