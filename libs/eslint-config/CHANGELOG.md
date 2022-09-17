@@ -1,3 +1,10 @@
+## [4.5.36](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.35...@ng-easy/eslint-config@4.5.36) (2022-09-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency jimp to v0.16.2 ([f715bbf](https://github.com/ng-easy/platform/commit/f715bbf2bbc5589afa4483729123664a32226f4a))
+
 ## [4.5.35](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.34...@ng-easy/eslint-config@4.5.35) (2022-09-11)
 
 
