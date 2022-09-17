@@ -82,7 +82,7 @@
     "fs-extra": "10.1.0",
     "imagemin": "8.0.1",
     "imagemin-pngquant": "9.0.2",
-    "jimp": "0.16.1",
+    "jimp": "0.16.2",
     "lodash": "4.17.21",
     "nx": "14.5.4",
     "prettier": "2.7.1",
