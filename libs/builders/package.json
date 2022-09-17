@@ -38,7 +38,7 @@
     "fs-extra": "^10.1.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin": "^8.0.1",
-    "jimp": "^0.16.1",
+    "jimp": "^0.16.2",
     "semantic-release": "^19.0.5",
     "sharp": "^0.31.0",
     "stream-buffers": "^3.0.2",
