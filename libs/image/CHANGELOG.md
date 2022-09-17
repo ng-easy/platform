@@ -1,3 +1,15 @@
+## [5.1.31](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.30...@ng-easy/image@5.1.31) (2022-09-17)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency jimp to v0.16.2 ([f715bbf](https://github.com/ng-easy/platform/commit/f715bbf2bbc5589afa4483729123664a32226f4a))
+
+
+### :bug: Bug Fixes
+
+* **image:** :arrow_up: update @ng-easy/image-config to 5.1.31 [skip ci] ([aea13d5](https://github.com/ng-easy/platform/commit/aea13d5a66424c48a56b956d9a61a9d269b696a6))
+
 ## [5.1.30](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.29...@ng-easy/image@5.1.30) (2022-09-11)
 
 
