@@ -1,3 +1,10 @@
+## [5.1.32](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.31...@ng-easy/image-config@5.1.32) (2022-09-19)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update client tooling ([5a23676](https://github.com/ng-easy/platform/commit/5a236767aa2890b09f29a9a7a69e676aab027945))
+
 ## [5.1.31](https://github.com/ng-easy/platform/compare/@ng-easy/image-config@5.1.30...@ng-easy/image-config@5.1.31) (2022-09-17)
 
 
