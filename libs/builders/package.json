@@ -51,7 +51,7 @@
     "@angular-devkit/build-angular": "^14.1.1",
     "@angular-devkit/core": "^14.1.1",
     "prettier": "^2.7.1",
-    "rxjs": "^7.5.6"
+    "rxjs": "^7.5.7"
   },
   "schematics": "./generators.json",
   "generators": "./generators.json",
