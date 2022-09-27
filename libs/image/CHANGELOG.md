@@ -1,3 +1,15 @@
+## [5.1.33](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.32...@ng-easy/image@5.1.33) (2022-09-27)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency rxjs to v7.5.7 ([14d30e5](https://github.com/ng-easy/platform/commit/14d30e51db9281276f78ecf34ba1ad64727ac219))
+
+
+### :bug: Bug Fixes
+
+* **image:** :arrow_up: update @ng-easy/image-config to 5.1.33 [skip ci] ([ee6df3e](https://github.com/ng-easy/platform/commit/ee6df3e0f2350daccf1861aa2b6758f7e0d692db))
+
 ## [5.1.32](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.31...@ng-easy/image@5.1.32) (2022-09-19)
 
 
