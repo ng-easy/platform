@@ -1,3 +1,10 @@
+## [4.5.38](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.37...@ng-easy/eslint-config@4.5.38) (2022-09-27)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency rxjs to v7.5.7 ([14d30e5](https://github.com/ng-easy/platform/commit/14d30e51db9281276f78ecf34ba1ad64727ac219))
+
 ## [4.5.37](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.36...@ng-easy/eslint-config@4.5.37) (2022-09-19)
 
 
