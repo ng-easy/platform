@@ -1,3 +1,16 @@
+## [9.1.17](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.16...@ng-easy/builders@9.1.17) (2022-09-27)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency rxjs to v7.5.7 ([14d30e5](https://github.com/ng-easy/platform/commit/14d30e51db9281276f78ecf34ba1ad64727ac219))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.33 [skip ci] ([a02753f](https://github.com/ng-easy/platform/commit/a02753f44ba0bd9803327f819a06566b405ded82))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.33 [skip ci] ([fad1a7b](https://github.com/ng-easy/platform/commit/fad1a7b1dc5df30c0bed608124b43616a9529222))
+
 ## [9.1.16](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.15...@ng-easy/builders@9.1.16) (2022-09-19)
 
 
