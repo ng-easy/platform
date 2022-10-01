@@ -1,3 +1,16 @@
+## [9.1.18](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.17...@ng-easy/builders@9.1.18) (2022-10-01)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency sharp to v0.31.1 ([307f2db](https://github.com/ng-easy/platform/commit/307f2db2a4abc28a215f759cf4a3d0ff398612f3))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.34 [skip ci] ([7f7360f](https://github.com/ng-easy/platform/commit/7f7360f1e64a134e6fc4f136a186a0a681ba973e))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.34 [skip ci] ([b267050](https://github.com/ng-easy/platform/commit/b267050e6fb83a6499bac57cbf20372ff46d4048))
+
 ## [9.1.17](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.16...@ng-easy/builders@9.1.17) (2022-09-27)
 
 
