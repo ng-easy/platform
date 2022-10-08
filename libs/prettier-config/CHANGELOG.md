@@ -1,3 +1,10 @@
+## [5.0.44](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.43...@ng-easy/prettier-config@5.0.44) (2022-10-08)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency bootstrap to v5.2.2 ([b21924c](https://github.com/ng-easy/platform/commit/b21924c780760ace0f14733cfb9b1394adee8c51))
+
 ## [5.0.43](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.42...@ng-easy/prettier-config@5.0.43) (2022-10-01)
 
 
