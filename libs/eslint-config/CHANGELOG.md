@@ -1,3 +1,10 @@
+## [4.5.40](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.39...@ng-easy/eslint-config@4.5.40) (2022-10-08)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency bootstrap to v5.2.2 ([b21924c](https://github.com/ng-easy/platform/commit/b21924c780760ace0f14733cfb9b1394adee8c51))
+
 ## [4.5.39](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.38...@ng-easy/eslint-config@4.5.39) (2022-10-01)
 
 
