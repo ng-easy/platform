@@ -1,3 +1,10 @@
+## [4.5.41](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.40...@ng-easy/eslint-config@4.5.41) (2022-10-22)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency tailwindcss to v3.2.1 ([d2fe73c](https://github.com/ng-easy/platform/commit/d2fe73ce730a4d8f2bddc6a00240432d0a4b5c5a))
+
 ## [4.5.40](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.39...@ng-easy/eslint-config@4.5.40) (2022-10-08)
 
 
