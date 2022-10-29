@@ -42,7 +42,7 @@
     "semantic-release": "^19.0.5",
     "sharp": "^0.31.1",
     "stream-buffers": "^3.0.2",
-    "svgo": "^2.8.0",
+    "svgo": "^3.0.0",
     "tinycolor2": "^1.4.2",
     "to-ico": "^1.1.5",
     "xml2js": "^0.4.23"
