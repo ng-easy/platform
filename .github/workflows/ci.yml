@@ -212,7 +212,7 @@ jobs:
           path: dist
 
       - name: Lighthouse audit
-        uses: treosh/lighthouse-ci-action@9.3.0
+        uses: treosh/lighthouse-ci-action@9.3.1
         if: hashFiles('dist/apps/core-web-vitals-app/browser/**/*') != ''
         with:
           configPath: ./lighthouserc.json
