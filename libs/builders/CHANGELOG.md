@@ -1,3 +1,16 @@
+## [9.1.22](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.21...@ng-easy/builders@9.1.22) (2022-11-12)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency tailwindcss to v3.2.4 ([420281c](https://github.com/ng-easy/platform/commit/420281c3359a9c2f22f6aebef2cfb8692792c503))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.38 [skip ci] ([cb3c9ac](https://github.com/ng-easy/platform/commit/cb3c9ac7ca24c39d5d724deb16a61292aca50f90))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.38 [skip ci] ([44b8246](https://github.com/ng-easy/platform/commit/44b82468b3836441c6a8c624a80a26525aff5166))
+
 ## [9.1.21](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.20...@ng-easy/builders@9.1.21) (2022-11-05)
 
 
