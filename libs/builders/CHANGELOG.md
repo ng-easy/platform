@@ -1,3 +1,16 @@
+## [9.1.23](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.22...@ng-easy/builders@9.1.23) (2022-11-26)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency bootstrap to v5.2.3 ([2d4dc98](https://github.com/ng-easy/platform/commit/2d4dc989745aee2046be5d4562a1200e31e846fc))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.39 [skip ci] ([e05d2d4](https://github.com/ng-easy/platform/commit/e05d2d4ebbd550e7ae5525123efb1c948a64cac8))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.39 [skip ci] ([16249ed](https://github.com/ng-easy/platform/commit/16249ed3e0310babff43394b1c2bd332eb2a73b2))
+
 ## [9.1.22](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.21...@ng-easy/builders@9.1.22) (2022-11-12)
 
 
