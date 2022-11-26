@@ -64,7 +64,7 @@
     "@semantic-release/git": "10.0.1",
     "@typescript-eslint/eslint-plugin": "5.37.0",
     "@typescript-eslint/parser": "5.37.0",
-    "bootstrap": "5.2.2",
+    "bootstrap": "5.2.3",
     "cheerio": "1.0.0-rc.12",
     "domhandler": "5.0.3",
     "eslint": "8.23.1",
