@@ -1,3 +1,15 @@
+## [5.1.40](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.39...@ng-easy/image@5.1.40) (2022-12-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency @semantic-release/changelog to v6.0.2 ([98d93ed](https://github.com/ng-easy/platform/commit/98d93edd11d87b29e6386d41329c2b543c52c5bd))
+
+
+### :bug: Bug Fixes
+
+* **image:** :arrow_up: update @ng-easy/image-config to 5.1.40 [skip ci] ([07916e1](https://github.com/ng-easy/platform/commit/07916e1ebdd954aef802e1ce823cd6f714bec0cc))
+
 ## [5.1.39](https://github.com/ng-easy/platform/compare/@ng-easy/image@5.1.38...@ng-easy/image@5.1.39) (2022-11-26)
 
 
