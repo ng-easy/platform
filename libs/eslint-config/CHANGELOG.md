@@ -1,3 +1,10 @@
+## [4.5.45](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.44...@ng-easy/eslint-config@4.5.45) (2022-12-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency @semantic-release/changelog to v6.0.2 ([98d93ed](https://github.com/ng-easy/platform/commit/98d93edd11d87b29e6386d41329c2b543c52c5bd))
+
 ## [4.5.44](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.43...@ng-easy/eslint-config@4.5.44) (2022-11-26)
 
 
