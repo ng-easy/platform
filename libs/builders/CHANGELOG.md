@@ -1,3 +1,16 @@
+## [9.1.24](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.23...@ng-easy/builders@9.1.24) (2022-12-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency @semantic-release/changelog to v6.0.2 ([98d93ed](https://github.com/ng-easy/platform/commit/98d93edd11d87b29e6386d41329c2b543c52c5bd))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.40 [skip ci] ([bc66e23](https://github.com/ng-easy/platform/commit/bc66e23950ee8033056bf2a2ac1d33fc696a39ca))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.40 [skip ci] ([8b770b7](https://github.com/ng-easy/platform/commit/8b770b73030290ce86947b4d29ac02ddc515ae5e))
+
 ## [9.1.23](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.22...@ng-easy/builders@9.1.23) (2022-11-26)
 
 
