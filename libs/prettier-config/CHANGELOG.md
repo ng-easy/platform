@@ -1,3 +1,10 @@
+## [5.0.49](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.48...@ng-easy/prettier-config@5.0.49) (2022-12-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency @semantic-release/changelog to v6.0.2 ([98d93ed](https://github.com/ng-easy/platform/commit/98d93edd11d87b29e6386d41329c2b543c52c5bd))
+
 ## [5.0.48](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.47...@ng-easy/prettier-config@5.0.48) (2022-11-26)
 
 
