@@ -29,7 +29,7 @@
     "@ng-easy/image-config": "^5.1.39",
     "@ng-easy/image-optimizer": "^5.1.39",
     "@nrwl/workspace": "^14.5.4",
-    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "cheerio": "^1.0.0-rc.12",
