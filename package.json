@@ -79,7 +79,7 @@
     "eslint-plugin-sonarjs": "0.15.0",
     "eslint-plugin-unused-imports": "2.0.0",
     "execa": "6.1.0",
-    "fs-extra": "10.1.0",
+    "fs-extra": "11.1.0",
     "imagemin": "8.0.1",
     "imagemin-pngquant": "9.0.2",
     "jimp": "0.16.2",
