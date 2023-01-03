@@ -1,3 +1,10 @@
+## [5.0.50](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.49...@ng-easy/prettier-config@5.0.50) (2023-01-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency fs-extra to v11 ([#728](https://github.com/ng-easy/platform/issues/728)) ([6050345](https://github.com/ng-easy/platform/commit/6050345adda3f8ea738099e570f74ba81dbbc598))
+
 ## [5.0.49](https://github.com/ng-easy/platform/compare/@ng-easy/prettier-config@5.0.48...@ng-easy/prettier-config@5.0.49) (2022-12-03)
 
 
