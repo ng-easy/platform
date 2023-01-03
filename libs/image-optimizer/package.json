@@ -26,7 +26,7 @@
   "peerDependencies": {
     "fs-extra": "^11.1.0",
     "sharp": "^0.31.2",
-    "@ng-easy/image-config": "^5.1.40"
+    "@ng-easy/image-config": "^5.1.41"
   },
   "publishConfig": {
     "access": "public"
