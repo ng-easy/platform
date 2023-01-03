@@ -1,3 +1,16 @@
+## [9.1.25](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.24...@ng-easy/builders@9.1.25) (2023-01-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency fs-extra to v11 ([#728](https://github.com/ng-easy/platform/issues/728)) ([6050345](https://github.com/ng-easy/platform/commit/6050345adda3f8ea738099e570f74ba81dbbc598))
+
+
+### :bug: Bug Fixes
+
+* **builders:** :arrow_up: update @ng-easy/image-config to 5.1.41 [skip ci] ([5505ef9](https://github.com/ng-easy/platform/commit/5505ef956c396b0f9d5e04e38ebc39fb9fab34db))
+* **builders:** :arrow_up: update @ng-easy/image-optimizer to 5.1.41 [skip ci] ([731f792](https://github.com/ng-easy/platform/commit/731f792d306dffdd82d8381eed3a9ade78d2745c))
+
 ## [9.1.24](https://github.com/ng-easy/platform/compare/@ng-easy/builders@9.1.23...@ng-easy/builders@9.1.24) (2022-12-03)
 
 
