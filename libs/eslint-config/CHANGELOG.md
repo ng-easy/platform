@@ -1,3 +1,10 @@
+## [4.5.46](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.45...@ng-easy/eslint-config@4.5.46) (2023-01-03)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update dependency fs-extra to v11 ([#728](https://github.com/ng-easy/platform/issues/728)) ([6050345](https://github.com/ng-easy/platform/commit/6050345adda3f8ea738099e570f74ba81dbbc598))
+
 ## [4.5.45](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.44...@ng-easy/eslint-config@4.5.45) (2022-12-03)
 
 
