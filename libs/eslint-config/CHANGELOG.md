@@ -1,3 +1,10 @@
+## [4.5.47](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.46...@ng-easy/eslint-config@4.5.47) (2023-01-15)
+
+
+### :arrow_up: Dependency Updates
+
+* :arrow_up: update all non-major dependencies ([842629f](https://github.com/ng-easy/platform/commit/842629f86c053427ed6f054d3e1ca73271a6cef8))
+
 ## [4.5.46](https://github.com/ng-easy/platform/compare/@ng-easy/eslint-config@4.5.45...@ng-easy/eslint-config@4.5.46) (2023-01-03)
 
 
