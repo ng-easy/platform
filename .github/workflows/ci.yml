@@ -51,7 +51,7 @@ jobs:
           nx-key: build
 
       - name: Build
-        uses: mansagroup/nrwl-nx-action@v2.1.0
+        uses: mansagroup/nrwl-nx-action@v3.2.1
         with:
           targets: build,favicons
           parallel: 'true'
@@ -98,7 +98,7 @@ jobs:
         run: npm run lint:workspace
 
       - name: Lint projects
-        uses: mansagroup/nrwl-nx-action@v2.1.0
+        uses: mansagroup/nrwl-nx-action@v3.2.1
         with:
           targets: lint
           parallel: 'true'
@@ -131,7 +131,7 @@ jobs:
           nx-key: test
 
       - name: Test
-        uses: mansagroup/nrwl-nx-action@v2.1.0
+        uses: mansagroup/nrwl-nx-action@v3.2.1
         with:
           targets: test
           parallel: 'true'
@@ -178,7 +178,7 @@ jobs:
           path: dist
 
       - name: e2e tests
-        uses: mansagroup/nrwl-nx-action@v2.1.0
+        uses: mansagroup/nrwl-nx-action@v3.2.1
         with:
           targets: storybook-compodoc,e2e
           parallel: 'false' # https://github.com/nrwl/nx/issues/6842#issuecomment-1026763612
@@ -249,7 +249,7 @@ jobs:
           nx-key: e2e
 
       - name: Storybook
-        uses: mansagroup/nrwl-nx-action@v2.1.0
+        uses: mansagroup/nrwl-nx-action@v3.2.1
         with:
           targets: storybook-build
           all: 'true'
