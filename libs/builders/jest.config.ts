@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'builders',
   preset: '../../jest.preset.ts',

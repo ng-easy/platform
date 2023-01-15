@@ -5,7 +5,7 @@
   "prefix": "ng-easy",
   "targets": {
     "dev": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["npx nx run image:storybook-compodoc --watch", "npx nx run image:storybook"],
         "parallel": true
@@ -71,7 +71,7 @@
       }
     },
     "storybook-build": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["npx nx run image:storybook-compodoc", "npx nx run image:build-storybook"],
         "parallel": false

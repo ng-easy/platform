@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'image-config',
   preset: '../../jest.preset.ts',

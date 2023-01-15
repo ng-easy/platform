@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'core-web-vitals-app',
   preset: '../../jest.preset.ts',
