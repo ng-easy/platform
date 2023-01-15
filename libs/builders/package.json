@@ -40,10 +40,10 @@
     "imagemin": "^8.0.1",
     "jimp": "^0.16.2",
     "semantic-release": "^19.0.5",
-    "sharp": "^0.31.2",
+    "sharp": "^0.31.3",
     "stream-buffers": "^3.0.2",
     "svgo": "^2.8.0",
-    "tinycolor2": "^1.4.2",
+    "tinycolor2": "^1.5.2",
     "to-ico": "^1.1.5",
     "xml2js": "^0.4.23"
   },
@@ -51,7 +51,7 @@
     "@angular-devkit/build-angular": "^14.1.1",
     "@angular-devkit/core": "^14.1.1",
     "prettier": "^2.7.1",
-    "rxjs": "^7.5.7"
+    "rxjs": "^7.8.0"
   },
   "schematics": "./generators.json",
   "generators": "./generators.json",
