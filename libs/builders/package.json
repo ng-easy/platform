@@ -50,7 +50,7 @@
   "peerDependencies": {
     "@angular-devkit/build-angular": "^14.1.1",
     "@angular-devkit/core": "^14.1.1",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.3",
     "rxjs": "^7.8.0"
   },
   "schematics": "./generators.json",
