@@ -130,7 +130,7 @@
     "@twittwer/compodoc": "1.9.0",
     "@types/cheerio": "0.22.31",
     "@types/cypress-image-snapshot": "3.1.6",
-    "@types/fs-extra": "9.0.13",
+    "@types/fs-extra": "11.0.1",
     "@types/imagemin": "8.0.0",
     "@types/jest": "28.1.8",
     "@types/lodash": "4.14.191",
