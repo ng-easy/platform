@@ -1,4 +1,5 @@
 {
+  "name": "builders",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/builders/src",
   "projectType": "library",
@@ -11,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/builders"],
+      "outputs": ["{workspaceRoot}/coverage/libs/builders"],
       "options": {
         "jestConfig": "libs/builders/jest.config.ts",
         "codeCoverage": true

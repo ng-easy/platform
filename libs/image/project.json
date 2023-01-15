@@ -1,11 +1,12 @@
 {
+  "name": "image",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/image/src",
   "prefix": "ng-easy",
   "targets": {
     "dev": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["npx nx run image:storybook-compodoc --watch", "npx nx run image:storybook"],
         "parallel": true
@@ -13,7 +14,7 @@
     },
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/image"],
+      "outputs": ["{workspaceRoot}/dist/libs/image"],
       "options": {
         "project": "libs/image/ng-package.json",
         "tsConfig": "libs/image/tsconfig.lib.prod.json"
@@ -30,7 +31,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/image"],
+      "outputs": ["{workspaceRoot}/coverage/libs/image"],
       "options": {
         "jestConfig": "libs/image/jest.config.ts",
         "codeCoverage": true
@@ -71,7 +72,7 @@
       }
     },
     "storybook-build": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["npx nx run image:storybook-compodoc", "npx nx run image:build-storybook"],
         "parallel": false

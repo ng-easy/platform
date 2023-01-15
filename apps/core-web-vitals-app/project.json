@@ -1,4 +1,5 @@
 {
+  "name": "core-web-vitals-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/core-web-vitals-app/src",
@@ -12,13 +13,8 @@
         "main": "apps/core-web-vitals-app/src/main.ts",
         "polyfills": "apps/core-web-vitals-app/src/polyfills.ts",
         "tsConfig": "apps/core-web-vitals-app/tsconfig.app.json",
-        "assets": [
-          "apps/core-web-vitals-app/src/favicon.ico",
-          "apps/core-web-vitals-app/src/assets"
-        ],
-        "styles": [
-          "apps/core-web-vitals-app/src/styles.scss"
-        ],
+        "assets": ["apps/core-web-vitals-app/src/favicon.ico", "apps/core-web-vitals-app/src/assets"],
+        "styles": ["apps/core-web-vitals-app/src/styles.scss"],
         "scripts": [],
         "vendorChunk": true,
         "extractLicenses": false,
@@ -89,17 +85,12 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/core-web-vitals-app/src/**/*.ts",
-          "apps/core-web-vitals-app/src/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/core-web-vitals-app/src/**/*.ts", "apps/core-web-vitals-app/src/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/core-web-vitals-app"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/core-web-vitals-app"],
       "options": {
         "jestConfig": "apps/core-web-vitals-app/jest.config.ts",
         "codeCoverage": true,
@@ -108,9 +99,7 @@
     },
     "server": {
       "executor": "@angular-devkit/build-angular:server",
-      "outputs": [
-        "dist/apps/core-web-vitals-app/server"
-      ],
+      "outputs": ["{workspaceRoot}/dist/apps/core-web-vitals-app/server"],
       "options": {
         "outputPath": "dist/apps/core-web-vitals-app/server",
         "main": "apps/core-web-vitals-app/src/main.server.ts",
@@ -132,13 +121,23 @@
         },
         "development": {}
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "production": {
+        "outputHashing": "media",
+        "fileReplacements": [
+          {
+            "replace": "apps/core-web-vitals-app/src/environments/environment.ts",
+            "with": "apps/core-web-vitals-app/src/environments/environment.prod.ts"
+          }
+        ],
+        "sourceMap": false,
+        "optimization": true
+      },
+      "development": {}
     },
     "build": {
       "executor": "@angular-devkit/build-angular:app-shell",
-      "outputs": [
-        "dist/apps/core-web-vitals-app"
-      ],
+      "outputs": ["{workspaceRoot}/dist/apps/core-web-vitals-app"],
       "options": {
         "route": "shell"
       },
@@ -156,9 +155,7 @@
     },
     "favicons": {
       "executor": "./dist/libs/builders:favicons",
-      "outputs": [
-        "dist/apps/core-web-vitals-app/browser"
-      ],
+      "outputs": ["{workspaceRoot}/dist/apps/core-web-vitals-app/browser"],
       "options": {
         "browserTarget": "core-web-vitals-app:browser",
         "favicon": "apps/core-web-vitals-app/src/favicon.svg",
@@ -173,7 +170,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": [
-    "builders"
-  ]
+  "implicitDependencies": ["builders"]
 }

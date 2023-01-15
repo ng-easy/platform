@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'image',
   preset: '../../jest.preset.ts',
