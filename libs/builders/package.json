@@ -39,7 +39,7 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin": "^8.0.1",
     "jimp": "^0.16.2",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^20.0.2",
     "sharp": "^0.31.3",
     "stream-buffers": "^3.0.2",
     "svgo": "^2.8.0",
